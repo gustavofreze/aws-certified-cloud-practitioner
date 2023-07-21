@@ -23,3 +23,9 @@ jobs:
           title: Link checker report
           labels: 'report, automated-issue'
           content-filepath: ./lychee/out.md
+      - name: Assign issues
+        uses: gustavofreze/auto-assign@1.0.0
+        with:
+          assignees: '${{ secrets.ASSIGNEES }}'
+          github_token: '${{ secrets.GITHUB_TOKEN }}'
+          assignment_options: 'ISSUE'
