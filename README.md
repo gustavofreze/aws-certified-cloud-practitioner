@@ -36,7 +36,7 @@ ajudaram na preparação para a certificação
 ### Computação em nuvem
 
 É a entrega sob demanda (on demand) de recursos de computação, banco de dados, armazenamento, aplicações ou qualquer
-outro recurso de tecnologia que é entregue através de uma plataforma via internet, onde o pagamento e preço é baseado em
+outro recurso de tecnologia entregue por uma plataforma via internet, onde o pagamento e preço é baseado em
 consumo (pay as you go).
 
 **Vantagens**
@@ -101,7 +101,7 @@ oferece mais de 200 serviços completos de datacenters em todo o mundo.
 
 ### Arquitetura
 
-O [Well Architected Framework](https://aws.amazon.com/pt/architecture/well-architected)  ajuda você a entender como
+O [Well Architected Framework](https://aws.amazon.com/pt/architecture/well-architected) ajuda você a entender como
 projetar e operar sistemas confiáveis, seguros, eficientes e econômicos na nuvem AWS. Ele fornece uma maneira de avaliar
 de forma consistente suas arquiteturas em relação às melhores práticas e identificar áreas para melhorias.
 
@@ -118,7 +118,7 @@ de forma consistente suas arquiteturas em relação às melhores práticas e ide
   modo consistente quando esperado.
 
 
-- **Eficiência de performance**: se concentra no uso eficiente de recursos de TI e computação.
+- **Eficiência de desempenho**: se concentra no uso eficiente de recursos de TI e computação.
 
 
 - **Otimização de custos**: se concentra em evitar custos desnecessários.
@@ -173,7 +173,7 @@ usar, custo efetivo para utilização em data warehouse e data lakes.
 **DynamoDB**
 
 O [DynamoDB](https://aws.amazon.com/pt/dynamodb) é um banco de dados NoSQL, sem servidor e totalmente gerenciado,
-projetado para executar aplicações de alta performance em qualquer escala.
+projetado para executar aplicações de alto desempenho em qualquer escala.
 
 **Aurora**
 
@@ -216,11 +216,11 @@ automaticamente a capacidade para manter um desempenho constante e previsível p
 **Lambda**
 
 O [Lambda](https://aws.amazon.com/pt/lambda) é um serviço de computação sem servidor e orientado a eventos que permite
-executar código para praticamente qualquer tipo de aplicação ou serviço de backend sem provisionar ou gerenciar
+executar código para praticamente qualquer tipo de aplicação ou serviço de backend sem provisionar, ou gerenciar
 servidores.
 
 Lambda functions é um microsserviço (código) que roda na plataforma do AWS Lambda baseado em eventos, também conhecido
-como Function as a Service - FaaS.
+como Function as Service - FaaS.
 
 **Fargate**
 
@@ -231,7 +231,7 @@ gerencia sua infraestrutura de servidor para você.
 **Elastic BeanStalk**
 
 O [Elastic BeanStalk](https://aws.amazon.com/pt/elasticbeanstalk) é um serviço que permite a implantação de aplicações
-apenas fornecendo o código fonte, sem conhecimento ou definição prévia da infraestrutura.
+apenas fornecendo o código-fonte, sem conhecimento ou definição prévia da infraestrutura.
 
 **Elastic Compute Cloud - EC2**
 
@@ -250,24 +250,24 @@ redimensionável na nuvem.
 
 **Modalidade de gastos**
 
-|  Modalidade   |    Características                                                                                                                     |
-|     :---      |       :---                                                                                                                             |
-|  `Spot`       |  - Leilão. <br> - O cliente define um preço a pagar pela capacidade ociosa da AWS, se o preço é aceito, a instância é provisionada.    |
-|  `Dedicado`   |  - Servidor dedicado. <br> - Preços por hora. <br> - Descontos de até 70%.                                                             |
-|  `Reservada`  |  - Reserva por 01 ou 03 anos. <br> - Descontos de até 75%. <br> - Pagamento à vista, ou com entrada e o restante pago em mensalidades. |
-|  `On demand`  |  - Sob demanda. <br> - Pay as you go. <br> - Preços por hora.                                                                          |
+| Modalidade  | Características                                                                                                                       |
+|:------------|:--------------------------------------------------------------------------------------------------------------------------------------|
+| `Spot`      | - Leilão. <br> - O cliente define um preço a pagar pela capacidade ociosa da AWS, se o preço é aceito, a instância é provisionada.    |
+| `Dedicado`  | - Servidor dedicado. <br> - Preços por hora. <br> - Descontos de até 70%.                                                             |
+| `Reservada` | - Reserva por 01 ou 03 anos. <br> - Descontos de até 75%. <br> - Pagamento à vista, ou com entrada e o restante pago em mensalidades. |
+| `On demand` | - Sob demanda. <br> - Pay as you go. <br> - Preços por hora.                                                                          |
 
 **Tipos de instância**
 
 Os tipos de instância EC2 são otimizados para tarefas diferentes.
 
-|  Tipos                            |    Características                                                                                                                                         |
-|     :---                          |       :---                                                                                                                                                 |
-|  `Uso geral`                      |  Fornecem um equilíbrio de recursos de computação, memória e rede.                                                                                         |
-|  `Computação acelerada`           |  Usam aceleradores de hardware, ou coprocessadores, para executar algumas funções de forma mais eficiente do que é possível no software executado em CPUs. |
-|  `Otimizada para memória`        |  São projetadas para fornecer rápida performance para cargas de trabalho que processam grandes conjuntos de dados na memória.                              |
-|  `Otimizada para computação`     |  São ideais para aplicações vinculadas à computação que se beneficiam de processadores de alta performance.                                                |
-|  `Otimizada para armazenamento`  |  São projetadas para cargas de trabalho que exigem alto acesso sequencial de leitura e gravação a grandes conjuntos de dados no armazenamento local.       |
+| Tipos                          | Características                                                                                                                                           |
+|:-------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Uso geral`                    | Fornecem um equilíbrio de recursos de computação, memória e rede.                                                                                         |
+| `Computação acelerada`         | Usam aceleradores de hardware, ou coprocessadores, para executar algumas funções de forma mais eficiente do que é possível no software executado em CPUs. |
+| `Otimizada para memória`       | São projetadas para fornecer rápida performance para cargas de trabalho que processam grandes conjuntos de dados na memória.                              |
+| `Otimizada para computação`    | São ideais para aplicações vinculadas à computação que se beneficiam de processadores de alta performance.                                                |
+| `Otimizada para armazenamento` | São projetadas para cargas de trabalho que exigem alto acesso sequencial de leitura e gravação a grandes conjuntos de dados no armazenamento local.       |
 
 **Elastic Load Balancing - ELB**
 
@@ -290,13 +290,13 @@ Kubernetes na nuvem ou on-premises.
 
 **EMR**
 
-O [EMR](https://aws.amazon.com/pt/emr) é uma plataforma para processamento, análise e aplicação rápida de machine
-learning (ML) em big data usando frameworks de código aberto.
+O [EMR](https://aws.amazon.com/pt/emr) é uma plataforma para processamento, análise e aplicação rápida de Machine
+Learning (ML) em big data usando frameworks de código aberto.
 
 **Glue**
 
 O [Glue](https://aws.amazon.com/pt/glue) é um serviço de integração de dados sem servidor que facilita descobrir,
-preparar e combinar dados para análise, machine learning e desenvolvimento de aplicações.
+preparar e combinar dados para análise, Machine Learning e desenvolvimento de aplicações.
 
 **Athena**
 
@@ -348,7 +348,7 @@ infraestrutura na AWS utilizando um arquivo de texto ou linguagem de programaç�
 **Trusted Advisor**
 
 O [Trusted Advisor](https://aws.amazon.com/pt/premiumsupport/technology/trusted-advisor) é um serviço que inspeciona seu
-ambiente da AWS e fornece recomendações em tempo real de acordo com as melhores práticas da AWS.
+ambiente da AWS e fornece recomendações em tempo real conforme as melhores práticas da AWS.
 
 O Trusted Advisor avalia seus recursos em relação a cinco pilares:
 
@@ -459,7 +459,7 @@ excesso.
 **Identity and Access Management - IAM**
 
 O [IAM](https://aws.amazon.com/pt/iam) é um serviço que controla o acesso aos recursos na AWS. Ele permite criar e
-controlar usuário, autenticação ou limitar acesso de usuário a recursos. Resumindo, o IAM controla **quem** pode fazer
+controlar usuário, autenticação ou limitar acesso de usuário a recursos. Resumindo, o IAM controlar **quem** pode fazer
 **o que** na sua conta AWS.
 
 **GuardDuty**
@@ -471,7 +471,7 @@ visibilidade e remediação.
 **Macie**
 
 O [Macie](https://aws.amazon.com/pt/macie) é um serviço de segurança e privacidade de dados totalmente gerenciado que
-usa machine learning e correspondência de padrões para descobrir e proteger seus dados confidenciais na AWS.
+usa Machine Learning e correspondência de padrões para descobrir e proteger seus dados confidenciais na AWS.
 
 <div id="network"></div> 
 
@@ -536,7 +536,7 @@ Os [planos](https://aws.amazon.com/pt/premiumsupport/plans) de suporte da AWS es
 ### Artigos
 
 - [Glossário da AWS](https://docs.aws.amazon.com/pt_br/general/latest/gr/glos-chap.html)
-- [Whitepaper da AWS](https://d1.awsstatic.com/whitepapers/pt_BR/aws-overview.pdf)
+- [White paper da AWS](https://d1.awsstatic.com/whitepapers/pt_BR/aws-overview.pdf)
 
 ### Cursos
 
@@ -546,4 +546,4 @@ Os [planos](https://aws.amazon.com/pt/premiumsupport/plans) de suporte da AWS es
 ### Simulados
 
 - [AWS Certified Cloud Practitioner - Exemplos de Perguntas](https://d1.awsstatic.com/pt_BR/training-and-certification/docs-cloud-practitioner/AWS-Certified-Cloud-Practitioner_Sample-Questions.pdf)
-- [AWS Certified Cloud Practitioner - Simulados em Português](https://www.udemy.com/course/aws-practitioner-em-portugues)
+- [AWS Certified Cloud Practitioner - Simulados em português](https://www.udemy.com/course/aws-practitioner-em-portugues)
