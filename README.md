@@ -535,7 +535,7 @@ Os [planos](https://aws.amazon.com/pt/premiumsupport/plans) de suporte da AWS es
 
 ### Artigos
 
-- [Glossário da AWS](https://docs.aws.amazon.com/pt_br/general/latest/gr/glos-chap.html)
+- [Glossário da AWS](https://docs.aws.amazon.com/pt_br/glossary/latest/reference/glos-chap.html)
 - [White paper da AWS](https://d1.awsstatic.com/whitepapers/pt_BR/aws-overview.pdf)
 
 ### Cursos
