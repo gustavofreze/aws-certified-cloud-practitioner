@@ -28,6 +28,9 @@ make configure  # instala as dependências
 make start      # http://localhost:4321/aws-certified-cloud-practitioner/
 make build      # gera dist/ e o índice de busca
 make preview    # serve o site gerado, com a busca
+make tests      # testes unitários
+make budgets    # confere o limite de script de cada página (depois do build)
 make review     # Biome e astro check
+make og-image   # redesenha a imagem de prévia de links
 make help       # lista todos os targets
 ```

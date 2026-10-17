@@ -66,6 +66,20 @@ preview: ## @setup Serve the built site, search included, on the development por
 		$(NODE_IMAGE) corepack pnpm preview --host 0.0.0.0 --port $(PORT) > /dev/null
 	@echo "Built site at $(SITE_URL)"
 
+.PHONY: og-image
+og-image: ## @setup Draw the link-preview card into public/og-image.png
+	@docker run --rm -u $(HOST_USER) -e HOME=/tmp -v $(CURDIR):/app -w /app python:3.12-slim \
+		sh -c "pip install --quiet --no-cache-dir --user pillow==11.3.0 && python tools/og-image.py"
+
+# ─── Testing ─────────────────────────────────────────────────
+.PHONY: tests
+tests: ## @test Run the unit tests
+	@$(APP_RUN) test
+
+.PHONY: budgets
+budgets: ## @test Check the script every built page ships against its budget (run after build)
+	@$(APP_RUN) check:budgets
+
 # ─── Code review ─────────────────────────────────────────────
 .PHONY: review
 review: ## @review Run the linter, the formatter check and the Astro and TypeScript checks
@@ -97,9 +111,10 @@ help: ## @help Display this help message
 	@echo ""
 	@awk 'BEGIN { \
 		FS = ":.*?## @"; \
-		order[1]="setup"; order[2]="review"; order[3]="reports"; order[4]="maintenance"; order[5]="help"; \
-		title["setup"]="Setup and run"; title["review"]="Code review"; title["reports"]="Reports"; \
-		title["maintenance"]="Maintenance"; title["help"]="Help"; \
+		order[1]="setup"; order[2]="test"; order[3]="review"; order[4]="reports"; order[5]="maintenance"; \
+		order[6]="help"; \
+		title["setup"]="Setup and run"; title["test"]="Testing"; title["review"]="Code review"; \
+		title["reports"]="Reports"; title["maintenance"]="Maintenance"; title["help"]="Help"; \
 	} \
 	/^[a-zA-Z0-9_-]+:.*## @/ { \
 		split($$2, parts, " "); \
@@ -108,7 +123,7 @@ help: ## @help Display this help message
 		entries[section] = entries[section] sprintf("\033[36m%-24s\033[0m %s\n", $$1, description); \
 	} \
 	END { \
-		for (index_ = 1; index_ <= 5; index_++) { \
+		for (index_ = 1; index_ <= 6; index_++) { \
 			section = order[index_]; \
 			if (entries[section] != "") { \
 				printf "%s\n", title[section]; \
