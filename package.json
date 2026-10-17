@@ -9,11 +9,13 @@
   },
   "scripts": {
     "build": "astro build && pagefind --site dist",
+    "check:budgets": "node tools/check-js-budgets.mjs",
     "dev": "astro dev",
     "format": "biome format --write .",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "preview": "astro preview",
+    "test": "vitest run",
     "typecheck": "astro check"
   },
   "dependencies": {
@@ -25,6 +27,7 @@
     "@tailwindcss/vite": "4.3.3",
     "pagefind": "1.5.2",
     "tailwindcss": "4.3.3",
-    "typescript": "6.0.3"
+    "typescript": "6.0.3",
+    "vitest": "5.0.5"
   }
 }
