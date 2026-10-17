@@ -1,0 +1,30 @@
+{
+  "name": "aws-certified-cloud-practitioner",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.28.3",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "astro build && pagefind --site dist",
+    "dev": "astro dev",
+    "format": "biome format --write .",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "preview": "astro preview",
+    "typecheck": "astro check"
+  },
+  "dependencies": {
+    "astro": "7.2.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@biomejs/biome": "2.5.15",
+    "@tailwindcss/vite": "4.3.3",
+    "pagefind": "1.5.2",
+    "tailwindcss": "4.3.3",
+    "typescript": "6.0.3"
+  }
+}
