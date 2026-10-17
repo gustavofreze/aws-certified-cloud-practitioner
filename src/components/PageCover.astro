@@ -1,0 +1,38 @@
+---
+/**
+ * The deep band on top of a page that is not a topic: the breadcrumb back to the home, an icon, the
+ * title and one line under it. It wears the same ground and the same size as the cover of a topic.
+ */
+import { pageHref } from '../i18n'
+import { getCopy, type Locale } from '../i18n/strings'
+import type { IconName } from './icons'
+import Icon from './Icon.astro'
+
+interface Props {
+  locale: Locale
+  icon: IconName
+  title: string
+  lede: string
+}
+const { locale, icon, title, lede } = Astro.props
+const copy = getCopy(locale)
+---
+
+<div class="ccp-cover">
+  <span class="ccp-hero__glow ccp-hero__glow--orange" aria-hidden="true"></span>
+  <span class="ccp-cover__mark" aria-hidden="true"><Icon name={icon} size={220} /></span>
+  <div class="ccp-wrap ccp-cover__inner">
+    <nav aria-label={copy.nav.breadcrumb} class="ccp-crumbs enter-rise">
+      <a href={pageHref(locale)}>{copy.nav.home}</a>
+      <span class="ccp-crumbs__sep" aria-hidden="true">/</span>
+      <span>{title}</span>
+    </nav>
+    <div class="ccp-cover__head enter-rise" style="--enter-delay:60ms">
+      <span class="ccp-tile ccp-tile--large ccp-tile--deep">
+        <Icon name={icon} size={24} />
+      </span>
+      <h1 class="ccp-cover__title">{title}</h1>
+    </div>
+    <p class="ccp-cover__lede enter-rise" style="--enter-delay:120ms">{lede}</p>
+  </div>
+</div>

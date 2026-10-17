@@ -1,0 +1,107 @@
+---
+/**
+ * The home of the notes in one language: a deep band that names the certification and starts the
+ * roadmap, and the roadmap itself, every topic as a card grouped the way the exam groups them.
+ */
+import { topicsOf } from '../content'
+import type { TopicGroup } from '../content/types'
+import { CERTIFICATION_HREF, pageHref, pagePaths } from '../i18n'
+import { getCopy, type Locale, MAIN_ID } from '../i18n/strings'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import HeroOrbit from './HeroOrbit.astro'
+import Icon from './Icon.astro'
+
+interface Props {
+  locale: Locale
+}
+const { locale } = Astro.props
+const copy = getCopy(locale)
+const topics = topicsOf(locale)
+const first = topics[0]
+const groups: readonly TopicGroup[] = ['foundations', 'services', 'support']
+const step = (slug: string): string => String(topics.findIndex((t) => t.slug === slug) + 1).padStart(2, '0')
+---
+
+<BaseLayout locale={locale} paths={pagePaths()}>
+  <main id={MAIN_ID}>
+    <section class="ccp-hero" aria-labelledby="hero-title">
+      <span class="ccp-hero__glow ccp-hero__glow--orange" aria-hidden="true"></span>
+      <span class="ccp-hero__glow ccp-hero__glow--blue" aria-hidden="true"></span>
+      <div class="ccp-wrap ccp-hero__inner">
+        <div>
+          <p class="ccp-eyebrow enter-rise">
+            <Icon name="book" size={14} />
+            {copy.home.eyebrow}
+          </p>
+          <h1 id="hero-title" class="ccp-hero__title enter-rise" style="--enter-delay:60ms">
+            AWS Certified <em>Cloud Practitioner</em>
+          </h1>
+          <p class="ccp-hero__lede enter-rise" style="--enter-delay:120ms">{copy.home.lede}</p>
+          <div class="ccp-hero__actions enter-rise" style="--enter-delay:180ms">
+            {
+              first && (
+                <a href={pageHref(locale, first.slug)} class="ccp-button ccp-button--primary">
+                  {copy.home.start}
+                  <Icon name="arrow-right" size={18} />
+                </a>
+              )
+            }
+            <a href={CERTIFICATION_HREF[locale]} target="_blank" rel="noopener noreferrer" class="ccp-button ccp-button--ghost">
+              {copy.home.examGuide}
+              <Icon name="external" size={16} />
+            </a>
+          </div>
+        </div>
+
+        <HeroOrbit />
+      </div>
+    </section>
+
+    <div class="ccp-wrap ccp-roadmap" id="roteiro">
+      {
+        groups.map((group) => {
+          const members = topics.filter((topic) => topic.group === group)
+          return (
+            <section aria-labelledby={`group-${group}`}>
+              <header class="ccp-group__head">
+                <h2 id={`group-${group}`} class="ccp-group__title">
+                  {copy.home.groups[group].title}
+                </h2>
+                <p class="ccp-group__lede">{copy.home.groups[group].lede}</p>
+              </header>
+              <ul class="ccp-grid">
+                {members.map((topic, index) => (
+                  <li data-reveal style={`--i:${index % 3}`}>
+                    <a href={pageHref(locale, topic.slug)} class="ccp-card">
+                      <span class="ccp-card__top">
+                        <span class="ccp-tile">
+                          <Icon name={topic.icon} size={22} />
+                        </span>
+                        <span class="ccp-card__step">{step(topic.slug)}</span>
+                      </span>
+                      <span class="ccp-card__title">{topic.title}</span>
+                      <span class="ccp-card__summary">{topic.summary}</span>
+                      <span class="ccp-card__top">
+                        <span class="ccp-card__foot">
+                          {topic.sections.slice(0, 3).map((section) => (
+                            <span class="ccp-chip">{section.name}</span>
+                          ))}
+                          {topic.sections.length > 3 && <span class="ccp-chip">+{topic.sections.length - 3}</span>}
+                        </span>
+                        <Icon name="arrow-right" size={18} class="ccp-card__arrow" />
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        })
+      }
+    </div>
+  </main>
+</BaseLayout>
+
+<script>
+  import '../scripts/reveal.ts'
+</script>

@@ -1,0 +1,1692 @@
+/*
+ * The theme of the study notes. The structure follows the public site of Skedli: shared primitives on
+ * @theme, adaptive roles that swap between light and dark, and component classes written against those
+ * roles. The palette answers to AWS instead: squid ink for the deep bands and orange for the one action
+ * and the marks of the page.
+ *
+ * Both light and dark are first-class. An explicit choice from the theme control lands as data-theme on
+ * the root (persisted, resolved before paint by the inline head script in BaseLayout), and with no choice
+ * the theme follows prefers-color-scheme. Every text-on-surface pair holds WCAG AA in both modes.
+ */
+
+@import 'tailwindcss';
+
+/*
+ * Nunito, self-hosted, latin subset only. Both languages are Latin script, so one variable face covers
+ * every weight token. font-display:swap keeps text visible during load.
+ */
+@font-face {
+  font-family: 'Nunito Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 1000;
+  src: url('../assets/fonts/nunito-latin-variable.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
+    U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@theme {
+  /* The two values of the palette that never adapt. Orange is the action and the mark; squid ink is the
+     ground of the deep band and of the brand tile. */
+  --color-aws-orange: #ff9900;
+  --color-aws-orange-hover: #ffac33;
+  --color-aws-squid: #232f3e;
+
+  /* Fixed ink for the always-deep bands. */
+  --color-ink-inverse: #ffffff;
+  --color-ink-inverse-muted: #c3ccd8;
+
+  /* Theme-adaptive roles. Values swap with the theme below. */
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-band-deep: var(--band-deep);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-hair: var(--hair);
+  /* Orange alone fails AA for small text on light grounds, so the small-text accent adapts: a burnt
+     orange on light, the bright one on dark. Both clear 4.5:1. */
+  --color-accent: var(--accent);
+  --color-selection: var(--selection);
+  --color-selection-ink: var(--selection-ink);
+
+  --font-sans: 'Nunito Variable', 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', 'JetBrains Mono', Menlo, Consolas, monospace;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-demibold: 600;
+  --font-weight-bold: 700;
+
+  --text-caption: 0.75rem;
+  --text-small: 0.875rem;
+  --text-body: 1rem;
+  --text-h4: 1.125rem;
+  --text-h3: 1.5rem;
+  --text-h2: 2rem;
+  --text-h1: 3rem;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-pill: 9999px;
+
+  --shadow-card: 0 2px 10px rgba(22, 25, 31, 0.06);
+  --shadow-raised: 0 12px 32px rgba(22, 25, 31, 0.14);
+  --shadow-cta: 0 12px 30px rgba(255, 153, 0, 0.3);
+
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-micro: 200ms;
+  --duration-reveal: 600ms;
+}
+
+:root {
+  --page: #f5f6f8;
+  --surface: #ffffff;
+  --surface-strong: #eceff3;
+  --band-deep: #232f3e; /* squid ink */
+  --ink: #16191f; /* ~17:1 on the page */
+  --ink-muted: #4b5563; /* ~7:1 on the page */
+  --hair: #dde1e7;
+  --accent: #a34f00; /* burnt orange, ~5.3:1 on the page */
+  --selection: #fff1dc;
+  --selection-ink: #7a3b00; /* ~8:1 on the selection */
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --page: #0d131c;
+  --surface: #141c27;
+  --surface-strong: #1c2633;
+  --band-deep: #080c12;
+  --ink: #eef1f5; /* ~16:1 on the page */
+  --ink-muted: #a9b4c2; /* ~8.5:1 on the page */
+  --hair: #263241;
+  --accent: #ffa733; /* ~9:1 on the page */
+  --selection: #3a2a12;
+  --selection-ink: #ffc266;
+  color-scheme: dark;
+}
+
+/* No explicit choice (no JavaScript, or before the inline script runs): follow the system. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']):not([data-theme='dark']) {
+    --page: #0d131c;
+    --surface: #141c27;
+    --surface-strong: #1c2633;
+    --band-deep: #080c12;
+    --ink: #eef1f5;
+    --ink-muted: #a9b4c2;
+    --hair: #263241;
+    --accent: #ffa733;
+    --selection: #3a2a12;
+    --selection-ink: #ffc266;
+    color-scheme: dark;
+  }
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.5;
+    scrollbar-gutter: stable;
+    scroll-behavior: smooth;
+    scroll-padding-top: 1.5rem;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-page);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-aws-orange);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  ::selection {
+    background-color: var(--color-aws-orange);
+    color: #16191f;
+  }
+}
+
+@layer components {
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 0.75rem;
+    z-index: 60;
+    transform: translateY(-5rem);
+    border-radius: var(--radius-md);
+    background: var(--color-aws-orange);
+    padding: 0.5rem 1rem;
+    color: #16191f;
+    font-weight: var(--font-weight-demibold);
+    box-shadow: var(--shadow-raised);
+    transition: transform var(--duration-micro) var(--ease-out-soft);
+  }
+  .skip-link:focus-visible {
+    transform: none;
+  }
+
+  .ccp-wrap {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 40rem) {
+    .ccp-wrap {
+      padding-inline: 1.5rem;
+    }
+  }
+  @media (min-width: 64rem) {
+    .ccp-wrap {
+      padding-inline: 2.5rem;
+    }
+  }
+}
+
+/* ------------------------------------ the bar ------------------------------------ */
+.ccp-bar {
+  border-block-end: 1px solid var(--color-hair);
+  background: var(--color-surface);
+}
+.ccp-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4rem;
+}
+.ccp-bar__home {
+  color: var(--color-ink);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+}
+.ccp-bar__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+.ccp-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+.ccp-brand__word {
+  font-size: 1.0625rem;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.01em;
+}
+@media (max-width: 26rem) {
+  .ccp-brand__word {
+    display: none;
+  }
+}
+
+/* Theme control: a pill holding the two choices, with the theme in force lit. Hidden when scripting is
+   off, since the page then follows the system theme with no control to operate. */
+.theme-pill {
+  display: inline-flex;
+  gap: 0.125rem;
+  padding: 3px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-hair);
+  background: var(--color-page);
+}
+.theme-pill__choice {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: none;
+  color: var(--color-ink-muted);
+  cursor: pointer;
+}
+/* The 44 square a finger aims at, reaching past the paint instead of growing it. */
+.theme-pill__choice::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2.75rem;
+  height: 2.75rem;
+  transform: translate(-50%, -50%);
+}
+.theme-pill__choice:hover {
+  color: var(--color-ink);
+}
+.theme-pill__choice[data-active] {
+  color: var(--color-selection-ink);
+  background: var(--color-selection);
+}
+@media (scripting: none) {
+  .theme-pill {
+    display: none;
+  }
+}
+
+/* Language menu: a native <details> disclosure. */
+.locale-menu {
+  position: relative;
+}
+.locale-menu__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2.25rem;
+  padding: 0 0.75rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-hair);
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-demibold);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.locale-menu__trigger::-webkit-details-marker {
+  display: none;
+}
+.locale-menu__trigger:hover {
+  background: var(--color-surface-strong);
+}
+.locale-menu__chevron {
+  transition: transform var(--duration-micro) var(--ease-out-soft);
+}
+.locale-menu[open] .locale-menu__chevron {
+  transform: rotate(180deg);
+}
+.locale-menu__list {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  z-index: 50;
+  min-width: 12rem;
+  margin: 0;
+  padding: 0.375rem;
+  list-style: none;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-hair);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-raised);
+}
+.locale-menu__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 2.75rem;
+  padding: 0 0.75rem;
+  border-radius: var(--radius-md);
+  color: var(--color-ink);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+}
+.locale-menu__item:hover {
+  background: var(--color-surface-strong);
+}
+.locale-menu__item.is-current {
+  color: var(--color-selection-ink);
+  background: var(--color-selection);
+  font-weight: var(--font-weight-demibold);
+}
+
+/* ------------------------------------ buttons ------------------------------------ */
+.ccp-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.625rem 1.375rem;
+  border-radius: var(--radius-pill);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  transition: transform var(--duration-micro) var(--ease-out-soft);
+}
+/* Squid ink on orange is ~8:1, white on orange would fail AA, so the action always reads dark. */
+.ccp-button--primary {
+  background: var(--color-aws-orange);
+  color: #16191f;
+  box-shadow: var(--shadow-cta);
+}
+.ccp-button--primary:hover {
+  background: var(--color-aws-orange-hover);
+  transform: translateY(-2px);
+}
+.ccp-button--ghost {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-ink-inverse);
+}
+.ccp-button--ghost:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ccp-button,
+  .ccp-button:hover {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ------------------------------------- hero -------------------------------------- */
+.ccp-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--color-band-deep);
+  color: var(--color-ink-inverse);
+}
+/* A dotted grid and two glows, all decorative. */
+.ccp-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to bottom, black 30%, transparent 95%);
+}
+/* The glows are painted as gradients that fade out on their own, because a blur filter this wide is
+   rasterized again on every frame anything above it moves. */
+.ccp-hero__glow {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.ccp-hero__glow--orange {
+  right: -14rem;
+  top: -16rem;
+  width: 42rem;
+  height: 42rem;
+  background: radial-gradient(closest-side, rgba(255, 153, 0, 0.3), rgba(255, 153, 0, 0));
+}
+.ccp-hero__glow--blue {
+  left: -16rem;
+  bottom: -20rem;
+  width: 40rem;
+  height: 40rem;
+  background: radial-gradient(closest-side, rgba(0, 115, 187, 0.32), rgba(0, 115, 187, 0));
+}
+.ccp-hero__inner {
+  display: grid;
+  gap: 2.5rem;
+  padding-block: 4rem 4.5rem;
+}
+@media (min-width: 60rem) {
+  .ccp-hero__inner {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    align-items: center;
+    padding-block: 6rem;
+  }
+}
+.ccp-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 153, 0, 0.45);
+  background: rgba(255, 153, 0, 0.1);
+  color: #ffc266;
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.ccp-hero__title {
+  margin-top: 1.25rem;
+  font-size: clamp(2.25rem, 1.5rem + 3.4vw, 3.75rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+.ccp-hero__title em {
+  font-style: normal;
+  color: var(--color-aws-orange);
+}
+.ccp-hero__lede {
+  margin-top: 1.25rem;
+  max-width: 34rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--color-ink-inverse-muted);
+  text-wrap: pretty;
+}
+.ccp-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+/* The orbit beside the hero words: the cloud at the center and the services of the roadmap turning
+   around it. Decorative. Each slot is placed on its ring by an angle, and the chip inside it turns back
+   at the same speed as the ring, so the icon stays upright. */
+.ccp-orbit {
+  --size: 22rem;
+  position: relative;
+  display: none;
+  width: var(--size);
+  height: var(--size);
+  justify-self: center;
+  color: var(--color-aws-orange);
+}
+@media (min-width: 60rem) {
+  .ccp-orbit {
+    display: block;
+  }
+}
+@media (min-width: 72rem) {
+  .ccp-orbit {
+    --size: 26rem;
+  }
+}
+.ccp-orbit__rings {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.ccp-orbit__glow {
+  position: absolute;
+  inset: 15%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 153, 0, 0.3), rgba(255, 153, 0, 0));
+}
+.ccp-orbit__ring {
+  position: absolute;
+  inset: 0;
+}
+.ccp-orbit__slot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: rotate(var(--angle)) translateY(calc(var(--size) * var(--radius) * -1)) rotate(calc(var(--angle) * -1));
+}
+.ccp-orbit__chip {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin: -1.5rem 0 0 -1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #2b3a4d;
+  color: #ffc266;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+.ccp-orbit__chip--small {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: -1.25rem 0 0 -1.25rem;
+  color: var(--color-ink-inverse);
+}
+.ccp-orbit__core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 7rem;
+  height: 7rem;
+  transform: translate(-50%, -50%);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 153, 0, 0.5);
+  background: linear-gradient(150deg, rgba(255, 153, 0, 0.28), rgba(255, 153, 0, 0.06));
+  color: var(--color-aws-orange);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.4);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ccp-orbit__ring--outer,
+  .ccp-orbit__ring--outer .ccp-orbit__chip {
+    animation: ccp-spin 40s linear infinite;
+  }
+  .ccp-orbit__ring--outer .ccp-orbit__chip {
+    animation-direction: reverse;
+  }
+  .ccp-orbit__ring--inner,
+  .ccp-orbit__ring--inner .ccp-orbit__chip {
+    animation: ccp-spin 26s linear infinite reverse;
+  }
+  .ccp-orbit__ring--inner .ccp-orbit__chip {
+    animation-direction: normal;
+  }
+  .ccp-orbit__core::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    border: 2px solid rgba(255, 153, 0, 0.45);
+    animation: ccp-pulse 4s ease-out infinite;
+  }
+  @keyframes ccp-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes ccp-pulse {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(1.35);
+    }
+  }
+}
+
+/* ----------------------------------- roadmap ------------------------------------- */
+.ccp-roadmap {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding-block: 4rem 5rem;
+}
+.ccp-group__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin-bottom: 1.5rem;
+}
+.ccp-group__title {
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.02em;
+}
+.ccp-group__lede {
+  color: var(--color-ink-muted);
+}
+.ccp-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ccp-card {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.375rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-hair);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  text-decoration: none;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--duration-micro) var(--ease-out-soft);
+}
+/* The raised shadow cross-fades on a pseudo element, so the hover moves only transform and opacity. */
+.ccp-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  border: 1px solid color-mix(in srgb, var(--color-aws-orange) 60%, var(--color-hair));
+  box-shadow: var(--shadow-raised);
+  opacity: 0;
+  transition: opacity var(--duration-micro) ease;
+  pointer-events: none;
+}
+.ccp-card:hover {
+  transform: translateY(-3px);
+}
+.ccp-card:hover::after {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ccp-card,
+  .ccp-card:hover {
+    transform: none;
+    transition: none;
+  }
+}
+.ccp-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ccp-card__step {
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-bold);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-muted);
+}
+.ccp-card__title {
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.3;
+}
+.ccp-card__summary {
+  flex: 1;
+  font-size: var(--text-small);
+  color: var(--color-ink-muted);
+}
+.ccp-card__foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+.ccp-card__arrow {
+  color: var(--color-ink-muted);
+  transition: transform var(--duration-micro) var(--ease-out-soft);
+}
+.ccp-card:hover .ccp-card__arrow {
+  color: var(--color-accent);
+  transform: translateX(3px);
+}
+
+.ccp-tile {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: none;
+  border-radius: var(--radius-md);
+  background: var(--color-selection);
+  color: var(--color-selection-ink);
+}
+.ccp-tile--large {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--radius-lg);
+}
+
+.ccp-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.55rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-hair);
+  background: var(--color-page);
+  color: var(--color-ink-muted);
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-demibold);
+  white-space: nowrap;
+}
+
+/* ---------------------------------- topic page ----------------------------------- */
+.ccp-progress {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 40;
+  height: 3px;
+  pointer-events: none;
+}
+.ccp-progress span {
+  display: block;
+  height: 100%;
+  background: var(--color-aws-orange);
+  transform: scaleX(var(--read, 0));
+  transform-origin: left center;
+}
+@media (scripting: none) {
+  .ccp-progress {
+    display: none;
+  }
+}
+
+/* The cover wears the deep band of the home, so the inner pages read as the same site. */
+.ccp-cover {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--color-band-deep);
+  color: var(--color-ink-inverse);
+}
+.ccp-cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to right, transparent 20%, black 90%);
+}
+.ccp-cover .ccp-hero__glow--orange {
+  top: -20rem;
+  right: -8rem;
+}
+/* The icon of the topic, drawn large and faint at the right edge. Decorative. */
+.ccp-cover__mark {
+  position: absolute;
+  z-index: -1;
+  right: max(1rem, calc((100vw - 76rem) / 2 + 1rem));
+  top: 50%;
+  transform: translateY(-50%) rotate(-8deg) scale(0.6);
+  color: rgba(255, 153, 0, 0.14);
+  pointer-events: none;
+}
+@media (max-width: 48rem) {
+  .ccp-cover__mark {
+    display: none;
+  }
+}
+.ccp-cover__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-block: 1.5rem 1.75rem;
+}
+@media (min-width: 64rem) {
+  .ccp-cover__inner {
+    padding-block: 2rem 2.25rem;
+  }
+}
+.ccp-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-small);
+  color: var(--color-ink-inverse-muted);
+}
+.ccp-crumbs a {
+  color: var(--color-ink-inverse-muted);
+  text-decoration: none;
+}
+.ccp-crumbs a:hover {
+  color: var(--color-aws-orange);
+}
+.ccp-crumbs span:last-child {
+  color: #ffc266;
+  font-weight: var(--font-weight-bold);
+  font-variant-numeric: tabular-nums;
+}
+.ccp-crumbs__sep {
+  opacity: 0.5;
+}
+.ccp-crumbs .ccp-crumbs__sep {
+  color: inherit;
+  font-weight: inherit;
+}
+.ccp-cover__head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.ccp-cover__head .ccp-tile--large {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-md);
+}
+.ccp-cover__title {
+  font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+.ccp-cover__lede {
+  max-width: 46rem;
+  font-size: var(--text-body);
+  line-height: 1.6;
+  color: var(--color-ink-inverse-muted);
+  text-wrap: pretty;
+}
+.ccp-cover__lede a {
+  color: #ffc266;
+  font-weight: var(--font-weight-demibold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.ccp-tile--deep {
+  border: 1px solid rgba(255, 153, 0, 0.4);
+  background: rgba(255, 153, 0, 0.14);
+  color: var(--color-aws-orange);
+}
+
+/* The sections of the topic, as tabs on a bar that stays on top while the page scrolls. The section
+   being read is underlined in orange. On a narrow screen the bar scrolls sideways, its edges fade out,
+   and the script keeps the lit tab in view. */
+.ccp-subnav {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 30;
+  border-block-end: 1px solid var(--color-hair);
+  background: var(--color-surface);
+}
+.ccp-subnav__list {
+  position: relative;
+  display: flex;
+  gap: 1.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  mask-image: linear-gradient(to right, black calc(100% - 2rem), transparent);
+}
+.ccp-subnav__list::-webkit-scrollbar {
+  display: none;
+}
+.ccp-subnav__list li:last-child {
+  padding-inline-end: 2rem;
+}
+.ccp-subnav__tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 3.25rem;
+  color: var(--color-ink-muted);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-demibold);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ccp-subnav__tab::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1px;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  background: var(--color-aws-orange);
+  transform: scaleX(0);
+  transition: transform var(--duration-micro) var(--ease-out-soft);
+}
+.ccp-subnav__tab:hover {
+  color: var(--color-ink);
+}
+.ccp-subnav__tab[aria-current] {
+  color: var(--color-ink);
+}
+.ccp-subnav__tab[aria-current]::after {
+  transform: scaleX(1);
+}
+
+.ccp-main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-block: 2.5rem 4rem;
+}
+@media (min-width: 64rem) {
+  .ccp-main {
+    padding-block: 3rem 5rem;
+  }
+}
+
+/* One section of a topic, drawn as a card: a header row with the name, its full name and the way to its
+   official page, and the notes below it across the whole width of the card. */
+.ccp-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-hair);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  scroll-margin-top: 5rem;
+}
+@media (min-width: 48rem) {
+  .ccp-section {
+    padding: 1.75rem 2rem 2rem;
+  }
+}
+.ccp-section:target {
+  border-color: var(--color-aws-orange);
+}
+.ccp-section__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding-block-end: 1.125rem;
+  border-block-end: 1px solid var(--color-hair);
+}
+.ccp-section__name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+  margin-inline-end: auto;
+}
+.ccp-section__title {
+  font-size: 1.625rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.ccp-section__anchor {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+.ccp-section__link-icon {
+  color: var(--color-ink-muted);
+  opacity: 0;
+  transition: opacity var(--duration-micro) ease;
+}
+.ccp-section__anchor:hover .ccp-section__link-icon,
+.ccp-section__anchor:focus-visible .ccp-section__link-icon {
+  opacity: 1;
+}
+.ccp-section__full {
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-ink-muted);
+}
+.ccp-section__body {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.ccp-section .ccp-prose {
+  max-width: none;
+}
+/* The points beside the note on the exam: two columns on wide screens, stacked below. */
+.ccp-section__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+@media (min-width: 56rem) {
+  .ccp-section__grid {
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: 2rem;
+  }
+}
+.ccp-tip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 1.125rem;
+  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in srgb, var(--color-aws-orange) 35%, var(--color-hair));
+  border-inline-start: 3px solid var(--color-aws-orange);
+  background: var(--color-selection);
+}
+.ccp-tip__title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-selection-ink);
+}
+.ccp-tip__text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-ink);
+}
+.ccp-tip__text strong {
+  font-weight: var(--font-weight-bold);
+}
+.ccp-tip__text a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.ccp-official {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2rem;
+  padding: 0 0.75rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-hair);
+  color: var(--color-ink);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-demibold);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ccp-official:hover {
+  border-color: var(--color-aws-orange);
+  color: var(--color-accent);
+}
+
+/* -------------------------------------- prose -------------------------------------- */
+.ccp-prose {
+  max-width: 68ch;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+.ccp-prose a,
+.ccp-list a,
+.ccp-table a {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-demibold);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.ccp-prose strong,
+.ccp-list strong,
+.ccp-table strong {
+  font-weight: var(--font-weight-bold);
+}
+code {
+  padding: 0.1em 0.4em;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-strong);
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+.ccp-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.ccp-block__title {
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.ccp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ccp-list li {
+  position: relative;
+  padding-inline-start: 1.25rem;
+  line-height: 1.6;
+}
+.ccp-list li::before {
+  content: '';
+  position: absolute;
+  left: 0.2rem;
+  top: 0.62em;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 2px;
+  background: var(--color-aws-orange);
+  transform: rotate(45deg);
+}
+.ccp-list--tight {
+  gap: 0.25rem;
+}
+
+.ccp-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-hair);
+}
+.ccp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+.ccp-table th,
+.ccp-table td {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.55;
+}
+.ccp-table thead th {
+  background: var(--color-surface-strong);
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+.ccp-table tbody tr + tr {
+  border-block-start: 1px solid var(--color-hair);
+}
+.ccp-table tbody th {
+  width: 1%;
+  white-space: nowrap;
+}
+.ccp-table .ccp-chip {
+  border-color: color-mix(in srgb, var(--color-aws-orange) 40%, var(--color-hair));
+  background: var(--color-selection);
+  color: var(--color-selection-ink);
+  font-size: var(--text-small);
+}
+
+.ccp-links {
+  display: grid;
+  gap: 0.625rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ccp-link-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-hair);
+  background: var(--color-page);
+  color: var(--color-ink);
+  font-weight: var(--font-weight-demibold);
+  text-decoration: none;
+}
+.ccp-link-card:hover {
+  border-color: var(--color-aws-orange);
+}
+.ccp-link-card .ccp-icon {
+  flex: none;
+  color: var(--color-accent);
+}
+
+/* The way to the topics before and after this one on the roadmap: two compact controls of the same
+   size, one at each end of the row. */
+.ccp-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.ccp-pager a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 17rem;
+  max-width: calc(50% - 0.375rem);
+  padding: 0.625rem 0.875rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-hair);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  text-decoration: none;
+}
+.ccp-pager a:hover {
+  border-color: var(--color-aws-orange);
+}
+.ccp-pager .ccp-tile {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+.ccp-pager__next {
+  margin-inline-start: auto;
+  justify-content: flex-end;
+  text-align: right;
+}
+.ccp-pager__text {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+.ccp-pager__label {
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+.ccp-pager__title {
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+/* ------------------------------------- footer ------------------------------------- */
+.ccp-footer {
+  border-block-start: 1px solid var(--color-hair);
+  background: var(--color-surface);
+}
+.ccp-footer__inner {
+  display: flex;
+  justify-content: center;
+  padding-block: 1.25rem;
+}
+.ccp-footer__github {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-pill);
+  color: var(--color-ink-muted);
+}
+.ccp-footer__github:hover {
+  background: var(--color-surface-strong);
+  color: var(--color-ink);
+}
+
+/* ------------------------------------- to top ------------------------------------- */
+.ccp-to-top {
+  display: none;
+}
+:root[data-to-top='on'] .ccp-to-top {
+  position: fixed;
+  z-index: 40;
+  inset-block-end: max(1rem, env(safe-area-inset-bottom));
+  inset-inline-end: max(1rem, env(safe-area-inset-right));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--color-hair);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  box-shadow: var(--shadow-raised);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0.5rem);
+  transition:
+    opacity var(--duration-micro) ease,
+    transform var(--duration-micro) var(--ease-out-soft),
+    visibility 0s linear var(--duration-micro);
+}
+:root[data-to-top='on'] .ccp-to-top.is-shown {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity var(--duration-micro) ease,
+    transform var(--duration-micro) var(--ease-out-soft);
+}
+:root[data-to-top='on'] .ccp-to-top:hover {
+  color: var(--color-accent);
+}
+
+/* ------------------------------------ not found ----------------------------------- */
+.ccp-lost {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem;
+  padding-block: 6rem;
+}
+.ccp-lost__code {
+  font-size: 5rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+/* -------------------------------------- motion ------------------------------------- */
+/* Entrance of the fixed pieces of a page. Additive only: the page reads complete without it. */
+@media (prefers-reduced-motion: no-preference) {
+  .enter-rise {
+    animation: ccp-rise var(--duration-reveal) var(--ease-out-soft) both;
+    animation-delay: var(--enter-delay, 0ms);
+  }
+  @keyframes ccp-rise {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Nothing is hidden until the reveal script marks the root, so a page whose script never arrived
+     stays fully visible. */
+  :root[data-reveal='on'] [data-reveal] {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity var(--duration-reveal) ease-out,
+      transform var(--duration-reveal) var(--ease-out-soft);
+    transition-delay: calc(var(--i, 0) * 60ms);
+  }
+  :root[data-reveal='on'] [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  .ccp-bar,
+  .ccp-subnav,
+  .ccp-pager,
+  .ccp-progress,
+  .ccp-to-top,
+  .ccp-footer {
+    display: none !important;
+  }
+}
+
+/* The small controls keep the size they are drawn at, and an invisible layer centred on each one gives
+   the 44 square a finger aims at, reaching past the paint instead of growing it. */
+.locale-menu__trigger,
+.ccp-official,
+.ccp-crumbs a {
+  position: relative;
+}
+.locale-menu__trigger::after,
+.ccp-official::after,
+.ccp-crumbs a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: max(100%, 2.75rem);
+  height: 2.75rem;
+  transform: translate(-50%, -50%);
+}
+
+/* The main landmark of a page holds its cover, its tabs and its content, and fills the window. */
+.ccp-page {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+/* --------------------------------- bar tools ---------------------------------- */
+.ccp-bar__tools {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+}
+.ccp-bar__tool {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius-pill);
+  color: var(--color-ink-muted);
+}
+.ccp-bar__tool:hover {
+  background: var(--color-surface-strong);
+  color: var(--color-ink);
+}
+
+/* ------------------------------------ search ------------------------------------ */
+.ccp-search {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+.ccp-search__field {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 3.5rem;
+  padding: 0 1.125rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-hair);
+  background: var(--color-surface);
+  color: var(--color-ink-muted);
+  box-shadow: var(--shadow-card);
+}
+.ccp-search__field:focus-within {
+  border-color: var(--color-aws-orange);
+}
+.ccp-search__field input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: none;
+  color: var(--color-ink);
+  font: inherit;
+  font-size: 1.125rem;
+  outline: none;
+}
+.ccp-search__status {
+  font-size: var(--text-small);
+  color: var(--color-ink-muted);
+}
+.ccp-results {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ccp-result {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-hair);
+  background: var(--color-surface);
+}
+.ccp-result__page {
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-ink);
+  text-decoration: none;
+}
+.ccp-result__page:hover {
+  color: var(--color-accent);
+}
+.ccp-result__sections {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ccp-result__sections a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: var(--radius-md);
+  background: var(--color-page);
+  color: var(--color-ink-muted);
+  font-size: var(--text-small);
+  text-decoration: none;
+}
+.ccp-result__sections a:hover {
+  color: var(--color-ink);
+}
+.ccp-result__sections strong:not(:empty) {
+  color: var(--color-ink);
+  font-weight: var(--font-weight-bold);
+}
+.ccp-result mark {
+  border-radius: 2px;
+  background: var(--color-selection);
+  color: var(--color-selection-ink);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ------------------------------------ review ------------------------------------ */
+.ccp-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  scroll-margin-top: 5rem;
+}
+.ccp-deck + .ccp-deck {
+  margin-top: 1.5rem;
+}
+.ccp-deck__title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: var(--text-h3);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.02em;
+}
+.ccp-deck__cards {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* Every card of a row has the height of the tallest one, and the control that opens it sits at the
+   bottom of each, so the row reads as one even line of cards. */
+.ccp-deck__cards > li {
+  display: flex;
+}
+.ccp-flash {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-hair);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+.ccp-flash[open] {
+  border-color: var(--color-aws-orange);
+}
+.ccp-flash__front {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 1.25rem;
+  cursor: pointer;
+  list-style: none;
+}
+.ccp-flash__front::-webkit-details-marker {
+  display: none;
+}
+.ccp-flash__question {
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.ccp-flash__summary {
+  line-height: 1.6;
+}
+.ccp-flash__reveal {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-height: 2.75rem;
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-ink-muted);
+}
+.ccp-flash__reveal .ccp-icon {
+  transition: transform var(--duration-micro) var(--ease-out-soft);
+}
+.ccp-flash[open] .ccp-flash__reveal .ccp-icon {
+  transform: rotate(180deg);
+}
+.ccp-flash__back {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 0 1.25rem 1.25rem;
+}
+.ccp-flash__answer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.625rem;
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-bold);
+}
+.ccp-flash__answer span {
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-ink-muted);
+}
+.ccp-flash__tip {
+  padding: 0.75rem 0.875rem;
+  border-radius: var(--radius-md);
+  border-inline-start: 3px solid var(--color-aws-orange);
+  background: var(--color-selection);
+  font-size: var(--text-small);
+  line-height: 1.6;
+}
+.ccp-flash__tip strong {
+  font-weight: var(--font-weight-bold);
+}
+.ccp-flash__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2.75rem;
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.ccp-flash__link:hover {
+  text-decoration: underline;
+}
+.ccp-section__title {
+  scroll-margin-top: 5rem;
+}
+
+.ccp-lost__languages {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  width: 100%;
+}
+.ccp-lost__language {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.ccp-lost__lede {
+  color: var(--color-ink-muted);
+}
+
+/* A long page lays out only what is near the window. The reserved size keeps the scrollbar honest until
+   a block is reached. */
+.ccp-section,
+.ccp-deck {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 32rem;
+}

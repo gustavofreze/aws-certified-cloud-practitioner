@@ -1,0 +1,118 @@
+---
+/**
+ * One section of a topic. Every section is drawn the same way: the header with the name and the way to
+ * its official page, the summary, then the points that matter beside the note on how the subject shows
+ * up on the exam, and a table below when the subject has one.
+ */
+import { renderInline } from '../content/inline'
+import type { Section } from '../content/types'
+import type { SiteCopy } from '../i18n/strings'
+import Icon from './Icon.astro'
+
+interface Props {
+  section: Section
+  labels: SiteCopy['topic']
+}
+const { section, labels } = Astro.props
+---
+
+<section id={section.id} class="ccp-section" aria-labelledby={`${section.id}-title`}>
+  <header class="ccp-section__head">
+    <div class="ccp-section__name">
+      <h2 id={`${section.id}-title`} class="ccp-section__title">
+        <a href={`#${section.id}`} class="ccp-section__anchor">
+          {section.name}
+          <Icon name="link" size={16} class="ccp-section__link-icon" />
+        </a>
+      </h2>
+      {section.fullName && <p class="ccp-section__full">{section.fullName}</p>}
+    </div>
+    {
+      section.link && (
+        <a href={section.link} target="_blank" rel="noopener noreferrer" class="ccp-official">
+          {labels.officialPage}
+          <Icon name="external" size={14} />
+        </a>
+      )
+    }
+  </header>
+
+  <p class="ccp-prose" set:html={renderInline(section.summary)} />
+
+  <div class="ccp-section__grid">
+    <div class="ccp-block">
+      {
+        section.points && (
+          <>
+            <p class="ccp-block__title">{labels.keyPoints}</p>
+            <ul class="ccp-list">
+              {section.points.map((point) => (
+                <li set:html={renderInline(point)} />
+              ))}
+            </ul>
+          </>
+        )
+      }
+      {
+        section.links && (
+          <ul class="ccp-links">
+            {section.links.map((link) => (
+              <li>
+                <a href={link.href} target="_blank" rel="noopener noreferrer" class="ccp-link-card">
+                  <span>{link.label}</span>
+                  <Icon name="external" size={16} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+
+    <div class="ccp-tip">
+      <p class="ccp-tip__title">
+        <Icon name="target" size={16} />
+        {labels.examTip}
+      </p>
+      <p class="ccp-tip__text" set:html={renderInline(section.tip)} />
+    </div>
+  </div>
+
+  {
+    section.table && (
+      <div class="ccp-block">
+        <p class="ccp-block__title">{section.table.title}</p>
+        <div class="ccp-table-wrap">
+          <table class="ccp-table">
+            <thead>
+              <tr>
+                <th scope="col">{section.table.head[0]}</th>
+                <th scope="col">{section.table.head[1]}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {section.table.rows.map((row) => (
+                <tr>
+                  <th scope="row">
+                    <span class="ccp-chip">{row.key}</span>
+                  </th>
+                  <td>
+                    {row.cells.length === 1 ? (
+                      <span set:html={renderInline(row.cells[0] ?? '')} />
+                    ) : (
+                      <ul class="ccp-list ccp-list--tight">
+                        {row.cells.map((cell) => (
+                          <li set:html={renderInline(cell)} />
+                        ))}
+                      </ul>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    )
+  }
+</section>

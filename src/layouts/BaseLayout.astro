@@ -1,0 +1,94 @@
+---
+import SiteBar from '../components/SiteBar.astro'
+import SiteFooter from '../components/SiteFooter.astro'
+import ToTop from '../components/ToTop.astro'
+import { assetHref, DEFAULT_LOCALE, LOCALES } from '../i18n'
+import { getCopy, type Locale, MAIN_ID } from '../i18n/strings'
+import fontUrl from '../assets/fonts/nunito-latin-variable.woff2?url'
+import '../styles/theme.css'
+
+interface Props {
+  locale: Locale
+  /** Overrides the document title, for a page that is not the home. */
+  title?: string
+  description?: string
+  /** The address of this page in each language. `null` is a page with no address of its own, the 404. */
+  paths: Record<Locale, string> | null
+  /** Kept out of the index, for a page that is a tool rather than content. */
+  noindex?: boolean
+}
+const { locale, title, description, paths, noindex = false } = Astro.props
+const copy = getCopy(locale)
+const documentTitle = title ? `${title} · ${copy.home.title}` : copy.meta.title
+const documentDescription = description ?? copy.meta.description
+
+const origin = Astro.site ?? Astro.url.origin
+const canonical = paths === null ? null : new URL(paths[locale], origin).href
+const alternates =
+  paths === null
+    ? []
+    : LOCALES.map((option) => ({ hreflang: option, href: new URL(paths[option], origin).href }))
+const xDefault = paths === null ? null : new URL(paths[DEFAULT_LOCALE], origin).href
+const barPaths = paths ?? { 'pt-BR': assetHref(''), 'en-US': assetHref('en/') }
+const ogImage = new URL(assetHref('og-image.png'), origin).href
+---
+
+<!doctype html>
+<html lang={locale} id="top">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {/* The one font face every page paints with, fetched ahead of the stylesheet that names it. */}
+    <link rel="preload" href={fontUrl} as="font" type="font/woff2" crossorigin />
+    {/* One theme-color, resolved by the inline script to the theme in force. It carries the color of each
+        theme, which the theme control reads on every change. */}
+    <meta name="theme-color" content="#f5f6f8" data-light="#f5f6f8" data-dark="#0d131c" />
+    {/* Apply the saved theme before first paint so there is no flash. With no explicit choice it follows
+        the system, matching the no-JS baseline. Reads the same key as the theme control. */}
+    <script is:inline>
+      ;(function () {
+        try {
+          var choice = localStorage.getItem('ccp:theme')
+          if (choice !== 'light' && choice !== 'dark') choice = null
+          var dark = choice === 'dark' || (choice === null && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+          var meta = document.querySelector('meta[name="theme-color"]')
+          if (meta) meta.setAttribute('content', dark ? '#0d131c' : '#f5f6f8')
+        } catch (e) {}
+      })()
+    </script>
+    <link rel="icon" href={assetHref('favicon.svg')} type="image/svg+xml" />
+    <title>{documentTitle}</title>
+    <meta name="description" content={documentDescription} />
+    {canonical ? <link rel="canonical" href={canonical} /> : null}
+    {canonical === null || noindex ? <meta name="robots" content="noindex" /> : null}
+    {alternates.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)}
+    {xDefault ? <link rel="alternate" hreflang="x-default" href={xDefault} /> : null}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={copy.home.title} />
+    <meta property="og:title" content={documentTitle} />
+    <meta property="og:description" content={documentDescription} />
+    {canonical ? <meta property="og:url" content={canonical} /> : null}
+    <meta property="og:locale" content={copy.meta.ogLocale} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={copy.home.title} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="sitemap" href={assetHref('sitemap.xml')} />
+  </head>
+  <body>
+    <a href={`#${MAIN_ID}`} class="skip-link">{copy.skipLink}</a>
+    <SiteBar locale={locale} paths={barPaths} />
+    <slot />
+    <SiteFooter locale={locale} />
+    <ToTop label={copy.nav.toTop} />
+    {/* The progressive-enhancement modules every page ships. The page renders complete without them. */}
+    <script>
+      import '../scripts/theme-toggle.ts'
+      import '../scripts/locale-menu.ts'
+      import '../scripts/to-top.ts'
+    </script>
+  </body>
+</html>
