@@ -1690,3 +1690,76 @@ code {
   content-visibility: auto;
   contain-intrinsic-size: auto 32rem;
 }
+
+/* The progress of the review. It is drawn only once its script runs, because it has nothing to show
+   without one, and a card the reader knows is quieted and can be hidden. */
+.ccp-review-bar,
+.ccp-flash__known {
+  display: none;
+}
+:root[data-review='on'] .ccp-review-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  padding: 0.875rem 1.125rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-hair);
+  background: var(--color-surface);
+}
+:root[data-review='on'] .ccp-flash__known {
+  display: inline-flex;
+}
+.ccp-review-bar__count {
+  margin-inline-end: auto;
+  font-weight: var(--font-weight-bold);
+}
+.ccp-review-bar__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  font-size: var(--text-small);
+  cursor: pointer;
+}
+.ccp-review-bar__toggle input {
+  width: 1.125rem;
+  height: 1.125rem;
+  accent-color: var(--color-aws-orange);
+}
+.ccp-review-bar__reset,
+.ccp-flash__known {
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-hair);
+  background: var(--color-page);
+  color: var(--color-ink);
+  font: inherit;
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+}
+.ccp-review-bar__reset:hover,
+.ccp-flash__known:hover {
+  border-color: var(--color-aws-orange);
+}
+.ccp-flash__known[aria-pressed='true'] {
+  border-color: var(--color-aws-orange);
+  background: var(--color-aws-orange);
+  color: #16191f;
+}
+.ccp-flash__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+}
+[data-known] .ccp-flash {
+  opacity: 0.6;
+}
+:root[data-hide-known] [data-known] {
+  display: none;
+}

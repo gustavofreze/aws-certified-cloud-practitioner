@@ -4,8 +4,10 @@
  * the summary and hides the name. The reader tries to recall what is being described and opens the card
  * to check, which is the shape most questions of the exam take.
  *
- * Each card is a native disclosure, so the page works with no script at all. The study resources are
- * left out, since a list of links is nothing to recall.
+ * Each card is a native disclosure, so the page works with no script at all. The script adds the one
+ * thing a review needs on top: marking the cards the reader already knows, remembered in this browser,
+ * so the next session can hide them. The study resources are left out, since a list of links is
+ * nothing to recall.
  */
 import { renderInline } from '../content/inline'
 import { topicsOf } from '../content'
@@ -25,7 +27,6 @@ const topics = topicsOf(locale).filter((topic) => topic.sections.every((section)
 ---
 
 <BaseLayout locale={locale} title={labels.title} description={labels.lede} paths={pagePaths('review')}>
-  <span class="ccp-progress" aria-hidden="true"><span data-read></span></span>
   <main id={MAIN_ID} class="ccp-page">
     <PageCover locale={locale} icon="cards" title={labels.title} lede={labels.lede} />
 
@@ -46,6 +47,15 @@ const topics = topicsOf(locale).filter((topic) => topic.sections.every((section)
     </nav>
 
     <div class="ccp-wrap ccp-main">
+      <div class="ccp-review-bar" data-review data-progress={labels.progress}>
+        <p class="ccp-review-bar__count" role="status" aria-live="polite" data-review-count></p>
+        <label class="ccp-review-bar__toggle">
+          <input type="checkbox" data-review-hide />
+          {labels.hideKnown}
+        </label>
+        <button type="button" class="ccp-review-bar__reset" data-review-reset>{labels.reset}</button>
+      </div>
+
       {
         topics.map((topic) => (
           <section id={topic.slug} class="ccp-deck" aria-labelledby={`${topic.slug}-title`}>
@@ -57,7 +67,7 @@ const topics = topicsOf(locale).filter((topic) => topic.sections.every((section)
             </h2>
             <ul class="ccp-deck__cards">
               {topic.sections.map((section) => (
-                <li>
+                <li data-card={`${topic.slug}#${section.id}`}>
                   <details class="ccp-flash">
                     <summary class="ccp-flash__front">
                       <span class="ccp-flash__question">{labels.question}</span>
@@ -73,10 +83,16 @@ const topics = topicsOf(locale).filter((topic) => topic.sections.every((section)
                         {section.fullName && <span>{section.fullName}</span>}
                       </p>
                       <p class="ccp-flash__tip" set:html={renderInline(section.tip)} />
-                      <a href={`${pageHref(locale, topic.slug)}#${section.id}`} class="ccp-flash__link">
-                        {labels.openSection}
-                        <Icon name="arrow-right" size={14} />
-                      </a>
+                      <div class="ccp-flash__actions">
+                        <button type="button" class="ccp-flash__known" aria-pressed="false" data-card-known>
+                          <Icon name="check" size={16} />
+                          {labels.known}
+                        </button>
+                        <a href={`${pageHref(locale, topic.slug)}#${section.id}`} class="ccp-flash__link">
+                          {labels.openSection}
+                          <Icon name="arrow-right" size={14} />
+                        </a>
+                      </div>
                     </div>
                   </details>
                 </li>
@@ -90,5 +106,5 @@ const topics = topicsOf(locale).filter((topic) => topic.sections.every((section)
 </BaseLayout>
 
 <script>
-  import '../scripts/reading.ts'
+  import '../scripts/review-progress.ts'
 </script>

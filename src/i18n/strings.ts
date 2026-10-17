@@ -59,6 +59,11 @@ export interface SiteCopy {
     readonly question: string
     readonly reveal: string
     readonly openSection: string
+    readonly known: string
+    /** How far the review has gone, with `{known}` and `{total}` standing for the numbers. */
+    readonly progress: string
+    readonly hideKnown: string
+    readonly reset: string
   }
   readonly footer: { readonly source: string }
   readonly notFound: { readonly title: string; readonly lede: string; readonly back: string }
@@ -124,6 +129,10 @@ const ptBR: SiteCopy = {
     question: 'Qual é?',
     reveal: 'Mostrar resposta',
     openSection: 'Ver a seção completa',
+    known: 'Já sei',
+    progress: '{known} de {total} cartões que você já sabe',
+    hideKnown: 'Esconder os que já sei',
+    reset: 'Recomeçar',
   },
   footer: { source: 'Código no GitHub' },
   notFound: {
@@ -193,6 +202,10 @@ const enUS: SiteCopy = {
     question: 'What is it?',
     reveal: 'Show answer',
     openSection: 'Open the full section',
+    known: 'I know this',
+    progress: '{known} of {total} cards you already know',
+    hideKnown: 'Hide the ones I know',
+    reset: 'Start over',
   },
   footer: { source: 'Source on GitHub' },
   notFound: {
