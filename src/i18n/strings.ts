@@ -8,7 +8,7 @@ import type { TopicGroup } from '../content/types'
 export type Locale = 'pt-BR' | 'en-US'
 
 /** The id of the main landmark, which the skip link jumps to. */
-export const MAIN_ID = 'conteudo'
+export const MAIN_ID = 'content'
 
 export interface SiteCopy {
   readonly meta: { readonly title: string; readonly description: string; readonly ogLocale: string }
@@ -71,9 +71,9 @@ export interface SiteCopy {
 
 const ptBR: SiteCopy = {
   meta: {
-    title: 'AWS Certified Cloud Practitioner · Notas de estudo',
+    title: 'AWS Certified Cloud Practitioner (CLF-C02) · Notas de estudo',
     description:
-      'Notas de estudo para a certificação AWS Certified Cloud Practitioner: computação em nuvem, infraestrutura global, Well-Architected e os principais serviços da AWS.',
+      'Notas de estudo gratuitas para o exame AWS Cloud Practitioner (CLF-C02): nuvem, segurança, cobrança e serviços da AWS, com busca e cartões de revisão.',
     ogLocale: 'pt_BR',
   },
   brand: 'Cloud Practitioner',
@@ -144,9 +144,9 @@ const ptBR: SiteCopy = {
 
 const enUS: SiteCopy = {
   meta: {
-    title: 'AWS Certified Cloud Practitioner · Study notes',
+    title: 'AWS Certified Cloud Practitioner (CLF-C02) · Study notes',
     description:
-      'Study notes for the AWS Certified Cloud Practitioner certification: cloud computing, global infrastructure, Well-Architected and the core AWS services.',
+      'Free study notes for the AWS Certified Cloud Practitioner (CLF-C02) exam: cloud concepts, security, billing and AWS services, with search and review cards.',
     ogLocale: 'en_US',
   },
   brand: 'Cloud Practitioner',

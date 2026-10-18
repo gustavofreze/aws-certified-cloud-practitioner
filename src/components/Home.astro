@@ -22,7 +22,17 @@ const groups: readonly TopicGroup[] = ['foundations', 'services', 'support']
 const step = (slug: string): string => String(topics.findIndex((t) => t.slug === slug) + 1).padStart(2, '0')
 ---
 
-<BaseLayout locale={locale} paths={pagePaths()}>
+<BaseLayout
+  locale={locale}
+  paths={pagePaths()}
+  structuredData={{
+    '@type': 'WebSite',
+    name: copy.home.title,
+    description: copy.meta.description,
+    url: new URL(pageHref(locale), Astro.site).href,
+    inLanguage: locale,
+  }}
+>
   <main id={MAIN_ID}>
     <section class="ccp-hero" aria-labelledby="hero-title">
       <span class="ccp-hero__glow ccp-hero__glow--orange" aria-hidden="true"></span>
@@ -57,7 +67,7 @@ const step = (slug: string): string => String(topics.findIndex((t) => t.slug ===
       </div>
     </section>
 
-    <div class="ccp-wrap ccp-roadmap" id="roteiro">
+    <div class="ccp-wrap ccp-roadmap" id="roadmap">
       {
         groups.map((group) => {
           const members = topics.filter((topic) => topic.group === group)

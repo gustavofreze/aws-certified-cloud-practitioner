@@ -24,9 +24,20 @@ const copy = getCopy(locale)
 const { topic, previous, next } = topicAt(locale, slug)
 const total = topicsOf(locale).length
 const index = topicsOf(locale).indexOf(topic) + 1
+const absolute = (path: string): string => new URL(path, Astro.site).href
+const breadcrumb = [
+  { name: copy.nav.home, item: absolute(pageHref(locale)) },
+  { name: topic.title, item: absolute(pageHref(locale, topic.slug)) },
+].map((crumb, position) => ({ '@type': 'ListItem', position: position + 1, ...crumb }))
 ---
 
-<BaseLayout locale={locale} title={topic.title} description={topic.summary} paths={pagePaths(topic.slug)}>
+<BaseLayout
+  locale={locale}
+  title={topic.title}
+  description={topic.summary}
+  paths={pagePaths(topic.slug)}
+  structuredData={{ '@type': 'BreadcrumbList', itemListElement: breadcrumb }}
+>
   <span class="ccp-progress" aria-hidden="true"><span data-read></span></span>
 
   <main id={MAIN_ID} class="ccp-page" data-pagefind-body>
@@ -37,7 +48,7 @@ const index = topicsOf(locale).indexOf(topic) + 1
         <nav aria-label={copy.nav.breadcrumb} class="ccp-crumbs enter-rise" data-pagefind-ignore>
           <a href={pageHref(locale)}>{copy.nav.home}</a>
           <span class="ccp-crumbs__sep" aria-hidden="true">/</span>
-          <a href={`${pageHref(locale)}#roteiro`}>{copy.home.groups[topic.group].title}</a>
+          <a href={`${pageHref(locale)}#roadmap`}>{copy.home.groups[topic.group].title}</a>
           <span class="ccp-crumbs__sep" aria-hidden="true">/</span>
           <span>{copy.topic.step(index, total)}</span>
         </nav>
