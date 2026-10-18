@@ -25,6 +25,11 @@ export function pagePaths(slug?: string): Record<Locale, string> {
   return { 'en-US': pageHref('en-US', slug), 'pt-BR': pageHref('pt-BR', slug) }
 }
 
+/** The home of another study site built from this code, in a locale, on the same domain as this one. */
+export function siblingHref(repository: string, locale: Locale): string {
+  return `/${repository}/${PREFIX[locale]}`
+}
+
 /** The address of a file published from `public/`. */
 export function assetHref(path: string): string {
   return `${BASE}${path}`

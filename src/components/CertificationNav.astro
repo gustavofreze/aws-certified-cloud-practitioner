@@ -1,0 +1,36 @@
+---
+/**
+ * The strip above the bar that names every certification with notes built from this code and leads to
+ * each one, in the language being read. The one being read is marked as current.
+ */
+import { CERTIFICATIONS } from '../content/certifications'
+import { SITE } from '../content/site'
+import { pageHref, siblingHref } from '../i18n'
+import { getCopy, type Locale } from '../i18n/strings'
+
+interface Props {
+  locale: Locale
+}
+const { locale } = Astro.props
+const copy = getCopy(locale)
+const origin = Astro.site ?? Astro.url.origin
+---
+
+<nav class="cert-family" aria-label={copy.nav.certifications}>
+  <ul class="cert-wrap cert-family__list">
+    {
+      CERTIFICATIONS.map((certification) => {
+        const current = certification.id === SITE.id
+        const href = current ? pageHref(locale) : new URL(siblingHref(certification.repository, locale), origin).href
+        return (
+          <li>
+            <a href={href} class:list={['cert-family__link', current && 'is-current']} aria-current={current ? 'true' : undefined}>
+              {certification.name}
+              <span class="cert-family__exam">{certification.exam}</span>
+            </a>
+          </li>
+        )
+      })
+    }
+  </ul>
+</nav>
