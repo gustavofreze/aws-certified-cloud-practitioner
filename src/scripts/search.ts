@@ -44,7 +44,7 @@ function resultItem(result: PagefindResult): string {
   const links = entries.map(
     (entry) => `<li><a href="${entry.url}"><strong>${entry.title}</strong><span>${entry.excerpt}</span></a></li>`,
   )
-  return `<li class="ccp-result"><a class="ccp-result__page" href="${result.url}">${result.meta.title ?? ''}</a><ul class="ccp-result__sections">${links.join('')}</ul></li>`
+  return `<li class="cert-result"><a class="cert-result__page" href="${result.url}">${result.meta.title ?? ''}</a><ul class="cert-result__sections">${links.join('')}</ul></li>`
 }
 
 function init(): void {

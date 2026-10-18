@@ -39,7 +39,9 @@ export interface Section {
   readonly table?: Table
 }
 
-export type TopicGroup = 'foundations' | 'services' | 'support'
+import type { TopicGroup } from './site'
+
+export type { TopicGroup }
 
 export interface Topic {
   readonly slug: string

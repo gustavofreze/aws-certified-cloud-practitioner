@@ -2,15 +2,14 @@
  * The progress of the review: which cards the reader already knows.
  *
  * The set is kept in this browser only, under one key for both languages, because both publish the same
- * topics and sections and a card known in one is known in the other. It is a convenience, so a browser
+ * topics and sections and a card known in one is known in the other. The page names the key, since every
+ * study site under the same domain shares the storage of the browser. It is a convenience, so a browser
  * that refuses storage simply starts every session from zero.
  */
-const KEY = 'ccp:known'
-
 /** Reads the cards marked as known, or none when storage is unavailable or holds something else. */
-function storedKnown(): Set<string> {
+function storedKnown(key: string): Set<string> {
   try {
-    const value: unknown = JSON.parse(localStorage.getItem(KEY) ?? '[]')
+    const value: unknown = JSON.parse(localStorage.getItem(key) ?? '[]')
     return new Set(Array.isArray(value) ? value.filter((item) => typeof item === 'string') : [])
   } catch {
     return new Set()
@@ -23,11 +22,12 @@ function init(): void {
   const hide = bar?.querySelector<HTMLInputElement>('[data-review-hide]')
   const reset = bar?.querySelector<HTMLButtonElement>('[data-review-reset]')
   const cards = [...document.querySelectorAll<HTMLElement>('[data-card]')]
-  if (!bar || !count || !hide || !reset) {
+  const key = bar?.dataset.review
+  if (!bar || !key || !count || !hide || !reset) {
     return
   }
 
-  const known = storedKnown()
+  const known = storedKnown(key)
   const apply = (): void => {
     for (const card of cards) {
       const isKnown = known.has(card.dataset.card ?? '')
@@ -38,7 +38,7 @@ function init(): void {
       .replace('{known}', String(cards.filter((card) => card.hasAttribute('data-known')).length))
       .replace('{total}', String(cards.length))
     try {
-      localStorage.setItem(KEY, JSON.stringify([...known]))
+      localStorage.setItem(key, JSON.stringify([...known]))
     } catch {}
   }
 

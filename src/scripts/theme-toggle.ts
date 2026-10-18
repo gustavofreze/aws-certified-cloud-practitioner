@@ -8,7 +8,7 @@
  */
 type Theme = 'light' | 'dark'
 
-const KEY = 'ccp:theme'
+const KEY = 'cert:theme'
 
 /** The question the page asks the system while nobody chose a theme. */
 const SYSTEM_DARK = '(prefers-color-scheme: dark)'

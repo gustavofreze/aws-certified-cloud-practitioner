@@ -1,9 +1,12 @@
 """Draws the link-preview card of the site, `public/og-image.png`, at 1200 by 630.
 
 The card is the same in both languages, so it carries the name of the certification, the brand and a
-line in each language. Run it through `make og-image`, which supplies Pillow in a container.
+line in each language. The names come from `src/content/site.ts`, the one file that sets this site apart
+from the others built from the same code. Run it through `make og-image`, which supplies Pillow in a
+container.
 """
 
+import re
 import sys
 from pathlib import Path
 
@@ -12,6 +15,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 WIDTH, HEIGHT = 1200, 630
 SQUID, ORANGE, WHITE, MUTED = '#232f3e', '#ff9900', '#ffffff', '#c3ccd8'
 FONTS = Path(__file__).parent / 'fonts'
+SITE = Path(__file__).parent.parent / 'src' / 'content' / 'site.ts'
 
 
 def font(weight: int, size: int) -> ImageFont.FreeTypeFont:
@@ -50,16 +54,24 @@ def cloud(card: Image.Image) -> None:
     card.paste(Image.new('RGB', card.size, ORANGE), (0, 0), mask.resize(card.size, Image.LANCZOS))
 
 
+def site_names() -> dict[str, str]:
+    """Reads the names the card draws from the site configuration."""
+    source = SITE.read_text(encoding='utf-8')
+    return {key: re.search(rf"\b{key}: '([^']+)'", source).group(1) for key in ('lead', 'highlight', 'level', 'exam')}
+
+
 def main(output: str) -> None:
+    site = site_names()
     card = Image.new('RGB', (WIDTH, HEIGHT), SQUID)
     glows(card)
     draw = ImageDraw.Draw(card, 'RGBA')
     dots(draw)
     cloud(card)
-    draw.text((172, 96), 'Cloud Practitioner', font=font(600, 34), fill=WHITE)
-    draw.text((80, 230), 'AWS Certified', font=font(600, 92), fill=WHITE)
-    draw.text((80, 335), 'Cloud Practitioner', font=font(600, 92), fill=ORANGE)
-    draw.text((82, 470), 'Notas de estudo  ·  Study notes  ·  CLF-C02', font=font(400, 34), fill=MUTED)
+    draw.text((172, 96), site['highlight'], font=font(600, 34), fill=WHITE)
+    draw.text((80, 230), site['lead'], font=font(600, 92), fill=WHITE)
+    draw.text((80, 335), site['highlight'], font=font(600, 92), fill=ORANGE)
+    footer = f"{site['level']}  ·  Study notes  ·  Notas de estudo  ·  {site['exam']}"
+    draw.text((82, 470), footer, font=font(400, 34), fill=MUTED)
     card.save(output, optimize=True)
 
 
