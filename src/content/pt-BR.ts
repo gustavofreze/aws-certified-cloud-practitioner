@@ -13,7 +13,7 @@ export const topics: readonly Topic[] = [
     lede: 'A entrega sob demanda de recursos de TI pela internet, com pagamento conforme o uso (pay as you go). É o domínio **Conceitos de nuvem**, 24% da prova.',
     sections: [
       {
-        id: 'definicao',
+        id: 'definition',
         name: 'O que é',
         link: aws('what-is-cloud-computing/'),
         summary:
@@ -27,7 +27,7 @@ export const topics: readonly Topic[] = [
         tip: 'Se a questão fala em **pagar só pelo que usa** e **provisionar em minutos**, está descrevendo a nuvem, não um data center próprio.',
       },
       {
-        id: 'vantagens',
+        id: 'benefits',
         name: 'Seis vantagens',
         link: docs('whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html'),
         summary: 'A AWS resume o valor da nuvem em seis vantagens, que aparecem quase literalmente nas questões.',
@@ -42,7 +42,7 @@ export const topics: readonly Topic[] = [
         tip: 'Associe o cenário à vantagem: "a demanda é imprevisível" leva a **parar de adivinhar capacidade**; "lançar em outro país" leva a **global em minutos**.',
       },
       {
-        id: 'modelos-de-servico',
+        id: 'service-models',
         name: 'Modelos de serviço',
         summary:
           'Definem quanto da pilha a AWS gerencia e quanto fica com você. Quanto mais abstrato o serviço, menos você gerencia.',
@@ -54,7 +54,7 @@ export const topics: readonly Topic[] = [
         tip: 'Se a questão pergunta quem aplica patches no sistema operacional: no **EC2** é o cliente; no **RDS** ou no **Lambda**, a AWS.',
       },
       {
-        id: 'modelos-de-implantacao',
+        id: 'deployment-models',
         name: 'Modelos de implantação',
         summary: 'Onde os recursos rodam: tudo na nuvem, parte na nuvem e parte local, ou tudo no seu data center.',
         points: [
@@ -65,7 +65,7 @@ export const topics: readonly Topic[] = [
         tip: '"Manter sistemas legados no data center e estender para a AWS" descreve o modelo **híbrido**.',
       },
       {
-        id: 'responsabilidade-compartilhada',
+        id: 'shared-responsibility',
         name: 'Responsabilidade compartilhada',
         link: aws('compliance/shared-responsibility-model/'),
         summary:
@@ -79,7 +79,7 @@ export const topics: readonly Topic[] = [
         tip: 'Pergunta clássica: "quem é responsável por X?". Físico e infraestrutura é a **AWS**; dados, acesso e configuração são do **cliente**.',
       },
       {
-        id: 'economia',
+        id: 'economics',
         name: 'Economia da nuvem',
         summary:
           'Por que a nuvem costuma custar menos que um data center próprio, e onde o custo ainda depende de você.',
@@ -107,7 +107,7 @@ export const topics: readonly Topic[] = [
         tip: 'Saiba separar as seis perspectivas entre **negócio** (Negócios, Pessoas, Governança) e **técnicas** (Plataforma, Segurança, Operações).',
       },
       {
-        id: 'migracao',
+        id: 'migration',
         name: 'Estratégias de migração',
         fullName: 'Os 7 Rs',
         link: aws('cloud-migration/'),
@@ -131,7 +131,7 @@ export const topics: readonly Topic[] = [
     lede: `A [infraestrutura global da AWS](${aws('about-aws/global-infrastructure/')}) soma dezenas de Regiões, mais de cem zonas de disponibilidade e centenas de pontos de presença do CloudFront.`,
     sections: [
       {
-        id: 'regioes',
+        id: 'regions',
         name: 'Regiões',
         fullName: 'Regions',
         link: aws('about-aws/global-infrastructure/regions_az/'),
@@ -145,7 +145,7 @@ export const topics: readonly Topic[] = [
         tip: 'Se a questão cita **lei de proteção de dados** ou soberania, o primeiro critério para escolher a Região é **conformidade**.',
       },
       {
-        id: 'zonas-de-disponibilidade',
+        id: 'availability-zones',
         name: 'Zonas de disponibilidade',
         fullName: 'Availability Zones (AZ)',
         link: aws('about-aws/global-infrastructure/regions_az/'),
@@ -297,7 +297,7 @@ export const topics: readonly Topic[] = [
     lede: `O [Well-Architected Framework](${aws('architecture/well-architected/')}) descreve as melhores práticas para projetar e operar sistemas confiáveis, seguros, eficientes, econômicos e sustentáveis na AWS, em **seis pilares**.`,
     sections: [
       {
-        id: 'excelencia-operacional',
+        id: 'operational-excellence',
         name: 'Excelência operacional',
         link: docs('wellarchitected/latest/operational-excellence-pillar/welcome.html'),
         summary: 'Executar e monitorar sistemas para entregar valor e melhorar processos continuamente.',
@@ -309,7 +309,7 @@ export const topics: readonly Topic[] = [
         tip: 'Automação de operações, runbooks e **mudanças pequenas e reversíveis** são do pilar de **excelência operacional**.',
       },
       {
-        id: 'seguranca',
+        id: 'security',
         name: 'Segurança',
         link: docs('wellarchitected/latest/security-pillar/welcome.html'),
         summary: 'Proteger dados, sistemas e ativos usando as tecnologias da nuvem.',
@@ -321,7 +321,7 @@ export const topics: readonly Topic[] = [
         tip: 'Menor privilégio, MFA, criptografia e rastreabilidade pertencem ao pilar de **segurança**.',
       },
       {
-        id: 'confiabilidade',
+        id: 'reliability',
         name: 'Confiabilidade',
         link: docs('wellarchitected/latest/reliability-pillar/welcome.html'),
         summary: 'Garantir que a carga de trabalho execute sua função corretamente e se recupere de falhas.',
@@ -333,7 +333,7 @@ export const topics: readonly Topic[] = [
         tip: 'Multi-AZ, backups testados e **recuperação automática** pertencem a **confiabilidade**.',
       },
       {
-        id: 'eficiencia-de-desempenho',
+        id: 'performance-efficiency',
         name: 'Eficiência de desempenho',
         link: docs('wellarchitected/latest/performance-efficiency-pillar/welcome.html'),
         summary: 'Usar recursos de computação de forma eficiente e manter essa eficiência conforme a demanda muda.',
@@ -345,7 +345,7 @@ export const topics: readonly Topic[] = [
         tip: 'Escolher o tipo de instância certo e usar serviços gerenciados para **ganhar desempenho**: **eficiência de desempenho**.',
       },
       {
-        id: 'otimizacao-de-custos',
+        id: 'cost-optimization',
         name: 'Otimização de custos',
         link: docs('wellarchitected/latest/cost-optimization-pillar/welcome.html'),
         summary: 'Entregar valor de negócio pelo menor preço.',
@@ -357,7 +357,7 @@ export const topics: readonly Topic[] = [
         tip: 'Rightsizing, Savings Plans e desligar recursos ociosos são do pilar de **otimização de custos**.',
       },
       {
-        id: 'sustentabilidade',
+        id: 'sustainability',
         name: 'Sustentabilidade',
         link: docs('wellarchitected/latest/sustainability-pillar/sustainability-pillar.html'),
         summary: 'Minimizar o impacto ambiental das cargas de trabalho na nuvem. É o pilar mais recente.',
@@ -679,7 +679,7 @@ export const topics: readonly Topic[] = [
         },
       },
       {
-        id: 'opcoes-de-compra',
+        id: 'purchase-options',
         name: 'Opções de compra',
         fullName: 'EC2 pricing',
         link: aws('ec2/pricing/'),
@@ -1205,7 +1205,7 @@ export const topics: readonly Topic[] = [
         tip: 'Várias contas, **uma fatura** e descontos por volume: **faturamento consolidado** do Organizations.',
       },
       {
-        id: 'transferencia-de-dados',
+        id: 'data-transfer',
         name: 'Transferência de dados',
         fullName: 'Data transfer',
         link: aws('ec2/pricing/on-demand/'),
@@ -2058,7 +2058,7 @@ export const topics: readonly Topic[] = [
         tip: 'Resposta em **5 minutos** e monitoramento 24/7 das cargas: **Unified Operations**.',
       },
       {
-        id: 'planos-em-descontinuacao',
+        id: 'retiring-plans',
         name: 'Planos em descontinuação',
         link: 'https://docs.aws.amazon.com/awssupport/latest/user/support-plans-eos.html',
         summary: 'Developer, Business e Enterprise On-Ramp deixam de existir em **1º de janeiro de 2027**.',
@@ -2070,7 +2070,7 @@ export const topics: readonly Topic[] = [
         tip: 'Materiais antigos citam **Developer** e **Enterprise On-Ramp**. Confira sempre o guia mais recente da prova.',
       },
       {
-        id: 'recursos-tecnicos',
+        id: 'technical-resources',
         name: 'Recursos técnicos',
         link: 'https://repost.aws/',
         summary: 'Onde encontrar respostas e documentação sem abrir um caso de suporte.',
@@ -2084,7 +2084,7 @@ export const topics: readonly Topic[] = [
         tip: 'Recursos da AWS sendo usados para **spam ou ataques**: a denúncia vai para o time **Trust & Safety**.',
       },
       {
-        id: 'parceiros',
+        id: 'partners',
         name: 'Parceiros e Marketplace',
         link: aws('partners/'),
         summary: 'A rede de parceiros, o catálogo de software e a ajuda profissional da própria AWS.',
@@ -2106,7 +2106,7 @@ export const topics: readonly Topic[] = [
     lede: 'Tudo o que ajudou na preparação, começando pelo que o guia oficial do **CLF-C02** diz sobre a prova.',
     sections: [
       {
-        id: 'exame',
+        id: 'exam',
         name: 'O exame',
         fullName: 'CLF-C02',
         link: aws('certification/certified-cloud-practitioner/'),
@@ -2130,7 +2130,7 @@ export const topics: readonly Topic[] = [
         },
       },
       {
-        id: 'guia-do-exame',
+        id: 'exam-guide',
         name: 'Guia do exame',
         summary: 'O guia oficial lista os domínios, as tarefas cobradas e os serviços dentro e fora do escopo.',
         links: [
@@ -2142,7 +2142,7 @@ export const topics: readonly Topic[] = [
         tip: 'Use a lista de **serviços no escopo** do guia como checklist final.',
       },
       {
-        id: 'artigos',
+        id: 'articles',
         name: 'Artigos',
         summary: 'Referências oficiais para consultar termos e ter uma visão geral dos serviços.',
         links: [
@@ -2155,7 +2155,7 @@ export const topics: readonly Topic[] = [
         tip: 'O whitepaper de visão geral cobre quase todos os serviços citados na prova.',
       },
       {
-        id: 'cursos',
+        id: 'courses',
         name: 'Cursos',
         summary: 'Cursos que cobrem o conteúdo da prova do início ao fim.',
         links: [
@@ -2171,7 +2171,7 @@ export const topics: readonly Topic[] = [
         tip: 'O curso oficial no AWS Skill Builder é gratuito e segue os domínios do guia.',
       },
       {
-        id: 'simulados',
+        id: 'practice-exams',
         name: 'Simulados',
         summary: 'Questões no formato da prova para medir a preparação.',
         links: [

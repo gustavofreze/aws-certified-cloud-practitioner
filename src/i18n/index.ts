@@ -1,16 +1,16 @@
 /**
- * Locale routing helpers. Astro's native i18n owns the routing (see astro.config.ts): pt-BR is the
- * default locale at the root with no prefix, en-US lives under `en/`. Every address is built on the base
+ * Locale routing helpers. Astro's native i18n owns the routing (see astro.config.ts): en-US is the
+ * default locale at the root with no prefix, pt-BR lives under `pt-br/`. Every address is built on the base
  * the site is served under, because GitHub Pages publishes it below the name of the repository.
  */
 import type { Locale } from './strings'
 
-export const DEFAULT_LOCALE: Locale = 'pt-BR'
+export const DEFAULT_LOCALE: Locale = 'en-US'
 
 /** The locales the site ships, in the order the language menu offers them. */
-export const LOCALES: readonly Locale[] = ['pt-BR', 'en-US']
+export const LOCALES: readonly Locale[] = ['en-US', 'pt-BR']
 
-const PREFIX: Readonly<Record<Locale, string>> = { 'pt-BR': '', 'en-US': 'en/' }
+const PREFIX: Readonly<Record<Locale, string>> = { 'en-US': '', 'pt-BR': 'pt-br/' }
 
 const BASE = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`
 
@@ -21,7 +21,7 @@ export function pageHref(locale: Locale, slug?: string): string {
 
 /** The address of the same page in every locale, which is what the language menu and the alternates use. */
 export function pagePaths(slug?: string): Record<Locale, string> {
-  return { 'pt-BR': pageHref('pt-BR', slug), 'en-US': pageHref('en-US', slug) }
+  return { 'en-US': pageHref('en-US', slug), 'pt-BR': pageHref('pt-BR', slug) }
 }
 
 /** The address of a file published from `public/`. */

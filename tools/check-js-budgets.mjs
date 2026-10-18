@@ -5,7 +5,8 @@
  * files import statically. Together that stays at or under 4,000 bytes uncompressed, counting 1 KB as
  * 1,000 B: the theme before first paint and the small enhancements every page carries fit, and anything
  * heavier is a sign that behavior crept onto a page that does not need it. A dynamic import is left out,
- * because it loads on demand, which is how the search index is fetched.
+ * because it loads on demand, which is how the search index is fetched. Structured data is data the
+ * browser never runs, so it is left out too.
  *
  * It reads `dist/`, so it runs after the build, prints every page and fails when any is over.
  */
@@ -42,10 +43,9 @@ function moduleClosure(file, seen) {
 /** Answers how many bytes of script one page ships. */
 function scriptBytes(page) {
   const html = readFileSync(page, 'utf8')
-  const inline = [...html.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g)].reduce(
-    (total, match) => total + Buffer.byteLength(match[1]),
-    0,
-  )
+  const inline = [
+    ...html.matchAll(/<script(?![^>]*\b(?:src=|type="application\/ld\+json"))[^>]*>([\s\S]*?)<\/script>/g),
+  ].reduce((total, match) => total + Buffer.byteLength(match[1]), 0)
   const files = new Set()
   for (const match of html.matchAll(/<script[^>]*\bsrc="([^"]+)"/g)) {
     moduleClosure(join(DIST, match[1].replace(BASE, '')), files)
