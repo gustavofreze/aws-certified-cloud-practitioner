@@ -1,0 +1,41 @@
+---
+/**
+ * The bar on top of every page: the brand back to the home, the way to search and to review, and the
+ * theme and language controls. It
+ * stays where it was drawn rather than following the reader, and the control in the corner is the way
+ * back up to it.
+ */
+import { pageHref } from '../i18n'
+import { getCopy, type Locale } from '../i18n/strings'
+import BrandMark from './BrandMark.astro'
+import Icon from './Icon.astro'
+import LocaleMenu from './LocaleMenu.astro'
+import ThemeToggle from './ThemeToggle.astro'
+
+interface Props {
+  locale: Locale
+  paths: Record<Locale, string>
+}
+const { locale, paths } = Astro.props
+const copy = getCopy(locale)
+---
+
+<header class="ccp-bar">
+  <div class="ccp-wrap ccp-bar__inner">
+    <a href={pageHref(locale)} class="ccp-bar__home" aria-label={`${copy.brand}, ${copy.nav.home}`}>
+      <BrandMark label={copy.brand} />
+    </a>
+    <div class="ccp-bar__controls">
+      <div class="ccp-bar__tools">
+        <a href={pageHref(locale, 'search')} class="ccp-bar__tool" aria-label={copy.nav.search} title={copy.nav.search}>
+          <Icon name="search" size={18} />
+        </a>
+        <a href={pageHref(locale, 'review')} class="ccp-bar__tool" aria-label={copy.nav.review} title={copy.nav.review}>
+          <Icon name="cards" size={18} />
+        </a>
+      </div>
+      <ThemeToggle theme={copy.theme} />
+      <LocaleMenu locale={locale} labels={copy.localeSwitch} paths={paths} />
+    </div>
+  </div>
+</header>

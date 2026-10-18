@@ -1,0 +1,110 @@
+---
+/**
+ * The review of the notes, in one language: every section of every topic turned into a card that shows
+ * the summary and hides the name. The reader tries to recall what is being described and opens the card
+ * to check, which is the shape most questions of the exam take.
+ *
+ * Each card is a native disclosure, so the page works with no script at all. The script adds the one
+ * thing a review needs on top: marking the cards the reader already knows, remembered in this browser,
+ * so the next session can hide them. The study resources are left out, since a list of links is
+ * nothing to recall.
+ */
+import { renderInline } from '../content/inline'
+import { topicsOf } from '../content'
+import { pageHref, pagePaths } from '../i18n'
+import { getCopy, type Locale, MAIN_ID } from '../i18n/strings'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Icon from './Icon.astro'
+import PageCover from './PageCover.astro'
+
+interface Props {
+  locale: Locale
+}
+const { locale } = Astro.props
+const copy = getCopy(locale)
+const labels = copy.review
+const topics = topicsOf(locale).filter((topic) => topic.sections.every((section) => section.points !== undefined))
+---
+
+<BaseLayout locale={locale} title={labels.title} description={labels.lede} paths={pagePaths('review')}>
+  <main id={MAIN_ID} class="ccp-page">
+    <PageCover locale={locale} icon="cards" title={labels.title} lede={labels.lede} />
+
+    <nav aria-label={copy.topic.onThisPage} class="ccp-subnav">
+      <div class="ccp-wrap">
+        <ul class="ccp-subnav__list" data-subnav>
+          {
+            topics.map((topic) => (
+              <li>
+                <a href={`#${topic.slug}`} class="ccp-subnav__tab" data-section-link={topic.slug}>
+                  {topic.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </nav>
+
+    <div class="ccp-wrap ccp-main">
+      <div class="ccp-review-bar" data-review data-progress={labels.progress}>
+        <p class="ccp-review-bar__count" role="status" aria-live="polite" data-review-count></p>
+        <label class="ccp-review-bar__toggle">
+          <input type="checkbox" data-review-hide />
+          {labels.hideKnown}
+        </label>
+        <button type="button" class="ccp-review-bar__reset" data-review-reset>{labels.reset}</button>
+      </div>
+
+      {
+        topics.map((topic) => (
+          <section id={topic.slug} class="ccp-deck" aria-labelledby={`${topic.slug}-title`}>
+            <h2 id={`${topic.slug}-title`} class="ccp-deck__title">
+              <span class="ccp-tile">
+                <Icon name={topic.icon} size={20} />
+              </span>
+              {topic.title}
+            </h2>
+            <ul class="ccp-deck__cards">
+              {topic.sections.map((section) => (
+                <li data-card={`${topic.slug}#${section.id}`}>
+                  <details class="ccp-flash">
+                    <summary class="ccp-flash__front">
+                      <span class="ccp-flash__question">{labels.question}</span>
+                      <span class="ccp-flash__summary" set:html={renderInline(section.summary)} />
+                      <span class="ccp-flash__reveal">
+                        {labels.reveal}
+                        <Icon name="chevron" size={16} />
+                      </span>
+                    </summary>
+                    <div class="ccp-flash__back">
+                      <p class="ccp-flash__answer">
+                        {section.name}
+                        {section.fullName && <span>{section.fullName}</span>}
+                      </p>
+                      <p class="ccp-flash__tip" set:html={renderInline(section.tip)} />
+                      <div class="ccp-flash__actions">
+                        <button type="button" class="ccp-flash__known" aria-pressed="false" data-card-known>
+                          <Icon name="check" size={16} />
+                          {labels.known}
+                        </button>
+                        <a href={`${pageHref(locale, topic.slug)}#${section.id}`} class="ccp-flash__link">
+                          {labels.openSection}
+                          <Icon name="arrow-right" size={14} />
+                        </a>
+                      </div>
+                    </div>
+                  </details>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+  </main>
+</BaseLayout>
+
+<script>
+  import '../scripts/review-progress.ts'
+</script>

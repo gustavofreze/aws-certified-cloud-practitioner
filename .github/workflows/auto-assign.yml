@@ -9,15 +9,19 @@ on:
       - opened
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   run:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       issues: write
       pull-requests: write
     steps:
       - name: Assign issues and pull requests
-        uses: gustavofreze/auto-assign@2.0.0
+        uses: gustavofreze/auto-assign@3c8ebe3f6f2cc5b92bb8969f13bc5886895f70e3 # 2.1.1
         with:
           assignees: '${{ secrets.ASSIGNEES }}'
           github_token: '${{ secrets.GITHUB_TOKEN }}'

@@ -1,0 +1,107 @@
+---
+/**
+ * One topic of the roadmap in one language.
+ *
+ * Every topic page has the same structure. The cover is a deep band, the same ground as the home, naming
+ * the topic and where it sits on the roadmap. A bar of pills stays on top while the reader scrolls and
+ * marks the section being read, because a reader comes back to these pages holding one subject in mind.
+ * Each section is a card with the same anatomy (see `SectionCard.astro`).
+ */
+import { renderInline } from '../content/inline'
+import { topicAt, topicsOf } from '../content'
+import { pageHref, pagePaths } from '../i18n'
+import { getCopy, type Locale, MAIN_ID } from '../i18n/strings'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Icon from './Icon.astro'
+import SectionCard from './SectionCard.astro'
+
+interface Props {
+  locale: Locale
+  slug: string
+}
+const { locale, slug } = Astro.props
+const copy = getCopy(locale)
+const { topic, previous, next } = topicAt(locale, slug)
+const total = topicsOf(locale).length
+const index = topicsOf(locale).indexOf(topic) + 1
+---
+
+<BaseLayout locale={locale} title={topic.title} description={topic.summary} paths={pagePaths(topic.slug)}>
+  <span class="ccp-progress" aria-hidden="true"><span data-read></span></span>
+
+  <main id={MAIN_ID} class="ccp-page" data-pagefind-body>
+    <div class="ccp-cover">
+      <span class="ccp-hero__glow ccp-hero__glow--orange" aria-hidden="true"></span>
+      <span class="ccp-cover__mark" aria-hidden="true"><Icon name={topic.icon} size={220} /></span>
+      <div class="ccp-wrap ccp-cover__inner">
+        <nav aria-label={copy.nav.breadcrumb} class="ccp-crumbs enter-rise" data-pagefind-ignore>
+          <a href={pageHref(locale)}>{copy.nav.home}</a>
+          <span class="ccp-crumbs__sep" aria-hidden="true">/</span>
+          <a href={`${pageHref(locale)}#roteiro`}>{copy.home.groups[topic.group].title}</a>
+          <span class="ccp-crumbs__sep" aria-hidden="true">/</span>
+          <span>{copy.topic.step(index, total)}</span>
+        </nav>
+        <div class="ccp-cover__head enter-rise" style="--enter-delay:60ms">
+          <span class="ccp-tile ccp-tile--large ccp-tile--deep">
+            <Icon name={topic.icon} size={28} />
+          </span>
+          <h1 class="ccp-cover__title">{topic.title}</h1>
+        </div>
+        <p class="ccp-cover__lede enter-rise" style="--enter-delay:120ms" set:html={renderInline(topic.lede)} />
+      </div>
+    </div>
+
+    <nav aria-label={copy.topic.onThisPage} class="ccp-subnav" data-pagefind-ignore>
+      <div class="ccp-wrap">
+        <ul class="ccp-subnav__list" data-subnav>
+          {
+            topic.sections.map((section) => (
+              <li>
+                <a href={`#${section.id}`} class="ccp-subnav__tab" data-section-link={section.id}>
+                  {section.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </nav>
+
+    <div class="ccp-wrap ccp-main">
+      {topic.sections.map((section) => <SectionCard section={section} labels={copy.topic} />)}
+
+      <nav class="ccp-pager" aria-label={copy.nav.roadmap} data-pagefind-ignore>
+        {
+          previous && (
+            <a href={pageHref(locale, previous.slug)} rel="prev" class="ccp-pager__prev">
+              <span class="ccp-tile">
+                <Icon name="arrow-left" size={20} />
+              </span>
+              <span class="ccp-pager__text">
+                <span class="ccp-pager__label">{copy.topic.previous}</span>
+                <span class="ccp-pager__title">{previous.title}</span>
+              </span>
+            </a>
+          )
+        }
+        {
+          next && (
+            <a href={pageHref(locale, next.slug)} rel="next" class="ccp-pager__next">
+              <span class="ccp-pager__text">
+                <span class="ccp-pager__label">{copy.topic.next}</span>
+                <span class="ccp-pager__title">{next.title}</span>
+              </span>
+              <span class="ccp-tile">
+                <Icon name="arrow-right" size={20} />
+              </span>
+            </a>
+          )
+        }
+      </nav>
+    </div>
+  </main>
+</BaseLayout>
+
+<script>
+  import '../scripts/reading.ts'
+</script>

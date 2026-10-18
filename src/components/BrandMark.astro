@@ -1,0 +1,24 @@
+---
+/**
+ * The lockup of the site: a cloud on the squid ink tile beside the wordmark. It is a mark of its own and
+ * never the logo of AWS, because the notes are a personal study project and not a page of the company.
+ * The wordmark is text in currentColor, so the bar decides its color per theme.
+ */
+interface Props {
+  label: string
+}
+const { label } = Astro.props
+---
+
+<span class="ccp-brand">
+  <svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32" class="shrink-0">
+    <rect width="32" height="32" rx="9" fill="var(--color-aws-squid)"></rect>
+    <path
+      d="M10.5 21.5h11a4.5 4.5 0 0 0 .6-8.96A6 6 0 0 0 10.6 14a3.75 3.75 0 0 0-.1 7.5Z"
+      fill="none"
+      stroke="var(--color-aws-orange)"
+      stroke-width="2.2"
+      stroke-linejoin="round"></path>
+  </svg>
+  <span class="ccp-brand__word">{label}</span>
+</span>
