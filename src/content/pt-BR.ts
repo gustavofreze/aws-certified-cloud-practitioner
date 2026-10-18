@@ -2186,6 +2186,19 @@ export const topics: readonly Topic[] = [
         ],
         tip: 'Leia a explicação de **cada alternativa**, inclusive das que você acertou.',
       },
+      {
+        id: 'next-step',
+        name: 'Próximo passo',
+        fullName: 'AWS Certified Solutions Architect - Associate',
+        summary: 'A certificação que costuma vir depois do Cloud Practitioner, com notas de estudo no mesmo formato.',
+        links: [
+          {
+            label: 'Notas de estudo do AWS Certified Solutions Architect - Associate (SAA-C03)',
+            href: 'https://gustavofreze.github.io/aws-certified-solutions-architect-associate/pt-br/',
+          },
+        ],
+        tip: 'O exame Associate cobra os mesmos serviços, mas pergunta qual arquitetura atende melhor a um requisito.',
+      },
     ],
   },
 ]

@@ -28,6 +28,10 @@ The site is built with [Astro](https://astro.build) and [Tailwind CSS](https://t
 `src/content/en-US.ts` and `src/content/pt-BR.ts`, with the same topics and sections in both languages. The build fails
 when the two languages diverge. English is served at the root of the site and Portuguese under `/pt-br/`.
 
+The notes for the next certification,
+[AWS Certified Solutions Architect - Associate](https://gustavofreze.github.io/aws-certified-solutions-architect-associate/),
+follow the same format.
+
 ### Topics
 
 - Fundamentals: cloud computing, global infrastructure, access and the Well-Architected Framework.
