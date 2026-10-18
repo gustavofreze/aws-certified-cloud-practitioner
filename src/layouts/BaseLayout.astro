@@ -1,5 +1,4 @@
 ---
-import CertificationNav from '../components/CertificationNav.astro'
 import SiteBar from '../components/SiteBar.astro'
 import SiteFooter from '../components/SiteFooter.astro'
 import ToTop from '../components/ToTop.astro'
@@ -90,7 +89,6 @@ const jsonLd = structuredData
   </head>
   <body>
     <a href={`#${MAIN_ID}`} class="skip-link">{copy.skipLink}</a>
-    <CertificationNav locale={locale} />
     <SiteBar locale={locale} paths={barPaths} />
     <slot />
     <SiteFooter locale={locale} />
