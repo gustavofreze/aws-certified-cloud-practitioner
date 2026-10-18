@@ -1,6 +1,7 @@
 # AWS Certified Cloud Practitioner
 
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Credly](https://img.shields.io/badge/Credly-AWS_Certified_Cloud_Practitioner-FF9900)](https://www.credly.com/badges/325a54ad-47c6-4d82-9c7d-b6c246c0b0dd)
 
 * [Overview](#overview)
     - [Topics](#topics)
@@ -20,12 +21,12 @@
 ## Overview
 
 Study notes for the [AWS Certified Cloud Practitioner](https://aws.amazon.com/certification/certified-cloud-practitioner)
-exam (CLF-C02), published as a static site in Portuguese and English, with light and dark themes. The notes follow the
+exam (CLF-C02), published as a static site in English and Portuguese, with light and dark themes. The notes follow the
 domains of the official exam guide and link to the AWS documentation of every service they cover.
 
 The site is built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com). The notes live in
-`src/content/pt-BR.ts` and `src/content/en-US.ts`, with the same topics and sections in both languages. The build fails
-when the two languages diverge.
+`src/content/en-US.ts` and `src/content/pt-BR.ts`, with the same topics and sections in both languages. The build fails
+when the two languages diverge. English is served at the root of the site and Portuguese under `/pt-br/`.
 
 ### Topics
 
