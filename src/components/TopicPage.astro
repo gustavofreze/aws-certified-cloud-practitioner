@@ -38,37 +38,37 @@ const breadcrumb = [
   paths={pagePaths(topic.slug)}
   structuredData={{ '@type': 'BreadcrumbList', itemListElement: breadcrumb }}
 >
-  <span class="ccp-progress" aria-hidden="true"><span data-read></span></span>
+  <span class="cert-progress" aria-hidden="true"><span data-read></span></span>
 
-  <main id={MAIN_ID} class="ccp-page" data-pagefind-body>
-    <div class="ccp-cover">
-      <span class="ccp-hero__glow ccp-hero__glow--orange" aria-hidden="true"></span>
-      <span class="ccp-cover__mark" aria-hidden="true"><Icon name={topic.icon} size={220} /></span>
-      <div class="ccp-wrap ccp-cover__inner">
-        <nav aria-label={copy.nav.breadcrumb} class="ccp-crumbs enter-rise" data-pagefind-ignore>
+  <main id={MAIN_ID} class="cert-page" data-pagefind-body>
+    <div class="cert-cover">
+      <span class="cert-hero__glow cert-hero__glow--orange" aria-hidden="true"></span>
+      <span class="cert-cover__mark" aria-hidden="true"><Icon name={topic.icon} size={220} /></span>
+      <div class="cert-wrap cert-cover__inner">
+        <nav aria-label={copy.nav.breadcrumb} class="cert-crumbs enter-rise" data-pagefind-ignore>
           <a href={pageHref(locale)}>{copy.nav.home}</a>
-          <span class="ccp-crumbs__sep" aria-hidden="true">/</span>
+          <span class="cert-crumbs__sep" aria-hidden="true">/</span>
           <a href={`${pageHref(locale)}#roadmap`}>{copy.home.groups[topic.group].title}</a>
-          <span class="ccp-crumbs__sep" aria-hidden="true">/</span>
+          <span class="cert-crumbs__sep" aria-hidden="true">/</span>
           <span>{copy.topic.step(index, total)}</span>
         </nav>
-        <div class="ccp-cover__head enter-rise" style="--enter-delay:60ms">
-          <span class="ccp-tile ccp-tile--large ccp-tile--deep">
+        <div class="cert-cover__head enter-rise" style="--enter-delay:60ms">
+          <span class="cert-tile cert-tile--large cert-tile--deep">
             <Icon name={topic.icon} size={28} />
           </span>
-          <h1 class="ccp-cover__title">{topic.title}</h1>
+          <h1 class="cert-cover__title">{topic.title}</h1>
         </div>
-        <p class="ccp-cover__lede enter-rise" style="--enter-delay:120ms" set:html={renderInline(topic.lede)} />
+        <p class="cert-cover__lede enter-rise" style="--enter-delay:120ms" set:html={renderInline(topic.lede)} />
       </div>
     </div>
 
-    <nav aria-label={copy.topic.onThisPage} class="ccp-subnav" data-pagefind-ignore>
-      <div class="ccp-wrap">
-        <ul class="ccp-subnav__list" data-subnav>
+    <nav aria-label={copy.topic.onThisPage} class="cert-subnav" data-pagefind-ignore>
+      <div class="cert-wrap">
+        <ul class="cert-subnav__list" data-subnav>
           {
             topic.sections.map((section) => (
               <li>
-                <a href={`#${section.id}`} class="ccp-subnav__tab" data-section-link={section.id}>
+                <a href={`#${section.id}`} class="cert-subnav__tab" data-section-link={section.id}>
                   {section.name}
                 </a>
               </li>
@@ -78,31 +78,31 @@ const breadcrumb = [
       </div>
     </nav>
 
-    <div class="ccp-wrap ccp-main">
+    <div class="cert-wrap cert-main">
       {topic.sections.map((section) => <SectionCard section={section} labels={copy.topic} />)}
 
-      <nav class="ccp-pager" aria-label={copy.nav.roadmap} data-pagefind-ignore>
+      <nav class="cert-pager" aria-label={copy.nav.roadmap} data-pagefind-ignore>
         {
           previous && (
-            <a href={pageHref(locale, previous.slug)} rel="prev" class="ccp-pager__prev">
-              <span class="ccp-tile">
+            <a href={pageHref(locale, previous.slug)} rel="prev" class="cert-pager__prev">
+              <span class="cert-tile">
                 <Icon name="arrow-left" size={20} />
               </span>
-              <span class="ccp-pager__text">
-                <span class="ccp-pager__label">{copy.topic.previous}</span>
-                <span class="ccp-pager__title">{previous.title}</span>
+              <span class="cert-pager__text">
+                <span class="cert-pager__label">{copy.topic.previous}</span>
+                <span class="cert-pager__title">{previous.title}</span>
               </span>
             </a>
           )
         }
         {
           next && (
-            <a href={pageHref(locale, next.slug)} rel="next" class="ccp-pager__next">
-              <span class="ccp-pager__text">
-                <span class="ccp-pager__label">{copy.topic.next}</span>
-                <span class="ccp-pager__title">{next.title}</span>
+            <a href={pageHref(locale, next.slug)} rel="next" class="cert-pager__next">
+              <span class="cert-pager__text">
+                <span class="cert-pager__label">{copy.topic.next}</span>
+                <span class="cert-pager__title">{next.title}</span>
               </span>
-              <span class="ccp-tile">
+              <span class="cert-tile">
                 <Icon name="arrow-right" size={20} />
               </span>
             </a>

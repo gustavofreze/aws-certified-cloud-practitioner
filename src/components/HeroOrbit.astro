@@ -14,29 +14,29 @@ const inner: readonly IconName[] = ['storage', 'database', 'cpu', 'network']
 const outer: readonly IconName[] = ['shield', 'chart', 'plug', 'coin', 'sparkles', 'globe']
 ---
 
-<div class="ccp-orbit" aria-hidden="true">
-  <svg class="ccp-orbit__rings" viewBox="0 0 400 400">
+<div class="cert-orbit" aria-hidden="true">
+  <svg class="cert-orbit__rings" viewBox="0 0 400 400">
     <circle cx="200" cy="200" r="190" fill="none" stroke="currentColor" stroke-opacity="0.18" stroke-dasharray="2 9"></circle>
     <circle cx="200" cy="200" r="118" fill="none" stroke="currentColor" stroke-opacity="0.24"></circle>
   </svg>
-  <span class="ccp-orbit__glow"></span>
+  <span class="cert-orbit__glow"></span>
 
-  <div class="ccp-orbit__ring ccp-orbit__ring--outer" style="--radius:0.475">
+  <div class="cert-orbit__ring cert-orbit__ring--outer" style="--radius:0.475">
     {
       outer.map((icon, index) => (
-        <span class="ccp-orbit__slot" style={`--angle:${(360 / outer.length) * index}deg`}>
-          <span class="ccp-orbit__chip">
+        <span class="cert-orbit__slot" style={`--angle:${(360 / outer.length) * index}deg`}>
+          <span class="cert-orbit__chip">
             <Icon name={icon} size={20} />
           </span>
         </span>
       ))
     }
   </div>
-  <div class="ccp-orbit__ring ccp-orbit__ring--inner" style="--radius:0.295">
+  <div class="cert-orbit__ring cert-orbit__ring--inner" style="--radius:0.295">
     {
       inner.map((icon, index) => (
-        <span class="ccp-orbit__slot" style={`--angle:${(360 / inner.length) * index + 45}deg`}>
-          <span class="ccp-orbit__chip ccp-orbit__chip--small">
+        <span class="cert-orbit__slot" style={`--angle:${(360 / inner.length) * index + 45}deg`}>
+          <span class="cert-orbit__chip cert-orbit__chip--small">
             <Icon name={icon} size={18} />
           </span>
         </span>
@@ -44,7 +44,7 @@ const outer: readonly IconName[] = ['shield', 'chart', 'plug', 'coin', 'sparkles
     }
   </div>
 
-  <span class="ccp-orbit__core">
+  <span class="cert-orbit__core">
     <Icon name="cloud" size={54} />
   </span>
 </div>

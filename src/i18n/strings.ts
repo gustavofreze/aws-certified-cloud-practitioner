@@ -3,7 +3,7 @@
  * live in `content/`, and this table holds only the chrome: the bar, the controls, the home and the
  * labels of a topic page.
  */
-import type { TopicGroup } from '../content/types'
+import { SITE_TEXT, type SiteText } from '../content/site'
 
 export type Locale = 'pt-BR' | 'en-US'
 
@@ -11,7 +11,7 @@ export type Locale = 'pt-BR' | 'en-US'
 export const MAIN_ID = 'content'
 
 export interface SiteCopy {
-  readonly meta: { readonly title: string; readonly description: string; readonly ogLocale: string }
+  readonly meta: SiteText['meta'] & { readonly ogLocale: string }
   readonly brand: string
   readonly skipLink: string
   readonly theme: { readonly label: string; readonly light: string; readonly dark: string }
@@ -24,14 +24,7 @@ export interface SiteCopy {
     readonly search: string
     readonly review: string
   }
-  readonly home: {
-    readonly eyebrow: string
-    readonly title: string
-    readonly lede: string
-    readonly start: string
-    readonly examGuide: string
-    readonly groups: Readonly<Record<TopicGroup, { readonly title: string; readonly lede: string }>>
-  }
+  readonly home: SiteText['home'] & { readonly start: string; readonly examGuide: string }
   readonly topic: {
     readonly onThisPage: string
     readonly previous: string
@@ -70,13 +63,8 @@ export interface SiteCopy {
 }
 
 const ptBR: SiteCopy = {
-  meta: {
-    title: 'AWS Certified Cloud Practitioner (CLF-C02) · Notas de estudo',
-    description:
-      'Notas de estudo gratuitas para o exame AWS Cloud Practitioner (CLF-C02): nuvem, segurança, cobrança e serviços da AWS, com busca e cartões de revisão.',
-    ogLocale: 'pt_BR',
-  },
-  brand: 'Cloud Practitioner',
+  meta: { ...SITE_TEXT['pt-BR'].meta, ogLocale: 'pt_BR' },
+  brand: SITE_TEXT['pt-BR'].brand,
   skipLink: 'Pular para o conteúdo',
   theme: { label: 'Tema', light: 'Tema claro', dark: 'Tema escuro' },
   localeSwitch: {
@@ -92,16 +80,9 @@ const ptBR: SiteCopy = {
     review: 'Revisar',
   },
   home: {
-    eyebrow: 'Notas de estudo',
-    title: 'AWS Certified Cloud Practitioner',
-    lede: 'Um compilado do conteúdo estudado em cursos, artigos, simulados e outros materiais que ajudaram na preparação para a certificação.',
+    ...SITE_TEXT['pt-BR'].home,
     start: 'Começar pelo roteiro',
     examGuide: 'Sobre a certificação',
-    groups: {
-      foundations: { title: 'Fundamentos', lede: 'O que é a nuvem, onde ela roda e como projetar sobre ela.' },
-      services: { title: 'Serviços', lede: 'Os serviços que mais aparecem no exame, agrupados por categoria.' },
-      support: { title: 'Suporte e materiais', lede: 'Planos de suporte e o que usar para estudar.' },
-    },
   },
   topic: {
     onThisPage: 'Nesta página',
@@ -116,7 +97,7 @@ const ptBR: SiteCopy = {
     title: 'Buscar nas notas',
     lede: 'Procure um serviço, um conceito ou uma palavra-chave da prova.',
     label: 'Termo de busca',
-    placeholder: 'Ex.: Spot, multi-AZ, CloudTrail',
+    placeholder: SITE_TEXT['pt-BR'].searchPlaceholder,
     idle: 'Digite pelo menos duas letras.',
     loading: 'Buscando...',
     empty: 'Nada encontrado. Tente outra palavra.',
@@ -143,13 +124,8 @@ const ptBR: SiteCopy = {
 }
 
 const enUS: SiteCopy = {
-  meta: {
-    title: 'AWS Certified Cloud Practitioner (CLF-C02) · Study notes',
-    description:
-      'Free study notes for the AWS Certified Cloud Practitioner (CLF-C02) exam: cloud concepts, security, billing and AWS services, with search and review cards.',
-    ogLocale: 'en_US',
-  },
-  brand: 'Cloud Practitioner',
+  meta: { ...SITE_TEXT['en-US'].meta, ogLocale: 'en_US' },
+  brand: SITE_TEXT['en-US'].brand,
   skipLink: 'Skip to content',
   theme: { label: 'Theme', light: 'Light theme', dark: 'Dark theme' },
   localeSwitch: {
@@ -165,16 +141,9 @@ const enUS: SiteCopy = {
     review: 'Review',
   },
   home: {
-    eyebrow: 'Study notes',
-    title: 'AWS Certified Cloud Practitioner',
-    lede: 'A compilation of what I studied in courses, articles, practice exams and other material while preparing for the certification.',
+    ...SITE_TEXT['en-US'].home,
     start: 'Start the roadmap',
     examGuide: 'About the certification',
-    groups: {
-      foundations: { title: 'Foundations', lede: 'What the cloud is, where it runs and how to design on it.' },
-      services: { title: 'Services', lede: 'The services that show up most on the exam, grouped by category.' },
-      support: { title: 'Support and resources', lede: 'Support plans and what to study with.' },
-    },
   },
   topic: {
     onThisPage: 'On this page',
@@ -189,7 +158,7 @@ const enUS: SiteCopy = {
     title: 'Search the notes',
     lede: 'Look up a service, a concept or an exam keyword.',
     label: 'Search term',
-    placeholder: 'E.g. Spot, multi-AZ, CloudTrail',
+    placeholder: SITE_TEXT['en-US'].searchPlaceholder,
     idle: 'Type at least two letters.',
     loading: 'Searching...',
     empty: 'Nothing found. Try another word.',

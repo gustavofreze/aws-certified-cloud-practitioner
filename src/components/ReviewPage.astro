@@ -11,6 +11,7 @@
  */
 import { renderInline } from '../content/inline'
 import { topicsOf } from '../content'
+import { SITE } from '../content/site'
 import { pageHref, pagePaths } from '../i18n'
 import { getCopy, type Locale, MAIN_ID } from '../i18n/strings'
 import BaseLayout from '../layouts/BaseLayout.astro'
@@ -27,16 +28,16 @@ const topics = topicsOf(locale).filter((topic) => topic.sections.every((section)
 ---
 
 <BaseLayout locale={locale} title={labels.title} description={labels.lede} paths={pagePaths('review')}>
-  <main id={MAIN_ID} class="ccp-page">
+  <main id={MAIN_ID} class="cert-page">
     <PageCover locale={locale} icon="cards" title={labels.title} lede={labels.lede} />
 
-    <nav aria-label={copy.topic.onThisPage} class="ccp-subnav">
-      <div class="ccp-wrap">
-        <ul class="ccp-subnav__list" data-subnav>
+    <nav aria-label={copy.topic.onThisPage} class="cert-subnav">
+      <div class="cert-wrap">
+        <ul class="cert-subnav__list" data-subnav>
           {
             topics.map((topic) => (
               <li>
-                <a href={`#${topic.slug}`} class="ccp-subnav__tab" data-section-link={topic.slug}>
+                <a href={`#${topic.slug}`} class="cert-subnav__tab" data-section-link={topic.slug}>
                   {topic.title}
                 </a>
               </li>
@@ -46,49 +47,49 @@ const topics = topicsOf(locale).filter((topic) => topic.sections.every((section)
       </div>
     </nav>
 
-    <div class="ccp-wrap ccp-main">
-      <div class="ccp-review-bar" data-review data-progress={labels.progress}>
-        <p class="ccp-review-bar__count" role="status" aria-live="polite" data-review-count></p>
-        <label class="ccp-review-bar__toggle">
+    <div class="cert-wrap cert-main">
+      <div class="cert-review-bar" data-review={`${SITE.id}:known`} data-progress={labels.progress}>
+        <p class="cert-review-bar__count" role="status" aria-live="polite" data-review-count></p>
+        <label class="cert-review-bar__toggle">
           <input type="checkbox" data-review-hide />
           {labels.hideKnown}
         </label>
-        <button type="button" class="ccp-review-bar__reset" data-review-reset>{labels.reset}</button>
+        <button type="button" class="cert-review-bar__reset" data-review-reset>{labels.reset}</button>
       </div>
 
       {
         topics.map((topic) => (
-          <section id={topic.slug} class="ccp-deck" aria-labelledby={`${topic.slug}-title`}>
-            <h2 id={`${topic.slug}-title`} class="ccp-deck__title">
-              <span class="ccp-tile">
+          <section id={topic.slug} class="cert-deck" aria-labelledby={`${topic.slug}-title`}>
+            <h2 id={`${topic.slug}-title`} class="cert-deck__title">
+              <span class="cert-tile">
                 <Icon name={topic.icon} size={20} />
               </span>
               {topic.title}
             </h2>
-            <ul class="ccp-deck__cards">
+            <ul class="cert-deck__cards">
               {topic.sections.map((section) => (
                 <li data-card={`${topic.slug}#${section.id}`}>
-                  <details class="ccp-flash">
-                    <summary class="ccp-flash__front">
-                      <span class="ccp-flash__question">{labels.question}</span>
-                      <span class="ccp-flash__summary" set:html={renderInline(section.summary)} />
-                      <span class="ccp-flash__reveal">
+                  <details class="cert-flash">
+                    <summary class="cert-flash__front">
+                      <span class="cert-flash__question">{labels.question}</span>
+                      <span class="cert-flash__summary" set:html={renderInline(section.summary)} />
+                      <span class="cert-flash__reveal">
                         {labels.reveal}
                         <Icon name="chevron" size={16} />
                       </span>
                     </summary>
-                    <div class="ccp-flash__back">
-                      <p class="ccp-flash__answer">
+                    <div class="cert-flash__back">
+                      <p class="cert-flash__answer">
                         {section.name}
                         {section.fullName && <span>{section.fullName}</span>}
                       </p>
-                      <p class="ccp-flash__tip" set:html={renderInline(section.tip)} />
-                      <div class="ccp-flash__actions">
-                        <button type="button" class="ccp-flash__known" aria-pressed="false" data-card-known>
+                      <p class="cert-flash__tip" set:html={renderInline(section.tip)} />
+                      <div class="cert-flash__actions">
+                        <button type="button" class="cert-flash__known" aria-pressed="false" data-card-known>
                           <Icon name="check" size={16} />
                           {labels.known}
                         </button>
-                        <a href={`${pageHref(locale, topic.slug)}#${section.id}`} class="ccp-flash__link">
+                        <a href={`${pageHref(locale, topic.slug)}#${section.id}`} class="cert-flash__link">
                           {labels.openSection}
                           <Icon name="arrow-right" size={14} />
                         </a>

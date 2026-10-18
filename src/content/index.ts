@@ -7,9 +7,27 @@
  * the same section.
  */
 import type { Locale } from '../i18n/strings'
-import { topics as enUS } from './en-US'
-import { topics as ptBR } from './pt-BR'
+import { SITE } from './site'
 import type { Topic } from './types'
+
+/** One file per group of the roadmap, each publishing the topics of that group in both languages. */
+interface GroupFile {
+  readonly enUS: readonly Topic[]
+  readonly ptBR: readonly Topic[]
+}
+
+const FILES = import.meta.glob<GroupFile>('./topics/*.ts', { eager: true })
+
+function groupFile(group: string): GroupFile {
+  const file = FILES[`./topics/${group}.ts`]
+  if (file === undefined) {
+    throw new Error(`No file of notes for the group "${group}" in src/content/topics/.`)
+  }
+  return file
+}
+
+const enUS = SITE.groups.flatMap((group) => groupFile(group).enUS)
+const ptBR = SITE.groups.flatMap((group) => groupFile(group).ptBR)
 
 const TOPICS: Readonly<Record<Locale, readonly Topic[]>> = {
   'pt-BR': ptBR,

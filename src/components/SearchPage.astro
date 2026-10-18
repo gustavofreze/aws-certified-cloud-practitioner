@@ -22,12 +22,12 @@ const labels = copy.search
 ---
 
 <BaseLayout locale={locale} title={labels.title} description={labels.lede} paths={pagePaths('search')} noindex>
-  <main id={MAIN_ID} class="ccp-page">
+  <main id={MAIN_ID} class="cert-page">
     <PageCover locale={locale} icon="search" title={labels.title} lede={labels.lede} />
 
-    <div class="ccp-wrap ccp-main">
+    <div class="cert-wrap cert-main">
       <form
-        class="ccp-search"
+        class="cert-search"
         role="search"
         data-search
         data-idle={labels.idle}
@@ -36,8 +36,8 @@ const labels = copy.search
         data-unavailable={labels.unavailable}
         data-count={labels.count}
       >
-        <label for="search-term" class="ccp-block__title">{labels.label}</label>
-        <div class="ccp-search__field">
+        <label for="search-term" class="cert-block__title">{labels.label}</label>
+        <div class="cert-search__field">
           <Icon name="search" size={20} />
           <input
             id="search-term"
@@ -49,9 +49,9 @@ const labels = copy.search
             placeholder={labels.placeholder}
           />
         </div>
-        <p class="ccp-search__status" role="status" aria-live="polite" data-search-status>{labels.idle}</p>
+        <p class="cert-search__status" role="status" aria-live="polite" data-search-status>{labels.idle}</p>
       </form>
-      <ol class="ccp-results" data-search-results></ol>
+      <ol class="cert-results" data-search-results></ol>
     </div>
   </main>
 </BaseLayout>

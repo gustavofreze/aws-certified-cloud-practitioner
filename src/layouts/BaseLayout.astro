@@ -55,7 +55,7 @@ const jsonLd = structuredData
     <script is:inline>
       ;(function () {
         try {
-          var choice = localStorage.getItem('ccp:theme')
+          var choice = localStorage.getItem('cert:theme')
           if (choice !== 'light' && choice !== 'dark') choice = null
           var dark = choice === 'dark' || (choice === null && window.matchMedia('(prefers-color-scheme: dark)').matches)
           document.documentElement.dataset.theme = dark ? 'dark' : 'light'

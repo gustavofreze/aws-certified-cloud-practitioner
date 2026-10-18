@@ -184,58 +184,58 @@
     transform: none;
   }
 
-  .ccp-wrap {
+  .cert-wrap {
     width: 100%;
     max-width: 76rem;
     margin-inline: auto;
     padding-inline: 1rem;
   }
   @media (min-width: 40rem) {
-    .ccp-wrap {
+    .cert-wrap {
       padding-inline: 1.5rem;
     }
   }
   @media (min-width: 64rem) {
-    .ccp-wrap {
+    .cert-wrap {
       padding-inline: 2.5rem;
     }
   }
 }
 
 /* ------------------------------------ the bar ------------------------------------ */
-.ccp-bar {
+.cert-bar {
   border-block-end: 1px solid var(--color-hair);
   background: var(--color-surface);
 }
-.ccp-bar__inner {
+.cert-bar__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
   min-height: 4rem;
 }
-.ccp-bar__home {
+.cert-bar__home {
   color: var(--color-ink);
   text-decoration: none;
   border-radius: var(--radius-md);
 }
-.ccp-bar__controls {
+.cert-bar__controls {
   display: flex;
   align-items: center;
   gap: 0.625rem;
 }
-.ccp-brand {
+.cert-brand {
   display: inline-flex;
   align-items: center;
   gap: 0.625rem;
 }
-.ccp-brand__word {
+.cert-brand__word {
   font-size: 1.0625rem;
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.01em;
 }
 @media (max-width: 26rem) {
-  .ccp-brand__word {
+  .cert-brand__word {
     display: none;
   }
 }
@@ -355,7 +355,7 @@
 }
 
 /* ------------------------------------ buttons ------------------------------------ */
-.ccp-button {
+.cert-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -368,33 +368,33 @@
   transition: transform var(--duration-micro) var(--ease-out-soft);
 }
 /* Squid ink on orange is ~8:1, white on orange would fail AA, so the action always reads dark. */
-.ccp-button--primary {
+.cert-button--primary {
   background: var(--color-aws-orange);
   color: #16191f;
   box-shadow: var(--shadow-cta);
 }
-.ccp-button--primary:hover {
+.cert-button--primary:hover {
   background: var(--color-aws-orange-hover);
   transform: translateY(-2px);
 }
-.ccp-button--ghost {
+.cert-button--ghost {
   border: 1px solid rgba(255, 255, 255, 0.28);
   background: rgba(255, 255, 255, 0.06);
   color: var(--color-ink-inverse);
 }
-.ccp-button--ghost:hover {
+.cert-button--ghost:hover {
   background: rgba(255, 255, 255, 0.14);
 }
 @media (prefers-reduced-motion: reduce) {
-  .ccp-button,
-  .ccp-button:hover {
+  .cert-button,
+  .cert-button:hover {
     transform: none;
     transition: none;
   }
 }
 
 /* ------------------------------------- hero -------------------------------------- */
-.ccp-hero {
+.cert-hero {
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -402,7 +402,7 @@
   color: var(--color-ink-inverse);
 }
 /* A dotted grid and two glows, all decorative. */
-.ccp-hero::before {
+.cert-hero::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -413,39 +413,39 @@
 }
 /* The glows are painted as gradients that fade out on their own, because a blur filter this wide is
    rasterized again on every frame anything above it moves. */
-.ccp-hero__glow {
+.cert-hero__glow {
   position: absolute;
   z-index: -1;
   border-radius: 50%;
   pointer-events: none;
 }
-.ccp-hero__glow--orange {
+.cert-hero__glow--orange {
   right: -14rem;
   top: -16rem;
   width: 42rem;
   height: 42rem;
   background: radial-gradient(closest-side, rgba(255, 153, 0, 0.3), rgba(255, 153, 0, 0));
 }
-.ccp-hero__glow--blue {
+.cert-hero__glow--blue {
   left: -16rem;
   bottom: -20rem;
   width: 40rem;
   height: 40rem;
   background: radial-gradient(closest-side, rgba(0, 115, 187, 0.32), rgba(0, 115, 187, 0));
 }
-.ccp-hero__inner {
+.cert-hero__inner {
   display: grid;
   gap: 2.5rem;
   padding-block: 4rem 4.5rem;
 }
 @media (min-width: 60rem) {
-  .ccp-hero__inner {
+  .cert-hero__inner {
     grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
     align-items: center;
     padding-block: 6rem;
   }
 }
-.ccp-eyebrow {
+.cert-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -460,7 +460,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.ccp-hero__title {
+.cert-hero__title {
   margin-top: 1.25rem;
   font-size: clamp(2.25rem, 1.5rem + 3.4vw, 3.75rem);
   font-weight: var(--font-weight-bold);
@@ -468,11 +468,11 @@
   letter-spacing: -0.03em;
   text-wrap: balance;
 }
-.ccp-hero__title em {
+.cert-hero__title em {
   font-style: normal;
   color: var(--color-aws-orange);
 }
-.ccp-hero__lede {
+.cert-hero__lede {
   margin-top: 1.25rem;
   max-width: 34rem;
   font-size: 1.125rem;
@@ -480,7 +480,7 @@
   color: var(--color-ink-inverse-muted);
   text-wrap: pretty;
 }
-.ccp-hero__actions {
+.cert-hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
@@ -490,7 +490,7 @@
 /* The orbit beside the hero words: the cloud at the center and the services of the roadmap turning
    around it. Decorative. Each slot is placed on its ring by an angle, and the chip inside it turns back
    at the same speed as the ring, so the icon stays upright. */
-.ccp-orbit {
+.cert-orbit {
   --size: 22rem;
   position: relative;
   display: none;
@@ -500,38 +500,38 @@
   color: var(--color-aws-orange);
 }
 @media (min-width: 60rem) {
-  .ccp-orbit {
+  .cert-orbit {
     display: block;
   }
 }
 @media (min-width: 72rem) {
-  .ccp-orbit {
+  .cert-orbit {
     --size: 26rem;
   }
 }
-.ccp-orbit__rings {
+.cert-orbit__rings {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
 }
-.ccp-orbit__glow {
+.cert-orbit__glow {
   position: absolute;
   inset: 15%;
   border-radius: 50%;
   background: radial-gradient(closest-side, rgba(255, 153, 0, 0.3), rgba(255, 153, 0, 0));
 }
-.ccp-orbit__ring {
+.cert-orbit__ring {
   position: absolute;
   inset: 0;
 }
-.ccp-orbit__slot {
+.cert-orbit__slot {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: rotate(var(--angle)) translateY(calc(var(--size) * var(--radius) * -1)) rotate(calc(var(--angle) * -1));
 }
-.ccp-orbit__chip {
+.cert-orbit__chip {
   display: grid;
   place-items: center;
   width: 3rem;
@@ -543,13 +543,13 @@
   color: #ffc266;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
 }
-.ccp-orbit__chip--small {
+.cert-orbit__chip--small {
   width: 2.5rem;
   height: 2.5rem;
   margin: -1.25rem 0 0 -1.25rem;
   color: var(--color-ink-inverse);
 }
-.ccp-orbit__core {
+.cert-orbit__core {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -565,34 +565,34 @@
   box-shadow: 0 24px 50px rgba(0, 0, 0, 0.4);
 }
 @media (prefers-reduced-motion: no-preference) {
-  .ccp-orbit__ring--outer,
-  .ccp-orbit__ring--outer .ccp-orbit__chip {
-    animation: ccp-spin 40s linear infinite;
+  .cert-orbit__ring--outer,
+  .cert-orbit__ring--outer .cert-orbit__chip {
+    animation: cert-spin 40s linear infinite;
   }
-  .ccp-orbit__ring--outer .ccp-orbit__chip {
+  .cert-orbit__ring--outer .cert-orbit__chip {
     animation-direction: reverse;
   }
-  .ccp-orbit__ring--inner,
-  .ccp-orbit__ring--inner .ccp-orbit__chip {
-    animation: ccp-spin 26s linear infinite reverse;
+  .cert-orbit__ring--inner,
+  .cert-orbit__ring--inner .cert-orbit__chip {
+    animation: cert-spin 26s linear infinite reverse;
   }
-  .ccp-orbit__ring--inner .ccp-orbit__chip {
+  .cert-orbit__ring--inner .cert-orbit__chip {
     animation-direction: normal;
   }
-  .ccp-orbit__core::after {
+  .cert-orbit__core::after {
     content: '';
     position: absolute;
     inset: -1px;
     border-radius: inherit;
     border: 2px solid rgba(255, 153, 0, 0.45);
-    animation: ccp-pulse 4s ease-out infinite;
+    animation: cert-pulse 4s ease-out infinite;
   }
-  @keyframes ccp-spin {
+  @keyframes cert-spin {
     to {
       transform: rotate(360deg);
     }
   }
-  @keyframes ccp-pulse {
+  @keyframes cert-pulse {
     from {
       opacity: 1;
       transform: scale(1);
@@ -605,27 +605,27 @@
 }
 
 /* ----------------------------------- roadmap ------------------------------------- */
-.ccp-roadmap {
+.cert-roadmap {
   display: flex;
   flex-direction: column;
   gap: 4rem;
   padding-block: 4rem 5rem;
 }
-.ccp-group__head {
+.cert-group__head {
   display: flex;
   flex-direction: column;
   gap: 0.375rem;
   margin-bottom: 1.5rem;
 }
-.ccp-group__title {
+.cert-group__title {
   font-size: var(--text-h3);
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.02em;
 }
-.ccp-group__lede {
+.cert-group__lede {
   color: var(--color-ink-muted);
 }
-.ccp-grid {
+.cert-grid {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
@@ -633,7 +633,7 @@
   padding: 0;
   list-style: none;
 }
-.ccp-card {
+.cert-card {
   position: relative;
   display: flex;
   height: 100%;
@@ -649,7 +649,7 @@
   transition: transform var(--duration-micro) var(--ease-out-soft);
 }
 /* The raised shadow cross-fades on a pseudo element, so the hover moves only transform and opacity. */
-.ccp-card::after {
+.cert-card::after {
   content: '';
   position: absolute;
   inset: -1px;
@@ -660,56 +660,56 @@
   transition: opacity var(--duration-micro) ease;
   pointer-events: none;
 }
-.ccp-card:hover {
+.cert-card:hover {
   transform: translateY(-3px);
 }
-.ccp-card:hover::after {
+.cert-card:hover::after {
   opacity: 1;
 }
 @media (prefers-reduced-motion: reduce) {
-  .ccp-card,
-  .ccp-card:hover {
+  .cert-card,
+  .cert-card:hover {
     transform: none;
     transition: none;
   }
 }
-.ccp-card__top {
+.cert-card__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.ccp-card__step {
+.cert-card__step {
   font-size: var(--text-caption);
   font-weight: var(--font-weight-bold);
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.06em;
   color: var(--color-ink-muted);
 }
-.ccp-card__title {
+.cert-card__title {
   font-size: var(--text-h4);
   font-weight: var(--font-weight-bold);
   line-height: 1.3;
 }
-.ccp-card__summary {
+.cert-card__summary {
   flex: 1;
   font-size: var(--text-small);
   color: var(--color-ink-muted);
 }
-.ccp-card__foot {
+.cert-card__foot {
   display: flex;
   flex-wrap: wrap;
   gap: 0.375rem;
 }
-.ccp-card__arrow {
+.cert-card__arrow {
   color: var(--color-ink-muted);
   transition: transform var(--duration-micro) var(--ease-out-soft);
 }
-.ccp-card:hover .ccp-card__arrow {
+.cert-card:hover .cert-card__arrow {
   color: var(--color-accent);
   transform: translateX(3px);
 }
 
-.ccp-tile {
+.cert-tile {
   display: grid;
   place-items: center;
   width: 2.75rem;
@@ -719,13 +719,13 @@
   background: var(--color-selection);
   color: var(--color-selection-ink);
 }
-.ccp-tile--large {
+.cert-tile--large {
   width: 3.5rem;
   height: 3.5rem;
   border-radius: var(--radius-lg);
 }
 
-.ccp-chip {
+.cert-chip {
   display: inline-flex;
   align-items: center;
   padding: 0.125rem 0.55rem;
@@ -739,7 +739,7 @@
 }
 
 /* ---------------------------------- topic page ----------------------------------- */
-.ccp-progress {
+.cert-progress {
   position: fixed;
   inset-block-start: 0;
   inset-inline: 0;
@@ -747,7 +747,7 @@
   height: 3px;
   pointer-events: none;
 }
-.ccp-progress span {
+.cert-progress span {
   display: block;
   height: 100%;
   background: var(--color-aws-orange);
@@ -755,20 +755,20 @@
   transform-origin: left center;
 }
 @media (scripting: none) {
-  .ccp-progress {
+  .cert-progress {
     display: none;
   }
 }
 
 /* The cover wears the deep band of the home, so the inner pages read as the same site. */
-.ccp-cover {
+.cert-cover {
   position: relative;
   overflow: hidden;
   isolation: isolate;
   background: var(--color-band-deep);
   color: var(--color-ink-inverse);
 }
-.ccp-cover::before {
+.cert-cover::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -777,12 +777,12 @@
   background-size: 22px 22px;
   mask-image: linear-gradient(to right, transparent 20%, black 90%);
 }
-.ccp-cover .ccp-hero__glow--orange {
+.cert-cover .cert-hero__glow--orange {
   top: -20rem;
   right: -8rem;
 }
 /* The icon of the topic, drawn large and faint at the right edge. Decorative. */
-.ccp-cover__mark {
+.cert-cover__mark {
   position: absolute;
   z-index: -1;
   right: max(1rem, calc((100vw - 76rem) / 2 + 1rem));
@@ -792,22 +792,22 @@
   pointer-events: none;
 }
 @media (max-width: 48rem) {
-  .ccp-cover__mark {
+  .cert-cover__mark {
     display: none;
   }
 }
-.ccp-cover__inner {
+.cert-cover__inner {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   padding-block: 1.5rem 1.75rem;
 }
 @media (min-width: 64rem) {
-  .ccp-cover__inner {
+  .cert-cover__inner {
     padding-block: 2rem 2.25rem;
   }
 }
-.ccp-crumbs {
+.cert-crumbs {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -815,56 +815,56 @@
   font-size: var(--text-small);
   color: var(--color-ink-inverse-muted);
 }
-.ccp-crumbs a {
+.cert-crumbs a {
   color: var(--color-ink-inverse-muted);
   text-decoration: none;
 }
-.ccp-crumbs a:hover {
+.cert-crumbs a:hover {
   color: var(--color-aws-orange);
 }
-.ccp-crumbs span:last-child {
+.cert-crumbs span:last-child {
   color: #ffc266;
   font-weight: var(--font-weight-bold);
   font-variant-numeric: tabular-nums;
 }
-.ccp-crumbs__sep {
+.cert-crumbs__sep {
   opacity: 0.5;
 }
-.ccp-crumbs .ccp-crumbs__sep {
+.cert-crumbs .cert-crumbs__sep {
   color: inherit;
   font-weight: inherit;
 }
-.ccp-cover__head {
+.cert-cover__head {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
-.ccp-cover__head .ccp-tile--large {
+.cert-cover__head .cert-tile--large {
   width: 2.75rem;
   height: 2.75rem;
   border-radius: var(--radius-md);
 }
-.ccp-cover__title {
+.cert-cover__title {
   font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem);
   font-weight: var(--font-weight-bold);
   line-height: 1.08;
   letter-spacing: -0.03em;
   text-wrap: balance;
 }
-.ccp-cover__lede {
+.cert-cover__lede {
   max-width: 46rem;
   font-size: var(--text-body);
   line-height: 1.6;
   color: var(--color-ink-inverse-muted);
   text-wrap: pretty;
 }
-.ccp-cover__lede a {
+.cert-cover__lede a {
   color: #ffc266;
   font-weight: var(--font-weight-demibold);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.ccp-tile--deep {
+.cert-tile--deep {
   border: 1px solid rgba(255, 153, 0, 0.4);
   background: rgba(255, 153, 0, 0.14);
   color: var(--color-aws-orange);
@@ -873,14 +873,14 @@
 /* The sections of the topic, as tabs on a bar that stays on top while the page scrolls. The section
    being read is underlined in orange. On a narrow screen the bar scrolls sideways, its edges fade out,
    and the script keeps the lit tab in view. */
-.ccp-subnav {
+.cert-subnav {
   position: sticky;
   inset-block-start: 0;
   z-index: 30;
   border-block-end: 1px solid var(--color-hair);
   background: var(--color-surface);
 }
-.ccp-subnav__list {
+.cert-subnav__list {
   position: relative;
   display: flex;
   gap: 1.75rem;
@@ -891,13 +891,13 @@
   scrollbar-width: none;
   mask-image: linear-gradient(to right, black calc(100% - 2rem), transparent);
 }
-.ccp-subnav__list::-webkit-scrollbar {
+.cert-subnav__list::-webkit-scrollbar {
   display: none;
 }
-.ccp-subnav__list li:last-child {
+.cert-subnav__list li:last-child {
   padding-inline-end: 2rem;
 }
-.ccp-subnav__tab {
+.cert-subnav__tab {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -908,7 +908,7 @@
   text-decoration: none;
   white-space: nowrap;
 }
-.ccp-subnav__tab::after {
+.cert-subnav__tab::after {
   content: '';
   position: absolute;
   inset-inline: 0;
@@ -919,17 +919,17 @@
   transform: scaleX(0);
   transition: transform var(--duration-micro) var(--ease-out-soft);
 }
-.ccp-subnav__tab:hover {
+.cert-subnav__tab:hover {
   color: var(--color-ink);
 }
-.ccp-subnav__tab[aria-current] {
+.cert-subnav__tab[aria-current] {
   color: var(--color-ink);
 }
-.ccp-subnav__tab[aria-current]::after {
+.cert-subnav__tab[aria-current]::after {
   transform: scaleX(1);
 }
 
-.ccp-main {
+.cert-main {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -937,14 +937,14 @@
   padding-block: 2.5rem 4rem;
 }
 @media (min-width: 64rem) {
-  .ccp-main {
+  .cert-main {
     padding-block: 3rem 5rem;
   }
 }
 
 /* One section of a topic, drawn as a card: a header row with the name, its full name and the way to its
    official page, and the notes below it across the whole width of the card. */
-.ccp-section {
+.cert-section {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -956,14 +956,14 @@
   scroll-margin-top: 5rem;
 }
 @media (min-width: 48rem) {
-  .ccp-section {
+  .cert-section {
     padding: 1.75rem 2rem 2rem;
   }
 }
-.ccp-section:target {
+.cert-section:target {
   border-color: var(--color-aws-orange);
 }
-.ccp-section__head {
+.cert-section__head {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -971,63 +971,63 @@
   padding-block-end: 1.125rem;
   border-block-end: 1px solid var(--color-hair);
 }
-.ccp-section__name {
+.cert-section__name {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.25rem 0.75rem;
   margin-inline-end: auto;
 }
-.ccp-section__title {
+.cert-section__title {
   font-size: 1.625rem;
   font-weight: var(--font-weight-bold);
   line-height: 1.15;
   letter-spacing: -0.02em;
 }
-.ccp-section__anchor {
+.cert-section__anchor {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   color: var(--color-ink);
   text-decoration: none;
 }
-.ccp-section__link-icon {
+.cert-section__link-icon {
   color: var(--color-ink-muted);
   opacity: 0;
   transition: opacity var(--duration-micro) ease;
 }
-.ccp-section__anchor:hover .ccp-section__link-icon,
-.ccp-section__anchor:focus-visible .ccp-section__link-icon {
+.cert-section__anchor:hover .cert-section__link-icon,
+.cert-section__anchor:focus-visible .cert-section__link-icon {
   opacity: 1;
 }
-.ccp-section__full {
+.cert-section__full {
   font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
   color: var(--color-ink-muted);
 }
-.ccp-section__body {
+.cert-section__body {
   display: flex;
   min-width: 0;
   flex-direction: column;
   gap: 1.25rem;
 }
-.ccp-section .ccp-prose {
+.cert-section .cert-prose {
   max-width: none;
 }
 /* The points beside the note on the exam: two columns on wide screens, stacked below. */
-.ccp-section__grid {
+.cert-section__grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 1.25rem;
   align-items: start;
 }
 @media (min-width: 56rem) {
-  .ccp-section__grid {
+  .cert-section__grid {
     grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
     gap: 2rem;
   }
 }
-.ccp-tip {
+.cert-tip {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -1037,7 +1037,7 @@
   border-inline-start: 3px solid var(--color-aws-orange);
   background: var(--color-selection);
 }
-.ccp-tip__title {
+.cert-tip__title {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
@@ -1047,20 +1047,20 @@
   text-transform: uppercase;
   color: var(--color-selection-ink);
 }
-.ccp-tip__text {
+.cert-tip__text {
   font-size: 0.9375rem;
   line-height: 1.6;
   color: var(--color-ink);
 }
-.ccp-tip__text strong {
+.cert-tip__text strong {
   font-weight: var(--font-weight-bold);
 }
-.ccp-tip__text a {
+.cert-tip__text a {
   color: var(--color-accent);
   text-decoration: underline;
 }
 
-.ccp-official {
+.cert-official {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
@@ -1074,29 +1074,29 @@
   text-decoration: none;
   white-space: nowrap;
 }
-.ccp-official:hover {
+.cert-official:hover {
   border-color: var(--color-aws-orange);
   color: var(--color-accent);
 }
 
 /* -------------------------------------- prose -------------------------------------- */
-.ccp-prose {
+.cert-prose {
   max-width: 68ch;
   line-height: 1.7;
   text-wrap: pretty;
 }
-.ccp-prose a,
-.ccp-list a,
-.ccp-table a {
+.cert-prose a,
+.cert-list a,
+.cert-table a {
   color: var(--color-accent);
   font-weight: var(--font-weight-demibold);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
-.ccp-prose strong,
-.ccp-list strong,
-.ccp-table strong {
+.cert-prose strong,
+.cert-list strong,
+.cert-table strong {
   font-weight: var(--font-weight-bold);
 }
 code {
@@ -1107,19 +1107,19 @@ code {
   font-size: 0.875em;
 }
 
-.ccp-block {
+.cert-block {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
-.ccp-block__title {
+.cert-block__title {
   font-size: var(--text-caption);
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-accent);
 }
-.ccp-list {
+.cert-list {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -1127,12 +1127,12 @@ code {
   padding: 0;
   list-style: none;
 }
-.ccp-list li {
+.cert-list li {
   position: relative;
   padding-inline-start: 1.25rem;
   line-height: 1.6;
 }
-.ccp-list li::before {
+.cert-list li::before {
   content: '';
   position: absolute;
   left: 0.2rem;
@@ -1143,28 +1143,28 @@ code {
   background: var(--color-aws-orange);
   transform: rotate(45deg);
 }
-.ccp-list--tight {
+.cert-list--tight {
   gap: 0.25rem;
 }
 
-.ccp-table-wrap {
+.cert-table-wrap {
   overflow-x: auto;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-hair);
 }
-.ccp-table {
+.cert-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.9375rem;
 }
-.ccp-table th,
-.ccp-table td {
+.cert-table th,
+.cert-table td {
   padding: 0.875rem 1rem;
   text-align: left;
   vertical-align: top;
   line-height: 1.55;
 }
-.ccp-table thead th {
+.cert-table thead th {
   background: var(--color-surface-strong);
   font-size: var(--text-caption);
   font-weight: var(--font-weight-bold);
@@ -1172,14 +1172,14 @@ code {
   text-transform: uppercase;
   color: var(--color-ink-muted);
 }
-.ccp-table tbody tr + tr {
+.cert-table tbody tr + tr {
   border-block-start: 1px solid var(--color-hair);
 }
-.ccp-table tbody th {
+.cert-table tbody th {
   width: 1%;
   white-space: nowrap;
 }
-.ccp-table .ccp-chip {
+.cert-table .cert-chip {
   border-color: color-mix(in srgb, var(--color-aws-orange) 40%, var(--color-hair));
   background: var(--color-selection);
   color: var(--color-selection-ink);
@@ -1188,29 +1188,29 @@ code {
 /* On a phone the key column gives up its single line, so the table fits the screen instead of scrolling
    sideways: the key wraps inside its chip and both columns take tighter padding. */
 @media (max-width: 40rem) {
-  .ccp-table th,
-  .ccp-table td {
+  .cert-table th,
+  .cert-table td {
     padding: 0.75rem;
   }
-  .ccp-table tbody th {
+  .cert-table tbody th {
     width: 36%;
     white-space: normal;
   }
-  .ccp-table .ccp-chip {
+  .cert-table .cert-chip {
     border-radius: var(--radius-md);
     white-space: normal;
     overflow-wrap: break-word;
   }
 }
 
-.ccp-links {
+.cert-links {
   display: grid;
   gap: 0.625rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.ccp-link-card {
+.cert-link-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1224,23 +1224,23 @@ code {
   font-weight: var(--font-weight-demibold);
   text-decoration: none;
 }
-.ccp-link-card:hover {
+.cert-link-card:hover {
   border-color: var(--color-aws-orange);
 }
-.ccp-link-card .ccp-icon {
+.cert-link-card .cert-icon {
   flex: none;
   color: var(--color-accent);
 }
 
 /* The way to the topics before and after this one on the roadmap: two compact controls of the same
    size, one at each end of the row. */
-.ccp-pager {
+.cert-pager {
   display: flex;
   justify-content: space-between;
   gap: 0.75rem;
   margin-top: 1rem;
 }
-.ccp-pager a {
+.cert-pager a {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -1253,31 +1253,31 @@ code {
   color: var(--color-ink);
   text-decoration: none;
 }
-.ccp-pager a:hover {
+.cert-pager a:hover {
   border-color: var(--color-aws-orange);
 }
-.ccp-pager .ccp-tile {
+.cert-pager .cert-tile {
   width: 2.25rem;
   height: 2.25rem;
 }
-.ccp-pager__next {
+.cert-pager__next {
   margin-inline-start: auto;
   justify-content: flex-end;
   text-align: right;
 }
-.ccp-pager__text {
+.cert-pager__text {
   display: flex;
   min-width: 0;
   flex-direction: column;
 }
-.ccp-pager__label {
+.cert-pager__label {
   font-size: var(--text-caption);
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-ink-muted);
 }
-.ccp-pager__title {
+.cert-pager__title {
   font-size: var(--text-small);
   font-weight: var(--font-weight-bold);
   line-height: 1.3;
@@ -1285,16 +1285,16 @@ code {
 }
 
 /* ------------------------------------- footer ------------------------------------- */
-.ccp-footer {
+.cert-footer {
   border-block-start: 1px solid var(--color-hair);
   background: var(--color-surface);
 }
-.ccp-footer__inner {
+.cert-footer__inner {
   display: flex;
   justify-content: center;
   padding-block: 1.25rem;
 }
-.ccp-footer__github {
+.cert-footer__github {
   display: grid;
   place-items: center;
   width: 2.75rem;
@@ -1302,16 +1302,16 @@ code {
   border-radius: var(--radius-pill);
   color: var(--color-ink-muted);
 }
-.ccp-footer__github:hover {
+.cert-footer__github:hover {
   background: var(--color-surface-strong);
   color: var(--color-ink);
 }
 
 /* ------------------------------------- to top ------------------------------------- */
-.ccp-to-top {
+.cert-to-top {
   display: none;
 }
-:root[data-to-top='on'] .ccp-to-top {
+:root[data-to-top='on'] .cert-to-top {
   position: fixed;
   z-index: 40;
   inset-block-end: max(1rem, env(safe-area-inset-bottom));
@@ -1334,7 +1334,7 @@ code {
     transform var(--duration-micro) var(--ease-out-soft),
     visibility 0s linear var(--duration-micro);
 }
-:root[data-to-top='on'] .ccp-to-top.is-shown {
+:root[data-to-top='on'] .cert-to-top.is-shown {
   opacity: 1;
   visibility: visible;
   transform: none;
@@ -1342,12 +1342,12 @@ code {
     opacity var(--duration-micro) ease,
     transform var(--duration-micro) var(--ease-out-soft);
 }
-:root[data-to-top='on'] .ccp-to-top:hover {
+:root[data-to-top='on'] .cert-to-top:hover {
   color: var(--color-accent);
 }
 
 /* ------------------------------------ not found ----------------------------------- */
-.ccp-lost {
+.cert-lost {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -1356,7 +1356,7 @@ code {
   gap: 1rem;
   padding-block: 6rem;
 }
-.ccp-lost__code {
+.cert-lost__code {
   font-size: 5rem;
   font-weight: var(--font-weight-bold);
   line-height: 1;
@@ -1367,10 +1367,10 @@ code {
 /* Entrance of the fixed pieces of a page. Additive only: the page reads complete without it. */
 @media (prefers-reduced-motion: no-preference) {
   .enter-rise {
-    animation: ccp-rise var(--duration-reveal) var(--ease-out-soft) both;
+    animation: cert-rise var(--duration-reveal) var(--ease-out-soft) both;
     animation-delay: var(--enter-delay, 0ms);
   }
-  @keyframes ccp-rise {
+  @keyframes cert-rise {
     from {
       opacity: 0;
       transform: translateY(12px);
@@ -1407,12 +1407,12 @@ code {
 }
 
 @media print {
-  .ccp-bar,
-  .ccp-subnav,
-  .ccp-pager,
-  .ccp-progress,
-  .ccp-to-top,
-  .ccp-footer {
+  .cert-bar,
+  .cert-subnav,
+  .cert-pager,
+  .cert-progress,
+  .cert-to-top,
+  .cert-footer {
     display: none !important;
   }
 }
@@ -1420,13 +1420,13 @@ code {
 /* The small controls keep the size they are drawn at, and an invisible layer centred on each one gives
    the 44 square a finger aims at, reaching past the paint instead of growing it. */
 .locale-menu__trigger,
-.ccp-official,
-.ccp-crumbs a {
+.cert-official,
+.cert-crumbs a {
   position: relative;
 }
 .locale-menu__trigger::after,
-.ccp-official::after,
-.ccp-crumbs a::after {
+.cert-official::after,
+.cert-crumbs a::after {
   content: '';
   position: absolute;
   left: 50%;
@@ -1437,19 +1437,19 @@ code {
 }
 
 /* The main landmark of a page holds its cover, its tabs and its content, and fills the window. */
-.ccp-page {
+.cert-page {
   display: flex;
   flex: 1;
   flex-direction: column;
 }
 
 /* --------------------------------- bar tools ---------------------------------- */
-.ccp-bar__tools {
+.cert-bar__tools {
   display: flex;
   align-items: center;
   gap: 0.125rem;
 }
-.ccp-bar__tool {
+.cert-bar__tool {
   display: grid;
   place-items: center;
   width: 2.75rem;
@@ -1457,7 +1457,7 @@ code {
   border-radius: var(--radius-pill);
   color: var(--color-ink-muted);
 }
-.ccp-bar__tool:hover {
+.cert-bar__tool:hover {
   background: var(--color-surface-strong);
   color: var(--color-ink);
 }
@@ -1468,10 +1468,10 @@ code {
   white-space: nowrap;
 }
 @media (max-width: 23rem) {
-  .ccp-bar__inner {
+  .cert-bar__inner {
     gap: 0.5rem;
   }
-  .ccp-bar__controls {
+  .cert-bar__controls {
     gap: 0.25rem;
   }
   .locale-menu__trigger {
@@ -1484,12 +1484,12 @@ code {
 }
 
 /* ------------------------------------ search ------------------------------------ */
-.ccp-search {
+.cert-search {
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
 }
-.ccp-search__field {
+.cert-search__field {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -1501,10 +1501,10 @@ code {
   color: var(--color-ink-muted);
   box-shadow: var(--shadow-card);
 }
-.ccp-search__field:focus-within {
+.cert-search__field:focus-within {
   border-color: var(--color-aws-orange);
 }
-.ccp-search__field input {
+.cert-search__field input {
   flex: 1;
   min-width: 0;
   border: 0;
@@ -1514,11 +1514,11 @@ code {
   font-size: 1.125rem;
   outline: none;
 }
-.ccp-search__status {
+.cert-search__status {
   font-size: var(--text-small);
   color: var(--color-ink-muted);
 }
-.ccp-results {
+.cert-results {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -1526,7 +1526,7 @@ code {
   padding: 0;
   list-style: none;
 }
-.ccp-result {
+.cert-result {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -1535,16 +1535,16 @@ code {
   border: 1px solid var(--color-hair);
   background: var(--color-surface);
 }
-.ccp-result__page {
+.cert-result__page {
   font-size: var(--text-h4);
   font-weight: var(--font-weight-bold);
   color: var(--color-ink);
   text-decoration: none;
 }
-.ccp-result__page:hover {
+.cert-result__page:hover {
   color: var(--color-accent);
 }
-.ccp-result__sections {
+.cert-result__sections {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -1552,7 +1552,7 @@ code {
   padding: 0;
   list-style: none;
 }
-.ccp-result__sections a {
+.cert-result__sections a {
   display: flex;
   flex-direction: column;
   gap: 0.125rem;
@@ -1563,14 +1563,14 @@ code {
   font-size: var(--text-small);
   text-decoration: none;
 }
-.ccp-result__sections a:hover {
+.cert-result__sections a:hover {
   color: var(--color-ink);
 }
-.ccp-result__sections strong:not(:empty) {
+.cert-result__sections strong:not(:empty) {
   color: var(--color-ink);
   font-weight: var(--font-weight-bold);
 }
-.ccp-result mark {
+.cert-result mark {
   border-radius: 2px;
   background: var(--color-selection);
   color: var(--color-selection-ink);
@@ -1578,16 +1578,16 @@ code {
 }
 
 /* ------------------------------------ review ------------------------------------ */
-.ccp-deck {
+.cert-deck {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   scroll-margin-top: 5rem;
 }
-.ccp-deck + .ccp-deck {
+.cert-deck + .cert-deck {
   margin-top: 1.5rem;
 }
-.ccp-deck__title {
+.cert-deck__title {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -1595,7 +1595,7 @@ code {
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.02em;
 }
-.ccp-deck__cards {
+.cert-deck__cards {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
@@ -1605,10 +1605,10 @@ code {
 }
 /* Every card of a row has the height of the tallest one, and the control that opens it sits at the
    bottom of each, so the row reads as one even line of cards. */
-.ccp-deck__cards > li {
+.cert-deck__cards > li {
   display: flex;
 }
-.ccp-flash {
+.cert-flash {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -1617,10 +1617,10 @@ code {
   background: var(--color-surface);
   box-shadow: var(--shadow-card);
 }
-.ccp-flash[open] {
+.cert-flash[open] {
   border-color: var(--color-aws-orange);
 }
-.ccp-flash__front {
+.cert-flash__front {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -1629,20 +1629,20 @@ code {
   cursor: pointer;
   list-style: none;
 }
-.ccp-flash__front::-webkit-details-marker {
+.cert-flash__front::-webkit-details-marker {
   display: none;
 }
-.ccp-flash__question {
+.cert-flash__question {
   font-size: var(--text-caption);
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-accent);
 }
-.ccp-flash__summary {
+.cert-flash__summary {
   line-height: 1.6;
 }
-.ccp-flash__reveal {
+.cert-flash__reveal {
   margin-top: auto;
   display: inline-flex;
   align-items: center;
@@ -1652,19 +1652,19 @@ code {
   font-weight: var(--font-weight-bold);
   color: var(--color-ink-muted);
 }
-.ccp-flash__reveal .ccp-icon {
+.cert-flash__reveal .cert-icon {
   transition: transform var(--duration-micro) var(--ease-out-soft);
 }
-.ccp-flash[open] .ccp-flash__reveal .ccp-icon {
+.cert-flash[open] .cert-flash__reveal .cert-icon {
   transform: rotate(180deg);
 }
-.ccp-flash__back {
+.cert-flash__back {
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
   padding: 0 1.25rem 1.25rem;
 }
-.ccp-flash__answer {
+.cert-flash__answer {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -1672,12 +1672,12 @@ code {
   font-size: var(--text-h4);
   font-weight: var(--font-weight-bold);
 }
-.ccp-flash__answer span {
+.cert-flash__answer span {
   font-size: var(--text-small);
   font-weight: var(--font-weight-medium);
   color: var(--color-ink-muted);
 }
-.ccp-flash__tip {
+.cert-flash__tip {
   padding: 0.75rem 0.875rem;
   border-radius: var(--radius-md);
   border-inline-start: 3px solid var(--color-aws-orange);
@@ -1685,10 +1685,10 @@ code {
   font-size: var(--text-small);
   line-height: 1.6;
 }
-.ccp-flash__tip strong {
+.cert-flash__tip strong {
   font-weight: var(--font-weight-bold);
 }
-.ccp-flash__link {
+.cert-flash__link {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
@@ -1698,44 +1698,44 @@ code {
   color: var(--color-accent);
   text-decoration: none;
 }
-.ccp-flash__link:hover {
+.cert-flash__link:hover {
   text-decoration: underline;
 }
-.ccp-section__title {
+.cert-section__title {
   scroll-margin-top: 5rem;
 }
 
-.ccp-lost__languages {
+.cert-lost__languages {
   display: grid;
   gap: 2.5rem;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
   width: 100%;
 }
-.ccp-lost__language {
+.cert-lost__language {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
 }
-.ccp-lost__lede {
+.cert-lost__lede {
   color: var(--color-ink-muted);
 }
 
 /* A long page lays out only what is near the window. The reserved size keeps the scrollbar honest until
    a block is reached. */
-.ccp-section,
-.ccp-deck {
+.cert-section,
+.cert-deck {
   content-visibility: auto;
   contain-intrinsic-size: auto 32rem;
 }
 
 /* The progress of the review. It is drawn only once its script runs, because it has nothing to show
    without one, and a card the reader knows is quieted and can be hidden. */
-.ccp-review-bar,
-.ccp-flash__known {
+.cert-review-bar,
+.cert-flash__known {
   display: none;
 }
-:root[data-review='on'] .ccp-review-bar {
+:root[data-review='on'] .cert-review-bar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -1745,14 +1745,14 @@ code {
   border: 1px solid var(--color-hair);
   background: var(--color-surface);
 }
-:root[data-review='on'] .ccp-flash__known {
+:root[data-review='on'] .cert-flash__known {
   display: inline-flex;
 }
-.ccp-review-bar__count {
+.cert-review-bar__count {
   margin-inline-end: auto;
   font-weight: var(--font-weight-bold);
 }
-.ccp-review-bar__toggle {
+.cert-review-bar__toggle {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -1760,13 +1760,13 @@ code {
   font-size: var(--text-small);
   cursor: pointer;
 }
-.ccp-review-bar__toggle input {
+.cert-review-bar__toggle input {
   width: 1.125rem;
   height: 1.125rem;
   accent-color: var(--color-aws-orange);
 }
-.ccp-review-bar__reset,
-.ccp-flash__known {
+.cert-review-bar__reset,
+.cert-flash__known {
   align-items: center;
   gap: 0.375rem;
   min-height: 2.75rem;
@@ -1780,22 +1780,22 @@ code {
   font-weight: var(--font-weight-bold);
   cursor: pointer;
 }
-.ccp-review-bar__reset:hover,
-.ccp-flash__known:hover {
+.cert-review-bar__reset:hover,
+.cert-flash__known:hover {
   border-color: var(--color-aws-orange);
 }
-.ccp-flash__known[aria-pressed='true'] {
+.cert-flash__known[aria-pressed='true'] {
   border-color: var(--color-aws-orange);
   background: var(--color-aws-orange);
   color: #16191f;
 }
-.ccp-flash__actions {
+.cert-flash__actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem 1rem;
 }
-[data-known] .ccp-flash {
+[data-known] .cert-flash {
   opacity: 0.6;
 }
 :root[data-hide-known] [data-known] {

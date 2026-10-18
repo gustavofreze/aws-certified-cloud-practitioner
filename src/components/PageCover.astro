@@ -18,21 +18,21 @@ const { locale, icon, title, lede } = Astro.props
 const copy = getCopy(locale)
 ---
 
-<div class="ccp-cover">
-  <span class="ccp-hero__glow ccp-hero__glow--orange" aria-hidden="true"></span>
-  <span class="ccp-cover__mark" aria-hidden="true"><Icon name={icon} size={220} /></span>
-  <div class="ccp-wrap ccp-cover__inner">
-    <nav aria-label={copy.nav.breadcrumb} class="ccp-crumbs enter-rise">
+<div class="cert-cover">
+  <span class="cert-hero__glow cert-hero__glow--orange" aria-hidden="true"></span>
+  <span class="cert-cover__mark" aria-hidden="true"><Icon name={icon} size={220} /></span>
+  <div class="cert-wrap cert-cover__inner">
+    <nav aria-label={copy.nav.breadcrumb} class="cert-crumbs enter-rise">
       <a href={pageHref(locale)}>{copy.nav.home}</a>
-      <span class="ccp-crumbs__sep" aria-hidden="true">/</span>
+      <span class="cert-crumbs__sep" aria-hidden="true">/</span>
       <span>{title}</span>
     </nav>
-    <div class="ccp-cover__head enter-rise" style="--enter-delay:60ms">
-      <span class="ccp-tile ccp-tile--large ccp-tile--deep">
+    <div class="cert-cover__head enter-rise" style="--enter-delay:60ms">
+      <span class="cert-tile cert-tile--large cert-tile--deep">
         <Icon name={icon} size={24} />
       </span>
-      <h1 class="ccp-cover__title">{title}</h1>
+      <h1 class="cert-cover__title">{title}</h1>
     </div>
-    <p class="ccp-cover__lede enter-rise" style="--enter-delay:120ms">{lede}</p>
+    <p class="cert-cover__lede enter-rise" style="--enter-delay:120ms">{lede}</p>
   </div>
 </div>

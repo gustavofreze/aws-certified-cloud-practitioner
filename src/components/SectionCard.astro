@@ -16,20 +16,20 @@ interface Props {
 const { section, labels } = Astro.props
 ---
 
-<section id={section.id} class="ccp-section" aria-labelledby={`${section.id}-title`}>
-  <header class="ccp-section__head">
-    <div class="ccp-section__name">
-      <h2 id={`${section.id}-title`} class="ccp-section__title">
-        <a href={`#${section.id}`} class="ccp-section__anchor">
+<section id={section.id} class="cert-section" aria-labelledby={`${section.id}-title`}>
+  <header class="cert-section__head">
+    <div class="cert-section__name">
+      <h2 id={`${section.id}-title`} class="cert-section__title">
+        <a href={`#${section.id}`} class="cert-section__anchor">
           {section.name}
-          <Icon name="link" size={16} class="ccp-section__link-icon" />
+          <Icon name="link" size={16} class="cert-section__link-icon" />
         </a>
       </h2>
-      {section.fullName && <p class="ccp-section__full">{section.fullName}</p>}
+      {section.fullName && <p class="cert-section__full">{section.fullName}</p>}
     </div>
     {
       section.link && (
-        <a href={section.link} target="_blank" rel="noopener noreferrer" class="ccp-official">
+        <a href={section.link} target="_blank" rel="noopener noreferrer" class="cert-official">
           {labels.officialPage}
           <Icon name="external" size={14} />
         </a>
@@ -37,15 +37,15 @@ const { section, labels } = Astro.props
     }
   </header>
 
-  <p class="ccp-prose" set:html={renderInline(section.summary)} />
+  <p class="cert-prose" set:html={renderInline(section.summary)} />
 
-  <div class="ccp-section__grid">
-    <div class="ccp-block">
+  <div class="cert-section__grid">
+    <div class="cert-block">
       {
         section.points && (
           <>
-            <p class="ccp-block__title">{labels.keyPoints}</p>
-            <ul class="ccp-list">
+            <p class="cert-block__title">{labels.keyPoints}</p>
+            <ul class="cert-list">
               {section.points.map((point) => (
                 <li set:html={renderInline(point)} />
               ))}
@@ -55,10 +55,10 @@ const { section, labels } = Astro.props
       }
       {
         section.links && (
-          <ul class="ccp-links">
+          <ul class="cert-links">
             {section.links.map((link) => (
               <li>
-                <a href={link.href} target="_blank" rel="noopener noreferrer" class="ccp-link-card">
+                <a href={link.href} target="_blank" rel="noopener noreferrer" class="cert-link-card">
                   <span>{link.label}</span>
                   <Icon name="external" size={16} />
                 </a>
@@ -69,21 +69,21 @@ const { section, labels } = Astro.props
       }
     </div>
 
-    <div class="ccp-tip">
-      <p class="ccp-tip__title">
+    <div class="cert-tip">
+      <p class="cert-tip__title">
         <Icon name="target" size={16} />
         {labels.examTip}
       </p>
-      <p class="ccp-tip__text" set:html={renderInline(section.tip)} />
+      <p class="cert-tip__text" set:html={renderInline(section.tip)} />
     </div>
   </div>
 
   {
     section.table && (
-      <div class="ccp-block">
-        <p class="ccp-block__title">{section.table.title}</p>
-        <div class="ccp-table-wrap">
-          <table class="ccp-table">
+      <div class="cert-block">
+        <p class="cert-block__title">{section.table.title}</p>
+        <div class="cert-table-wrap">
+          <table class="cert-table">
             <thead>
               <tr>
                 <th scope="col">{section.table.head[0]}</th>
@@ -94,13 +94,13 @@ const { section, labels } = Astro.props
               {section.table.rows.map((row) => (
                 <tr>
                   <th scope="row">
-                    <span class="ccp-chip">{row.key}</span>
+                    <span class="cert-chip">{row.key}</span>
                   </th>
                   <td>
                     {row.cells.length === 1 ? (
                       <span set:html={renderInline(row.cells[0] ?? '')} />
                     ) : (
-                      <ul class="ccp-list ccp-list--tight">
+                      <ul class="cert-list cert-list--tight">
                         {row.cells.map((cell) => (
                           <li set:html={renderInline(cell)} />
                         ))}

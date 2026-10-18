@@ -15,7 +15,8 @@ import { dirname, join, relative } from 'node:path'
 
 const DIST = 'dist'
 const BUDGET = 4000
-const BASE = '/aws-certified-cloud-practitioner/'
+/** The site is served below the name of the repository, which is also the name of the package. */
+const BASE = `/${JSON.parse(readFileSync('package.json', 'utf8')).name}/`
 
 /** Lists every page of the site, leaving out the search index Pagefind writes beside it. */
 function pages(directory) {

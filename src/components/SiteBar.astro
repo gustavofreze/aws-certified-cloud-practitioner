@@ -20,17 +20,17 @@ const { locale, paths } = Astro.props
 const copy = getCopy(locale)
 ---
 
-<header class="ccp-bar">
-  <div class="ccp-wrap ccp-bar__inner">
-    <a href={pageHref(locale)} class="ccp-bar__home" aria-label={`${copy.brand}, ${copy.nav.home}`}>
+<header class="cert-bar">
+  <div class="cert-wrap cert-bar__inner">
+    <a href={pageHref(locale)} class="cert-bar__home" aria-label={`${copy.brand}, ${copy.nav.home}`}>
       <BrandMark label={copy.brand} />
     </a>
-    <div class="ccp-bar__controls">
-      <div class="ccp-bar__tools">
-        <a href={pageHref(locale, 'search')} class="ccp-bar__tool" aria-label={copy.nav.search} title={copy.nav.search}>
+    <div class="cert-bar__controls">
+      <div class="cert-bar__tools">
+        <a href={pageHref(locale, 'search')} class="cert-bar__tool" aria-label={copy.nav.search} title={copy.nav.search}>
           <Icon name="search" size={18} />
         </a>
-        <a href={pageHref(locale, 'review')} class="ccp-bar__tool" aria-label={copy.nav.review} title={copy.nav.review}>
+        <a href={pageHref(locale, 'review')} class="cert-bar__tool" aria-label={copy.nav.review} title={copy.nav.review}>
           <Icon name="cards" size={18} />
         </a>
       </div>

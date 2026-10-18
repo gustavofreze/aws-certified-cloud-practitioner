@@ -3,6 +3,7 @@
  * default locale at the root with no prefix, pt-BR lives under `pt-br/`. Every address is built on the base
  * the site is served under, because GitHub Pages publishes it below the name of the repository.
  */
+import { SITE } from '../content/site'
 import type { Locale } from './strings'
 
 export const DEFAULT_LOCALE: Locale = 'en-US'
@@ -30,9 +31,6 @@ export function assetHref(path: string): string {
 }
 
 /** The official page of the certification, in the language being read. */
-export const CERTIFICATION_HREF: Readonly<Record<Locale, string>> = {
-  'pt-BR': 'https://aws.amazon.com/pt/certification/certified-cloud-practitioner/',
-  'en-US': 'https://aws.amazon.com/certification/certified-cloud-practitioner/',
-}
+export const CERTIFICATION_HREF: Readonly<Record<Locale, string>> = SITE.certification
 
-export const REPOSITORY_HREF = 'https://github.com/gustavofreze/aws-certified-cloud-practitioner'
+export const REPOSITORY_HREF = `https://github.com/gustavofreze/${SITE.repository}`

@@ -6,7 +6,7 @@ SHELL := /bin/bash
 .SHELLFLAGS := -eu -o pipefail -c
 .DEFAULT_GOAL := help
 
-PROJECT_NAME := aws-certified-cloud-practitioner
+PROJECT_NAME := $(shell sed -n 's/^  "name": "\(.*\)",$$/\1/p' package.json)
 NODE_VERSION := $(shell cat .nvmrc)
 NODE_IMAGE   := node:$(NODE_VERSION)
 

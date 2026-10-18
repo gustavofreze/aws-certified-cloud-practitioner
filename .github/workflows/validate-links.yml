@@ -30,7 +30,7 @@ jobs:
       - name: Build site
         run: pnpm build
       - name: Mount site under its base path
-        run: mkdir -p site && cp -r dist site/aws-certified-cloud-practitioner
+        run: mkdir -p site && cp -r dist site/${{ github.event.repository.name }}
       - id: lychee
         name: Check links
         uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
