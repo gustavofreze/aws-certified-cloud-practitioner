@@ -202,6 +202,49 @@
   }
 }
 
+/* ------------------------------- the certifications ------------------------------- */
+/* A strip above the bar, on the deep band of the home, that leads to every set of notes built from this
+   code. Each link keeps the 44 square a finger aims at, so the strip is as tall as one. */
+.cert-family {
+  background: var(--color-band-deep);
+  color: var(--color-ink-inverse-muted);
+}
+.cert-family__list {
+  display: flex;
+  gap: 1.25rem;
+  margin-block: 0;
+  list-style: none;
+  font-size: var(--text-small);
+}
+.cert-family__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  border-block-end: 2px solid transparent;
+  color: inherit;
+  font-weight: var(--font-weight-demibold);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.cert-family__link:hover {
+  color: var(--color-ink-inverse);
+}
+.cert-family__link.is-current {
+  border-block-end-color: var(--color-aws-orange);
+  color: var(--color-ink-inverse);
+}
+.cert-family__exam {
+  color: var(--color-ink-inverse-muted);
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-medium);
+}
+@media (max-width: 26rem) {
+  .cert-family__exam {
+    display: none;
+  }
+}
+
 /* ------------------------------------ the bar ------------------------------------ */
 .cert-bar {
   border-block-end: 1px solid var(--color-hair);

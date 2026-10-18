@@ -21,6 +21,7 @@ export interface SiteCopy {
     readonly toTop: string
     readonly roadmap: string
     readonly breadcrumb: string
+    readonly certifications: string
     readonly search: string
     readonly review: string
   }
@@ -76,6 +77,7 @@ const ptBR: SiteCopy = {
     toTop: 'Voltar ao topo',
     roadmap: 'Roteiro',
     breadcrumb: 'Você está em',
+    certifications: 'Certificações',
     search: 'Buscar',
     review: 'Revisar',
   },
@@ -137,6 +139,7 @@ const enUS: SiteCopy = {
     toTop: 'Back to top',
     roadmap: 'Roadmap',
     breadcrumb: 'You are here',
+    certifications: 'Certifications',
     search: 'Search',
     review: 'Review',
   },
