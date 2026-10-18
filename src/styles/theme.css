@@ -1185,6 +1185,23 @@ code {
   color: var(--color-selection-ink);
   font-size: var(--text-small);
 }
+/* On a phone the key column gives up its single line, so the table fits the screen instead of scrolling
+   sideways: the key wraps inside its chip and both columns take tighter padding. */
+@media (max-width: 40rem) {
+  .ccp-table th,
+  .ccp-table td {
+    padding: 0.75rem;
+  }
+  .ccp-table tbody th {
+    width: 36%;
+    white-space: normal;
+  }
+  .ccp-table .ccp-chip {
+    border-radius: var(--radius-md);
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+}
 
 .ccp-links {
   display: grid;
@@ -1443,6 +1460,27 @@ code {
 .ccp-bar__tool:hover {
   background: var(--color-surface-strong);
   color: var(--color-ink);
+}
+
+/* On the narrowest phones every control of the bar still fits on one line: the gaps tighten and the
+   language menu drops its globe, keeping the code of the language in force. */
+.locale-menu__trigger {
+  white-space: nowrap;
+}
+@media (max-width: 23rem) {
+  .ccp-bar__inner {
+    gap: 0.5rem;
+  }
+  .ccp-bar__controls {
+    gap: 0.25rem;
+  }
+  .locale-menu__trigger {
+    gap: 0.25rem;
+    padding-inline: 0.5rem;
+  }
+  .locale-menu__trigger > svg:first-child {
+    display: none;
+  }
 }
 
 /* ------------------------------------ search ------------------------------------ */
