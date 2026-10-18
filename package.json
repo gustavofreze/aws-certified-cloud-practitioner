@@ -19,7 +19,7 @@
     "typecheck": "astro check"
   },
   "dependencies": {
-    "astro": "7.2.8"
+    "astro": "7.3.8"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
@@ -27,7 +27,7 @@
     "@tailwindcss/vite": "4.3.3",
     "pagefind": "1.5.2",
     "tailwindcss": "4.3.3",
-    "typescript": "6.0.3",
+    "typescript": "7.0.2",
     "vitest": "5.0.5"
   }
 }
