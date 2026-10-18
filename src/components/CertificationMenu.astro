@@ -1,0 +1,50 @@
+---
+/**
+ * The brand of the bar as a menu of every certification with notes built from this code. It names the
+ * one being read and leads to the home of each one, in the language being read. A native <details>
+ * disclosure, like the language menu, so it opens with no script and shares that menu's dismissal.
+ */
+import { CERTIFICATIONS } from '../content/certifications'
+import { SITE } from '../content/site'
+import { pageHref, siblingHref } from '../i18n'
+import { getCopy, type Locale } from '../i18n/strings'
+import BrandMark from './BrandMark.astro'
+import Icon from './Icon.astro'
+
+interface Props {
+  locale: Locale
+}
+const { locale } = Astro.props
+const copy = getCopy(locale)
+const origin = Astro.site ?? Astro.url.origin
+---
+
+<details class="locale-menu cert-switch">
+  <summary class="locale-menu__trigger cert-switch__trigger" aria-label={`${copy.nav.certifications}: ${copy.brand}`}>
+    <BrandMark label={copy.brand} />
+    <Icon name="chevron" size={14} class="locale-menu__chevron" />
+  </summary>
+  <ul class="locale-menu__list cert-switch__list">
+    {
+      CERTIFICATIONS.map((certification) => {
+        const current = certification.id === SITE.id
+        const href = current ? pageHref(locale) : new URL(siblingHref(certification.repository, locale), origin).href
+        return (
+          <li>
+            <a
+              href={href}
+              aria-current={current ? 'true' : undefined}
+              class:list={['locale-menu__item', current && 'is-current']}
+            >
+              <span>
+                {certification.name}
+                <span class="cert-switch__exam">{certification.exam}</span>
+              </span>
+              {current && <Icon name="check" size={16} />}
+            </a>
+          </li>
+        )
+      })
+    }
+  </ul>
+</details>

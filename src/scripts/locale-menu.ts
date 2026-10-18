@@ -1,5 +1,6 @@
 /**
- * Progressive enhancement for the native <details> language menu: close it on Escape and on an outside
+ * Progressive enhancement for the native <details> menus of the bar, the language and the certification
+ * menus: close them on Escape and on an outside
  * click, returning focus to the summary on Escape. The menu works without this.
  *
  * It also carries the section being read across the switch. Both languages publish the same section

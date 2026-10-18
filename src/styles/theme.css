@@ -202,49 +202,6 @@
   }
 }
 
-/* ------------------------------- the certifications ------------------------------- */
-/* A strip above the bar, on the deep band of the home, that leads to every set of notes built from this
-   code. Each link keeps the 44 square a finger aims at, so the strip is as tall as one. */
-.cert-family {
-  background: var(--color-band-deep);
-  color: var(--color-ink-inverse-muted);
-}
-.cert-family__list {
-  display: flex;
-  gap: 1.25rem;
-  margin-block: 0;
-  list-style: none;
-  font-size: var(--text-small);
-}
-.cert-family__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  min-height: 2.75rem;
-  border-block-end: 2px solid transparent;
-  color: inherit;
-  font-weight: var(--font-weight-demibold);
-  text-decoration: none;
-  white-space: nowrap;
-}
-.cert-family__link:hover {
-  color: var(--color-ink-inverse);
-}
-.cert-family__link.is-current {
-  border-block-end-color: var(--color-aws-orange);
-  color: var(--color-ink-inverse);
-}
-.cert-family__exam {
-  color: var(--color-ink-inverse-muted);
-  font-size: var(--text-caption);
-  font-weight: var(--font-weight-medium);
-}
-@media (max-width: 26rem) {
-  .cert-family__exam {
-    display: none;
-  }
-}
-
 /* ------------------------------------ the bar ------------------------------------ */
 .cert-bar {
   border-block-end: 1px solid var(--color-hair);
@@ -256,11 +213,6 @@
   justify-content: space-between;
   gap: 1rem;
   min-height: 4rem;
-}
-.cert-bar__home {
-  color: var(--color-ink);
-  text-decoration: none;
-  border-radius: var(--radius-md);
 }
 .cert-bar__controls {
   display: flex;
@@ -277,7 +229,7 @@
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.01em;
 }
-@media (max-width: 26rem) {
+@media (max-width: 40rem) {
   .cert-brand__word {
     display: none;
   }
@@ -395,6 +347,33 @@
   color: var(--color-selection-ink);
   background: var(--color-selection);
   font-weight: var(--font-weight-demibold);
+}
+
+/* Certification menu: the brand of the bar opens the language menu's list of every certification. The
+   trigger hugs the mark, so the tile sits close to the rim of the pill. */
+.cert-switch__trigger {
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.25rem 0.75rem 0.25rem 0.25rem;
+}
+.cert-switch__list {
+  right: auto;
+  left: 0;
+  min-width: 17rem;
+}
+.cert-switch__exam {
+  margin-inline-start: 0.5rem;
+  color: var(--color-ink-muted);
+  font-size: var(--text-caption);
+}
+.locale-menu__item.is-current .cert-switch__exam {
+  color: inherit;
+}
+@media (max-width: 40rem) {
+  .cert-switch__trigger {
+    gap: 0.25rem;
+    padding-inline-end: 0.375rem;
+  }
 }
 
 /* ------------------------------------ buttons ------------------------------------ */
@@ -1506,11 +1485,12 @@ code {
 }
 
 /* On the narrowest phones every control of the bar still fits on one line: the gaps tighten and the
-   language menu drops its globe, keeping the code of the language in force. */
+   language menu drops its globe, keeping the code of the language in force, and the tools narrow while
+   keeping the 44 height. */
 .locale-menu__trigger {
   white-space: nowrap;
 }
-@media (max-width: 23rem) {
+@media (max-width: 24rem) {
   .cert-bar__inner {
     gap: 0.5rem;
   }
@@ -1523,6 +1503,9 @@ code {
   }
   .locale-menu__trigger > svg:first-child {
     display: none;
+  }
+  .cert-bar__tool {
+    width: 2.25rem;
   }
 }
 
