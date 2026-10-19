@@ -1,6 +1,8 @@
 import { en, pt } from '../links'
 import type { Topic } from '../types'
 
+const SKILL_BUILDER = 'https://skillbuilder.aws/category/exam-prep/cloud-practitioner-foundational-CLF-C02'
+
 export const enUS: readonly Topic[] = [
   {
     slug: 'support',
@@ -162,8 +164,8 @@ export const enUS: readonly Topic[] = [
         summary: 'Courses that cover the exam content end to end.',
         links: [
           {
-            label: 'AWS Cloud Practitioner Essentials',
-            href: 'https://explore.skillbuilder.aws/learn/course/134/aws-cloud-practitioner-essentials',
+            label: 'Exam prep plan on AWS Skill Builder',
+            href: SKILL_BUILDER,
           },
           {
             label: 'AWS Certified Cloud Practitioner - Preparatório AWS CCP, in Portuguese',
@@ -367,8 +369,8 @@ export const ptBR: readonly Topic[] = [
         summary: 'Cursos que cobrem o conteúdo da prova do início ao fim.',
         links: [
           {
-            label: 'AWS Cloud Practitioner Essentials',
-            href: 'https://explore.skillbuilder.aws/learn/course/8287/aws-cloud-practitioner-essentials-portuguese',
+            label: 'Plano de preparação no AWS Skill Builder',
+            href: SKILL_BUILDER,
           },
           {
             label: 'AWS Certified Cloud Practitioner - Preparatório AWS CCP',

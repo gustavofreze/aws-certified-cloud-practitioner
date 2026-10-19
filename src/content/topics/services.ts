@@ -515,7 +515,7 @@ export const enUS: readonly Topic[] = [
         id: 'quick-sight',
         name: 'Quick Sight',
         fullName: 'Amazon Quick Sight',
-        link: en.aws('quicksight/'),
+        link: en.aws('quick/quicksight/'),
         summary: 'Business intelligence: interactive dashboards and reports from your data.',
         points: [
           'Interactive dashboards in the browser.',
@@ -630,7 +630,7 @@ export const enUS: readonly Topic[] = [
         id: 'health-dashboard',
         name: 'Health Dashboard',
         fullName: 'AWS Health Dashboard',
-        link: en.aws('premiumsupport/technology/aws-health-dashboard/'),
+        link: en.aws('premiumsupport/technology/aws-health/'),
         summary: 'Shows the status of AWS services and the events affecting **your** account.',
         points: [
           'A general view of service status across all Regions.',
@@ -1412,7 +1412,7 @@ export const enUS: readonly Topic[] = [
         id: 'application-discovery-service',
         name: 'Application Discovery Service',
         fullName: 'AWS Application Discovery Service',
-        link: en.aws('application-discovery/'),
+        link: en.aws('transform/'),
         summary: 'Collects information about on-premises servers: configuration, usage and dependencies.',
         points: [
           'Agent-based and agentless discovery.',
@@ -1451,7 +1451,7 @@ export const enUS: readonly Topic[] = [
         id: 'migration-hub',
         name: 'Migration Hub',
         fullName: 'AWS Migration Hub',
-        link: en.aws('migration-hub/'),
+        link: en.aws('transform/'),
         summary: 'Tracks migration progress in one place. It still appears in the exam guide.',
         points: [
           'A central view of migrations run with several tools.',
@@ -1496,7 +1496,7 @@ export const enUS: readonly Topic[] = [
         id: 'x-ray',
         name: 'X-Ray',
         fullName: 'AWS X-Ray',
-        link: en.aws('xray/'),
+        link: en.aws('cloudwatch/features/application-observability-apm/'),
         summary: 'Traces requests through distributed applications to find bottlenecks and errors.',
         points: [
           'A service map with the latency of each call.',
@@ -1522,7 +1522,7 @@ export const enUS: readonly Topic[] = [
         id: 'appstream',
         name: 'AppStream 2.0',
         fullName: 'Amazon AppStream 2.0',
-        link: en.aws('appstream2/'),
+        link: en.aws('workspaces/applications/'),
         summary: 'Streams desktop applications to the user’s browser, with nothing to install.',
         points: [
           'The application runs on AWS; the user only sees the pixels.',
@@ -1574,7 +1574,7 @@ export const enUS: readonly Topic[] = [
         id: 'connect',
         name: 'Connect',
         fullName: 'Amazon Connect',
-        link: en.aws('connect/'),
+        link: en.aws('products/connect/customer/'),
         summary: 'A cloud contact center, for voice and chat.',
         points: [
           'Set up in minutes, with no telephony infrastructure.',
@@ -2129,7 +2129,7 @@ export const ptBR: readonly Topic[] = [
         id: 'quick-sight',
         name: 'Quick Sight',
         fullName: 'Amazon Quick Sight',
-        link: pt.aws('quicksight/'),
+        link: pt.aws('quick/quicksight/'),
         summary: 'Business intelligence: painéis interativos e relatórios a partir dos seus dados.',
         points: [
           'Painéis interativos acessíveis pelo navegador.',
@@ -2244,7 +2244,7 @@ export const ptBR: readonly Topic[] = [
         id: 'health-dashboard',
         name: 'Health Dashboard',
         fullName: 'AWS Health Dashboard',
-        link: pt.aws('premiumsupport/technology/aws-health-dashboard/'),
+        link: pt.aws('premiumsupport/technology/aws-health/'),
         summary: 'Mostra o estado dos serviços da AWS e os eventos que afetam a **sua** conta.',
         points: [
           'Visão geral do status dos serviços em todas as Regiões.',
@@ -3026,7 +3026,7 @@ export const ptBR: readonly Topic[] = [
         id: 'application-discovery-service',
         name: 'Application Discovery Service',
         fullName: 'AWS Application Discovery Service',
-        link: pt.aws('application-discovery/'),
+        link: pt.aws('transform/'),
         summary: 'Coleta informações sobre servidores locais: configuração, uso e dependências.',
         points: [
           'Descobre com e sem agentes.',
@@ -3065,7 +3065,7 @@ export const ptBR: readonly Topic[] = [
         id: 'migration-hub',
         name: 'Migration Hub',
         fullName: 'AWS Migration Hub',
-        link: pt.aws('migration-hub/'),
+        link: pt.aws('transform/'),
         summary: 'Acompanha o andamento das migrações em um só lugar. Ainda aparece no guia da prova.',
         points: [
           'Visão central das migrações feitas com várias ferramentas.',
@@ -3114,7 +3114,7 @@ export const ptBR: readonly Topic[] = [
         id: 'x-ray',
         name: 'X-Ray',
         fullName: 'AWS X-Ray',
-        link: pt.aws('xray/'),
+        link: pt.aws('cloudwatch/features/application-observability-apm/'),
         summary: 'Rastreia requisições em aplicações distribuídas para encontrar gargalos e erros.',
         points: [
           'Mapa de serviços com latência de cada chamada.',
@@ -3140,7 +3140,7 @@ export const ptBR: readonly Topic[] = [
         id: 'appstream',
         name: 'AppStream 2.0',
         fullName: 'Amazon AppStream 2.0',
-        link: pt.aws('appstream2/'),
+        link: pt.aws('workspaces/applications/'),
         summary: 'Transmite aplicações de desktop para o navegador do usuário, sem instalar nada.',
         points: [
           'A aplicação roda na AWS; o usuário vê só a imagem.',
@@ -3192,7 +3192,7 @@ export const ptBR: readonly Topic[] = [
         id: 'connect',
         name: 'Connect',
         fullName: 'Amazon Connect',
-        link: pt.aws('connect/'),
+        link: pt.aws('products/connect/customer/'),
         summary: 'Central de atendimento (contact center) na nuvem, por voz e chat.',
         points: [
           'Configuração em minutos, sem infraestrutura de telefonia.',
