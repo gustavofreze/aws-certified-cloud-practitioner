@@ -109,7 +109,7 @@ export const enUS: readonly Topic[] = [
         id: 'migration',
         name: 'Migration strategies',
         fullName: 'The 7 Rs',
-        link: en.aws('cloud-migration/'),
+        link: en.aws('migration-and-modernization/'),
         summary:
           'Ways to take each application to the cloud, from the simplest to the one that changes the application the most.',
         points: [
@@ -249,7 +249,7 @@ export const enUS: readonly Topic[] = [
         id: 'sdk',
         name: 'SDKs',
         fullName: 'Software Development Kits',
-        link: en.aws('developer/tools/'),
+        link: 'https://builder.aws.com/build/tools',
         summary: 'Libraries to call AWS services from application code.',
         points: [
           'Available for Java, Python, JavaScript, .NET, Go, PHP, Ruby and other languages.',
@@ -491,7 +491,7 @@ export const ptBR: readonly Topic[] = [
         id: 'migration',
         name: 'Estratégias de migração',
         fullName: 'Os 7 Rs',
-        link: pt.aws('cloud-migration/'),
+        link: pt.aws('migration-and-modernization/'),
         summary: 'Formas de levar cada aplicação para a nuvem, da mais simples à que mais muda a aplicação.',
         points: [
           '**Rehost** (lift-and-shift): move sem alterar. **Relocate**: move a plataforma de virtualização inteira.',
@@ -631,7 +631,7 @@ export const ptBR: readonly Topic[] = [
         id: 'sdk',
         name: 'SDKs',
         fullName: 'Software Development Kits',
-        link: pt.aws('developer/tools/'),
+        link: 'https://builder.aws.com/build/tools',
         summary: 'Bibliotecas para chamar os serviços da AWS a partir do código da aplicação.',
         points: [
           'Disponíveis para Java, Python, JavaScript, .NET, Go, PHP, Ruby e outras linguagens.',

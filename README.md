@@ -16,7 +16,7 @@
 
 ## Overview
 
-Study notes for the [AWS Certified Cloud Practitioner](https://aws.amazon.com/certification/certified-cloud-practitioner)
+Study notes for the [AWS Certified Cloud Practitioner](https://aws.amazon.com/certification/certified-cloud-practitioner/)
 exam (CLF-C02), in English and Portuguese, published at
 [gustavofreze.github.io/aws-certified-cloud-practitioner](https://gustavofreze.github.io/aws-certified-cloud-practitioner/).
 The notes follow the domains of the official exam guide and link to the AWS documentation of every service they cover.
