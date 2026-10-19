@@ -1,0 +1,18 @@
+# The notes are the study material of the repository, written as TypeScript data under src/content, so they are
+# what GitHub reports as the language of the repository.
+src/content/** linguist-detectable=true
+
+# The site that publishes the notes is tooling, kept out of the language statistics.
+src/components/** linguist-detectable=false
+src/i18n/** linguist-detectable=false
+src/layouts/** linguist-detectable=false
+src/pages/** linguist-detectable=false
+src/scripts/** linguist-detectable=false
+src/styles/** linguist-detectable=false
+tools/** linguist-detectable=false
+public/** linguist-detectable=false
+*.astro linguist-detectable=false
+*.mjs linguist-detectable=false
+astro.config.ts linguist-detectable=false
+vitest.config.ts linguist-detectable=false
+Makefile linguist-detectable=false
