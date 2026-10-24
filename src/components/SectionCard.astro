@@ -4,6 +4,7 @@
  * its official page, the summary, then the points that matter beside the note on how the subject shows
  * up on the exam, and a table below when the subject has one.
  */
+import type { Glossary } from '../content/glossary'
 import { renderInline } from '../content/inline'
 import type { Section } from '../content/types'
 import type { SiteCopy } from '../i18n/strings'
@@ -12,8 +13,9 @@ import Icon from './Icon.astro'
 interface Props {
   section: Section
   labels: SiteCopy['topic']
+  glossary: Glossary
 }
-const { section, labels } = Astro.props
+const { section, labels, glossary } = Astro.props
 ---
 
 <section id={section.id} class="cert-section" aria-labelledby={`${section.id}-title`}>
@@ -37,7 +39,7 @@ const { section, labels } = Astro.props
     }
   </header>
 
-  <p class="cert-prose" set:html={renderInline(section.summary)} />
+  <p class="cert-prose" set:html={renderInline(section.summary, glossary)} />
 
   <div class="cert-section__grid">
     <div class="cert-block">
@@ -47,7 +49,7 @@ const { section, labels } = Astro.props
             <p class="cert-block__title">{labels.keyPoints}</p>
             <ul class="cert-list">
               {section.points.map((point) => (
-                <li set:html={renderInline(point)} />
+                <li set:html={renderInline(point, glossary)} />
               ))}
             </ul>
           </>
@@ -74,7 +76,7 @@ const { section, labels } = Astro.props
         <Icon name="target" size={16} />
         {labels.examTip}
       </p>
-      <p class="cert-tip__text" set:html={renderInline(section.tip)} />
+      <p class="cert-tip__text" set:html={renderInline(section.tip, glossary)} />
     </div>
   </div>
 
@@ -98,11 +100,11 @@ const { section, labels } = Astro.props
                   </th>
                   <td>
                     {row.cells.length === 1 ? (
-                      <span set:html={renderInline(row.cells[0] ?? '')} />
+                      <span set:html={renderInline(row.cells[0] ?? '', glossary)} />
                     ) : (
                       <ul class="cert-list cert-list--tight">
                         {row.cells.map((cell) => (
-                          <li set:html={renderInline(cell)} />
+                          <li set:html={renderInline(cell, glossary)} />
                         ))}
                       </ul>
                     )}

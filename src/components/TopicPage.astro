@@ -7,6 +7,7 @@
  * marks the section being read, because a reader comes back to these pages holding one subject in mind.
  * Each section is a card with the same anatomy (see `SectionCard.astro`).
  */
+import { Glossary, readingsOf } from '../content/glossary'
 import { renderInline } from '../content/inline'
 import { topicAt, topicsOf } from '../content'
 import { pageHref, pagePaths } from '../i18n'
@@ -22,6 +23,7 @@ interface Props {
 const { locale, slug } = Astro.props
 const copy = getCopy(locale)
 const { topic, previous, next } = topicAt(locale, slug)
+const glossary = new Glossary(locale, [{ text: topic.lede, rendered: true }, ...topic.sections.flatMap(readingsOf)])
 const total = topicsOf(locale).length
 const index = topicsOf(locale).indexOf(topic) + 1
 const absolute = (path: string): string => new URL(path, Astro.site).href
@@ -58,7 +60,7 @@ const breadcrumb = [
           </span>
           <h1 class="cert-cover__title">{topic.title}</h1>
         </div>
-        <p class="cert-cover__lede enter-rise" style="--enter-delay:120ms" set:html={renderInline(topic.lede)} />
+        <p class="cert-cover__lede enter-rise" style="--enter-delay:120ms" set:html={renderInline(topic.lede, glossary)} />
       </div>
     </div>
 
@@ -79,7 +81,7 @@ const breadcrumb = [
     </nav>
 
     <div class="cert-wrap cert-main">
-      {topic.sections.map((section) => <SectionCard section={section} labels={copy.topic} />)}
+      {topic.sections.map((section) => <SectionCard section={section} labels={copy.topic} glossary={glossary} />)}
 
       <nav class="cert-pager" aria-label={copy.nav.roadmap} data-pagefind-ignore>
         {

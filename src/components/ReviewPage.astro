@@ -7,8 +7,9 @@
  * Each card is a native disclosure, so the page works with no script at all. The script adds the one
  * thing a review needs on top: marking the cards the reader already knows, remembered in this browser,
  * so the next session can hide them. The study resources are left out, since a list of links is
- * nothing to recall.
+ * nothing to recall. Only the back of a card explains its acronyms, so the front never gives the name away.
  */
+import { Glossary } from '../content/glossary'
 import { renderInline } from '../content/inline'
 import { topicsOf } from '../content'
 import { SITE } from '../content/site'
@@ -83,7 +84,13 @@ const topics = topicsOf(locale).filter((topic) => topic.sections.every((section)
                         {section.name}
                         {section.fullName && <span>{section.fullName}</span>}
                       </p>
-                      <p class="cert-flash__tip" set:html={renderInline(section.tip)} />
+                      <p class="cert-flash__tip" set:html={renderInline(
+                          section.tip,
+                          new Glossary(locale, [
+                            { text: section.fullName ?? '', rendered: false },
+                            { text: section.tip, rendered: true },
+                          ]),
+                        )} />
                       <div class="cert-flash__actions">
                         <button type="button" class="cert-flash__known" aria-pressed="false" data-card-known>
                           <Icon name="check" size={16} />

@@ -118,7 +118,7 @@ export const enUS: readonly Topic[] = [
         summary: 'A 90-minute exam with multiple choice and multiple response questions, available in many languages.',
         points: [
           '**65 questions**: 50 are scored and 15 are unscored (and not identified).',
-          'Scaled score from **100 to 1,000**; passing score: **700**.',
+          'Scaled score from **100 to 1,000**. Passing score: **700**.',
           'Costs **US$ 100**. There is no penalty for guessing.',
         ],
         tip: 'Never leave a question blank: unanswered questions count as wrong and guessing is not penalized.',
@@ -168,7 +168,7 @@ export const enUS: readonly Topic[] = [
             href: SKILL_BUILDER,
           },
           {
-            label: 'AWS Certified Cloud Practitioner - Preparatório AWS CCP, in Portuguese',
+            label: 'AWS Certified Cloud Practitioner: Preparatório AWS CCP, in Portuguese',
             href: 'https://www.udemy.com/course/aws-certified-cloud-practitioner-aws-ccp',
           },
         ],
@@ -180,11 +180,11 @@ export const enUS: readonly Topic[] = [
         summary: 'Questions in the exam format to measure your preparation.',
         links: [
           {
-            label: 'AWS Certified Cloud Practitioner - Sample questions',
+            label: 'AWS Certified Cloud Practitioner: sample questions',
             href: 'https://d1.awsstatic.com/training-and-certification/docs-cloud-practitioner/AWS-Certified-Cloud-Practitioner_Sample-Questions.pdf',
           },
           {
-            label: 'AWS Certified Cloud Practitioner - Practice exams, in Portuguese',
+            label: 'AWS Certified Cloud Practitioner: practice exams, in Portuguese',
             href: 'https://www.udemy.com/course/aws-practitioner-em-portugues',
           },
         ],
@@ -193,11 +193,11 @@ export const enUS: readonly Topic[] = [
       {
         id: 'next-step',
         name: 'Next step',
-        fullName: 'AWS Certified Solutions Architect - Associate',
+        fullName: 'AWS Certified Solutions Architect Associate',
         summary: 'The usual next certification after Cloud Practitioner, with study notes in the same format.',
         links: [
           {
-            label: 'AWS Certified Solutions Architect - Associate (SAA-C03) study notes',
+            label: 'AWS Certified Solutions Architect Associate (SAA-C03) study notes',
             href: 'https://gustavofreze.github.io/aws-certified-solutions-architect-associate/',
           },
         ],
@@ -323,7 +323,7 @@ export const ptBR: readonly Topic[] = [
           'Prova de 90 minutos, com questões de múltipla escolha e de múltiplas respostas, disponível em português.',
         points: [
           '**65 questões**: 50 contam para a nota e 15 não são pontuadas (e não são identificadas).',
-          'Nota de **100 a 1.000**; mínimo para aprovação: **700**.',
+          'Nota de **100 a 1.000**. Mínimo para aprovação: **700**.',
           'Custa **US$ 100**. Não há penalidade por chutar.',
         ],
         tip: 'Nunca deixe questão em branco: resposta em branco conta como errada e o chute não penaliza.',
@@ -373,7 +373,7 @@ export const ptBR: readonly Topic[] = [
             href: SKILL_BUILDER,
           },
           {
-            label: 'AWS Certified Cloud Practitioner - Preparatório AWS CCP',
+            label: 'AWS Certified Cloud Practitioner: Preparatório AWS CCP',
             href: 'https://www.udemy.com/course/aws-certified-cloud-practitioner-aws-ccp',
           },
         ],
@@ -385,11 +385,11 @@ export const ptBR: readonly Topic[] = [
         summary: 'Questões no formato da prova para medir a preparação.',
         links: [
           {
-            label: 'AWS Certified Cloud Practitioner - Exemplos de perguntas',
+            label: 'AWS Certified Cloud Practitioner: exemplos de perguntas',
             href: 'https://d1.awsstatic.com/pt_BR/training-and-certification/docs-cloud-practitioner/AWS-Certified-Cloud-Practitioner_Sample-Questions.pdf',
           },
           {
-            label: 'AWS Certified Cloud Practitioner - Simulados em português',
+            label: 'AWS Certified Cloud Practitioner: simulados em português',
             href: 'https://www.udemy.com/course/aws-practitioner-em-portugues',
           },
         ],
@@ -398,11 +398,11 @@ export const ptBR: readonly Topic[] = [
       {
         id: 'next-step',
         name: 'Próximo passo',
-        fullName: 'AWS Certified Solutions Architect - Associate',
+        fullName: 'AWS Certified Solutions Architect Associate',
         summary: 'A certificação que costuma vir depois do Cloud Practitioner, com notas de estudo no mesmo formato.',
         links: [
           {
-            label: 'Notas de estudo do AWS Certified Solutions Architect - Associate (SAA-C03)',
+            label: 'Notas de estudo do AWS Certified Solutions Architect Associate (SAA-C03)',
             href: 'https://gustavofreze.github.io/aws-certified-solutions-architect-associate/pt-br/',
           },
         ],

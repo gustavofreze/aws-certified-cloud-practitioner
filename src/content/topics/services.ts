@@ -266,7 +266,7 @@ export const enUS: readonly Topic[] = [
           'An **AMI** is the image used to launch instances.',
           'You manage the operating system, patches and installed software.',
         ],
-        tip: 'Match the workload to the family: **HPC or batch processing**, compute optimized; **in-memory database**, memory optimized.',
+        tip: 'Match the workload to the family: **HPC or batch processing** goes to compute optimized, and an **in-memory database** goes to memory optimized.',
         table: {
           title: 'Instance families',
           head: ['Family', 'When to use'],
@@ -315,7 +315,7 @@ export const enUS: readonly Topic[] = [
               key: 'Savings Plans',
               cells: [
                 'Commitment to an hourly spend (USD/hour) for 1 or 3 years.',
-                'Up to 72% off; also applies to Fargate and Lambda.',
+                'Up to 72% off. Also applies to Fargate and Lambda.',
               ],
             },
             {
@@ -783,7 +783,7 @@ export const enUS: readonly Topic[] = [
             {
               key: 'Compute',
               cells: [
-                'Up to 66%. Any family, size, Region, OS and tenancy; includes Fargate and Lambda.',
+                'Up to 66%. Any family, size, Region, OS and tenancy. Includes Fargate and Lambda.',
                 '1 or 3 years.',
               ],
             },
@@ -1072,7 +1072,7 @@ export const enUS: readonly Topic[] = [
           'Shows relationships between accounts, IPs and resources over time.',
           'Complements GuardDuty: one detects, the other investigates.',
         ],
-        tip: 'GuardDuty **detects** the threat; Detective **investigates** the root cause.',
+        tip: 'GuardDuty **detects** the threat, and Detective **investigates** the root cause.',
       },
       {
         id: 'directory-service',
@@ -1108,7 +1108,7 @@ export const enUS: readonly Topic[] = [
     icon: 'network',
     title: 'Networking and content delivery',
     summary: 'Private networks, firewalls, hybrid connectivity, DNS, CDN and APIs.',
-    lede: 'The **VPC** is the private network your resources live in; the other services connect it to your data center, to users and to the internet.',
+    lede: 'The **VPC** is the private network your resources live in. The other services connect it to your data center, to users and to the internet.',
     sections: [
       {
         id: 'vpc',
@@ -1118,10 +1118,10 @@ export const enUS: readonly Topic[] = [
         summary: 'A logically isolated virtual network under your control: IP ranges, subnets, routes and gateways.',
         points: [
           '**Public subnet**: has a route to the **internet gateway**.',
-          '**Private subnet**: no direct internet access; goes out through a **NAT gateway**.',
+          '**Private subnet**: no direct internet access, goes out through a **NAT gateway**.',
           'Each subnet lives in a single Availability Zone.',
         ],
-        tip: 'Web server in a **public** subnet; database in a **private** subnet.',
+        tip: 'Web server in a **public** subnet, database in a **private** subnet.',
       },
       {
         id: 'security-groups-nacls',
@@ -1232,7 +1232,7 @@ export const enUS: readonly Topic[] = [
         points: [
           'Two static anycast IPs for the application.',
           'Fast failover between Regions.',
-          'Works for TCP and UDP; it does not cache.',
+          'Works for TCP and UDP, and it does not cache.',
         ],
         tip: '**Static** IPs and routing over the AWS network, **without caching**: **Global Accelerator**. With caching: CloudFront.',
       },
@@ -1241,7 +1241,7 @@ export const enUS: readonly Topic[] = [
         name: 'API Gateway',
         fullName: 'Amazon API Gateway',
         link: en.aws('api-gateway/'),
-        summary: 'Creates, publishes, secures and monitors APIs at any scale; it is the "front door" to the backend.',
+        summary: 'Creates, publishes, secures and monitors APIs at any scale. It is the "front door" to the backend.',
         points: [
           'REST, HTTP and WebSocket APIs.',
           'Integrates with Lambda for serverless backends.',
@@ -1439,7 +1439,7 @@ export const enUS: readonly Topic[] = [
         name: 'DMS and SCT',
         fullName: 'Database Migration Service and Schema Conversion Tool',
         link: en.aws('dms/'),
-        summary: 'DMS moves database data; SCT converts the schema when the engine changes.',
+        summary: 'DMS moves database data, and SCT converts the schema when the engine changes.',
         points: [
           'The source database keeps running during the migration.',
           'Homogeneous migrations need only DMS.',
@@ -1525,7 +1525,7 @@ export const enUS: readonly Topic[] = [
         link: en.aws('workspaces/applications/'),
         summary: 'Streams desktop applications to the user’s browser, with nothing to install.',
         points: [
-          'The application runs on AWS; the user only sees the pixels.',
+          'The application runs on AWS, and the user only sees the pixels.',
           'Uses: engineering software, training, demos.',
           'Delivers applications, not a whole desktop.',
         ],
@@ -1867,7 +1867,7 @@ export const ptBR: readonly Topic[] = [
           'Uma **AMI** é a imagem usada para iniciar instâncias.',
           'Você gerencia o sistema operacional, os patches e o software instalado.',
         ],
-        tip: 'Associe a carga à família: **HPC ou processamento em lote**, otimizada para computação; **banco em memória**, otimizada para memória.',
+        tip: 'Associe a carga à família: **HPC ou processamento em lote** vai para otimizada para computação, e **banco em memória** vai para otimizada para memória.',
         table: {
           title: 'Famílias de instância',
           head: ['Família', 'Quando usar'],
@@ -1919,7 +1919,7 @@ export const ptBR: readonly Topic[] = [
               key: 'Savings Plans',
               cells: [
                 'Compromisso de gasto em USD/hora por 1 ou 3 anos.',
-                'Até 72% de desconto; vale também para Fargate e Lambda.',
+                'Até 72% de desconto. Vale também para Fargate e Lambda.',
               ],
             },
             {
@@ -2398,7 +2398,7 @@ export const ptBR: readonly Topic[] = [
             {
               key: 'Compute',
               cells: [
-                'Até 66%. Qualquer família, tamanho, Região, SO e tenancy; inclui Fargate e Lambda.',
+                'Até 66%. Qualquer família, tamanho, Região, SO e tenancy. Inclui Fargate e Lambda.',
                 '1 ou 3 anos.',
               ],
             },
@@ -2689,7 +2689,7 @@ export const ptBR: readonly Topic[] = [
           'Mostra as relações entre contas, IPs e recursos ao longo do tempo.',
           'Complementa o GuardDuty: um detecta, o outro investiga.',
         ],
-        tip: 'GuardDuty **detecta** a ameaça; Detective **investiga** a causa raiz.',
+        tip: 'GuardDuty **detecta** a ameaça, e o Detective **investiga** a causa raiz.',
       },
       {
         id: 'directory-service',
@@ -2725,7 +2725,7 @@ export const ptBR: readonly Topic[] = [
     icon: 'network',
     title: 'Redes e entrega de conteúdo',
     summary: 'Rede privada, firewalls, conectividade híbrida, DNS, CDN e APIs.',
-    lede: 'A **VPC** é a rede privada onde seus recursos vivem; os demais serviços conectam essa rede ao seu data center, aos usuários e à internet.',
+    lede: 'A **VPC** é a rede privada onde seus recursos vivem. Os demais serviços conectam essa rede ao seu data center, aos usuários e à internet.',
     sections: [
       {
         id: 'vpc',
@@ -2735,10 +2735,10 @@ export const ptBR: readonly Topic[] = [
         summary: 'Rede virtual isolada logicamente, sob seu controle: faixas de IP, sub-redes, rotas e gateways.',
         points: [
           '**Sub-rede pública**: tem rota para o **internet gateway**.',
-          '**Sub-rede privada**: sem acesso direto da internet; sai por um **NAT gateway**.',
+          '**Sub-rede privada**: sem acesso direto da internet, sai por um **NAT gateway**.',
           'Cada sub-rede fica em uma única zona de disponibilidade.',
         ],
-        tip: 'Servidor web em sub-rede **pública**; banco de dados em sub-rede **privada**.',
+        tip: 'Servidor web em sub-rede **pública**, banco de dados em sub-rede **privada**.',
       },
       {
         id: 'security-groups-nacls',
@@ -2857,7 +2857,7 @@ export const ptBR: readonly Topic[] = [
         name: 'API Gateway',
         fullName: 'Amazon API Gateway',
         link: pt.aws('api-gateway/'),
-        summary: 'Cria, publica, protege e monitora APIs em qualquer escala; é a "porta de entrada" para o back-end.',
+        summary: 'Cria, publica, protege e monitora APIs em qualquer escala. É a "porta de entrada" para o back-end.',
         points: [
           'APIs REST, HTTP e WebSocket.',
           'Integra com Lambda para back-ends sem servidor.',
@@ -3053,7 +3053,7 @@ export const ptBR: readonly Topic[] = [
         name: 'DMS e SCT',
         fullName: 'Database Migration Service e Schema Conversion Tool',
         link: pt.aws('dms/'),
-        summary: 'O DMS migra os dados dos bancos; o SCT converte o esquema quando o mecanismo muda.',
+        summary: 'O DMS migra os dados dos bancos, e o SCT converte o esquema quando o mecanismo muda.',
         points: [
           'O banco de origem continua funcionando durante a migração.',
           'Migrações homogêneas só precisam do DMS.',
@@ -3143,7 +3143,7 @@ export const ptBR: readonly Topic[] = [
         link: pt.aws('workspaces/applications/'),
         summary: 'Transmite aplicações de desktop para o navegador do usuário, sem instalar nada.',
         points: [
-          'A aplicação roda na AWS; o usuário vê só a imagem.',
+          'A aplicação roda na AWS, e o usuário vê só a imagem.',
           'Usos: software de engenharia, treinamentos, demonstrações.',
           'Entrega aplicações, não um desktop inteiro.',
         ],

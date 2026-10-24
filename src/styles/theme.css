@@ -1121,6 +1121,12 @@
 .cert-table strong {
   font-weight: var(--font-weight-bold);
 }
+abbr[title] {
+  cursor: help;
+  text-decoration: underline dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
 code {
   padding: 0.1em 0.4em;
   border-radius: var(--radius-sm);
