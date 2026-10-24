@@ -2,9 +2,9 @@
  * The guard on the script every page of the built site ships.
  *
  * A page loads the script inlined into it and every file its script tags name, along with what those
- * files import statically. Together that stays at or under 4,000 bytes uncompressed, counting 1 KB as
- * 1,000 B: the theme before first paint and the small enhancements every page carries fit, and anything
- * heavier is a sign that behavior crept onto a page that does not need it. A dynamic import is left out,
+ * files import statically. Together that stays at or under 5,000 bytes uncompressed, counting 1 KB as
+ * 1,000 B: the theme before first paint, the opener of the search dialog and the small enhancements every
+ * page carries fit, and anything heavier is a sign that behavior crept onto a page that does not need it. A dynamic import is left out,
  * because it loads on demand, which is how the search index is fetched. Structured data is data the
  * browser never runs, so it is left out too.
  *
@@ -14,7 +14,7 @@ import { readdirSync, readFileSync, statSync } from 'node:fs'
 import { dirname, join, relative } from 'node:path'
 
 const DIST = 'dist'
-const BUDGET = 4000
+const BUDGET = 5000
 /** The site is served below the name of the repository, which is also the name of the package. */
 const BASE = `/${JSON.parse(readFileSync('package.json', 'utf8')).name}/`
 

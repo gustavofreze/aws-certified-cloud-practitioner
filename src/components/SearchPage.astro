@@ -3,15 +3,15 @@
  * The search over the notes, in one language.
  *
  * The index is built by Pagefind after the site, from the text of the topic pages only, and one index is
- * kept per language, so a reader on the English page searches the English notes. The page ships the
- * form and an empty list, and the script fetches the index the first time the reader types, so no other
- * page pays for it.
+ * kept per language, so a reader on the English page searches the English notes. The bar opens the same
+ * form as a dialog over any page; this page is where its link leads when no script runs, and where a
+ * search with the term in the address lands.
  */
 import { pagePaths } from '../i18n'
 import { getCopy, type Locale, MAIN_ID } from '../i18n/strings'
 import BaseLayout from '../layouts/BaseLayout.astro'
-import Icon from './Icon.astro'
 import PageCover from './PageCover.astro'
+import SearchForm from './SearchForm.astro'
 
 interface Props {
   locale: Locale
@@ -26,36 +26,7 @@ const labels = copy.search
     <PageCover locale={locale} icon="search" title={labels.title} lede={labels.lede} />
 
     <div class="cert-wrap cert-main">
-      <form
-        class="cert-search"
-        role="search"
-        data-search
-        data-idle={labels.idle}
-        data-loading={labels.loading}
-        data-empty={labels.empty}
-        data-unavailable={labels.unavailable}
-        data-count={labels.count}
-      >
-        <label for="search-term" class="cert-block__title">{labels.label}</label>
-        <div class="cert-search__field">
-          <Icon name="search" size={20} />
-          <input
-            id="search-term"
-            name="q"
-            type="search"
-            inputmode="search"
-            autocomplete="off"
-            spellcheck="false"
-            placeholder={labels.placeholder}
-          />
-        </div>
-        <p class="cert-search__status" role="status" aria-live="polite" data-search-status>{labels.idle}</p>
-      </form>
-      <ol class="cert-results" data-search-results></ol>
+      <SearchForm locale={locale} id="search-term" />
     </div>
   </main>
 </BaseLayout>
-
-<script>
-  import '../scripts/search.ts'
-</script>
