@@ -147,6 +147,12 @@ export async function start(root: HTMLElement, choice: Choice): Promise<void> {
   const picksOf = (id: string): number[] => session.picks[id] ?? []
   const isRight = (q: Question): boolean => same(picksOf(q.id), q.answers)
   const letter = (index: number): string => String.fromCharCode(65 + index)
+  const proofOf = (q: Question, position: number): string => {
+    const href = q.evidence[q.answers.indexOf(position)]
+    return href
+      ? `<a class="cert-practice__proof" href="${href}" target="_blank" rel="noopener noreferrer">${labels.proof} ${icon('arrow-right')}</a>`
+      : ''
+  }
 
   const reasonsHtml = (q: Question): string =>
     `<ol class="cert-practice__reasons">${(session.orders[q.id] ?? [])
@@ -155,11 +161,9 @@ export async function start(root: HTMLElement, choice: Choice): Promise<void> {
         const chosen = picksOf(q.id).includes(position)
         const state = right ? 'is-right' : chosen ? 'is-wrong' : ''
         const mark = right ? labels.correct : chosen ? labels.incorrect : ''
-        return `<li class="${state}"><span class="cert-practice__letter">${right ? icon('check') : chosen ? icon('close') : letter(index)}</span><div><p class="cert-practice__reason-head">${q.options[position] ?? ''}${mark ? ` <strong>${mark}</strong>` : ''}</p><p>${q.reasons[position] ?? ''}</p></div></li>`
+        return `<li class="${state}"><span class="cert-practice__letter">${right ? icon('check') : chosen ? icon('close') : letter(index)}</span><div><p class="cert-practice__reason-head">${q.options[position] ?? ''}${mark ? ` <strong>${mark}</strong>` : ''}</p><p>${q.reasons[position] ?? ''}</p>${proofOf(q, position)}</div></li>`
       })
-      .join(
-        '',
-      )}</ol><a class="cert-practice__proof" href="${q.source}" target="_blank" rel="noopener noreferrer">${labels.proof} ${icon('arrow-right')}</a>`
+      .join('')}</ol>`
 
   const finish = (): void => {
     window.clearInterval(timer)
@@ -234,7 +238,7 @@ export async function start(root: HTMLElement, choice: Choice): Promise<void> {
         const mark = right ? labels.correct : chosen ? labels.incorrect : ''
         const badge = checked && state ? icon(right ? 'check' : 'close') : letter(index)
         const reason = checked
-          ? `${mark ? ` <strong>${mark}</strong>` : ''}<span class="cert-practice__reason">${q.reasons[position] ?? ''}</span>`
+          ? `${mark ? ` <strong>${mark}</strong>` : ''}<span class="cert-practice__reason">${q.reasons[position] ?? ''}</span>${proofOf(q, position)}`
           : ''
         return `<label class="cert-practice__option ${state}"><input type="${multiple ? 'checkbox' : 'radio'}" name="answer" value="${position}" ${chosen ? 'checked' : ''} ${checked ? 'disabled' : ''} /><span class="cert-practice__letter">${badge}</span><span class="cert-practice__option-text">${q.options[position] ?? ''}${reason}</span></label>`
       })
@@ -258,7 +262,7 @@ export async function start(root: HTMLElement, choice: Choice): Promise<void> {
       <form class="cert-practice__panel cert-practice__question" data-question>
         ${session.mode === 'study' ? `<p class="cert-practice__domain">${fill(labels.domainNumber, { number: q.domain })} · ${bank.domains[q.domain - 1] ?? ''}</p>` : ''}
         <fieldset><legend>${q.stem}</legend><div class="cert-practice__choices">${options}</div></fieldset>
-        ${checked ? `<div class="cert-practice__checked"><p class="cert-practice__verdict ${isRight(q) ? 'is-right' : 'is-wrong'}">${isRight(q) ? icon('check') : icon('close')} ${isRight(q) ? labels.correct : labels.incorrect}</p><a class="cert-practice__proof" href="${q.source}" target="_blank" rel="noopener noreferrer">${labels.proof} ${icon('arrow-right')}</a></div>` : ''}
+        ${checked ? `<div class="cert-practice__checked"><p class="cert-practice__verdict ${isRight(q) ? 'is-right' : 'is-wrong'}">${isRight(q) ? icon('check') : icon('close')} ${isRight(q) ? labels.correct : labels.incorrect}</p></div>` : ''}
         <div class="cert-practice__controls">
           <button type="button" class="cert-practice__control" data-move="-1" ${session.index === 0 ? 'disabled' : ''}>${icon('arrow-left')} <span>${labels.previous}</span></button>
           ${middle}

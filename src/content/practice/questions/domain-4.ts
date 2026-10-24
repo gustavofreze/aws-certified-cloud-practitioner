@@ -13,7 +13,9 @@ export const enUS: readonly Question[] = [
       'Standard Reserved Instances can be modified but cannot be exchanged, so they do not allow a move to a different instance family and operating system.',
       'Convertible Reserved Instances give a discount for a 1 or 3 year term and can be exchanged for a different instance family, operating system and tenancy.',
     ],
-    source: 'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-convertible-exchange.html',
+    evidence: [
+      'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/reserved-instances-types.html#offering-class-differences',
+    ],
   },
   {
     id: 'd4-002',
@@ -27,7 +29,7 @@ export const enUS: readonly Question[] = [
       'Dedicated Instances run on hardware dedicated to one account, which adds cost and solves an isolation need the company does not have.',
       'Capacity Reservations guarantee capacity in an Availability Zone but give no billing discount, which a flexible job does not need.',
     ],
-    source: 'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html',
+    evidence: ['https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html'],
   },
   {
     id: 'd4-003',
@@ -41,7 +43,7 @@ export const enUS: readonly Question[] = [
       'A Dedicated Host is a physical server fully dedicated to the company, with visibility of sockets and cores, which supports per-socket and per-core licenses.',
       'Compute Savings Plans lower the price of compute usage but do not give visibility of the physical server.',
     ],
-    source: 'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html',
+    evidence: ['https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html'],
   },
   {
     id: 'd4-004',
@@ -60,7 +62,7 @@ export const enUS: readonly Question[] = [
       'Standard Reserved Instances apply to EC2 only, in one Region, and cannot be exchanged for a different instance family.',
       'Zonal Reserved Instances are tied to one Availability Zone and one instance type, which is the least flexible choice.',
     ],
-    source: 'https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html',
+    evidence: ['https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html'],
   },
   {
     id: 'd4-005',
@@ -81,7 +83,10 @@ export const enUS: readonly Question[] = [
       'The reservation stays with the account that bought it. Only the discount is shared across the organization.',
       'The management account controls Reserved Instance and Savings Plans discount sharing and can deactivate it for individual member accounts.',
     ],
-    source: 'https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ri-turn-off.html',
+    evidence: [
+      'https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ri-turn-off.html#sharing-modes',
+      'https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ri-turn-off.html#ri-turn-off-process',
+    ],
   },
   {
     id: 'd4-006',
@@ -102,7 +107,10 @@ export const enUS: readonly Question[] = [
       'Data transfer within the same Availability Zone is free.',
       'Traffic that crosses an Availability Zone boundary typically incurs a data transfer charge.',
     ],
-    source: 'https://aws.amazon.com/blogs/architecture/overview-of-data-transfer-costs-for-common-architectures/',
+    evidence: [
+      'https://aws.amazon.com/blogs/architecture/overview-of-data-transfer-costs-for-common-architectures/',
+      'https://aws.amazon.com/ec2/pricing/on-demand/#Data_Transfer_within_the_same_AWS_Region',
+    ],
   },
   {
     id: 'd4-007',
@@ -121,7 +129,7 @@ export const enUS: readonly Question[] = [
       'S3 Glacier Flexible Retrieval is for archives and requires a retrieval before the data can be read, which does not fit unpredictable access.',
       'S3 Intelligent-Tiering moves objects to lower-cost access tiers when they are not accessed and has no retrieval charges, for a small monitoring fee.',
     ],
-    source: 'https://aws.amazon.com/s3/storage-classes/intelligent-tiering/',
+    evidence: ['https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html#sc-dynamic-data-access'],
   },
   {
     id: 'd4-008',
@@ -135,7 +143,7 @@ export const enUS: readonly Question[] = [
       'Pricing Calculator estimates the cost of a planned solution and does not monitor real spending.',
       'The Cost and Usage Report delivers detailed billing files to Amazon S3 and does not send alerts.',
     ],
-    source: 'https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html',
+    evidence: ['https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html'],
   },
   {
     id: 'd4-009',
@@ -149,7 +157,7 @@ export const enUS: readonly Question[] = [
       'Cost Explorer shows up to the last 13 months of costs and usage, with filters and groupings, and forecasts spending for the coming months.',
       'Trusted Advisor gives best practice recommendations, including cost savings, but does not chart the cost history.',
     ],
-    source: 'https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html',
+    evidence: ['https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html'],
   },
   {
     id: 'd4-010',
@@ -163,7 +171,9 @@ export const enUS: readonly Question[] = [
       'AWS Budgets tracks costs that the account incurs and cannot estimate a workload that is not on AWS.',
       'The Cost and Usage Report details the usage of an existing account and has no data before the migration.',
     ],
-    source: 'https://docs.aws.amazon.com/pricing-calculator/latest/userguide/what-is-pricing-calculator.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pricing-calculator/latest/userguide/what-is-pricing-calculator.html#features-apc',
+    ],
   },
   {
     id: 'd4-011',
@@ -184,7 +194,10 @@ export const enUS: readonly Question[] = [
       'The management account pays the charges of all member accounts. Member account bills are for information only.',
       'Consolidated billing changes how charges are paid and combined, and does not resize any resource.',
     ],
-    source: 'https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html',
+    evidence: [
+      'https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html',
+      'https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html',
+    ],
   },
   {
     id: 'd4-012',
@@ -203,7 +216,7 @@ export const enUS: readonly Question[] = [
       'Regions do not split costs by department, and the tag would still not appear in the reports.',
       'User-defined tags must be activated in the Billing and Cost Management console before they appear in Cost Explorer and billing reports.',
     ],
-    source: 'https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html',
+    evidence: ['https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html'],
   },
   {
     id: 'd4-013',
@@ -217,7 +230,7 @@ export const enUS: readonly Question[] = [
       'Pricing Calculator estimates future costs and does not report on real usage.',
       'Trusted Advisor checks the account against best practices and does not produce billing data.',
     ],
-    source: 'https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html',
+    evidence: ['https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html'],
   },
   {
     id: 'd4-014',
@@ -236,7 +249,7 @@ export const enUS: readonly Question[] = [
       'All account owners have account and billing support at no cost, and a case in the Support Center reaches an associate directly.',
       'Trust & Safety handles reports of abuse of AWS resources, not billing questions.',
     ],
-    source: 'https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-get-answers.html',
+    evidence: ['https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-get-answers.html#billing-support'],
   },
   {
     id: 'd4-015',
@@ -250,7 +263,7 @@ export const enUS: readonly Question[] = [
       'Enterprise Support meets the requirement but adds a designated TAM and other services at a much higher minimum price.',
       'Unified Operations is the highest tier, for mission-critical operations, which costs more than the company needs.',
     ],
-    source: 'https://aws.amazon.com/premiumsupport/plans/business-plus/',
+    evidence: ['https://aws.amazon.com/premiumsupport/plans/#recommended-for'],
   },
   {
     id: 'd4-016',
@@ -264,7 +277,7 @@ export const enUS: readonly Question[] = [
       'Enterprise Support includes a designated TAM and a response within 15 minutes for production-critical issues.',
       'Professional Services delivers consulting engagements for projects such as migrations, not a support plan with response times.',
     ],
-    source: 'https://aws.amazon.com/premiumsupport/plans/enterprise/',
+    evidence: ['https://aws.amazon.com/premiumsupport/plans/enterprise/#benefits'],
   },
   {
     id: 'd4-017',
@@ -278,7 +291,7 @@ export const enUS: readonly Question[] = [
       'Enterprise Support responds within 15 minutes for critical cases, which does not meet the 5 minute requirement.',
       'Unified Operations is the highest tier, with 24/7 monitoring and Incident Management Engineers who respond within 5 minutes.',
     ],
-    source: 'https://aws.amazon.com/premiumsupport/plans/unified-operations/',
+    evidence: ['https://aws.amazon.com/premiumsupport/plans/unified-operations/#operational-excellence-at-scale'],
   },
   {
     id: 'd4-018',
@@ -299,7 +312,10 @@ export const enUS: readonly Question[] = [
       'Basic includes the core Trusted Advisor checks. The full set of checks requires a paid plan.',
       'The AWS Health API requires Business Support+, Enterprise Support or Unified Operations. Basic includes the AWS Health Dashboard.',
     ],
-    source: 'https://aws.amazon.com/premiumsupport/plans/',
+    evidence: [
+      'https://aws.amazon.com/premiumsupport/plans/#basic-support-included-for-all-aws-customers',
+      'https://aws.amazon.com/premiumsupport/plans/#basic-support-included-for-all-aws-customers',
+    ],
   },
   {
     id: 'd4-019',
@@ -313,7 +329,7 @@ export const enUS: readonly Question[] = [
       'Professional Services delivers consulting engagements and does not investigate abuse.',
       'The Partner Network is a community of partners that build on AWS and does not receive abuse reports.',
     ],
-    source: 'https://aws.amazon.com/about-aws/whats-new/2024/10/aws-trust-safety-center-re-post/',
+    evidence: ['https://aws.amazon.com/about-aws/whats-new/2024/10/aws-trust-safety-center-re-post/'],
   },
   {
     id: 'd4-020',
@@ -327,7 +343,7 @@ export const enUS: readonly Question[] = [
       'Trusted Advisor checks the account against best practices and does not answer questions.',
       're:Post is a community-driven Q&A service where community experts, including AWS customers, Partners, and employees, answer questions.',
     ],
-    source: 'https://aws.amazon.com/about-aws/whats-new/2021/12/aws-repost-community-question-answer-service/',
+    evidence: ['https://aws.amazon.com/about-aws/whats-new/2021/12/aws-repost-community-question-answer-service/'],
   },
   {
     id: 'd4-021',
@@ -341,7 +357,7 @@ export const enUS: readonly Question[] = [
       'Knowledge Center answers frequent questions in short articles and does not provide migration patterns.',
       'The Health Dashboard shows events that affect AWS services and resources and has no migration guidance.',
     ],
-    source: 'https://aws.amazon.com/prescriptive-guidance/',
+    evidence: ['https://aws.amazon.com/prescriptive-guidance/'],
   },
   {
     id: 'd4-022',
@@ -355,7 +371,7 @@ export const enUS: readonly Question[] = [
       'Trusted Advisor cost optimization checks include idle load balancers, unassociated Elastic IP addresses and low utilization EC2 instances.',
       'Pricing Calculator estimates the cost of planned services and does not inspect the resources in the account.',
     ],
-    source: 'https://docs.aws.amazon.com/awssupport/latest/user/cost-optimization-checks.html',
+    evidence: ['https://docs.aws.amazon.com/awssupport/latest/user/cost-optimization-checks.html#idle-load-balancers'],
   },
   {
     id: 'd4-023',
@@ -369,7 +385,7 @@ export const enUS: readonly Question[] = [
       'Cost Explorer analyzes costs and usage and does not report service events.',
       'AWS Budgets sends alerts about spending and usage, not about maintenance or service issues.',
     ],
-    source: 'https://docs.aws.amazon.com/health/latest/ug/health-api.html',
+    evidence: ['https://docs.aws.amazon.com/health/latest/ug/health-api.html'],
   },
   {
     id: 'd4-024',
@@ -390,7 +406,10 @@ export const enUS: readonly Question[] = [
       'Running third-party software does not change the shared responsibility model. The customer still secures what it deploys.',
       'Marketplace offers free trial, hourly, monthly, annual, multi-year and Bring Your Own License pricing, all billed from one source.',
     ],
-    source: 'https://docs.aws.amazon.com/marketplace/latest/buyerguide/what-is-marketplace.html',
+    evidence: [
+      'https://docs.aws.amazon.com/marketplace/latest/buyerguide/what-is-marketplace.html',
+      'https://docs.aws.amazon.com/marketplace/latest/buyerguide/what-is-marketplace.html',
+    ],
   },
   {
     id: 'd4-025',
@@ -404,7 +423,9 @@ export const enUS: readonly Question[] = [
       'Prescriptive Guidance publishes guides and patterns, but it does not provide a firm to carry out the migration.',
       're:Post answers questions from the community, but it does not provide a firm to run a migration project.',
     ],
-    source: 'https://aws.amazon.com/partners/',
+    evidence: [
+      'https://aws.amazon.com/migration-and-modernization/partners/#transform-your-cloud-migration-with-aws-partners-and-modernize-with-confidence',
+    ],
   },
 ]
 
@@ -421,7 +442,9 @@ export const ptBR: readonly Question[] = [
       'Standard Reserved Instances podem ser modificadas, mas não podem ser trocadas, então não permitem mudar de família de instâncias e de sistema operacional.',
       'Convertible Reserved Instances dão desconto por um prazo de 1 ou 3 anos e podem ser trocadas por outra família de instâncias, sistema operacional e tenancy.',
     ],
-    source: 'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-convertible-exchange.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/reserved-instances-types.html#offering-class-differences',
+    ],
   },
   {
     id: 'd4-002',
@@ -435,7 +458,7 @@ export const ptBR: readonly Question[] = [
       'Dedicated Instances rodam em hardware dedicado a uma conta, o que aumenta o custo e resolve uma necessidade de isolamento que a empresa não tem.',
       'Capacity Reservations garantem capacidade em uma Zona de Disponibilidade, mas não dão desconto na cobrança, e um job flexível não precisa dessa garantia.',
     ],
-    source: 'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/using-spot-instances.html'],
   },
   {
     id: 'd4-003',
@@ -449,7 +472,7 @@ export const ptBR: readonly Question[] = [
       'Um Dedicated Host é um servidor físico inteiro dedicado à empresa, com visibilidade de soquetes e núcleos, o que permite licenças por soquete e por núcleo.',
       'Compute Savings Plans reduzem o preço do uso de computação, mas não dão visibilidade do servidor físico.',
     ],
-    source: 'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html'],
   },
   {
     id: 'd4-004',
@@ -468,7 +491,7 @@ export const ptBR: readonly Question[] = [
       'Standard Reserved Instances valem só para o EC2, em uma Região, e não podem ser trocadas por outra família de instâncias.',
       'Zonal Reserved Instances ficam presas a uma Zona de Disponibilidade e a um tipo de instância, que é a opção menos flexível.',
     ],
-    source: 'https://docs.aws.amazon.com/savingsplans/latest/userguide/plan-types.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/savingsplans/latest/userguide/plan-types.html'],
   },
   {
     id: 'd4-005',
@@ -489,7 +512,10 @@ export const ptBR: readonly Question[] = [
       'A reserva continua na conta que a comprou. Só o desconto é compartilhado na organização.',
       'A conta de gerenciamento controla o compartilhamento de desconto de Reserved Instances e Savings Plans e pode desativá-lo para contas membro específicas.',
     ],
-    source: 'https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ri-turn-off.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/awsaccountbilling/latest/aboutv2/ri-turn-off.html#sharing-modes',
+      'https://docs.aws.amazon.com/pt_br/awsaccountbilling/latest/aboutv2/ri-turn-off.html#ri-turn-off-process',
+    ],
   },
   {
     id: 'd4-006',
@@ -510,7 +536,10 @@ export const ptBR: readonly Question[] = [
       'A transferência de dados dentro da mesma Zona de Disponibilidade é gratuita.',
       'O tráfego que atravessa a fronteira de uma Zona de Disponibilidade normalmente gera cobrança de transferência de dados.',
     ],
-    source: 'https://aws.amazon.com/blogs/architecture/overview-of-data-transfer-costs-for-common-architectures/',
+    evidence: [
+      'https://aws.amazon.com/pt/blogs/architecture/overview-of-data-transfer-costs-for-common-architectures/',
+      'https://aws.amazon.com/pt/ec2/pricing/on-demand/#Data_Transfer_within_the_same_AWS_Region',
+    ],
   },
   {
     id: 'd4-007',
@@ -529,7 +558,9 @@ export const ptBR: readonly Question[] = [
       'O S3 Glacier Flexible Retrieval é para arquivamento e exige uma recuperação antes da leitura, o que não serve para acesso imprevisível.',
       'O S3 Intelligent-Tiering move os objetos para camadas de acesso mais baratas quando não são acessados e não cobra recuperação, mediante uma pequena taxa de monitoramento.',
     ],
-    source: 'https://aws.amazon.com/s3/storage-classes/intelligent-tiering/',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/storage-class-intro.html#sc-dynamic-data-access',
+    ],
   },
   {
     id: 'd4-008',
@@ -543,7 +574,7 @@ export const ptBR: readonly Question[] = [
       'O Pricing Calculator estima o custo de uma solução planejada e não monitora o gasto real.',
       'O Cost and Usage Report entrega arquivos detalhados de cobrança no Amazon S3 e não envia alertas.',
     ],
-    source: 'https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-managing-costs.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/budgets-managing-costs.html'],
   },
   {
     id: 'd4-009',
@@ -557,7 +588,7 @@ export const ptBR: readonly Question[] = [
       'O Cost Explorer mostra até os últimos 13 meses de custos e uso, com filtros e agrupamentos, e prevê os gastos dos próximos meses.',
       'O Trusted Advisor dá recomendações de boas práticas, incluindo economia de custos, mas não mostra o histórico de custos em gráficos.',
     ],
-    source: 'https://docs.aws.amazon.com/cost-management/latest/userguide/ce-what-is.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/cost-management/latest/userguide/ce-what-is.html'],
   },
   {
     id: 'd4-010',
@@ -571,7 +602,9 @@ export const ptBR: readonly Question[] = [
       'O AWS Budgets acompanha os custos que a conta gera e não consegue estimar uma carga que ainda não está na AWS.',
       'O Cost and Usage Report detalha o uso de uma conta existente e não tem dados de antes da migração.',
     ],
-    source: 'https://docs.aws.amazon.com/pricing-calculator/latest/userguide/what-is-pricing-calculator.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/pricing-calculator/latest/userguide/what-is-pricing-calculator.html#features-apc',
+    ],
   },
   {
     id: 'd4-011',
@@ -592,7 +625,10 @@ export const ptBR: readonly Question[] = [
       'A conta de gerenciamento paga as cobranças de todas as contas membro. As faturas das contas membro são apenas informativas.',
       'O faturamento consolidado muda como as cobranças são pagas e somadas, e não redimensiona nenhum recurso.',
     ],
-    source: 'https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/awsaccountbilling/latest/aboutv2/consolidated-billing.html',
+      'https://docs.aws.amazon.com/pt_br/awsaccountbilling/latest/aboutv2/consolidated-billing.html',
+    ],
   },
   {
     id: 'd4-012',
@@ -611,7 +647,7 @@ export const ptBR: readonly Question[] = [
       'Regiões não dividem os custos por departamento, e a tag continuaria fora dos relatórios.',
       'Tags definidas pelo usuário precisam ser ativadas no console do Billing and Cost Management antes de aparecer no Cost Explorer e nos relatórios de cobrança.',
     ],
-    source: 'https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/awsaccountbilling/latest/aboutv2/activating-tags.html'],
   },
   {
     id: 'd4-013',
@@ -625,7 +661,7 @@ export const ptBR: readonly Question[] = [
       'O Pricing Calculator estima custos futuros e não informa o uso real.',
       'O Trusted Advisor verifica a conta em relação a boas práticas e não gera dados de cobrança.',
     ],
-    source: 'https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/cur/latest/userguide/what-is-cur.html'],
   },
   {
     id: 'd4-014',
@@ -644,7 +680,9 @@ export const ptBR: readonly Question[] = [
       'Todos os titulares de conta têm suporte de conta e cobrança sem custo, e um caso no Support Center chega direto a um atendente.',
       'O Trust & Safety trata denúncias de abuso de recursos da AWS, e não dúvidas de cobrança.',
     ],
-    source: 'https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-get-answers.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/awsaccountbilling/latest/aboutv2/billing-get-answers.html#billing-support',
+    ],
   },
   {
     id: 'd4-015',
@@ -658,7 +696,7 @@ export const ptBR: readonly Question[] = [
       'O Enterprise Support atende ao requisito, mas adiciona um TAM designado e outros serviços por um preço mínimo bem mais alto.',
       'O Unified Operations é o nível mais alto, para operações de missão crítica, e custa mais do que a empresa precisa.',
     ],
-    source: 'https://aws.amazon.com/premiumsupport/plans/business-plus/',
+    evidence: ['https://aws.amazon.com/pt/premiumsupport/plans/#recommended-for'],
   },
   {
     id: 'd4-016',
@@ -672,7 +710,7 @@ export const ptBR: readonly Question[] = [
       'O Enterprise Support inclui um TAM designado e resposta em até 15 minutos para problemas críticos de produção.',
       'O Professional Services entrega consultoria para projetos como migrações, e não um plano de suporte com tempos de resposta.',
     ],
-    source: 'https://aws.amazon.com/premiumsupport/plans/enterprise/',
+    evidence: ['https://aws.amazon.com/premiumsupport/plans/enterprise/#benefits'],
   },
   {
     id: 'd4-017',
@@ -686,7 +724,7 @@ export const ptBR: readonly Question[] = [
       'O Enterprise Support responde em até 15 minutos nos casos críticos, o que não atende ao requisito de 5 minutos.',
       'O Unified Operations é o nível mais alto, com monitoramento 24/7 e Incident Management Engineers que respondem em até 5 minutos.',
     ],
-    source: 'https://aws.amazon.com/premiumsupport/plans/unified-operations/',
+    evidence: ['https://aws.amazon.com/premiumsupport/plans/unified-operations/#operational-excellence-at-scale'],
   },
   {
     id: 'd4-018',
@@ -707,7 +745,10 @@ export const ptBR: readonly Question[] = [
       'O Basic inclui as verificações principais do Trusted Advisor. O conjunto completo exige um plano pago.',
       'A AWS Health API exige Business Support+, Enterprise Support ou Unified Operations. O Basic inclui o AWS Health Dashboard.',
     ],
-    source: 'https://aws.amazon.com/premiumsupport/plans/',
+    evidence: [
+      'https://aws.amazon.com/premiumsupport/plans/#basic-support-included-for-all-aws-customers',
+      'https://aws.amazon.com/premiumsupport/plans/#basic-support-included-for-all-aws-customers',
+    ],
   },
   {
     id: 'd4-019',
@@ -721,7 +762,7 @@ export const ptBR: readonly Question[] = [
       'O Professional Services entrega consultoria e não investiga abusos.',
       'A Partner Network é uma comunidade de parceiros que constroem na AWS e não recebe denúncias de abuso.',
     ],
-    source: 'https://aws.amazon.com/about-aws/whats-new/2024/10/aws-trust-safety-center-re-post/',
+    evidence: ['https://aws.amazon.com/pt/about-aws/whats-new/2024/10/aws-trust-safety-center-re-post/'],
   },
   {
     id: 'd4-020',
@@ -735,7 +776,7 @@ export const ptBR: readonly Question[] = [
       'O Trusted Advisor verifica a conta em relação a boas práticas e não responde perguntas.',
       'O re:Post é um serviço comunitário de perguntas e respostas em que especialistas da comunidade, incluindo clientes, parceiros e funcionários da AWS, respondem às perguntas.',
     ],
-    source: 'https://aws.amazon.com/about-aws/whats-new/2021/12/aws-repost-community-question-answer-service/',
+    evidence: ['https://aws.amazon.com/about-aws/whats-new/2021/12/aws-repost-community-question-answer-service/'],
   },
   {
     id: 'd4-021',
@@ -749,7 +790,7 @@ export const ptBR: readonly Question[] = [
       'O Knowledge Center responde às dúvidas frequentes em artigos curtos e não oferece padrões de migração.',
       'O Health Dashboard mostra eventos que afetam os serviços e recursos da AWS e não tem orientação de migração.',
     ],
-    source: 'https://aws.amazon.com/prescriptive-guidance/',
+    evidence: ['https://aws.amazon.com/pt/prescriptive-guidance/'],
   },
   {
     id: 'd4-022',
@@ -763,7 +804,9 @@ export const ptBR: readonly Question[] = [
       'As verificações de otimização de custos do Trusted Advisor incluem load balancers ociosos, endereços Elastic IP não associados e instâncias EC2 com baixa utilização.',
       'O Pricing Calculator estima o custo de serviços planejados e não inspeciona os recursos da conta.',
     ],
-    source: 'https://docs.aws.amazon.com/awssupport/latest/user/cost-optimization-checks.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/awssupport/latest/user/cost-optimization-checks.html#idle-load-balancers',
+    ],
   },
   {
     id: 'd4-023',
@@ -777,7 +820,7 @@ export const ptBR: readonly Question[] = [
       'O Cost Explorer analisa custos e uso e não informa eventos dos serviços.',
       'O AWS Budgets envia alertas sobre gasto e uso, e não sobre manutenção ou problemas nos serviços.',
     ],
-    source: 'https://docs.aws.amazon.com/health/latest/ug/health-api.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/health/latest/ug/health-api.html'],
   },
   {
     id: 'd4-024',
@@ -798,7 +841,10 @@ export const ptBR: readonly Question[] = [
       'Usar software de terceiros não muda o modelo de responsabilidade compartilhada. O cliente continua protegendo o que implanta.',
       'O Marketplace oferece preços por teste gratuito, por hora, mensais, anuais, plurianuais e Bring Your Own License, todos cobrados por uma única fonte.',
     ],
-    source: 'https://docs.aws.amazon.com/marketplace/latest/buyerguide/what-is-marketplace.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/marketplace/latest/buyerguide/what-is-marketplace.html',
+      'https://docs.aws.amazon.com/pt_br/marketplace/latest/buyerguide/what-is-marketplace.html',
+    ],
   },
   {
     id: 'd4-025',
@@ -812,6 +858,8 @@ export const ptBR: readonly Question[] = [
       'O Prescriptive Guidance publica guias e padrões, mas não fornece uma empresa para executar a migração.',
       'O re:Post responde perguntas da comunidade, mas não fornece uma empresa para conduzir um projeto de migração.',
     ],
-    source: 'https://aws.amazon.com/partners/',
+    evidence: [
+      'https://aws.amazon.com/migration-and-modernization/partners/#transform-your-cloud-migration-with-aws-partners-and-modernize-with-confidence',
+    ],
   },
 ]
