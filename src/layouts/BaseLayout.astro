@@ -67,6 +67,9 @@ const jsonLd = structuredData
     <link rel="icon" href={assetHref('favicon.svg')} type="image/svg+xml" />
     <title>{documentTitle}</title>
     <meta name="description" content={documentDescription} />
+    {/* Proves ownership of the site to Google Search Console. Removing it loses the verification, and with
+        it the reports and the submitted sitemap. */}
+    <meta name="google-site-verification" content="03NLy1Dxn_HS7c6jW_j9RBoZWjHsga-ipdeQoxqwfzY" />
     {canonical ? <link rel="canonical" href={canonical} /> : null}
     {canonical === null || noindex ? <meta name="robots" content="noindex" /> : null}
     {alternates.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)}
