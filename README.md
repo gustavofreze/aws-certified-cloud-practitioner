@@ -32,7 +32,7 @@ The notes follow the domains of the official exam guide and link to the AWS docu
 
 | Certification                                 | Site                                                                                | Repository                                                                                |
 |:----------------------------------------------|:------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------|
-| AWS Certified Solutions Architect - Associate | [Site](https://gustavofreze.github.io/aws-certified-solutions-architect-associate/) | [Repository](https://github.com/gustavofreze/aws-certified-solutions-architect-associate) |
+| AWS Certified Solutions Architect Associate | [Site](https://gustavofreze.github.io/aws-certified-solutions-architect-associate/) | [Repository](https://github.com/gustavofreze/aws-certified-solutions-architect-associate) |
 
 ## Installation
 
