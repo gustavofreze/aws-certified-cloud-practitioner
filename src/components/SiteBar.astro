@@ -1,13 +1,14 @@
 ---
 /**
- * The bar on top of every page: the menu of the certifications, the way to search, to review and to practice, and the
- * theme and language controls. It stays where it was drawn rather than following the reader, and the control in the corner is the way
+ * The bar on top of every page: the menu of the certifications, the search, which opens as a dialog over the page and is
+ * a link to the search page where no script runs, the way to review and to practice, and the theme and language controls. It stays where it was drawn rather than following the reader, and the control in the corner is the way
  * back up to it.
  */
 import { pageHref } from '../i18n'
 import { getCopy, type Locale } from '../i18n/strings'
 import CertificationMenu from './CertificationMenu.astro'
 import Icon from './Icon.astro'
+import SearchForm from './SearchForm.astro'
 import LocaleMenu from './LocaleMenu.astro'
 import ThemeToggle from './ThemeToggle.astro'
 
@@ -24,7 +25,14 @@ const copy = getCopy(locale)
     <CertificationMenu locale={locale} />
     <div class="cert-bar__controls">
       <div class="cert-bar__tools">
-        <a href={pageHref(locale, 'search')} class="cert-bar__tool" aria-label={copy.nav.search} title={copy.nav.search}>
+        <a
+          href={pageHref(locale, 'search')}
+          class="cert-bar__tool"
+          aria-label={copy.nav.search}
+          title={copy.nav.search}
+          aria-haspopup="dialog"
+          data-search-open
+        >
           <Icon name="search" size={18} />
         </a>
         <a href={pageHref(locale, 'review')} class="cert-bar__tool" aria-label={copy.nav.review} title={copy.nav.review}>
@@ -44,3 +52,15 @@ const copy = getCopy(locale)
     </div>
   </div>
 </header>
+
+<dialog class="cert-dialog" aria-label={copy.search.title} closedby="any" data-search-dialog>
+  <div class="cert-dialog__head">
+    <p class="cert-dialog__title">{copy.search.title}</p>
+    <form method="dialog">
+      <button type="submit" class="cert-bar__tool" aria-label={copy.search.close} title={copy.search.close}>
+        <Icon name="close" size={18} />
+      </button>
+    </form>
+  </div>
+  <SearchForm locale={locale} id="search-dialog-term" autofocus />
+</dialog>

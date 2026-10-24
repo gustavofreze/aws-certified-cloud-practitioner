@@ -1622,6 +1622,43 @@ code {
   font-weight: var(--font-weight-bold);
 }
 
+/* The search as a dialog over the page, opened from the bar. Outside the dialog the page dims. */
+.cert-dialog {
+  width: min(44rem, calc(100% - 2rem));
+  max-height: min(40rem, calc(100% - 4rem));
+  margin: 4rem auto auto;
+  padding: 1rem 1.25rem 1.25rem;
+  overflow-y: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-hair);
+  background: var(--color-page);
+  color: var(--color-ink);
+  box-shadow: var(--shadow-raised);
+}
+.cert-dialog::backdrop {
+  background: rgb(0 0 0 / 0.5);
+  backdrop-filter: blur(2px);
+}
+.cert-dialog__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+.cert-dialog__title {
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-bold);
+}
+.cert-dialog__head button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.cert-dialog .cert-results {
+  margin-top: 1rem;
+}
+
 /* ------------------------------------ review ------------------------------------ */
 .cert-deck {
   display: flex;

@@ -1,9 +1,11 @@
 /**
- * The search box of the notes. It loads the Pagefind index on the first search, so the page itself
- * ships only the form, and it writes the results as plain links to the section that matched.
+ * The search over the notes, bound to a form wherever it sits: the search page, or the dialog the bar
+ * opens on every page. It loads the Pagefind index on the first search, so a page ships only the form,
+ * and it writes the results as plain links to the section that matched.
  *
- * Pressing enter submits the form the native way, to this page with the term in the address, which is
- * also what makes a search shareable. The index exists only in the site the build produces. Under the development server the import fails,
+ * On the search page the term follows into the address, which is what makes a search shareable, and
+ * pressing enter submits the form the native way. In the dialog the results come as the reader types.
+ * The index exists only in the site the build produces. Under the development server the import fails,
  * and the box says so instead of failing silently.
  */
 interface PagefindResult {
@@ -47,21 +49,25 @@ function resultItem(result: PagefindResult): string {
   return `<li class="cert-result"><a class="cert-result__page" href="${result.url}">${result.meta.title ?? ''}</a><ul class="cert-result__sections">${links.join('')}</ul></li>`
 }
 
-function init(): void {
-  const form = document.querySelector<HTMLFormElement>('[data-search]')
+/** Binds the search to the form inside a root, once, writing the term to the address when asked to. */
+export function bind(root: ParentNode, followAddress: boolean): void {
+  const form = root.querySelector<HTMLFormElement>('[data-search]')
   const input = form?.querySelector('input')
-  const status = document.querySelector<HTMLElement>('[data-search-status]')
-  const results = document.querySelector<HTMLOListElement>('[data-search-results]')
-  if (!form || !input || !status || !results) {
+  const status = root.querySelector<HTMLElement>('[data-search-status]')
+  const results = root.querySelector<HTMLOListElement>('[data-search-results]')
+  if (!form || !input || !status || !results || form.dataset.bound) {
     return
   }
+  form.dataset.bound = 'on'
   const say = (key: string, count = 0): void => {
     status.textContent = (form.dataset[key] ?? '').replace('{count}', String(count))
   }
 
   const run = async (): Promise<void> => {
     const term = input.value.trim()
-    history.replaceState(null, '', term === '' ? '?' : `?q=${encodeURIComponent(term)}`)
+    if (followAddress) {
+      history.replaceState(null, '', term === '' ? '?' : `?q=${encodeURIComponent(term)}`)
+    }
     if (term.length < 2) {
       results.innerHTML = ''
       say('idle')
@@ -81,12 +87,12 @@ function init(): void {
   }
 
   input.addEventListener('input', () => void run())
+  if (!followAddress) {
+    form.addEventListener('submit', (event) => event.preventDefault())
+    return
+  }
   input.value = new URLSearchParams(window.location.search).get('q') ?? ''
   if (input.value !== '') {
     void run()
   }
 }
-
-init()
-
-export {}
