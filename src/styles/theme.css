@@ -1500,13 +1500,13 @@ code {
   color: var(--color-ink);
 }
 
-/* On the narrowest phones every control of the bar still fits on one line: the gaps tighten, the
+/* On phones every control of the bar still fits on one line: the gaps tighten, the
    language menu drops its globe, keeping the code of the language in force, both menus drop their
    chevron, and the tools narrow while keeping the 44 height. */
 .locale-menu__trigger {
   white-space: nowrap;
 }
-@media (max-width: 24rem) {
+@media (max-width: 30rem) {
   .cert-bar__inner {
     gap: 0.5rem;
   }
@@ -1848,98 +1848,193 @@ code {
 }
 
 /* ------------------------------------ practice ------------------------------------ */
+/*
+ * The practice exam keeps one column of panels, every one the same width, so the setup, a question and
+ * the result line up on any screen. The responses carry a letter like the exam does, and right and wrong
+ * are told apart by an icon and a word as well as by colour.
+ */
 .cert-practice {
-  max-width: 52rem;
+  max-width: 48rem;
 }
-.cert-practice__notice,
-.cert-practice__bank,
-.cert-practice__meta {
-  color: var(--color-ink-muted);
-  font-size: var(--text-small);
-  line-height: 1.6;
-}
-.cert-practice__setup,
-.cert-practice__question,
+.cert-practice__intro,
+.cert-practice__stage,
 .cert-practice__result,
-.cert-practice__domains {
+.cert-practice__setup {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+.cert-practice__intro[hidden],
+.cert-practice__options[hidden] {
+  display: none;
+}
+.cert-practice__panel,
+.cert-practice__domains {
   padding: 1.25rem;
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-hair);
   background: var(--color-surface);
   box-shadow: var(--shadow-card);
 }
-.cert-practice__setup[hidden] {
-  display: none;
-}
 .cert-practice fieldset {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  min-width: 0;
   margin: 0;
   padding: 0;
   border: 0;
 }
-.cert-practice legend {
-  margin-bottom: 0.75rem;
+.cert-practice__notice,
+.cert-practice__meta {
+  color: var(--color-ink-muted);
+  font-size: var(--text-small);
   line-height: 1.6;
 }
-.cert-practice__mode,
-.cert-practice__option {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  padding: 0.875rem 1rem;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-hair);
-  cursor: pointer;
-  line-height: 1.5;
+.cert-practice__notice {
+  text-align: center;
 }
-.cert-practice__mode span {
+
+/* The shape of the exam in four numbers, two by two on a phone and in one row beyond. */
+.cert-practice__facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cert-practice__facts li {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  align-items: center;
+  gap: 0.125rem;
+  padding: 1rem 0.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-hair);
+  background: var(--color-surface);
+  text-align: center;
+}
+.cert-practice__facts strong {
+  font-size: var(--text-h3);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.cert-practice__facts span {
+  color: var(--color-ink-muted);
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+@media (min-width: 40rem) {
+  .cert-practice__facts {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* The two modes side by side, of equal height, the chosen one outlined in orange. */
+.cert-practice__modes {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+}
+@media (min-width: 40rem) {
+  .cert-practice__modes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.cert-practice__mode {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid var(--color-hair);
+  background: var(--color-surface);
+  cursor: pointer;
+  line-height: 1.5;
+  transition: border-color var(--duration-micro) var(--ease-out-soft);
+}
+.cert-practice__mode input {
+  position: absolute;
+  inset-block-start: 1.25rem;
+  inset-inline-end: 1.25rem;
+}
+.cert-practice__mode strong {
+  margin-top: 0.25rem;
+  font-size: var(--text-h4);
+}
+.cert-practice__mode > span:last-child {
   color: var(--color-ink-muted);
   font-size: var(--text-small);
 }
-.cert-practice__mode strong {
-  color: var(--color-ink);
-  font-size: var(--text-body);
+.cert-practice__mode:hover {
+  border-color: var(--color-ink-muted);
 }
-.cert-practice__mode:has(input:checked),
-.cert-practice__option:has(input:checked) {
+.cert-practice__mode:has(input:checked) {
   border-color: var(--color-aws-orange);
-  background: var(--color-selection);
+  box-shadow: 0 0 0 3px var(--color-selection);
+}
+.cert-practice__mode:has(input:focus-visible) {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 .cert-practice input[type='radio'],
 .cert-practice input[type='checkbox'] {
   flex: none;
   width: 1.125rem;
   height: 1.125rem;
-  margin-top: 0.15rem;
+  margin: 0;
   accent-color: var(--color-aws-orange);
 }
+
 .cert-practice__options {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-.cert-practice__options[hidden] {
-  display: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
 }
 .cert-practice__options label {
   display: flex;
   flex-direction: column;
   gap: 0.375rem;
+  min-width: 0;
   font-size: var(--text-small);
   font-weight: var(--font-weight-bold);
 }
-.cert-practice select,
-.cert-practice__controls button,
-.cert-practice__confirm button,
-.cert-practice__resume {
+.cert-practice select {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-hair);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font: inherit;
+  font-weight: var(--font-weight-medium);
+}
+.cert-practice__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.25rem;
+}
+.cert-practice__actions .cert-button {
+  width: 100%;
+  max-width: 20rem;
+  border: 0;
+  font: inherit;
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+}
+
+/* The buttons of the session share one shape: a pill on the page ground, orange when it is the action. */
+.cert-practice__resume,
+.cert-practice__finish,
+.cert-practice__control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
   min-height: 2.75rem;
   padding: 0.5rem 1rem;
   border-radius: var(--radius-pill);
@@ -1947,58 +2042,423 @@ code {
   background: var(--color-page);
   color: var(--color-ink);
   font: inherit;
-  font-weight: var(--font-weight-demibold);
+  font-weight: var(--font-weight-bold);
   cursor: pointer;
 }
-.cert-practice__controls button:disabled {
-  opacity: 0.5;
+.cert-practice__control {
+  min-width: 0;
+  padding-inline: 0.75rem;
+}
+.cert-practice__control svg,
+.cert-practice__proof svg,
+.cert-practice__timer svg,
+.cert-practice__verdict svg {
+  flex: none;
+}
+.cert-practice__resume {
+  border: 0;
+  background: none;
+  color: var(--color-accent);
+}
+.cert-practice__control.is-primary {
+  border-color: var(--color-aws-orange);
+  background: var(--color-aws-orange);
+  color: #16191f;
+}
+.cert-practice__control[aria-pressed='true'] {
+  border-color: var(--color-aws-orange);
+  background: var(--color-selection);
+  color: var(--color-selection-ink);
+}
+.cert-practice__control:disabled {
+  opacity: 0.4;
   cursor: default;
 }
-.cert-practice__actions,
-.cert-practice__controls {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+
+/* The domains as four tiles of the same size, two by two: the weight, or the hits, over the name and a bar. */
+.cert-practice__domains ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
 }
-.cert-practice__finish {
-  margin-inline-start: auto;
+.cert-practice__domains li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  background: var(--color-page);
 }
+.cert-practice__domain-number {
+  color: var(--color-ink-muted);
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.cert-practice__domains li strong {
+  font-size: var(--text-h3);
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+}
+.cert-practice__domain-name {
+  flex: 1;
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-demibold);
+  line-height: 1.4;
+}
+.cert-practice__domains .cert-practice__bar {
+  margin-top: 0.5rem;
+}
+.cert-practice__bar {
+  height: 0.375rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-strong);
+  overflow: hidden;
+}
+.cert-practice__bar span {
+  display: block;
+  width: var(--weight);
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-aws-orange);
+}
+
+/* A question: where the reader is and the time left on top, a bar of what is answered under them. */
 .cert-practice__head {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  gap: 0.75rem;
+}
+.cert-practice__count {
   font-weight: var(--font-weight-bold);
 }
-.cert-practice__timer {
-  font-variant-numeric: tabular-nums;
-}
-.cert-practice__timer span {
-  color: var(--color-ink-muted);
-  font-weight: var(--font-weight-medium);
-}
-.cert-practice__flag {
-  display: inline-flex;
+.cert-practice__head-end {
+  display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+.cert-practice__timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
   min-height: 2.75rem;
+  padding: 0 0.875rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  border: 1px solid var(--color-hair);
+  font-variant-numeric: tabular-nums;
+}
+.cert-practice__progress {
+  flex: 1 0 100%;
+  height: 0.25rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-strong);
+  overflow: hidden;
+}
+.cert-practice__progress span {
+  display: block;
+  height: 100%;
+  background: var(--color-aws-orange);
+  transition: width var(--duration-micro) var(--ease-out-soft);
+}
+.cert-practice__question {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.cert-practice__domain {
+  color: var(--color-accent);
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.cert-practice legend {
+  margin-bottom: 1rem;
+  font-size: var(--text-h4);
+  font-weight: var(--font-weight-demibold);
+  line-height: 1.55;
+}
+.cert-practice__choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+.cert-practice__option {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-hair);
+  cursor: pointer;
+  line-height: 1.5;
+  transition: border-color var(--duration-micro) var(--ease-out-soft);
+}
+.cert-practice__option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.cert-practice__option:hover {
+  border-color: var(--color-ink-muted);
+}
+.cert-practice__option:has(input:focus-visible) {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.cert-practice__letter {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-hair);
+  color: var(--color-ink-muted);
   font-size: var(--text-small);
+  font-weight: var(--font-weight-bold);
+}
+.cert-practice__option input[type='radio'] + .cert-practice__letter {
+  border-radius: var(--radius-pill);
+}
+.cert-practice__option:has(input:checked) {
+  border-color: var(--color-aws-orange);
+  background: var(--color-selection);
+}
+.cert-practice__option:has(input:checked) .cert-practice__letter {
+  border-color: var(--color-aws-orange);
+  background: var(--color-aws-orange);
+  color: #16191f;
+}
+.cert-practice__option:has(input:disabled) {
+  cursor: default;
+}
+.cert-practice__option:has(input:disabled):hover {
+  border-color: var(--color-hair);
+}
+.cert-practice__option.is-right,
+.cert-practice__option.is-right:hover,
+.cert-practice__option.is-wrong,
+.cert-practice__option.is-wrong:hover {
+  align-items: flex-start;
+  border-color: var(--color-right);
+  background: none;
+}
+.cert-practice__option.is-wrong,
+.cert-practice__option.is-wrong:hover {
+  border-color: var(--color-wrong);
+}
+.cert-practice__option:has(input:disabled) {
+  align-items: flex-start;
+}
+.cert-practice__option.is-right:has(input:checked),
+.cert-practice__option.is-wrong:has(input:checked) {
+  background: none;
+}
+.cert-practice__option.is-right:has(input:checked) {
+  border-color: var(--color-right);
+}
+.cert-practice__option.is-wrong:has(input:checked) {
+  border-color: var(--color-wrong);
+}
+.cert-practice__option.is-right .cert-practice__letter,
+.cert-practice__option.is-right:has(input:checked) .cert-practice__letter {
+  border-color: var(--color-right);
+  background: none;
+  color: var(--color-right);
+}
+.cert-practice__option.is-wrong .cert-practice__letter,
+.cert-practice__option.is-wrong:has(input:checked) .cert-practice__letter {
+  border-color: var(--color-wrong);
+  background: none;
+  color: var(--color-wrong);
+}
+.cert-practice__option-text > strong {
+  font-size: var(--text-small);
+}
+.cert-practice .is-right .cert-practice__option-text > strong {
+  color: var(--color-right);
+}
+.cert-practice .is-wrong .cert-practice__option-text > strong {
+  color: var(--color-wrong);
+}
+.cert-practice__reason {
+  display: block;
+  margin-top: 0.375rem;
+  color: var(--color-ink-muted);
+  font-size: var(--text-small);
+  line-height: 1.6;
+}
+.cert-practice__checked {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+.cert-practice__controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+@media (max-width: 30rem) {
+  .cert-practice__controls [data-move] span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
 }
 .cert-practice__confirm {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem;
-  border-radius: var(--radius-md);
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-aws-orange);
   background: var(--color-selection);
   color: var(--color-selection-ink);
+  font-weight: var(--font-weight-demibold);
 }
-.cert-practice__map {
+.cert-practice__confirm div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Right and wrong, in the check of a question and in the review at the end. */
+.cert-practice__verdict {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: var(--font-weight-bold);
+}
+.cert-practice .is-right > .cert-practice__letter,
+.cert-practice__answer.is-right summary > .cert-practice__letter,
+.cert-practice__reasons > .is-right .cert-practice__reason-head strong,
+.cert-practice__verdict.is-right {
+  color: var(--color-right);
+}
+.cert-practice .is-wrong > .cert-practice__letter,
+.cert-practice__answer.is-wrong summary > .cert-practice__letter,
+.cert-practice__reasons > .is-wrong .cert-practice__reason-head strong,
+.cert-practice__verdict.is-wrong {
+  color: var(--color-wrong);
+}
+.cert-practice .is-right > .cert-practice__letter,
+.cert-practice__answer.is-right summary > .cert-practice__letter {
+  border-color: var(--color-right);
+}
+.cert-practice .is-wrong > .cert-practice__letter,
+.cert-practice__answer.is-wrong summary > .cert-practice__letter {
+  border-color: var(--color-wrong);
+}
+.cert-practice__reasons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-small);
+  line-height: 1.6;
+}
+.cert-practice__reasons li {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.875rem;
+  border-radius: var(--radius-md);
+  background: var(--color-page);
+}
+.cert-practice__reasons .cert-practice__letter {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: var(--text-caption);
+}
+.cert-practice__reason-head {
+  font-weight: var(--font-weight-demibold);
+}
+.cert-practice__reason-head + p {
+  margin-top: 0.25rem;
+  color: var(--color-ink-muted);
+}
+.cert-practice__proof {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2.75rem;
+  color: var(--color-accent);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-bold);
+}
+
+/* The map of a full exam, folded by default, with the count of answered and marked in its summary. */
+.cert-practice__map summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  min-height: 2rem;
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+}
+.cert-practice__map-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cert-practice__map-title svg {
+  flex: none;
+  transform: rotate(-90deg);
+  transition: transform var(--duration-micro) var(--ease-out-soft);
+}
+.cert-practice__map[open] .cert-practice__map-title svg {
+  transform: none;
+}
+.cert-practice__map summary {
+  list-style: none;
+}
+.cert-practice__map summary::-webkit-details-marker {
+  display: none;
+}
+.cert-practice__legend {
+  display: flex;
+  gap: 1rem;
+  color: var(--color-ink-muted);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-medium);
+}
+.cert-practice__legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+.cert-practice__legend > span::before {
+  content: '';
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 2px;
+}
+.cert-practice__legend .is-answered-key::before {
+  background: var(--color-ink-muted);
+}
+.cert-practice__legend .is-flagged-key::before {
+  background: var(--color-aws-orange);
+}
+.cert-practice__map ol {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(2.75rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(2.5rem, 1fr));
   gap: 0.375rem;
   margin: 1rem 0 0;
   padding: 0;
@@ -2006,13 +2466,14 @@ code {
 }
 .cert-practice__map button {
   width: 100%;
-  min-height: 2.75rem;
+  min-height: 2.5rem;
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-hair);
   background: var(--color-surface);
   color: var(--color-ink-muted);
   font: inherit;
   font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
   cursor: pointer;
 }
 .cert-practice__map .is-answered {
@@ -2027,117 +2488,108 @@ code {
   outline: 2px solid var(--color-ink);
   outline-offset: 1px;
 }
-.cert-practice__verdict {
-  font-weight: var(--font-weight-bold);
-}
-.cert-practice .is-right > strong,
-.cert-practice__verdict.is-right {
-  color: var(--color-right);
-}
-.cert-practice .is-wrong > strong,
-.cert-practice__verdict.is-wrong {
-  color: var(--color-wrong);
-}
-.cert-practice__reasons {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-size: var(--text-small);
-  line-height: 1.6;
-}
-.cert-practice__reasons li {
-  padding: 0.75rem 0.875rem;
-  border-radius: var(--radius-md);
-  border-inline-start: 3px solid var(--color-hair);
-  background: var(--color-page);
-}
-.cert-practice__reasons li.is-right {
-  border-inline-start-color: var(--color-right);
-}
-.cert-practice__reasons li.is-wrong {
-  border-inline-start-color: var(--color-wrong);
-}
-.cert-practice__reasons p {
-  margin-top: 0.25rem;
-  color: var(--color-ink-muted);
-}
-.cert-practice__proof {
-  align-self: flex-start;
-  min-height: 2.75rem;
-  display: inline-flex;
-  align-items: center;
-  color: var(--color-accent);
-  font-size: var(--text-small);
-  font-weight: var(--font-weight-bold);
-}
-.cert-practice__score {
+
+/* The result: the estimated score in a ring of the share of right answers, beside the verdict. */
+.cert-practice__summary {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.75rem;
-}
-.cert-practice__score strong {
-  font-size: var(--text-h1);
-  line-height: 1;
-}
-.cert-practice__by-domain,
-.cert-practice__domains ol {
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.cert-practice__by-domain li,
-.cert-practice__domains li {
-  display: grid;
-  grid-template-columns: 1fr auto;
   align-items: center;
-  gap: 0.75rem;
-  font-size: var(--text-small);
+  justify-content: center;
+  gap: 1.5rem 2rem;
 }
-.cert-practice__by-domain li {
-  grid-template-columns: minmax(0, 1fr) minmax(4rem, 8rem) auto;
+.cert-practice__ring {
+  --ring: var(--color-wrong);
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  width: 10rem;
+  height: 10rem;
+  flex: none;
+  border-radius: 50%;
+  background:
+    radial-gradient(closest-side, var(--color-surface) 82%, transparent 83%),
+    conic-gradient(var(--ring) var(--share), var(--color-surface-strong) 0);
 }
-.cert-practice__bar {
-  height: 0.5rem;
-  border-radius: var(--radius-pill);
-  background: var(--color-surface-strong);
-  overflow: hidden;
+.cert-practice__summary.is-right .cert-practice__ring {
+  --ring: var(--color-right);
 }
-.cert-practice__bar span {
-  display: block;
-  height: 100%;
-  background: var(--color-aws-orange);
+.cert-practice__ring strong {
+  font-size: 2.75rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.cert-practice__ring span {
+  max-width: 6.5rem;
+  margin-top: 0.25rem;
+  color: var(--color-ink-muted);
+  font-size: var(--text-caption);
+  text-align: center;
+}
+.cert-practice__verdict-box {
+  display: flex;
+  flex: 1 1 16rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.cert-practice__verdict-box .cert-practice__verdict {
+  font-size: var(--text-h3);
+}
+.cert-practice__summary.is-right .cert-practice__verdict {
+  color: var(--color-right);
+}
+.cert-practice__summary.is-wrong .cert-practice__verdict {
+  color: var(--color-wrong);
+}
+.cert-practice__tally {
+  font-weight: var(--font-weight-bold);
+}
+.cert-practice__verdict-box .cert-button {
+  margin-top: 0.5rem;
+  border: 0;
+  font: inherit;
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
 }
 .cert-practice__answers {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  margin: 0;
+  margin: 1rem 0 0;
   padding: 0;
   list-style: none;
 }
 .cert-practice__answer details {
-  padding: 0.75rem 0.875rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-hair);
-  border-inline-start: 3px solid var(--color-right);
-}
-.cert-practice__answer.is-wrong details {
-  border-inline-start-color: var(--color-wrong);
 }
 .cert-practice__answer summary {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 0.875rem;
   cursor: pointer;
-  line-height: 1.5;
+  font-size: var(--text-small);
+  line-height: 1.55;
+  list-style: none;
 }
-.cert-practice__answer details[open] summary {
-  margin-bottom: 0.75rem;
-}
-.cert-practice__domains[hidden] {
+.cert-practice__answer summary::-webkit-details-marker {
   display: none;
+}
+.cert-practice__answer summary .cert-practice__letter {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.cert-practice__answer-number {
+  color: var(--color-ink-muted);
+  font-weight: var(--font-weight-bold);
+}
+.cert-practice__answer details > :not(summary) {
+  margin: 0 0.875rem 0.875rem;
+}
+@media (max-width: 40rem) {
+  .cert-practice__verdict-box {
+    align-items: center;
+    text-align: center;
+  }
 }

@@ -180,6 +180,10 @@ export const enUS: readonly Topic[] = [
         summary: 'Questions in the exam format to measure your preparation.',
         links: [
           {
+            label: 'Practice exam of these notes, with 65 questions and a timer',
+            href: 'https://gustavofreze.github.io/aws-certified-cloud-practitioner/practice/',
+          },
+          {
             label: 'AWS Certified Cloud Practitioner: sample questions',
             href: 'https://d1.awsstatic.com/training-and-certification/docs-cloud-practitioner/AWS-Certified-Cloud-Practitioner_Sample-Questions.pdf',
           },
@@ -384,6 +388,10 @@ export const ptBR: readonly Topic[] = [
         name: 'Simulados',
         summary: 'Questões no formato da prova para medir a preparação.',
         links: [
+          {
+            label: 'Simulado destas notas, com 65 questões e cronômetro',
+            href: 'https://gustavofreze.github.io/aws-certified-cloud-practitioner/pt-br/practice/',
+          },
           {
             label: 'AWS Certified Cloud Practitioner: exemplos de perguntas',
             href: 'https://d1.awsstatic.com/pt_BR/training-and-certification/docs-cloud-practitioner/AWS-Certified-Cloud-Practitioner_Sample-Questions.pdf',

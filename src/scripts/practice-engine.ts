@@ -120,11 +120,10 @@ const clock = (milliseconds: number): string => {
 }
 
 export async function start(root: HTMLElement, choice: Choice): Promise<void> {
-  const setup = root.querySelector<HTMLElement>('[data-practice-setup]')
+  const intro = root.querySelector<HTMLElement>('[data-practice-intro]')
   const stage = root.querySelector<HTMLElement>('[data-practice-stage]')
   const key = root.dataset.practiceKey ?? ''
-  const domainsBox = root.querySelector<HTMLElement>('.cert-practice__domains')
-  if (!setup || !stage) {
+  if (!intro || !stage) {
     return
   }
 
@@ -142,21 +141,25 @@ export async function start(root: HTMLElement, choice: Choice): Promise<void> {
   let timer = 0
   let confirming = false
 
+  const icon = (name: string): string =>
+    root.querySelector<HTMLTemplateElement>(`[data-practice-icon="${name}"]`)?.innerHTML.trim() ?? ''
   const question = (): Question => byId.get(session.ids[session.index] ?? '') as Question
   const picksOf = (id: string): number[] => session.picks[id] ?? []
   const isRight = (q: Question): boolean => same(picksOf(q.id), q.answers)
+  const letter = (index: number): string => String.fromCharCode(65 + index)
 
   const reasonsHtml = (q: Question): string =>
-    `<ul class="cert-practice__reasons">${(session.orders[q.id] ?? [])
-      .map((position) => {
+    `<ol class="cert-practice__reasons">${(session.orders[q.id] ?? [])
+      .map((position, index) => {
         const right = q.answers.includes(position)
         const chosen = picksOf(q.id).includes(position)
+        const state = right ? 'is-right' : chosen ? 'is-wrong' : ''
         const mark = right ? labels.correct : chosen ? labels.incorrect : ''
-        return `<li class="${right ? 'is-right' : chosen ? 'is-wrong' : ''}">${mark ? `<strong>${mark}</strong> ` : ''}<span>${q.options[position] ?? ''}</span><p>${q.reasons[position] ?? ''}</p></li>`
+        return `<li class="${state}"><span class="cert-practice__letter">${right ? icon('check') : chosen ? icon('close') : letter(index)}</span><div><p class="cert-practice__reason-head">${q.options[position] ?? ''}${mark ? ` <strong>${mark}</strong>` : ''}</p><p>${q.reasons[position] ?? ''}</p></div></li>`
       })
       .join(
         '',
-      )}</ul><a class="cert-practice__proof" href="${q.source}" target="_blank" rel="noopener noreferrer">${labels.proof}</a>`
+      )}</ol><a class="cert-practice__proof" href="${q.source}" target="_blank" rel="noopener noreferrer">${labels.proof} ${icon('arrow-right')}</a>`
 
   const finish = (): void => {
     window.clearInterval(timer)
@@ -165,73 +168,107 @@ export async function start(root: HTMLElement, choice: Choice): Promise<void> {
     const right = asked.filter(isRight).length
     const share = asked.length ? right / asked.length : 0
     const score = Math.round(100 + 900 * share)
+    const passed = score >= bank.exam.passing
     const domains = bank.domains
       .map((name, index) => {
         const inDomain = asked.filter((q) => q.domain === index + 1)
         if (!inDomain.length) return ''
         const hits = inDomain.filter(isRight).length
-        return `<li><span>${name}</span><span class="cert-practice__bar"><span style="width:${Math.round((100 * hits) / inDomain.length)}%"></span></span><span>${hits}/${inDomain.length}</span></li>`
+        const percent = Math.round((100 * hits) / inDomain.length)
+        return `<li style="--weight:${percent}%"><span class="cert-practice__domain-number">${fill(labels.domainNumber, { number: index + 1 })}</span><strong>${hits}/${inDomain.length}</strong><span class="cert-practice__domain-name">${name}</span><span class="cert-practice__bar" aria-hidden="true"><span></span></span></li>`
       })
       .join('')
     const review = asked
       .map(
         (q, index) =>
-          `<li class="cert-practice__answer ${isRight(q) ? 'is-right' : 'is-wrong'}"><details><summary><span>${index + 1}.</span> ${q.stem}</summary>${reasonsHtml(q)}</details></li>`,
+          `<li class="cert-practice__answer ${isRight(q) ? 'is-right' : 'is-wrong'}"><details><summary><span class="cert-practice__letter">${isRight(q) ? icon('check') : icon('close')}</span><span><span class="cert-practice__answer-number">${index + 1}.</span> ${q.stem}</span></summary>${reasonsHtml(q)}</details></li>`,
       )
       .join('')
-    stage.innerHTML = `<section class="cert-practice__result"><h2 class="cert-block__title" tabindex="-1">${labels.result}</h2>
-      <p class="cert-practice__score"><span>${labels.score}</span><strong>${score}</strong><span class="cert-chip">${score >= bank.exam.passing ? labels.passed : labels.failed}</span></p>
-      <p class="cert-practice__meta">${right}/${asked.length} · ${fill(labels.scoreNote, { passing: bank.exam.passing })}</p>
-      <h3 class="cert-block__title">${labels.byDomain}</h3><ul class="cert-practice__by-domain">${domains}</ul>
-      <h3 class="cert-block__title">${labels.answers}</h3><ol class="cert-practice__answers">${review}</ol>
-      <button type="button" class="cert-button cert-button--primary" data-again>${labels.again}</button></section>`
+    stage.innerHTML = `<section class="cert-practice__result">
+      <div class="cert-practice__panel cert-practice__summary ${passed ? 'is-right' : 'is-wrong'}">
+        <div class="cert-practice__ring" style="--share:${Math.round(share * 100)}%"><strong tabindex="-1">${score}</strong><span>${labels.score}</span></div>
+        <div class="cert-practice__verdict-box">
+          <h2 class="cert-practice__verdict">${passed ? labels.passed : labels.failed}</h2>
+          <p class="cert-practice__tally">${fill(labels.tally, { right, total: asked.length })}</p>
+          <p class="cert-practice__meta">${fill(labels.scoreNote, { passing: bank.exam.passing })}</p>
+          <button type="button" class="cert-button cert-button--primary" data-again>${labels.again}</button>
+        </div>
+      </div>
+      <section class="cert-practice__panel cert-practice__domains"><h3 class="cert-block__title">${labels.byDomain}</h3><ol>${domains}</ol></section>
+      <section class="cert-practice__panel"><h3 class="cert-block__title">${labels.answers}</h3><ol class="cert-practice__answers">${review}</ol></section>
+    </section>`
     stage.querySelector('[data-again]')?.addEventListener('click', () => {
       stage.innerHTML = ''
-      setup.hidden = false
-      domainsBox?.removeAttribute('hidden')
-      setup.querySelector<HTMLElement>('[data-practice-resume]')?.setAttribute('hidden', '')
-      setup.scrollIntoView({ block: 'start' })
+      intro.hidden = false
+      intro.querySelector<HTMLElement>('[data-practice-resume]')?.setAttribute('hidden', '')
+      root.scrollIntoView({ block: 'start' })
     })
-    stage.querySelector<HTMLElement>('h2')?.focus()
+    stage.querySelector<HTMLElement>('.cert-practice__ring strong')?.focus()
+  }
+
+  const mapHtml = (): string => {
+    const answered = session.ids.filter((id) => picksOf(id).length > 0).length
+    return `<details class="cert-practice__panel cert-practice__map" data-map ${root.dataset.mapOpen === 'true' ? 'open' : ''}>
+      <summary><span class="cert-practice__map-title">${icon('chevron')} ${labels.map}</span><span class="cert-practice__legend"><span class="is-answered-key">${labels.answered} <strong data-answered>${answered}</strong></span><span class="is-flagged-key">${labels.flagged} <strong data-flagged>${session.flags.length}</strong></span></span></summary>
+      <ol>${session.ids
+        .map(
+          (id, index) =>
+            `<li><button type="button" data-go="${index}" class="${index === session.index ? 'is-current' : ''} ${picksOf(id).length ? 'is-answered' : ''} ${session.flags.includes(id) ? 'is-flagged' : ''}" aria-label="${fill(labels.progress, { current: index + 1, total: session.ids.length })}">${index + 1}</button></li>`,
+        )
+        .join('')}</ol>
+    </details>`
   }
 
   const render = (focus: boolean): void => {
     const q = question()
     const multiple = q.answers.length > 1
     const checked = session.checked.includes(q.id)
+    const flagged = session.flags.includes(q.id)
     const unanswered = session.ids.filter((id) => picksOf(id).length === 0).length
-    const navigator =
-      session.mode === 'exam'
-        ? `<ol class="cert-practice__map">${session.ids
-            .map(
-              (id, index) =>
-                `<li><button type="button" data-go="${index}" class="${index === session.index ? 'is-current' : ''} ${picksOf(id).length ? 'is-answered' : ''} ${session.flags.includes(id) ? 'is-flagged' : ''}" aria-label="${fill(labels.progress, { current: index + 1, total: session.ids.length })}">${index + 1}</button></li>`,
-            )
-            .join('')}</ol>`
-        : ''
+    const answered = session.ids.length - unanswered
     const options = (session.orders[q.id] ?? [])
-      .map(
-        (position) =>
-          `<label class="cert-practice__option"><input type="${multiple ? 'checkbox' : 'radio'}" name="answer" value="${position}" ${picksOf(q.id).includes(position) ? 'checked' : ''} ${checked ? 'disabled' : ''} /><span>${q.options[position] ?? ''}</span></label>`,
-      )
+      .map((position, index) => {
+        const right = q.answers.includes(position)
+        const chosen = picksOf(q.id).includes(position)
+        const state = checked ? (right ? 'is-right' : chosen ? 'is-wrong' : '') : ''
+        const mark = right ? labels.correct : chosen ? labels.incorrect : ''
+        const badge = checked && state ? icon(right ? 'check' : 'close') : letter(index)
+        const reason = checked
+          ? `${mark ? ` <strong>${mark}</strong>` : ''}<span class="cert-practice__reason">${q.reasons[position] ?? ''}</span>`
+          : ''
+        return `<label class="cert-practice__option ${state}"><input type="${multiple ? 'checkbox' : 'radio'}" name="answer" value="${position}" ${chosen ? 'checked' : ''} ${checked ? 'disabled' : ''} /><span class="cert-practice__letter">${badge}</span><span class="cert-practice__option-text">${q.options[position] ?? ''}${reason}</span></label>`
+      })
       .join('')
     const last = session.index === session.ids.length - 1
+    const middle =
+      session.mode === 'exam'
+        ? `<button type="button" class="cert-practice__control" data-flag aria-pressed="${flagged}">${icon('flag')} ${labels.flag}</button>`
+        : checked
+          ? '<span></span>'
+          : `<button type="button" class="cert-practice__control is-primary" data-check>${labels.check}</button>`
     stage.innerHTML = `<div class="cert-practice__head">
         <p class="cert-practice__count" tabindex="-1">${fill(labels.progress, { current: session.index + 1, total: session.ids.length })}</p>
-        ${session.ends ? `<p class="cert-practice__timer"><span>${labels.timeLeft}</span> <strong data-timer>${clock(session.ends - Date.now())}</strong></p>` : ''}
-      </div>
-      <form class="cert-practice__question" data-question>
-        <fieldset><legend>${q.stem}</legend>${options}</fieldset>
-        ${checked ? `<p class="cert-practice__verdict ${isRight(q) ? 'is-right' : 'is-wrong'}">${isRight(q) ? labels.correct : labels.incorrect}</p>${reasonsHtml(q)}` : ''}
-        <div class="cert-practice__controls">
-          <button type="button" data-move="-1" ${session.index === 0 ? 'disabled' : ''}>${labels.previous}</button>
-          ${session.mode === 'study' && !checked ? `<button type="button" data-check>${labels.check}</button>` : ''}
-          ${session.mode === 'exam' ? `<label class="cert-practice__flag"><input type="checkbox" data-flag ${session.flags.includes(q.id) ? 'checked' : ''} /> ${labels.flag}</label>` : ''}
-          ${last ? '' : `<button type="button" data-move="1">${labels.next}</button>`}
+        <div class="cert-practice__head-end">
+          ${session.ends ? `<p class="cert-practice__timer" title="${labels.timeLeft}"><span class="sr-only">${labels.timeLeft}</span>${icon('clock')} <strong data-timer>${clock(session.ends - Date.now())}</strong></p>` : ''}
           <button type="button" class="cert-practice__finish" data-finish>${labels.finish}</button>
         </div>
-        ${confirming ? `<p class="cert-practice__confirm">${fill(labels.confirmFinish, { count: unanswered })} <button type="button" data-confirm>${labels.finish}</button> <button type="button" data-cancel>${labels.cancel}</button></p>` : ''}
-      </form>${navigator}`
+        <span class="cert-practice__progress" aria-hidden="true"><span data-progress style="width:${Math.round((100 * answered) / session.ids.length)}%"></span></span>
+      </div>
+      ${confirming ? `<div class="cert-practice__confirm" role="alert"><p>${fill(labels.confirmFinish, { count: unanswered })}</p><div><button type="button" class="cert-practice__control" data-cancel>${labels.cancel}</button><button type="button" class="cert-practice__control is-primary" data-confirm>${labels.finish}</button></div></div>` : ''}
+      <form class="cert-practice__panel cert-practice__question" data-question>
+        ${session.mode === 'study' ? `<p class="cert-practice__domain">${fill(labels.domainNumber, { number: q.domain })} · ${bank.domains[q.domain - 1] ?? ''}</p>` : ''}
+        <fieldset><legend>${q.stem}</legend><div class="cert-practice__choices">${options}</div></fieldset>
+        ${checked ? `<div class="cert-practice__checked"><p class="cert-practice__verdict ${isRight(q) ? 'is-right' : 'is-wrong'}">${isRight(q) ? icon('check') : icon('close')} ${isRight(q) ? labels.correct : labels.incorrect}</p><a class="cert-practice__proof" href="${q.source}" target="_blank" rel="noopener noreferrer">${labels.proof} ${icon('arrow-right')}</a></div>` : ''}
+        <div class="cert-practice__controls">
+          <button type="button" class="cert-practice__control" data-move="-1" ${session.index === 0 ? 'disabled' : ''}>${icon('arrow-left')} <span>${labels.previous}</span></button>
+          ${middle}
+          <button type="button" class="cert-practice__control" data-move="1" ${last ? 'disabled' : ''}><span>${labels.next}</span> ${icon('arrow-right')}</button>
+        </div>
+      </form>${session.mode === 'exam' ? mapHtml() : ''}`
+    const map = stage.querySelector<HTMLDetailsElement>('[data-map]')
+    map?.addEventListener('toggle', () => {
+      root.dataset.mapOpen = String(map.open)
+    })
     if (focus) stage.querySelector<HTMLElement>('.cert-practice__count')?.focus()
   }
 
@@ -242,26 +279,41 @@ export async function start(root: HTMLElement, choice: Choice): Promise<void> {
     render(true)
   }
 
-  stage.onchange = (event) => {
-    const target = event.target as HTMLInputElement
+  const refresh = (): void => {
     const q = question()
-    if (target.matches('[data-flag]')) {
-      session.flags = target.checked ? [...session.flags, q.id] : session.flags.filter((id) => id !== q.id)
-    } else if (target.name === 'answer') {
-      const form = stage.querySelector<HTMLFormElement>('[data-question]')
-      session.picks[q.id] = form ? new FormData(form).getAll('answer').map(Number) : []
-    }
-    save(key, session)
+    const answered = session.ids.filter((id) => picksOf(id).length > 0).length
     const cell = stage.querySelector(`[data-go="${session.index}"]`)
     cell?.classList.toggle('is-answered', picksOf(q.id).length > 0)
     cell?.classList.toggle('is-flagged', session.flags.includes(q.id))
+    const progress = stage.querySelector<HTMLElement>('[data-progress]')
+    if (progress) progress.style.width = `${Math.round((100 * answered) / session.ids.length)}%`
+    const answeredCount = stage.querySelector('[data-answered]')
+    if (answeredCount) answeredCount.textContent = String(answered)
+    const flaggedCount = stage.querySelector('[data-flagged]')
+    if (flaggedCount) flaggedCount.textContent = String(session.flags.length)
+  }
+
+  stage.onchange = (event) => {
+    const target = event.target as HTMLInputElement
+    if (target.name !== 'answer') return
+    const form = stage.querySelector<HTMLFormElement>('[data-question]')
+    session.picks[question().id] = form ? new FormData(form).getAll('answer').map(Number) : []
+    save(key, session)
+    refresh()
   }
   stage.onclick = (event) => {
     const button = (event.target as HTMLElement).closest('button')
     if (!button) return
     if (button.dataset.move) move(session.index + Number(button.dataset.move))
     else if (button.dataset.go) move(Number(button.dataset.go))
-    else if (button.hasAttribute('data-check')) {
+    else if (button.hasAttribute('data-flag')) {
+      const id = question().id
+      const flagged = !session.flags.includes(id)
+      session.flags = flagged ? [...session.flags, id] : session.flags.filter((other) => other !== id)
+      button.setAttribute('aria-pressed', String(flagged))
+      save(key, session)
+      refresh()
+    } else if (button.hasAttribute('data-check')) {
       session.checked.push(question().id)
       save(key, session)
       render(false)
@@ -270,6 +322,7 @@ export async function start(root: HTMLElement, choice: Choice): Promise<void> {
       if (unanswered && session.mode === 'exam') {
         confirming = true
         render(false)
+        stage.querySelector<HTMLElement>('[data-cancel]')?.focus()
       } else finish()
     } else if (button.hasAttribute('data-confirm')) finish()
     else if (button.hasAttribute('data-cancel')) {
@@ -278,8 +331,7 @@ export async function start(root: HTMLElement, choice: Choice): Promise<void> {
     }
   }
 
-  setup.hidden = true
-  domainsBox?.setAttribute('hidden', '')
+  intro.hidden = true
   save(key, session)
   render(true)
   if (session.ends) {

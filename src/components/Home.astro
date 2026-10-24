@@ -21,6 +21,8 @@ const topics = topicsOf(locale)
 const first = topics[0]
 const groups: readonly TopicGroup[] = SITE.groups
 const step = (slug: string): string => String(topics.findIndex((t) => t.slug === slug) + 1).padStart(2, '0')
+const practice = copy.practice
+const lastGroup = groups.at(-1)
 ---
 
 <BaseLayout
@@ -104,6 +106,28 @@ const step = (slug: string): string => String(topics.findIndex((t) => t.slug ===
                     </a>
                   </li>
                 ))}
+                {group === lastGroup && (
+                  <li data-reveal style={`--i:${members.length % 3}`}>
+                    <a href={pageHref(locale, 'practice')} class="cert-card">
+                      <span class="cert-card__top">
+                        <span class="cert-tile">
+                          <Icon name="clipboard" size={22} />
+                        </span>
+                        <span class="cert-card__step">{SITE.exam}</span>
+                      </span>
+                      <span class="cert-card__title">{practice.title}</span>
+                      <span class="cert-card__summary">{practice.lede}</span>
+                      <span class="cert-card__top">
+                        <span class="cert-card__foot">
+                          <span class="cert-chip">{`${SITE.practice.questions} ${practice.facts.questions.toLowerCase()}`}</span>
+                          <span class="cert-chip">{`${SITE.practice.minutes} min`}</span>
+                          <span class="cert-chip">{`${practice.facts.passing.toLowerCase()}: ${SITE.practice.passing}`}</span>
+                        </span>
+                        <Icon name="arrow-right" size={18} class="cert-card__arrow" />
+                      </span>
+                    </a>
+                  </li>
+                )}
               </ul>
             </section>
           )

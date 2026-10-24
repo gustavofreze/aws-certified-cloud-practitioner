@@ -2,16 +2,17 @@
 /**
  * The practice exam, in one language.
  *
- * The page draws what does not change: what the questions are, the domains of the exam with their
- * weights, and the choice between the full exam and practice by domain. The questions arrive only when
+ * The page draws what does not change: the shape of the exam in four numbers, the choice between the
+ * full exam and practice by domain, and the domains with their weights. The questions arrive only when
  * the reader starts, fetched as JSON together with the engine that asks them, so a visit that never
  * starts carries no more script than any other page.
  */
 import { questionsOf } from '../content/practice'
 import { SITE, SITE_TEXT } from '../content/site'
-import { pageHref, pagePaths } from '../i18n'
+import { CERTIFICATION_HREF, pageHref, pagePaths, REPOSITORY_HREF } from '../i18n'
 import { getCopy, type Locale, MAIN_ID } from '../i18n/strings'
 import BaseLayout from '../layouts/BaseLayout.astro'
+import Icon from './Icon.astro'
 import PageCover from './PageCover.astro'
 
 interface Props {
@@ -23,78 +24,149 @@ const labels = copy.practice
 const domains = SITE_TEXT[locale].domains
 const fill = (text: string, values: Record<string, string | number>): string =>
   text.replace(/\{(\w+)\}/g, (token, name: string) => String(values[name] ?? token))
-const total = questionsOf(locale).length
+const facts = [
+  { value: SITE.practice.questions, label: labels.facts.questions },
+  { value: SITE.practice.minutes, label: labels.facts.minutes },
+  { value: SITE.practice.passing, label: labels.facts.passing },
+  { value: questionsOf(locale).length, label: labels.facts.bank },
+]
+const modes = [
+  {
+    value: 'exam',
+    icon: 'clock',
+    title: labels.examMode,
+    detail: fill(labels.examModeDetail, { questions: SITE.practice.questions, minutes: SITE.practice.minutes }),
+  },
+  { value: 'study', icon: 'target', title: labels.studyMode, detail: labels.studyModeDetail },
+] as const
+const absolute = (path: string): string => new URL(path, Astro.site).href
+const breadcrumb = [
+  { name: copy.nav.home, item: absolute(pageHref(locale)) },
+  { name: labels.title, item: absolute(pageHref(locale, 'practice')) },
+].map((crumb, position) => ({ '@type': 'ListItem', position: position + 1, ...crumb }))
+/** Names the page as a free practice exam aligned with the certification, for search engines and assistants. */
+const quiz = {
+  '@type': 'Quiz',
+  name: `${labels.title} ${SITE.exam}`,
+  description: labels.lede,
+  url: absolute(pageHref(locale, 'practice')),
+  inLanguage: locale,
+  learningResourceType: labels.title,
+  educationalLevel: SITE.level,
+  isAccessibleForFree: true,
+  about: domains.map((name) => ({ '@type': 'Thing', name })),
+  educationalAlignment: {
+    '@type': 'AlignmentObject',
+    alignmentType: 'educationalSubject',
+    targetName: `${copy.home.title} (${SITE.exam})`,
+    targetUrl: CERTIFICATION_HREF[locale],
+  },
+  isPartOf: { '@type': 'WebSite', name: copy.home.title, url: absolute(pageHref(locale)) },
+  author: { '@type': 'Person', name: 'Gustavo Freze', url: 'https://github.com/gustavofreze' },
+  sameAs: REPOSITORY_HREF,
+}
 ---
 
-<BaseLayout locale={locale} title={labels.title} description={labels.lede} paths={pagePaths('practice')}>
+<BaseLayout
+  locale={locale}
+  title={`${labels.title} ${SITE.exam}`}
+  description={labels.lede}
+  paths={pagePaths('practice')}
+  structuredData={{ '@graph': [{ '@type': 'BreadcrumbList', itemListElement: breadcrumb }, quiz] }}
+>
   <main id={MAIN_ID} class="cert-page">
     <PageCover locale={locale} icon="clipboard" title={labels.title} lede={labels.lede} />
 
-    <div class="cert-wrap cert-main cert-practice" data-practice={`${pageHref(locale)}practice.json`}
+    <div
+      class="cert-wrap cert-main cert-practice"
+      data-practice={`${pageHref(locale)}practice.json`}
       data-practice-key={`${SITE.id}:practice`}
     >
-      <p class="cert-practice__notice">{labels.notice}</p>
-
-      <form class="cert-practice__setup" data-practice-setup>
-        <fieldset class="cert-practice__modes">
-          <legend class="cert-block__title">{SITE.exam}</legend>
-          <label class="cert-practice__mode">
-            <input type="radio" name="mode" value="exam" checked />
-            <span>
-              <strong>{labels.examMode}</strong>
-              {fill(labels.examModeDetail, { questions: SITE.practice.questions, minutes: SITE.practice.minutes })}
-            </span>
-          </label>
-          <label class="cert-practice__mode">
-            <input type="radio" name="mode" value="study" />
-            <span>
-              <strong>{labels.studyMode}</strong>
-              {labels.studyModeDetail}
-            </span>
-          </label>
-        </fieldset>
-
-        <div class="cert-practice__options" data-practice-study hidden>
-          <label>
-            {labels.domain}
-            <select name="domain">
-              <option value="0">{labels.allDomains}</option>
-              {domains.map((name, index) => <option value={index + 1}>{`${index + 1}. ${name}`}</option>)}
-            </select>
-          </label>
-          <label>
-            {labels.count}
-            <select name="count">
-              <option value="10">10</option>
-              <option value="20" selected>20</option>
-              <option value="0">{labels.allQuestions}</option>
-            </select>
-          </label>
-        </div>
-
-        <div class="cert-practice__actions">
-          <button type="submit" class="cert-button cert-button--primary">{labels.start}</button>
-          <button type="button" class="cert-practice__resume" data-practice-resume hidden>{labels.resume}</button>
-        </div>
-        <p class="cert-practice__bank">{fill(labels.bank, { count: total })}</p>
-        <noscript><p>{labels.unavailable}</p></noscript>
-      </form>
-
-      <div class="cert-practice__stage" data-practice-stage aria-live="polite"></div>
-
-      <section class="cert-practice__domains" aria-labelledby="practice-domains">
-        <h2 id="practice-domains" class="cert-block__title">{labels.domains}</h2>
-        <ol>
+      <div class="cert-practice__intro" data-practice-intro>
+        <ul class="cert-practice__facts">
           {
-            domains.map((name, index) => (
+            facts.map((fact) => (
               <li>
-                <span>{name}</span>
-                <span class="cert-chip">{`${SITE.practice.weights[index]}%`}</span>
+                <strong>{fact.value}</strong>
+                <span>{fact.label}</span>
               </li>
             ))
           }
-        </ol>
-      </section>
+        </ul>
+
+        <form class="cert-practice__setup" data-practice-setup>
+          <fieldset class="cert-practice__modes">
+            <legend class="sr-only">{SITE.exam}</legend>
+            {
+              modes.map((mode, index) => (
+                <label class="cert-practice__mode">
+                  <input type="radio" name="mode" value={mode.value} checked={index === 0} />
+                  <span class="cert-tile">
+                    <Icon name={mode.icon} size={20} />
+                  </span>
+                  <strong>{mode.title}</strong>
+                  <span>{mode.detail}</span>
+                </label>
+              ))
+            }
+          </fieldset>
+
+          <div class="cert-practice__options" data-practice-study hidden>
+            <label>
+              {labels.domain}
+              <select name="domain">
+                <option value="0">{labels.allDomains}</option>
+                {domains.map((name, index) => <option value={index + 1}>{`${index + 1}. ${name}`}</option>)}
+              </select>
+            </label>
+            <label>
+              {labels.count}
+              <select name="count">
+                <option value="10">10</option>
+                <option value="20" selected>20</option>
+                <option value="0">{labels.allQuestions}</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="cert-practice__actions">
+            <button type="submit" class="cert-button cert-button--primary">
+              {labels.start}
+              <Icon name="arrow-right" size={18} />
+            </button>
+            <button type="button" class="cert-practice__resume" data-practice-resume hidden>{labels.resume}</button>
+          </div>
+          <noscript><p>{labels.unavailable}</p></noscript>
+        </form>
+
+        <section class="cert-practice__domains" aria-labelledby="practice-domains">
+          <h2 id="practice-domains" class="cert-block__title">{labels.domains}</h2>
+          <ol>
+            {
+              domains.map((name, index) => (
+                <li style={`--weight:${SITE.practice.weights[index]}%`}>
+                  <span class="cert-practice__domain-number">{fill(labels.domainNumber, { number: index + 1 })}</span>
+                  <strong>{`${SITE.practice.weights[index]}%`}</strong>
+                  <span class="cert-practice__domain-name">{name}</span>
+                  <span class="cert-practice__bar" aria-hidden="true"><span></span></span>
+                </li>
+              ))
+            }
+          </ol>
+        </section>
+
+        <p class="cert-practice__notice">{labels.notice}</p>
+      </div>
+
+      <div class="cert-practice__stage" data-practice-stage aria-live="polite"></div>
+
+      {
+        (['clock', 'flag', 'check', 'close', 'chevron', 'arrow-left', 'arrow-right'] as const).map((name) => (
+          <template data-practice-icon={name}>
+            <Icon name={name} size={16} />
+          </template>
+        ))
+      }
     </div>
   </main>
 </BaseLayout>

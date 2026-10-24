@@ -81,9 +81,18 @@ export interface SiteCopy {
     readonly domains: string
     readonly start: string
     readonly resume: string
-    readonly bank: string
+    readonly facts: {
+      readonly questions: string
+      readonly minutes: string
+      readonly passing: string
+      readonly bank: string
+    }
     readonly progress: string
-    readonly select: string
+    readonly domainNumber: string
+    readonly map: string
+    readonly answered: string
+    readonly flagged: string
+    readonly tally: string
     readonly timeLeft: string
     readonly previous: string
     readonly next: string
@@ -178,17 +187,21 @@ const ptBR: SiteCopy = {
     allDomains: 'Todos os domínios',
     count: 'Questões',
     allQuestions: 'Todas',
-    domains: 'Domínios da prova e peso de cada um',
+    domains: 'Domínios da prova',
     start: 'Começar',
     resume: 'Continuar de onde parou',
-    bank: '{count} questões no banco.',
+    facts: { questions: 'Questões', minutes: 'Minutos', passing: 'Para passar', bank: 'No banco' },
     progress: 'Questão {current} de {total}',
-    select: 'Selecione {count}.',
+    domainNumber: 'Domínio {number}',
+    map: 'Mapa das questões',
+    answered: 'Respondidas',
+    flagged: 'Marcadas',
+    tally: '{right} de {total} corretas',
     timeLeft: 'Tempo restante',
     previous: 'Anterior',
     next: 'Próxima',
     check: 'Conferir',
-    flag: 'Marcar para revisar',
+    flag: 'Marcar',
     finish: 'Encerrar',
     confirmFinish: 'Encerrar agora? {count} sem resposta contam como erradas.',
     cancel: 'Voltar',
@@ -283,17 +296,21 @@ const enUS: SiteCopy = {
     allDomains: 'All domains',
     count: 'Questions',
     allQuestions: 'All',
-    domains: 'Domains of the exam and the weight of each',
+    domains: 'Exam domains',
     start: 'Start',
     resume: 'Resume where you left off',
-    bank: '{count} questions in the bank.',
+    facts: { questions: 'Questions', minutes: 'Minutes', passing: 'To pass', bank: 'In the bank' },
     progress: 'Question {current} of {total}',
-    select: 'Select {count}.',
+    domainNumber: 'Domain {number}',
+    map: 'Question map',
+    answered: 'Answered',
+    flagged: 'Marked',
+    tally: '{right} of {total} correct',
     timeLeft: 'Time left',
     previous: 'Previous',
     next: 'Next',
     check: 'Check',
-    flag: 'Mark for review',
+    flag: 'Mark',
     finish: 'Finish',
     confirmFinish: 'Finish now? {count} unanswered count as wrong.',
     cancel: 'Go back',
