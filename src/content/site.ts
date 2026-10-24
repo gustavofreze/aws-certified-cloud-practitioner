@@ -41,9 +41,9 @@ export interface SiteText {
 export const SITE_TEXT: Readonly<Record<Locale, SiteText>> = {
   'en-US': {
     meta: {
-      title: 'AWS Certified Cloud Practitioner (CLF-C02) · Study notes',
+      title: 'AWS Certified Cloud Practitioner (CLF-C02) · Study notes and practice exam',
       description:
-        'Free study notes for the AWS Certified Cloud Practitioner (CLF-C02) exam: cloud concepts, security, billing and AWS services, with search and review cards.',
+        'Free study notes and practice exam for the AWS Certified Cloud Practitioner (CLF-C02): cloud concepts, security, billing and AWS services, with review cards.',
     },
     brand: 'Cloud Practitioner',
     home: {
@@ -66,9 +66,9 @@ export const SITE_TEXT: Readonly<Record<Locale, SiteText>> = {
   },
   'pt-BR': {
     meta: {
-      title: 'AWS Certified Cloud Practitioner (CLF-C02) · Notas de estudo',
+      title: 'AWS Certified Cloud Practitioner (CLF-C02) · Notas de estudo e simulado',
       description:
-        'Notas de estudo gratuitas para o exame AWS Cloud Practitioner (CLF-C02): nuvem, segurança, cobrança e serviços da AWS, com busca e cartões de revisão.',
+        'Notas de estudo e simulado gratuitos para o exame AWS Cloud Practitioner (CLF-C02): nuvem, segurança, cobrança e serviços da AWS, com cartões de revisão.',
     },
     brand: 'Cloud Practitioner',
     home: {
