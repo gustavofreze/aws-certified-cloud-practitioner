@@ -10,7 +10,8 @@
 import { Glossary, readingsOf } from '../content/glossary'
 import { renderInline } from '../content/inline'
 import { topicAt, topicsOf } from '../content'
-import { pageHref, pagePaths } from '../i18n'
+import { SITE } from '../content/site'
+import { CERTIFICATION_HREF, pageHref, pagePaths, REPOSITORY_HREF } from '../i18n'
 import { getCopy, type Locale, MAIN_ID } from '../i18n/strings'
 import BaseLayout from '../layouts/BaseLayout.astro'
 import Icon from './Icon.astro'
@@ -31,6 +32,30 @@ const breadcrumb = [
   { name: copy.nav.home, item: absolute(pageHref(locale)) },
   { name: topic.title, item: absolute(pageHref(locale, topic.slug)) },
 ].map((crumb, position) => ({ '@type': 'ListItem', position: position + 1, ...crumb }))
+/**
+ * Names the page as study material for the exam, so a search engine or an assistant can tell what it
+ * teaches, in which language and for which certification.
+ */
+const resource = {
+  '@type': 'LearningResource',
+  name: topic.title,
+  description: topic.summary,
+  url: absolute(pageHref(locale, topic.slug)),
+  inLanguage: locale,
+  learningResourceType: copy.topic.resourceType,
+  educationalLevel: SITE.level,
+  isAccessibleForFree: true,
+  teaches: topic.sections.map((section) => section.fullName ?? section.name),
+  educationalAlignment: {
+    '@type': 'AlignmentObject',
+    alignmentType: 'educationalSubject',
+    targetName: `${copy.home.title} (${SITE.exam})`,
+    targetUrl: CERTIFICATION_HREF[locale],
+  },
+  isPartOf: { '@type': 'WebSite', name: copy.home.title, url: absolute(pageHref(locale)) },
+  author: { '@type': 'Person', name: 'Gustavo Freze', url: 'https://github.com/gustavofreze' },
+  sameAs: REPOSITORY_HREF,
+}
 ---
 
 <BaseLayout
@@ -38,7 +63,7 @@ const breadcrumb = [
   title={topic.title}
   description={topic.summary}
   paths={pagePaths(topic.slug)}
-  structuredData={{ '@type': 'BreadcrumbList', itemListElement: breadcrumb }}
+  structuredData={{ '@graph': [{ '@type': 'BreadcrumbList', itemListElement: breadcrumb }, resource] }}
 >
   <span class="cert-progress" aria-hidden="true"><span data-read></span></span>
 

@@ -24,6 +24,7 @@ export interface SiteCopy {
     readonly certifications: string
     readonly search: string
     readonly review: string
+    readonly practice: string
   }
   readonly home: SiteText['home'] & { readonly start: string; readonly examGuide: string }
   readonly topic: {
@@ -34,6 +35,8 @@ export interface SiteCopy {
     readonly keyPoints: string
     readonly examTip: string
     readonly step: (index: number, total: number) => string
+    /** What the structured data calls a topic page. */
+    readonly resourceType: string
   }
   readonly search: {
     readonly title: string
@@ -59,6 +62,49 @@ export interface SiteCopy {
     readonly hideKnown: string
     readonly reset: string
   }
+  /**
+   * The practice exam. In the texts of the page, `{name}` stands for a value the page fills in: the number
+   * of questions, the minutes, a count or a score.
+   */
+  readonly practice: {
+    readonly title: string
+    readonly lede: string
+    readonly notice: string
+    readonly examMode: string
+    readonly examModeDetail: string
+    readonly studyMode: string
+    readonly studyModeDetail: string
+    readonly domain: string
+    readonly allDomains: string
+    readonly count: string
+    readonly allQuestions: string
+    readonly domains: string
+    readonly start: string
+    readonly resume: string
+    readonly bank: string
+    readonly progress: string
+    readonly select: string
+    readonly timeLeft: string
+    readonly previous: string
+    readonly next: string
+    readonly check: string
+    readonly flag: string
+    readonly finish: string
+    readonly confirmFinish: string
+    readonly cancel: string
+    readonly correct: string
+    readonly incorrect: string
+    readonly proof: string
+    readonly result: string
+    readonly score: string
+    readonly scoreNote: string
+    readonly passed: string
+    readonly failed: string
+    readonly byDomain: string
+    readonly answers: string
+    readonly again: string
+    readonly unavailable: string
+  }
   readonly footer: { readonly source: string }
   readonly notFound: { readonly title: string; readonly lede: string; readonly back: string }
 }
@@ -80,6 +126,7 @@ const ptBR: SiteCopy = {
     certifications: 'Certificações',
     search: 'Buscar',
     review: 'Revisar',
+    practice: 'Simulado',
   },
   home: {
     ...SITE_TEXT['pt-BR'].home,
@@ -94,6 +141,7 @@ const ptBR: SiteCopy = {
     keyPoints: 'Pontos-chave',
     examTip: 'Na prova',
     step: (index, total) => `${String(index).padStart(2, '0')} de ${String(total).padStart(2, '0')}`,
+    resourceType: 'Notas de estudo',
   },
   search: {
     title: 'Buscar nas notas',
@@ -116,6 +164,47 @@ const ptBR: SiteCopy = {
     progress: '{known} de {total} cartões que você já sabe',
     hideKnown: 'Esconder os que já sei',
     reset: 'Recomeçar',
+  },
+  practice: {
+    title: 'Simulado',
+    lede: 'Questões no formato da prova, com o motivo de cada alternativa e a página da AWS que comprova a resposta.',
+    notice:
+      'As questões são originais, escritas a partir das tarefas do exam guide oficial. Não são questões da prova, que a AWS mantém em sigilo.',
+    examMode: 'Prova completa',
+    examModeDetail: '{questions} questões em {minutes} minutos, na proporção de cada domínio, com a nota só no fim.',
+    studyMode: 'Treino',
+    studyModeDetail: 'Escolha um domínio e confira cada resposta na hora.',
+    domain: 'Domínio',
+    allDomains: 'Todos os domínios',
+    count: 'Questões',
+    allQuestions: 'Todas',
+    domains: 'Domínios da prova e peso de cada um',
+    start: 'Começar',
+    resume: 'Continuar de onde parou',
+    bank: '{count} questões no banco.',
+    progress: 'Questão {current} de {total}',
+    select: 'Selecione {count}.',
+    timeLeft: 'Tempo restante',
+    previous: 'Anterior',
+    next: 'Próxima',
+    check: 'Conferir',
+    flag: 'Marcar para revisar',
+    finish: 'Encerrar',
+    confirmFinish: 'Encerrar agora? {count} sem resposta contam como erradas.',
+    cancel: 'Voltar',
+    correct: 'Correta',
+    incorrect: 'Incorreta',
+    proof: 'Comprovação na AWS',
+    result: 'Resultado',
+    score: 'Nota estimada',
+    scoreNote:
+      'A prova usa uma nota escalonada de 100 a 1.000. Esta estimativa projeta a fração de acertos nessa escala. Mínimo para aprovação: {passing}.',
+    passed: 'Aprovado',
+    failed: 'Ainda não',
+    byDomain: 'Acertos por domínio',
+    answers: 'Suas respostas',
+    again: 'Fazer outro',
+    unavailable: 'O simulado precisa de JavaScript.',
   },
   footer: { source: 'Código no GitHub' },
   notFound: {
@@ -142,6 +231,7 @@ const enUS: SiteCopy = {
     certifications: 'Certifications',
     search: 'Search',
     review: 'Review',
+    practice: 'Practice exam',
   },
   home: {
     ...SITE_TEXT['en-US'].home,
@@ -156,6 +246,7 @@ const enUS: SiteCopy = {
     keyPoints: 'Key points',
     examTip: 'On the exam',
     step: (index, total) => `${String(index).padStart(2, '0')} of ${String(total).padStart(2, '0')}`,
+    resourceType: 'Study notes',
   },
   search: {
     title: 'Search the notes',
@@ -178,6 +269,47 @@ const enUS: SiteCopy = {
     progress: '{known} of {total} cards you already know',
     hideKnown: 'Hide the ones I know',
     reset: 'Start over',
+  },
+  practice: {
+    title: 'Practice exam',
+    lede: 'Questions in the format of the exam, with the reason behind every response and the AWS page that proves the answer.',
+    notice:
+      'The questions are original, written from the task statements of the official exam guide. They are not questions from the exam, which AWS keeps confidential.',
+    examMode: 'Full exam',
+    examModeDetail: '{questions} questions in {minutes} minutes, weighted by domain, scored only at the end.',
+    studyMode: 'Practice',
+    studyModeDetail: 'Pick a domain and check each answer as you go.',
+    domain: 'Domain',
+    allDomains: 'All domains',
+    count: 'Questions',
+    allQuestions: 'All',
+    domains: 'Domains of the exam and the weight of each',
+    start: 'Start',
+    resume: 'Resume where you left off',
+    bank: '{count} questions in the bank.',
+    progress: 'Question {current} of {total}',
+    select: 'Select {count}.',
+    timeLeft: 'Time left',
+    previous: 'Previous',
+    next: 'Next',
+    check: 'Check',
+    flag: 'Mark for review',
+    finish: 'Finish',
+    confirmFinish: 'Finish now? {count} unanswered count as wrong.',
+    cancel: 'Go back',
+    correct: 'Correct',
+    incorrect: 'Incorrect',
+    proof: 'Proof at AWS',
+    result: 'Result',
+    score: 'Estimated score',
+    scoreNote:
+      'The exam reports a scaled score from 100 to 1,000. This estimate maps the share of correct answers onto that scale. Passing score: {passing}.',
+    passed: 'Passed',
+    failed: 'Not yet',
+    byDomain: 'Correct by domain',
+    answers: 'Your answers',
+    again: 'Take another',
+    unavailable: 'The practice exam needs JavaScript.',
   },
   footer: { source: 'Source on GitHub' },
   notFound: {
