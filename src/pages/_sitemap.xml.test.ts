@@ -11,9 +11,9 @@ async function sitemap(): Promise<string> {
 }
 
 describe('the sitemap', () => {
-  it('lists the home, every topic and the review in both languages', async () => {
+  it('lists the home, every topic, the review and the practice exam in both languages', async () => {
     // Given the published site
-    const expected = 2 * (1 + topicsOf('pt-BR').length + 1)
+    const expected = 2 * (1 + topicsOf('pt-BR').length + 2)
 
     // When the sitemap is rendered
     const document = await sitemap()

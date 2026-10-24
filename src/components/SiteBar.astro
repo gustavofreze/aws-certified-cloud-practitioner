@@ -1,6 +1,6 @@
 ---
 /**
- * The bar on top of every page: the menu of the certifications, the way to search and to review, and the
+ * The bar on top of every page: the menu of the certifications, the way to search, to review and to practice, and the
  * theme and language controls. It stays where it was drawn rather than following the reader, and the control in the corner is the way
  * back up to it.
  */
@@ -29,6 +29,14 @@ const copy = getCopy(locale)
         </a>
         <a href={pageHref(locale, 'review')} class="cert-bar__tool" aria-label={copy.nav.review} title={copy.nav.review}>
           <Icon name="cards" size={18} />
+        </a>
+        <a
+          href={pageHref(locale, 'practice')}
+          class="cert-bar__tool"
+          aria-label={copy.nav.practice}
+          title={copy.nav.practice}
+        >
+          <Icon name="clipboard" size={18} />
         </a>
       </div>
       <ThemeToggle theme={copy.theme} />

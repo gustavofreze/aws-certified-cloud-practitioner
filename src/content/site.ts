@@ -18,6 +18,8 @@ export const SITE = {
   },
   /** The groups of the roadmap, in the order the home lists them. */
   groups: ['foundations', 'services', 'support'],
+  /** The shape of the exam the practice exam copies: questions, minutes, passing score and domain weights. */
+  practice: { questions: 65, scored: 50, minutes: 90, passing: 700, weights: [24, 30, 34, 12] },
 } as const
 
 export type TopicGroup = (typeof SITE.groups)[number]
@@ -32,6 +34,8 @@ export interface SiteText {
     readonly groups: Readonly<Record<TopicGroup, { readonly title: string; readonly lede: string }>>
   }
   readonly searchPlaceholder: string
+  /** The content domains of the exam guide, in its order. */
+  readonly domains: readonly string[]
 }
 
 export const SITE_TEXT: Readonly<Record<Locale, SiteText>> = {
@@ -53,6 +57,12 @@ export const SITE_TEXT: Readonly<Record<Locale, SiteText>> = {
       },
     },
     searchPlaceholder: 'E.g. Spot, multi-AZ, CloudTrail',
+    domains: [
+      'Cloud Concepts',
+      'Security and Compliance',
+      'Cloud Technology and Services',
+      'Billing, Pricing, and Support',
+    ],
   },
   'pt-BR': {
     meta: {
@@ -72,5 +82,11 @@ export const SITE_TEXT: Readonly<Record<Locale, SiteText>> = {
       },
     },
     searchPlaceholder: 'Ex.: Spot, multi-AZ, CloudTrail',
+    domains: [
+      'Conceitos de nuvem',
+      'Segurança e conformidade',
+      'Tecnologia e serviços de nuvem',
+      'Cobrança, preços e suporte',
+    ],
   },
 }

@@ -5,14 +5,14 @@ import { DEFAULT_LOCALE, LOCALES, pagePaths } from '../i18n'
 /**
  * The list of addresses the site asks to have indexed, each with its twin in the other language.
  *
- * It carries the pages that are content: the home, every topic and the review. The search page is a
+ * It carries the pages that are content: the home, every topic, the review and the practice exam. The search page is a
  * tool and declares itself out of the index, so it stays out of here too. No `lastmod`, `changefreq` or
  * `priority` is published, because the site has no real date per page and the large engines stopped
  * reading the other two.
  */
 export const GET: APIRoute = ({ site, url }) => {
   const origin = site ?? new URL(url.origin)
-  const slugs = [undefined, ...topicsOf(DEFAULT_LOCALE).map((topic) => topic.slug), 'review']
+  const slugs = [undefined, ...topicsOf(DEFAULT_LOCALE).map((topic) => topic.slug), 'review', 'practice']
   const entries = slugs.flatMap((slug) => {
     const paths = pagePaths(slug)
     const alternates = LOCALES.map(

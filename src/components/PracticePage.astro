@@ -1,0 +1,104 @@
+---
+/**
+ * The practice exam, in one language.
+ *
+ * The page draws what does not change: what the questions are, the domains of the exam with their
+ * weights, and the choice between the full exam and practice by domain. The questions arrive only when
+ * the reader starts, fetched as JSON together with the engine that asks them, so a visit that never
+ * starts carries no more script than any other page.
+ */
+import { questionsOf } from '../content/practice'
+import { SITE, SITE_TEXT } from '../content/site'
+import { pageHref, pagePaths } from '../i18n'
+import { getCopy, type Locale, MAIN_ID } from '../i18n/strings'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import PageCover from './PageCover.astro'
+
+interface Props {
+  locale: Locale
+}
+const { locale } = Astro.props
+const copy = getCopy(locale)
+const labels = copy.practice
+const domains = SITE_TEXT[locale].domains
+const fill = (text: string, values: Record<string, string | number>): string =>
+  text.replace(/\{(\w+)\}/g, (token, name: string) => String(values[name] ?? token))
+const total = questionsOf(locale).length
+---
+
+<BaseLayout locale={locale} title={labels.title} description={labels.lede} paths={pagePaths('practice')}>
+  <main id={MAIN_ID} class="cert-page">
+    <PageCover locale={locale} icon="clipboard" title={labels.title} lede={labels.lede} />
+
+    <div class="cert-wrap cert-main cert-practice" data-practice={`${pageHref(locale)}practice.json`}
+      data-practice-key={`${SITE.id}:practice`}
+    >
+      <p class="cert-practice__notice">{labels.notice}</p>
+
+      <form class="cert-practice__setup" data-practice-setup>
+        <fieldset class="cert-practice__modes">
+          <legend class="cert-block__title">{SITE.exam}</legend>
+          <label class="cert-practice__mode">
+            <input type="radio" name="mode" value="exam" checked />
+            <span>
+              <strong>{labels.examMode}</strong>
+              {fill(labels.examModeDetail, { questions: SITE.practice.questions, minutes: SITE.practice.minutes })}
+            </span>
+          </label>
+          <label class="cert-practice__mode">
+            <input type="radio" name="mode" value="study" />
+            <span>
+              <strong>{labels.studyMode}</strong>
+              {labels.studyModeDetail}
+            </span>
+          </label>
+        </fieldset>
+
+        <div class="cert-practice__options" data-practice-study hidden>
+          <label>
+            {labels.domain}
+            <select name="domain">
+              <option value="0">{labels.allDomains}</option>
+              {domains.map((name, index) => <option value={index + 1}>{`${index + 1}. ${name}`}</option>)}
+            </select>
+          </label>
+          <label>
+            {labels.count}
+            <select name="count">
+              <option value="10">10</option>
+              <option value="20" selected>20</option>
+              <option value="0">{labels.allQuestions}</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="cert-practice__actions">
+          <button type="submit" class="cert-button cert-button--primary">{labels.start}</button>
+          <button type="button" class="cert-practice__resume" data-practice-resume hidden>{labels.resume}</button>
+        </div>
+        <p class="cert-practice__bank">{fill(labels.bank, { count: total })}</p>
+        <noscript><p>{labels.unavailable}</p></noscript>
+      </form>
+
+      <div class="cert-practice__stage" data-practice-stage aria-live="polite"></div>
+
+      <section class="cert-practice__domains" aria-labelledby="practice-domains">
+        <h2 id="practice-domains" class="cert-block__title">{labels.domains}</h2>
+        <ol>
+          {
+            domains.map((name, index) => (
+              <li>
+                <span>{name}</span>
+                <span class="cert-chip">{`${SITE.practice.weights[index]}%`}</span>
+              </li>
+            ))
+          }
+        </ol>
+      </section>
+    </div>
+  </main>
+</BaseLayout>
+
+<script>
+  import '../scripts/practice.ts'
+</script>

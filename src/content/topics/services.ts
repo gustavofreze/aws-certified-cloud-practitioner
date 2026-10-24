@@ -915,7 +915,7 @@ export const enUS: readonly Topic[] = [
           '**AWS managed** or **custom** policies, in JSON.',
           'Protect the **root user** with MFA and do not use its access keys day to day.',
         ],
-        tip: 'Some tasks **only the root user** can do, such as changing the support plan and closing the account. For everything else, use users or roles with MFA.',
+        tip: 'Some tasks **only the root user** can do, such as closing a standalone account, changing its root email address or password and activating IAM access to billing. For everything else, use users or roles with MFA.',
       },
       {
         id: 'iam-identity-center',
@@ -2531,7 +2531,7 @@ export const ptBR: readonly Topic[] = [
           'Políticas **gerenciadas** pela AWS ou **personalizadas**, em JSON.',
           'Proteja a **conta root** com MFA e não use suas chaves de acesso no dia a dia.',
         ],
-        tip: 'Algumas tarefas **só a conta root** faz, como alterar o plano de suporte e fechar a conta. Para o resto, use usuários ou roles com MFA.',
+        tip: 'Algumas tarefas **só a conta root** faz, como fechar uma conta avulsa, trocar o e-mail ou a senha da conta root e ativar o acesso do IAM ao faturamento. Para o resto, use usuários ou roles com MFA.',
       },
       {
         id: 'iam-identity-center',
