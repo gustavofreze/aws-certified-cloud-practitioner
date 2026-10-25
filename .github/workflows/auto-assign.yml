@@ -23,8 +23,8 @@ jobs:
       - name: Assign issues and pull requests
         uses: gustavofreze/auto-assign@3c8ebe3f6f2cc5b92bb8969f13bc5886895f70e3 # 2.1.1
         with:
-          # Runs started by Dependabot receive no Actions secrets, so the owner of the repository is assigned.
-          assignees: '${{ secrets.ASSIGNEES || github.repository_owner }}'
+          # The owner of the repository is assigned when the variable is not set.
+          assignees: '${{ vars.ASSIGNEES || github.repository_owner }}'
           github_token: '${{ secrets.GITHUB_TOKEN }}'
           allow_self_assign: 'true'
           allow_no_assignees: 'true'
