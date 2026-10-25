@@ -178,7 +178,7 @@ const ptBR: SiteCopy = {
   },
   practice: {
     title: 'Simulado',
-    lede: 'Questões no formato da prova, com o motivo de cada alternativa e a página da AWS que comprova a resposta.',
+    lede: 'Questões no formato da prova, com o motivo de cada alternativa e o trecho da AWS que comprova cada resposta certa.',
     notice:
       'As questões são originais, escritas a partir das tarefas do exam guide oficial. Não são questões da prova, que a AWS mantém em sigilo.',
     examMode: 'Prova completa',
@@ -288,7 +288,7 @@ const enUS: SiteCopy = {
   },
   practice: {
     title: 'Practice exam',
-    lede: 'Questions in the format of the exam, with the reason behind every response and the AWS page that proves the answer.',
+    lede: 'Questions in the format of the exam, with the reason behind every response and the passage of AWS that proves every correct one.',
     notice:
       'The questions are original, written from the task statements of the official exam guide. They are not questions from the exam, which AWS keeps confidential.',
     examMode: 'Full exam',

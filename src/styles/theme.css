@@ -2428,6 +2428,23 @@ code {
   margin-top: 0.25rem;
   color: var(--color-ink-muted);
 }
+.cert-practice__evidence {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 0.5rem;
+  padding: 0.625rem 0.875rem 0;
+  border-radius: var(--radius-sm);
+  border-inline-start: 3px solid var(--color-right);
+  background: color-mix(in srgb, var(--color-right) 8%, transparent);
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.6;
+}
+.cert-practice__evidence q {
+  color: var(--color-ink);
+  font-style: italic;
+}
 .cert-practice__proof {
   align-self: flex-start;
   display: inline-flex;

@@ -19,7 +19,11 @@ export const enUS: readonly Question[] = [
       'CloudTrail records API activity for auditing. It shows who changed what, but it does not build the resources.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html#welcome-quickly-replicate-your-infrastructure',
+      {
+        url: 'https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html#welcome-quickly-replicate-your-infrastructure',
+        quote:
+          'Reuse your CloudFormation template to create your resources in a consistent and repeatable manner. To reuse your template, describe your resources once and then provision the same resources over and over in multiple regions.',
+      },
     ],
   },
   {
@@ -39,7 +43,13 @@ export const enUS: readonly Question[] = [
       'The AWS SDKs give application code language-specific APIs for AWS services, and they handle request signing, retries and errors.',
       'Transfer Acceleration speeds up transfers to a bucket over long distances, but the application still needs a way to call Amazon S3.',
     ],
-    evidence: ['https://aws.amazon.com/sdk-for-python/#how-it-works'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html#reference_sigv',
+        quote:
+          'you can skip the signature process, as the SDK and CLI clients authenticate your requests by using the access keys that you provide.',
+      },
+    ],
   },
   {
     id: 'd3-003',
@@ -58,7 +68,13 @@ export const enUS: readonly Question[] = [
       'Scheduling suits recurring tasks. For one action it adds setup that brings no benefit.',
       'The console is a web interface with access to every service console, so the administrator can stop the instance with a few clicks and nothing to build.',
     ],
-    evidence: ['https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/what-is.html#what-is'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/what-is.html#what-is',
+        quote:
+          'The AWS Management Console is a web-based application that contains and provides centralized access to all individual AWS service consoles.',
+      },
+    ],
   },
   {
     id: 'd3-004',
@@ -77,7 +93,13 @@ export const enUS: readonly Question[] = [
       'Virtualized resources on premises are an on-premises deployment, sometimes called a private cloud.',
       'Using two Regions is still a cloud deployment, because nothing runs outside AWS.',
     ],
-    evidence: ['https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html#hybrid'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/types-of-cloud-computing.html#hybrid',
+        quote:
+          'A hybrid deployment is a way to connect infrastructure and applications between cloud-based resources and existing resources that are not located in the cloud.',
+      },
+    ],
   },
   {
     id: 'd3-005',
@@ -99,8 +121,16 @@ export const enUS: readonly Question[] = [
       'The Health Dashboard shows events that affect AWS services and accounts. It is not a way to call services.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds-programmatic-access.html#security-creds-programmatic-access',
-      'https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds-programmatic-access.html#security-creds-programmatic-access',
+      {
+        url: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds-programmatic-access.html#security-creds-programmatic-access',
+        quote:
+          '(Recommended) Use console credentials as temporary credentials to sign programmatic requests to the AWS CLI, AWS SDKs, or AWS APIs.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds-programmatic-access.html#security-creds-programmatic-access',
+        quote:
+          '(Recommended) Use console credentials as temporary credentials to sign programmatic requests to the AWS CLI, AWS SDKs, or AWS APIs.',
+      },
     ],
   },
   {
@@ -115,7 +145,13 @@ export const enUS: readonly Question[] = [
       'Storage Gateway gives on-premises applications access to cloud storage. It does not run EC2 instances or RDS databases on premises.',
       'Lightsail offers simple virtual servers in AWS Regions, not inside the customer facility.',
     ],
-    evidence: ['https://docs.aws.amazon.com/outposts/latest/userguide/what-is-outposts.html#services'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/outposts/latest/userguide/what-is-outposts.html#what-is-outposts',
+        quote:
+          'AWS Outposts is a fully managed service that extends AWS infrastructure, services, APIs, and tools to customer premises.',
+      },
+    ],
   },
   {
     id: 'd3-007',
@@ -135,7 +171,11 @@ export const enUS: readonly Question[] = [
       'An Availability Zone is one or more discrete data centers, each with redundant power, networking and connectivity, housed in separate facilities.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html#global-infrastructure',
+      {
+        url: 'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html#global-infrastructure',
+        quote:
+          'Availability Zones consist of one or more discrete data centers, each with redundant power, networking, and connectivity, housed in separate facilities.',
+      },
     ],
   },
   {
@@ -156,7 +196,11 @@ export const enUS: readonly Question[] = [
       'Edge locations cache content for CloudFront. They do not run the application instances.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-availability-zones',
+      {
+        url: 'https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html#availability-zones',
+        quote:
+          'If one Availability Zone becomes unavailable or has no healthy targets, the load balancer can route traffic to the healthy targets in another Availability Zone.',
+      },
     ],
   },
   {
@@ -179,8 +223,16 @@ export const enUS: readonly Question[] = [
       'IAM is a global service, so the company can create users without deploying in another Region.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions',
-      'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions',
+      {
+        url: 'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions',
+        quote:
+          'When you launch an instance, select a Region that puts your instances close to specific customers, or that meets the legal or other requirements that you have.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions',
+        quote:
+          'When you launch an instance, select a Region that puts your instances close to specific customers, or that meets the legal or other requirements that you have.',
+      },
     ],
   },
   {
@@ -195,7 +247,13 @@ export const enUS: readonly Question[] = [
       'Transit Gateway connects VPCs and on-premises networks through a central hub, not end users through edge locations.',
       'A load balancer distributes traffic across targets inside a Region, so distant users still reach that Region.',
     ],
-    evidence: ['https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html#Introduction'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html#Introduction',
+        quote:
+          "When a user requests content that you're serving with CloudFront, the request is routed to the edge location that provides the lowest latency (time delay), so that content is delivered with the best possible performance.",
+      },
+    ],
   },
   {
     id: 'd3-011',
@@ -214,7 +272,13 @@ export const enUS: readonly Question[] = [
       'Availability Zones do not copy all data automatically. Each service or design decides what is replicated.',
       'Availability Zones are physically separated and each has its own power, cooling and physical security, so they do not share a single point of failure.',
     ],
-    evidence: ['https://aws.amazon.com/about-aws/global-infrastructure/regions_az/#aws-infrastructure-offerings'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/about-aws/global-infrastructure/regions_az/#aws-infrastructure-offerings',
+        quote:
+          'Each AZ has independent power, cooling, and physical security and is connected via redundant, ultra-low-latency networks.',
+      },
+    ],
   },
   {
     id: 'd3-012',
@@ -236,8 +300,15 @@ export const enUS: readonly Question[] = [
       'AWS has hundreds of edge locations (points of presence), many more than its Regions.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html#global-infrastructure',
-      'https://aws.amazon.com/about-aws/global-infrastructure/#the-most-extensive-global-cloud-infrastructure',
+      {
+        url: 'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/global-infrastructure.html#global-infrastructure',
+        quote: 'An AWS Region is a physical location in the world where we have multiple Availability Zones.',
+      },
+      {
+        url: 'https://aws.amazon.com/cloudfront/',
+        quote:
+          'Reduce latency by delivering data through 750+ globally dispersed Points of Presence (PoPs) with automated network mapping and intelligent routing.',
+      },
     ],
   },
   {
@@ -252,7 +323,13 @@ export const enUS: readonly Question[] = [
       'Storage optimized instances are for high I/O to local storage, not for processing power.',
       'Compute optimized instances are for compute-bound applications, with examples such as batch processing, media transcoding and dedicated game servers.',
     ],
-    evidence: ['https://aws.amazon.com/ec2/instance-types/#instance-categories'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/ec2/instance-types/#instance-categories',
+        quote:
+          'Compute optimized instances are ideal for compute bound applications that benefit from high-performance processors. Some examples of workloads for compute instances are batch processing, media transcoding, and dedicated game servers.',
+      },
+    ],
   },
   {
     id: 'd3-014',
@@ -266,7 +343,13 @@ export const enUS: readonly Question[] = [
       'Memory optimized instances are for datasets processed in memory, not for local disk I/O.',
       'General purpose instances balance resources and do not target very high local storage I/O.',
     ],
-    evidence: ['https://aws.amazon.com/ec2/instance-types/#instance-categories'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/ec2/instance-types/#instance-categories',
+        quote:
+          'Storage optimized instances deliver millions of low-latency, random I/O operations per second to applications. They’re designed for workloads that require high, sequential read and write access to very large data sets on local storage.',
+      },
+    ],
   },
   {
     id: 'd3-015',
@@ -286,7 +369,10 @@ export const enUS: readonly Question[] = [
       'Lambda runs functions in response to events. It is not a Kubernetes platform.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html#_amazon_eks_simplified_kubernetes_management',
+      {
+        url: 'https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html#_amazon_eks_simplified_kubernetes_management',
+        quote: 'AWS manages the Kubernetes control plane when you create a cluster with EKS.',
+      },
     ],
   },
   {
@@ -303,8 +389,16 @@ export const enUS: readonly Question[] = [
       'Outposts places AWS hardware in the customer facility, which is the opposite of serverless.',
     ],
     evidence: [
-      'https://aws.amazon.com/serverless/#serverless-services-on-aws',
-      'https://aws.amazon.com/serverless/#serverless-services-on-aws',
+      {
+        url: 'https://aws.amazon.com/serverless/#serverless-services-on-aws',
+        quote:
+          'AWS Lambda is an event-driven, pay-as-you-go compute service that lets you run code without provisioning or managing servers.',
+      },
+      {
+        url: 'https://aws.amazon.com/serverless/#serverless-services-on-aws',
+        quote:
+          'AWS Fargate is a serverless compute engine that works with Amazon Elastic Container Service (ECS) and Amazon Elastic Kubernetes Service (EKS).',
+      },
     ],
   },
   {
@@ -319,7 +413,12 @@ export const enUS: readonly Question[] = [
       'Lambda runs code in response to events such as an S3 upload, manages the infrastructure, and bills per use.',
       'Elastic Beanstalk deploys applications on EC2 instances that run continuously, not code that runs only per event.',
     ],
-    evidence: ['https://docs.aws.amazon.com/lambda/latest/dg/welcome.html#welcome'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/lambda/latest/dg/welcome.html#welcome',
+        quote: 'Run code in response to events or API calls without managing servers.',
+      },
+    ],
   },
   {
     id: 'd3-018',
@@ -334,7 +433,11 @@ export const enUS: readonly Question[] = [
       'Compute Optimizer recommends better instance types and sizes. It does not change capacity as traffic changes.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html#what-is-amazon-ec2-auto-scaling',
+      {
+        url: 'https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html#what-is-amazon-ec2-auto-scaling',
+        quote:
+          'If you specify scaling policies, then Amazon EC2 Auto Scaling can launch or terminate instances as demand on your application increases or decreases.',
+      },
     ],
   },
   {
@@ -357,8 +460,15 @@ export const enUS: readonly Question[] = [
       'The load balancer monitors the health of its registered targets and routes traffic only to the healthy ones.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html#what-is-load-balancing',
-      'https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html#what-is-load-balancing',
+      {
+        url: 'https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html#what-is-load-balancing',
+        quote:
+          'Elastic Load Balancing automatically distributes your incoming traffic across multiple targets, such as EC2 instances, containers, and IP addresses, in one or more Availability Zones.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html#what-is-load-balancing',
+        quote: 'It monitors the health of its registered targets, and routes traffic only to the healthy targets.',
+      },
     ],
   },
   {
@@ -378,7 +488,12 @@ export const enUS: readonly Question[] = [
       'Amazon RDS is a managed relational database service that handles backups, software patching, automatic failure detection and recovery.',
       'DynamoDB is a NoSQL database, so it is not MySQL and the application would need to change.',
     ],
-    evidence: ['https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Concepts.on-prem'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Concepts.on-prem',
+        quote: 'Amazon RDS manages backups, software patching, automatic failure detection, and recovery.',
+      },
+    ],
   },
   {
     id: 'd3-021',
@@ -397,7 +512,12 @@ export const enUS: readonly Question[] = [
       'Managed backups are a feature of RDS, not of a database the company runs itself on EC2.',
       'With RDS, AWS manages high availability. On EC2 the company must build it.',
     ],
-    evidence: ['https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Concepts.comparison'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/prescriptive-guidance/latest/migration-oracle-database/ec2-oracle.html#ec2-oracle-choosing',
+        quote: 'You need full control over the database and access to its underlying operating system.',
+      },
+    ],
   },
   {
     id: 'd3-022',
@@ -412,7 +532,11 @@ export const enUS: readonly Question[] = [
       'DynamoDB is a serverless NoSQL database that supports key-value and document data with single-digit millisecond performance at any scale.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html#ddb-characteristics',
+      {
+        url: 'https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html#ddb-characteristics',
+        quote:
+          'DynamoDB was purpose-built to improve upon the performance and scalability of relational databases to deliver single-digit millisecond performance at any scale.',
+      },
     ],
   },
   {
@@ -428,7 +552,11 @@ export const enUS: readonly Question[] = [
       'Redshift is a data warehouse for analytics and does not cache application reads.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/elasticache-use-cases.html#elasticache-use-cases-data-store',
+      {
+        url: 'https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/elasticache-use-cases.html#elasticache-use-cases-data-store',
+        quote:
+          'The primary purpose of an in-memory key-value store is to provide ultrafast (submillisecond latency) and inexpensive access to copies of data. Most data stores have areas of data that are frequently accessed but seldom updated.',
+      },
     ],
   },
   {
@@ -451,8 +579,16 @@ export const enUS: readonly Question[] = [
       'Storage Gateway gives on-premises applications access to cloud storage, not database migration.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/SchemaConversionTool/latest/userguide/CHAP_Welcome.html#CHAP_Welcome',
-      'https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html#Welcome',
+      {
+        url: 'https://docs.aws.amazon.com/SchemaConversionTool/latest/userguide/CHAP_Welcome.html#CHAP_Welcome',
+        quote:
+          'You can use the AWS Schema Conversion Tool (AWS SCT) to convert your existing database schema from one database engine to another.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html#Welcome',
+        quote:
+          'AWS Database Migration Service (AWS DMS) is a cloud service that makes it possible to migrate relational databases, data warehouses, NoSQL databases, and other types of data stores.',
+      },
     ],
   },
   {
@@ -468,7 +604,11 @@ export const enUS: readonly Question[] = [
       'Aurora is a fully managed relational engine compatible with MySQL and PostgreSQL, and its storage grows automatically as needed.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html#CHAP_AuroraOverview',
+      {
+        url: 'https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html#CHAP_AuroraOverview',
+        quote:
+          'Its MySQL- and PostgreSQL-compatible database engines are customized to take advantage of that fast distributed storage. The underlying storage grows automatically as needed.',
+      },
     ],
   },
   {
@@ -483,7 +623,13 @@ export const enUS: readonly Question[] = [
       'A virtual private gateway is the AWS side of a Site-to-Site VPN connection, not a path to the internet.',
       'A security group filters traffic to an instance, but it does not provide a route to the internet.',
     ],
-    evidence: ['https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html#VPC_Internet_Gateway'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html#VPC_Internet_Gateway',
+        quote:
+          'An internet gateway enables resources in your public subnets (such as EC2 instances) to connect to the internet if the resource has a public IPv4 address or an IPv6 address.',
+      },
+    ],
   },
   {
     id: 'd3-027',
@@ -505,8 +651,16 @@ export const enUS: readonly Question[] = [
       'Network ACLs do not save information about previous traffic, so responses are not allowed automatically.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html#vpc-network-acls',
-      'https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html#nacl-basics',
+      {
+        url: 'https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html#vpc-network-acls',
+        quote:
+          'A network access control list (ACL) allows or denies specific inbound or outbound traffic at the subnet level.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html#nacl-basics',
+        quote:
+          'If, for example, you create a NACL rule to allow specific inbound traffic to a subnet, responses to that traffic are not automatically allowed.',
+      },
     ],
   },
   {
@@ -521,7 +675,13 @@ export const enUS: readonly Question[] = [
       'Inspector network reachability findings show open network paths to EC2 instances from VPC edges such as an internet gateway, and they highlight overly permissive security groups, network ACLs or internet gateways.',
       'AWS WAF filters HTTP requests to web applications. It does not analyze the network configuration of the VPC.',
     ],
-    evidence: ['https://docs.aws.amazon.com/inspector/latest/user/findings-types.html#findings-types-network'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/inspector/latest/user/findings-types.html#findings-types-network',
+        quote:
+          'These findings highlight network configurations that may be overly permissive, such as mismanaged security groups, Access Control Lists, or internet gateways, or that may allow for potentially malicious access.',
+      },
+    ],
   },
   {
     id: 'd3-029',
@@ -535,7 +695,13 @@ export const enUS: readonly Question[] = [
       'Global Accelerator routes traffic over the AWS global network through static IP addresses, not through DNS or domain registration.',
       'Route 53 is a DNS service with three main functions: domain registration, DNS routing and health checking.',
     ],
-    evidence: ['https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html#Welcome'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html#Welcome',
+        quote:
+          'You can use Route 53 to perform three main functions in any combination: domain registration, DNS routing, and health checking.',
+      },
+    ],
   },
   {
     id: 'd3-030',
@@ -549,7 +715,13 @@ export const enUS: readonly Question[] = [
       'Client VPN connects individual users to AWS, not a data center through a dedicated link.',
       'Transit Gateway is a hub that interconnects VPCs and on-premises networks. It is not a physical connection to the data center.',
     ],
-    evidence: ['https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html#Welcome'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html#Welcome',
+        quote:
+          'With this connection, you can create virtual interfaces directly to public AWS services (for example, to Amazon S3) or to Amazon VPC, bypassing internet service providers in your network path.',
+      },
+    ],
   },
   {
     id: 'd3-031',
@@ -563,7 +735,12 @@ export const enUS: readonly Question[] = [
       'VPC peering connects two VPCs, not an on-premises network to a VPC.',
       'Site-to-Site VPN creates IPsec VPN connections between the on-premises network and the VPC, each with two encrypted tunnels.',
     ],
-    evidence: ['https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html#concepts'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html#VPC_VPN',
+        quote: 'Site-to-Site VPN supports Internet Protocol security (IPsec) VPN connections.',
+      },
+    ],
   },
   {
     id: 'd3-032',
@@ -577,7 +754,13 @@ export const enUS: readonly Question[] = [
       'Instance store is temporary block storage on the host of one instance and loses data with the instance.',
       'EFS is a file system that compute instances mount over NFS, not a store a mobile application reads over HTTPS.',
     ],
-    evidence: ['https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html#Welcome'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html#Welcome',
+        quote:
+          'Customers of all sizes and industries can use Amazon S3 to store and protect any amount of data for a range of use cases, such as data lakes, websites, mobile applications, backup and restore, archive, enterprise applications, IoT devices, and big data analytics.',
+      },
+    ],
   },
   {
     id: 'd3-033',
@@ -591,7 +774,13 @@ export const enUS: readonly Question[] = [
       'S3 Intelligent-Tiering moves objects between access tiers automatically when access patterns change, and it has no retrieval fees.',
       'Deep Archive is for data accessed less than once a year, with retrieval times of hours and retrieval fees.',
     ],
-    evidence: ['https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html#sc-dynamic-data-access'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html#sc-dynamic-data-access',
+        quote:
+          'S3 Intelligent-Tiering is the ideal storage class when you want to optimize storage costs for data that has unknown or changing access patterns. There are no retrieval fees for S3 Intelligent-Tiering.',
+      },
+    ],
   },
   {
     id: 'd3-034',
@@ -606,7 +795,11 @@ export const enUS: readonly Question[] = [
       'Object Lock prevents objects from being deleted or overwritten. It does not transition them.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html#object-lifecycle-mgmt',
+      {
+        url: 'https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html#object-lifecycle-mgmt',
+        quote:
+          'S3 Lifecycle helps you store objects cost effectively throughout their lifecycle by transitioning them to lower-cost storage classes, or, deleting expired objects on your behalf.',
+      },
     ],
   },
   {
@@ -629,8 +822,14 @@ export const enUS: readonly Question[] = [
       'Objects addressed by URL describe Amazon S3.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStorage',
-      'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStorage',
+      {
+        url: 'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStorage',
+        quote: 'An instance store provides temporary block-level storage for your EC2 instance.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStorage',
+        quote: 'This storage is provided by disks that are physically attached to the host computer.',
+      },
     ],
   },
   {
@@ -645,7 +844,13 @@ export const enUS: readonly Question[] = [
       'FSx for Windows File Server uses the SMB protocol and fits Windows workloads.',
       'Glacier Flexible Retrieval is an archive storage class, not a mounted file system.',
     ],
-    evidence: ['https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html#whatisefs'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html#whatisefs',
+        quote:
+          'Amazon EFS is built to scale on demand to petabytes without disrupting applications, growing and shrinking automatically as you add and remove files.',
+      },
+    ],
   },
   {
     id: 'd3-037',
@@ -659,7 +864,13 @@ export const enUS: readonly Question[] = [
       'FSx for Windows File Server provides fully managed Windows file servers with SMB access and Microsoft Active Directory integration.',
       'Storage Gateway connects on-premises environments to cloud storage. It is not the managed file server in AWS.',
     ],
-    evidence: ['https://docs.aws.amazon.com/fsx/latest/WindowsGuide/what-is.html#what-is'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/fsx/latest/WindowsGuide/what-is.html#what-is',
+        quote:
+          'Amazon FSx for Windows File Server provides fully managed Microsoft Windows file servers, backed by a fully native Windows file system.',
+      },
+    ],
   },
   {
     id: 'd3-038',
@@ -673,7 +884,13 @@ export const enUS: readonly Question[] = [
       'AWS Backup automates backup policies. It does not serve file shares to applications.',
       'Storage Gateway, with an S3 File Gateway, stores files as objects in S3 through NFS and SMB and provides low-latency access through local caching.',
     ],
-    evidence: ['https://docs.aws.amazon.com/filegateway/latest/files3/what-is-file-s3.html#what-is-file-s3'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/filegateway/latest/files3/what-is-file-s3.html#what-is-file-s3',
+        quote:
+          'A S3 File Gateway simplifies file storage in Amazon S3, integrates to existing applications through industry-standard file system protocols, and provides a cost-effective alternative to on-premises storage. It also provides low-latency access to data through transparent local caching.',
+      },
+    ],
   },
   {
     id: 'd3-039',
@@ -687,7 +904,13 @@ export const enUS: readonly Question[] = [
       'Storage Gateway connects on-premises applications to cloud storage. It does not manage backup plans across services.',
       'Elastic Disaster Recovery replicates servers so they can be recovered in AWS. It is not a central backup policy service.',
     ],
-    evidence: ['https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#whatisbackup'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#whatisbackup',
+        quote:
+          'AWS Backup is a fully-managed service that makes it easy to centralize and automate data protection across AWS services, in the cloud, and on premises. Using this service, you can configure backup policies and monitor activity for your AWS resources in one place.',
+      },
+    ],
   },
   {
     id: 'd3-040',
@@ -701,7 +924,13 @@ export const enUS: readonly Question[] = [
       'Transcribe converts speech to text, but it does not hold a conversation.',
       'Comprehend finds insights such as sentiment in text, but it does not build a chatbot.',
     ],
-    evidence: ['https://docs.aws.amazon.com/whitepapers/latest/aws-overview/machine-learning.html#amazon-lex'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/machine-learning.html#amazon-lex',
+        quote:
+          'Amazon Lex is a fully managed artificial intelligence (AI) service to design, build, test, and deploy conversational interfaces into any application using voice and text.',
+      },
+    ],
   },
   {
     id: 'd3-041',
@@ -717,8 +946,16 @@ export const enUS: readonly Question[] = [
       'Rekognition analyzes images and videos, not audio or text.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/machine-learning.html#amazon-transcribe',
-      'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/machine-learning.html#amazon-comprehend',
+      {
+        url: 'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/machine-learning.html#amazon-transcribe',
+        quote:
+          'Amazon Transcribe is an automatic speech recognition (ASR) service that makes it easy for customers to automatically convert speech to text.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/machine-learning.html#amazon-comprehend',
+        quote:
+          'The service identifies the language of the text; extracts key phrases, places, people, brands, or events; understands how positive or negative the text is; analyzes text using tokenization and parts of speech; and automatically organizes a collection of text files by topic.',
+      },
     ],
   },
   {
@@ -733,7 +970,13 @@ export const enUS: readonly Question[] = [
       'SageMaker AI is a fully managed machine learning service for data scientists and developers to build, train and deploy models.',
       'Amazon Q is a generative AI assistant, not a platform for training custom models.',
     ],
-    evidence: ['https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html#whatis'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html#whatis',
+        quote:
+          'Amazon SageMaker AI is a fully managed machine learning (ML) service. With SageMaker AI, data scientists and developers can quickly and confidently build, train, and deploy ML models into a production-ready hosted environment.',
+      },
+    ],
   },
   {
     id: 'd3-043',
@@ -747,7 +990,13 @@ export const enUS: readonly Question[] = [
       'Quick Sight builds dashboards for business users. It is not a query engine for files in S3.',
       'Athena is a serverless interactive query service that analyzes data directly in Amazon S3 with standard SQL, and the customer pays only for the queries run.',
     ],
-    evidence: ['https://docs.aws.amazon.com/athena/latest/ug/what-is.html#what-is'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/athena/latest/ug/what-is.html#what-is',
+        quote:
+          'With a few actions in the AWS Management Console, you can point Athena at your data stored in Amazon S3 and begin using standard SQL to run ad-hoc queries and get results in seconds.',
+      },
+    ],
   },
   {
     id: 'd3-044',
@@ -761,7 +1010,13 @@ export const enUS: readonly Question[] = [
       'Glue runs ETL jobs on data that is already stored, not real-time ingestion.',
       'Quick Sight visualizes data in dashboards. It does not collect streaming data.',
     ],
-    evidence: ['https://docs.aws.amazon.com/streams/latest/dev/introduction.html#use-service-for-what'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/streams/latest/dev/introduction.html#use-service-for-what',
+        quote:
+          'You can use Kinesis Data Streams for rapid and continuous data intake and aggregation. The type of data used can include IT infrastructure log data, application logs, social media, market data feeds, and web clickstream data.',
+      },
+    ],
   },
   {
     id: 'd3-045',
@@ -777,8 +1032,16 @@ export const enUS: readonly Question[] = [
       'Athena runs SQL queries on data in S3, but it does not publish dashboards for business users.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/analytics.html#aws-glue',
-      'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/analytics.html#amazon-quicksight',
+      {
+        url: 'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/analytics.html#aws-glue',
+        quote:
+          'AWS Glue is a fully managed extract, transform, and load (ETL) service that makes it easy for customers to prepare and load their data for analytics.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/analytics.html#amazon-quicksight',
+        quote:
+          'QuickSight lets you create and publish interactive dashboards that can be accessed from browsers or mobile devices.',
+      },
     ],
   },
   {
@@ -793,7 +1056,13 @@ export const enUS: readonly Question[] = [
       'SES sends and receives email. It is not a queue between application components.',
       'EventBridge routes events to targets, but it does not provide a queue for consumers to poll at their own pace.',
     ],
-    evidence: ['https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html#welcome'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html#welcome',
+        quote:
+          'Amazon Simple Queue Service (Amazon SQS) offers a secure, durable, and available hosted queue that lets you integrate and decouple distributed software systems and components.',
+      },
+    ],
   },
   {
     id: 'd3-047',
@@ -807,7 +1076,13 @@ export const enUS: readonly Question[] = [
       'SNS sends application and system alerts to people through SMS and email, for example when a CloudWatch metric breaches a threshold.',
       'Amazon Connect is a contact center service for customer conversations, not an alerting service.',
     ],
-    evidence: ['https://docs.aws.amazon.com/sns/latest/dg/welcome.html#SNSAlertsScenario'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/sns/latest/dg/welcome.html#SNSAlertsScenario',
+        quote:
+          'Amazon SNS can send these notifications to specified users through SMS and email. For example, you can receive immediate notification when an event occurs, such as a specific change to your Amazon EC2 Auto Scaling group, a new file uploaded to an Amazon S3 bucket, or a metric threshold breached in Amazon CloudWatch.',
+      },
+    ],
   },
   {
     id: 'd3-048',
@@ -822,7 +1097,11 @@ export const enUS: readonly Question[] = [
       'SNS sends notifications. It does not connect customers to agents.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/connect/latest/adminguide/what-is-amazon-connect.html#what-is-amazon-connect',
+      {
+        url: 'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/business-applications.html#amazon-connect',
+        quote:
+          'Connect Customer is a self-service, omnichannel cloud contact center service that makes it easy for any business to deliver better customer service at lower cost.',
+      },
     ],
   },
   {
@@ -837,7 +1116,13 @@ export const enUS: readonly Question[] = [
       'SQS queues messages between application components and sends no email.',
       'SES is an email platform for sending marketing and transactional email using your own email addresses and domains.',
     ],
-    evidence: ['https://docs.aws.amazon.com/ses/latest/dg/Welcome.html#Welcome'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/ses/latest/dg/Welcome.html#Welcome',
+        quote:
+          'Amazon Simple Email Service (SES) is an email platform that provides an easy, cost-effective way for you to send and receive email using your own email addresses and domains.',
+      },
+    ],
   },
   {
     id: 'd3-050',
@@ -853,8 +1138,16 @@ export const enUS: readonly Question[] = [
       'AWS Config records and evaluates resource configurations, not code releases.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html#welcome',
-      'https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html#welcome',
+      {
+        url: 'https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html#welcome',
+        quote:
+          'AWS CodeBuild is a fully managed build service in the cloud. CodeBuild compiles your source code, runs unit tests, and produces artifacts that are ready to deploy.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html#welcome',
+        quote:
+          'AWS CodePipeline is a continuous delivery service you can use to model, visualize, and automate the steps required to release your software.',
+      },
     ],
   },
   {
@@ -869,7 +1162,13 @@ export const enUS: readonly Question[] = [
       'CodeBuild compiles and tests code before deployment. It does not observe the running application.',
       'AWS Config tracks resource configuration changes, not request latency.',
     ],
-    evidence: ['https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html#aws-xray'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/xray/latest/devguide/aws-xray.html#aws-xray',
+        quote:
+          'The trace map shows the client, your front-end service, and backend services that your front-end service calls to process requests and persist data. Use the trace map to identify bottlenecks, latency spikes, and other issues to solve to improve the performance of your applications.',
+      },
+    ],
   },
   {
     id: 'd3-052',
@@ -883,7 +1182,13 @@ export const enUS: readonly Question[] = [
       'AppStream 2.0 is a fully managed application streaming service that gives users access to desktop applications from a browser. AWS now calls it Amazon WorkSpaces Applications.',
       'Lightsail provides virtual servers. It does not stream applications to users.',
     ],
-    evidence: ['https://docs.aws.amazon.com/appstream2/latest/developerguide/what-is-appstream.html#what-is-appstream'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/appstream2/latest/developerguide/what-is-appstream.html#what-is-appstream',
+        quote:
+          'Amazon WorkSpaces Applications is a fully managed application streaming service that provides users with instant access to their desktop applications from anywhere.',
+      },
+    ],
   },
   {
     id: 'd3-053',
@@ -897,7 +1202,13 @@ export const enUS: readonly Question[] = [
       'Lightsail provides virtual servers that the team would configure and deploy to itself.',
       'CodeBuild compiles and tests code, but it does not host the application.',
     ],
-    evidence: ['https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html#welcome'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/amplify/latest/userguide/welcome.html#welcome',
+        quote:
+          'Amplify Hosting provides a Git-based workflow for hosting full-stack serverless web applications with continuous deployment. Amplify deploys your app to the AWS global content delivery network (CDN).',
+      },
+    ],
   },
   {
     id: 'd3-054',
@@ -911,7 +1222,13 @@ export const enUS: readonly Question[] = [
       'AWS IoT Core connects IoT devices to AWS services, and its message broker supports devices that publish and subscribe over MQTT.',
       'EventBridge routes events between applications and services, not messages from devices over MQTT.',
     ],
-    evidence: ['https://docs.aws.amazon.com/iot/latest/developerguide/what-is-aws-iot.html#what-is-aws-iot'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/iot/latest/developerguide/what-is-aws-iot.html#what-is-aws-iot',
+        quote:
+          'The AWS IoT Core message broker supports devices and clients that use MQTT and MQTT over WSS protocols to publish and subscribe to messages.',
+      },
+    ],
   },
   {
     id: 'd3-055',
@@ -925,7 +1242,13 @@ export const enUS: readonly Question[] = [
       'Enterprise adds a designated technical account manager and faster responses, at a much higher cost than needed.',
       'Unified Operations is the highest tier, with incident management engineers, and costs more than the startup needs.',
     ],
-    evidence: ['https://aws.amazon.com/premiumsupport/plans/#compare-support-plans'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/premiumsupport/plans/business-plus/',
+        quote:
+          'Get instant, contextual troubleshooting across your AWS environment and 24/7 access to AWS experts. For critical production issues, support engineers engage within 30 minutes to accelerate recovery.',
+      },
+    ],
   },
 ]
 
@@ -948,7 +1271,11 @@ export const ptBR: readonly Question[] = [
       'O CloudTrail registra a atividade de API para auditoria. Ele mostra quem mudou o quê, mas não constrói os recursos.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/Welcome.html#welcome-quickly-replicate-your-infrastructure',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/Welcome.html#welcome-quickly-replicate-your-infrastructure',
+        quote:
+          'Reutilize seu modelo do CloudFormation para criar seus recursos de modo consistente e repetível. Para reutilizar seu modelo, descreva seus recursos uma vez e, em seguida, provisione os mesmos recursos cada vez mais em diversas regiões.',
+      },
     ],
   },
   {
@@ -968,7 +1295,13 @@ export const ptBR: readonly Question[] = [
       'Os AWS SDKs dão ao código da aplicação APIs específicas da linguagem para os serviços da AWS e cuidam da assinatura das requisições, das novas tentativas e dos erros.',
       'O Transfer Acceleration acelera transferências de longa distância para um bucket, mas a aplicação continua precisando de um meio para chamar o Amazon S3.',
     ],
-    evidence: ['https://aws.amazon.com/sdk-for-python/#how-it-works'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/reference_sigv.html#reference_sigv',
+        quote:
+          'você pode pular o processo de assinatura, pois os clientes de SDK e CLI autenticarão suas solicitações usando as chaves de acesso fornecidas por você.',
+      },
+    ],
   },
   {
     id: 'd3-003',
@@ -987,7 +1320,13 @@ export const ptBR: readonly Question[] = [
       'O agendamento serve para tarefas recorrentes. Para uma única ação, acrescenta preparação sem benefício.',
       'O console é uma interface web com acesso a todos os consoles de serviço, então o administrador para a instância com poucos cliques e sem construir nada.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/awsconsolehelpdocs/latest/gsg/what-is.html#what-is'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/awsconsolehelpdocs/latest/gsg/what-is.html#what-is',
+        quote:
+          'O Console de gerenciamento da AWS é um aplicativo baseado na web que contém e fornece acesso centralizado a todos os consoles AWS de serviço individuais.',
+      },
+    ],
   },
   {
     id: 'd3-004',
@@ -1007,7 +1346,11 @@ export const ptBR: readonly Question[] = [
       'Usar duas Regiões continua sendo uma implantação em nuvem, pois nada roda fora da AWS.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/types-of-cloud-computing.html#hybrid',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/types-of-cloud-computing.html#hybrid',
+        quote:
+          'Uma implantação híbrida é uma maneira de conectar infraestrutura e aplicativos entre recursos na nuvem e recursos existentes que não se encontram na nuvem.',
+      },
     ],
   },
   {
@@ -1030,8 +1373,16 @@ export const ptBR: readonly Question[] = [
       'O Health Dashboard mostra eventos que afetam os serviços e as contas da AWS. Não é um meio de chamar serviços.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/security-creds-programmatic-access.html#security-creds-programmatic-access',
-      'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/security-creds-programmatic-access.html#security-creds-programmatic-access',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/security-creds-programmatic-access.html#security-creds-programmatic-access',
+        quote:
+          '(Recomendado) Use credenciais do console como credenciais temporárias para assinar solicitações programáticas para a AWS CLI, os AWS SDKs ou as APIs da AWS.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/security-creds-programmatic-access.html#security-creds-programmatic-access',
+        quote:
+          '(Recomendado) Use credenciais do console como credenciais temporárias para assinar solicitações programáticas para a AWS CLI, os AWS SDKs ou as APIs da AWS.',
+      },
     ],
   },
   {
@@ -1046,7 +1397,13 @@ export const ptBR: readonly Question[] = [
       'O Storage Gateway dá às aplicações on-premises acesso ao armazenamento na nuvem. Ele não roda instâncias do EC2 nem bancos do RDS on-premises.',
       'O Lightsail oferece servidores virtuais simples nas Regiões da AWS, não dentro das instalações do cliente.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/outposts/latest/userguide/what-is-outposts.html#services'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/outposts/latest/userguide/what-is-outposts.html#what-is-outposts',
+        quote:
+          'AWS Outposts é um serviço totalmente gerenciado que estende a AWS infraestrutura, os serviços, as APIs e as ferramentas até as instalações do cliente.',
+      },
+    ],
   },
   {
     id: 'd3-007',
@@ -1066,7 +1423,11 @@ export const ptBR: readonly Question[] = [
       'Uma Zona de Disponibilidade é formada por um ou mais data centers distintos, cada um com energia, rede e conectividade redundantes, em instalações separadas.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/global-infrastructure.html#global-infrastructure',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/global-infrastructure.html#global-infrastructure',
+        quote:
+          'As zonas de disponibilidade consistem em um ou mais data centers da discretos, cada um com energia, rede e conectividade redundantes, hospedados em instalações separadas.',
+      },
     ],
   },
   {
@@ -1087,7 +1448,11 @@ export const ptBR: readonly Question[] = [
       'Edge locations armazenam conteúdo em cache para o CloudFront. Elas não rodam as instâncias da aplicação.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-availability-zones',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html#availability-zones',
+        quote:
+          'Se uma zona de disponibilidade ficar indisponível ou não tiver destinos íntegros, o load balancer poderá continuar a rotear o tráfego para destinos íntegros de outra zona de disponibilidade.',
+      },
     ],
   },
   {
@@ -1110,8 +1475,16 @@ export const ptBR: readonly Question[] = [
       'O IAM é um serviço global, então a empresa cria usuários sem implantar em outra Região.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions',
-      'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions',
+        quote:
+          'Ao executar uma instância, selecione uma região que deixe suas instâncias mais próximas de clientes específicos ou cumpra os requisitos legais ou outros.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-regions',
+        quote:
+          'Ao executar uma instância, selecione uma região que deixe suas instâncias mais próximas de clientes específicos ou cumpra os requisitos legais ou outros.',
+      },
     ],
   },
   {
@@ -1127,7 +1500,11 @@ export const ptBR: readonly Question[] = [
       'Um load balancer distribui o tráfego entre destinos dentro de uma Região, então os usuários distantes continuam chegando até essa Região.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/AmazonCloudFront/latest/DeveloperGuide/Introduction.html#Introduction',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/AmazonCloudFront/latest/DeveloperGuide/Introduction.html#Introduction',
+        quote:
+          'Quando um usuário solicita um conteúdo que você está disponibilizando com o CloudFront, a solicitação é roteada para o ponto de presença que fornece a menor latência (atraso), assim o conteúdo é entregue com a melhor performance possível.',
+      },
     ],
   },
   {
@@ -1147,7 +1524,13 @@ export const ptBR: readonly Question[] = [
       'As Zonas de Disponibilidade não copiam todos os dados automaticamente. Cada serviço ou arquitetura decide o que é replicado.',
       'As Zonas de Disponibilidade são fisicamente separadas e cada uma tem energia, refrigeração e segurança física próprias, então não compartilham um ponto único de falha.',
     ],
-    evidence: ['https://aws.amazon.com/about-aws/global-infrastructure/regions_az/#aws-infrastructure-offerings'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/about-aws/global-infrastructure/regions_az/#aws-infrastructure-offerings',
+        quote:
+          'Each AZ has independent power, cooling, and physical security and is connected via redundant, ultra-low-latency networks.',
+      },
+    ],
   },
   {
     id: 'd3-012',
@@ -1169,8 +1552,15 @@ export const ptBR: readonly Question[] = [
       'A AWS tem centenas de edge locations (pontos de presença), muito mais do que Regiões.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/global-infrastructure.html#global-infrastructure',
-      'https://aws.amazon.com/about-aws/global-infrastructure/#the-most-extensive-global-cloud-infrastructure',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/global-infrastructure.html#global-infrastructure',
+        quote: 'Uma Região da AWS é um local físico do mundo onde existem várias zonas de disponibilidade.',
+      },
+      {
+        url: 'https://aws.amazon.com/pt/cloudfront/',
+        quote:
+          'Reduza a latência ao disponibilizar dados por meio de mais de 750 pontos de presença (POPs) distribuídos globalmente com mapeamento de rede automatizado e roteamento inteligente.',
+      },
     ],
   },
   {
@@ -1185,7 +1575,13 @@ export const ptBR: readonly Question[] = [
       'As instâncias otimizadas para armazenamento são para alto I/O no armazenamento local, não para poder de processamento.',
       'As instâncias otimizadas para computação são para aplicações limitadas pela CPU, com exemplos como processamento em lote, transcodificação de mídia e servidores de jogos dedicados.',
     ],
-    evidence: ['https://aws.amazon.com/ec2/instance-types/#instance-categories'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/ec2/instance-types/#instance-categories',
+        quote:
+          'Compute optimized instances are ideal for compute bound applications that benefit from high-performance processors. Some examples of workloads for compute instances are batch processing, media transcoding, and dedicated game servers.',
+      },
+    ],
   },
   {
     id: 'd3-014',
@@ -1199,7 +1595,13 @@ export const ptBR: readonly Question[] = [
       'As instâncias otimizadas para memória são para dados processados em memória, não para I/O de disco local.',
       'As instâncias de uso geral equilibram os recursos e não miram I/O local muito alto.',
     ],
-    evidence: ['https://aws.amazon.com/ec2/instance-types/#instance-categories'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/ec2/instance-types/#instance-categories',
+        quote:
+          'Storage optimized instances deliver millions of low-latency, random I/O operations per second to applications. They’re designed for workloads that require high, sequential read and write access to very large data sets on local storage.',
+      },
+    ],
   },
   {
     id: 'd3-015',
@@ -1219,7 +1621,10 @@ export const ptBR: readonly Question[] = [
       'O Lambda roda funções em resposta a eventos. Não é uma plataforma de Kubernetes.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/eks/latest/userguide/what-is-eks.html#_amazon_eks_simplified_kubernetes_management',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/eks/latest/userguide/what-is-eks.html#_amazon_eks_simplified_kubernetes_management',
+        quote: 'a AWS gerencia o ambiente de gerenciamento do Kubernetes quando você cria um cluster com o EKS.',
+      },
     ],
   },
   {
@@ -1236,8 +1641,16 @@ export const ptBR: readonly Question[] = [
       'O Outposts coloca hardware da AWS nas instalações do cliente, o oposto de serverless.',
     ],
     evidence: [
-      'https://aws.amazon.com/serverless/#serverless-services-on-aws',
-      'https://aws.amazon.com/serverless/#serverless-services-on-aws',
+      {
+        url: 'https://aws.amazon.com/serverless/#serverless-services-on-aws',
+        quote:
+          'AWS Lambda is an event-driven, pay-as-you-go compute service that lets you run code without provisioning or managing servers.',
+      },
+      {
+        url: 'https://aws.amazon.com/serverless/#serverless-services-on-aws',
+        quote:
+          'AWS Fargate is a serverless compute engine that works with Amazon Elastic Container Service (ECS) and Amazon Elastic Kubernetes Service (EKS).',
+      },
     ],
   },
   {
@@ -1252,7 +1665,12 @@ export const ptBR: readonly Question[] = [
       'O Lambda roda código em resposta a eventos, como um envio ao S3, gerencia a infraestrutura e cobra por uso.',
       'O Elastic Beanstalk implanta aplicações em instâncias do EC2 que rodam continuamente, não código que roda só a cada evento.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html#welcome'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html#welcome',
+        quote: 'execute o código em resposta a eventos ou chamadas de API sem gerenciar servidores.',
+      },
+    ],
   },
   {
     id: 'd3-018',
@@ -1267,7 +1685,11 @@ export const ptBR: readonly Question[] = [
       'O Compute Optimizer recomenda tipos e tamanhos de instância melhores. Ele não muda a capacidade conforme o tráfego.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html#what-is-amazon-ec2-auto-scaling',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html#what-is-amazon-ec2-auto-scaling',
+        quote:
+          'Se você especificar políticas de escalabilidade, o Amazon EC2 Auto Scaling poderá iniciar ou terminar instâncias à medida que a demanda da aplicação aumentar ou diminuir.',
+      },
     ],
   },
   {
@@ -1290,8 +1712,16 @@ export const ptBR: readonly Question[] = [
       'O load balancer monitora a integridade dos destinos registrados e envia tráfego apenas aos saudáveis.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/elasticloadbalancing/latest/userguide/what-is-load-balancing.html#what-is-load-balancing',
-      'https://docs.aws.amazon.com/pt_br/elasticloadbalancing/latest/userguide/what-is-load-balancing.html#what-is-load-balancing',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/elasticloadbalancing/latest/userguide/what-is-load-balancing.html#what-is-load-balancing',
+        quote:
+          'O Elastic Load Balancing distribui automaticamente seu tráfego de entrada em vários destinos, como EC2 instâncias, contêineres e endereços IP, em uma ou mais zonas de disponibilidade.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/elasticloadbalancing/latest/userguide/what-is-load-balancing.html#what-is-load-balancing',
+        quote:
+          'Ele monitora a integridade dos destinos registrados e roteia o tráfego apenas para os destinos íntegros.',
+      },
     ],
   },
   {
@@ -1311,7 +1741,12 @@ export const ptBR: readonly Question[] = [
       'O Amazon RDS é um serviço gerenciado de banco relacional que cuida dos backups, dos patches de software, da detecção automática de falhas e da recuperação.',
       'O DynamoDB é um banco NoSQL, então não é MySQL e a aplicação precisaria mudar.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Concepts.on-prem'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Concepts.on-prem',
+        quote: 'O Amazon RDS gerencia backups, patches de software, detecção automática de falhas e recuperação.',
+      },
+    ],
   },
   {
     id: 'd3-021',
@@ -1330,7 +1765,12 @@ export const ptBR: readonly Question[] = [
       'Backups gerenciados são um recurso do RDS, não de um banco que a empresa roda por conta própria no EC2.',
       'No RDS, a AWS gerencia a alta disponibilidade. No EC2, a empresa precisa construí-la.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Concepts.comparison'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/prescriptive-guidance/latest/migration-oracle-database/ec2-oracle.html#ec2-oracle-choosing',
+        quote: 'Você precisa de controle total sobre o banco de dados e acesso ao sistema operacional subjacente.',
+      },
+    ],
   },
   {
     id: 'd3-022',
@@ -1345,7 +1785,11 @@ export const ptBR: readonly Question[] = [
       'O DynamoDB é um banco NoSQL serverless que suporta dados chave-valor e de documentos com desempenho de milissegundos de um dígito em qualquer escala.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/amazondynamodb/latest/developerguide/Introduction.html#ddb-characteristics',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/amazondynamodb/latest/developerguide/Introduction.html#ddb-characteristics',
+        quote:
+          'O DynamoDB foi desenvolvido especificamente para oferecer melhor desempenho e escalabilidade do que os bancos de dados relacionais, proporcionando desempenho de latência inferior a dez milissegundos em qualquer escala.',
+      },
     ],
   },
   {
@@ -1361,7 +1805,11 @@ export const ptBR: readonly Question[] = [
       'O Redshift é um data warehouse para análises e não faz cache das leituras da aplicação.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/AmazonElastiCache/latest/dg/elasticache-use-cases.html#elasticache-use-cases-data-store',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/AmazonElastiCache/latest/dg/elasticache-use-cases.html#elasticache-use-cases-data-store',
+        quote:
+          'O objetivo principal de um armazenamento de chaves/valores na memória é fornecer acesso ultrarrápido (latência inferior a milissegundos) e de baixo custo a cópias de dados. A maioria dos armazenamentos de dados possui áreas de dados que são frequentemente acessadas, mas raramente atualizadas.',
+      },
     ],
   },
   {
@@ -1384,8 +1832,16 @@ export const ptBR: readonly Question[] = [
       'O Storage Gateway dá às aplicações on-premises acesso ao armazenamento na nuvem, não migração de bancos.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/SchemaConversionTool/latest/userguide/CHAP_Welcome.html#CHAP_Welcome',
-      'https://docs.aws.amazon.com/pt_br/dms/latest/userguide/Welcome.html#Welcome',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/SchemaConversionTool/latest/userguide/CHAP_Welcome.html#CHAP_Welcome',
+        quote:
+          'É possível usar a AWS Schema Conversion Tool (AWS SCT) para converter seu esquema de bancos de dados existentes de um mecanismo de banco de dados para outro.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/dms/latest/userguide/Welcome.html#Welcome',
+        quote:
+          'AWS Database Migration Service (AWS DMS) é um serviço em nuvem que possibilita a migração de bancos de dados relacionais, data warehouses, bancos de dados NoSQL e outros tipos de armazenamentos de dados.',
+      },
     ],
   },
   {
@@ -1401,7 +1857,11 @@ export const ptBR: readonly Question[] = [
       'O Aurora é um mecanismo relacional totalmente gerenciado, compatível com MySQL e PostgreSQL, e seu armazenamento cresce automaticamente conforme a necessidade.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html#CHAP_AuroraOverview',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html#CHAP_AuroraOverview',
+        quote:
+          'Seus mecanismos de banco de dados compatíveis com o MySQL e o PostgreSQL são personalizados para tirar proveito do rápido armazenamento distribuído. O armazenamento subjacente aumenta automaticamente, conforme necessário.',
+      },
     ],
   },
   {
@@ -1416,7 +1876,13 @@ export const ptBR: readonly Question[] = [
       'Um virtual private gateway é o lado da AWS em uma conexão Site-to-Site VPN, não um caminho para a internet.',
       'Um security group filtra o tráfego de uma instância, mas não oferece rota para a internet.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/vpc/latest/userguide/VPC_Internet_Gateway.html#VPC_Internet_Gateway'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/vpc/latest/userguide/VPC_Internet_Gateway.html#VPC_Internet_Gateway',
+        quote:
+          'Um gateway da Internet habilita recursos em suas sub-redes públicas (como instâncias do EC2) para estabelecer conexão com a Internet se o recurso tiver um endereço IPv4 ou um endereço IPv6 público.',
+      },
+    ],
   },
   {
     id: 'd3-027',
@@ -1438,8 +1904,16 @@ export const ptBR: readonly Question[] = [
       'As network ACLs não guardam informações sobre o tráfego anterior, então as respostas não são permitidas automaticamente.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/vpc/latest/userguide/vpc-network-acls.html#vpc-network-acls',
-      'https://docs.aws.amazon.com/pt_br/vpc/latest/userguide/vpc-network-acls.html#nacl-basics',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/vpc/latest/userguide/vpc-network-acls.html#vpc-network-acls',
+        quote:
+          'Uma lista de controle de acesso (ACL) de rede permite ou não determinado tráfego de entrada ou de saída no nível da sub-rede.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/vpc/latest/userguide/vpc-network-acls.html#nacl-basics',
+        quote:
+          'Se, por exemplo, você criar uma regra de NACL para permitir tráfego de entrada específico para uma sub-rede, as respostas a esse tráfego não serão permitidas automaticamente.',
+      },
     ],
   },
   {
@@ -1454,7 +1928,13 @@ export const ptBR: readonly Question[] = [
       'Os achados de acessibilidade de rede do Inspector mostram caminhos de rede abertos até instâncias do EC2 a partir das bordas da VPC, como um internet gateway, e destacam security groups, network ACLs ou internet gateways permissivos demais.',
       'O AWS WAF filtra requisições HTTP para aplicações web. Ele não analisa a configuração de rede da VPC.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/inspector/latest/user/findings-types.html#findings-types-network'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/inspector/latest/user/findings-types.html#findings-types-network',
+        quote:
+          'Essas descobertas destacam configurações de rede que podem ser excessivamente permissivas, como grupos de segurança mal gerenciados, listas de controle de acesso ou gateways de internet, ou que podem permitir acesso potencialmente mal intencionados.',
+      },
+    ],
   },
   {
     id: 'd3-029',
@@ -1468,7 +1948,13 @@ export const ptBR: readonly Question[] = [
       'O Global Accelerator direciona o tráfego pela rede global da AWS por meio de endereços IP estáticos, não por DNS nem registro de domínio.',
       'O Route 53 é um serviço de DNS com três funções principais: registro de domínios, roteamento DNS e verificação de integridade.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/Route53/latest/DeveloperGuide/Welcome.html#Welcome'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/Route53/latest/DeveloperGuide/Welcome.html#Welcome',
+        quote:
+          'Você pode usar o Route 53 para executar três funções principais em qualquer combinação: registro de domínios, roteamento de DNS e verificação de integridade.',
+      },
+    ],
   },
   {
     id: 'd3-030',
@@ -1482,7 +1968,13 @@ export const ptBR: readonly Question[] = [
       'A Client VPN conecta usuários individuais à AWS, não um data center por um link dedicado.',
       'O Transit Gateway é um hub que interliga VPCs e redes on-premises. Não é uma conexão física até o data center.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/directconnect/latest/UserGuide/Welcome.html#Welcome'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/directconnect/latest/UserGuide/Welcome.html#Welcome',
+        quote:
+          'Com essa conexão, você pode criar interfaces virtuais diretamente para AWS serviços públicos (por exemplo, para o Amazon S3) ou para o Amazon VPC, ignorando os provedores de serviços de Internet em seu caminho de rede.',
+      },
+    ],
   },
   {
     id: 'd3-031',
@@ -1496,7 +1988,12 @@ export const ptBR: readonly Question[] = [
       'O VPC peering conecta duas VPCs, não uma rede on-premises a uma VPC.',
       'A Site-to-Site VPN cria conexões VPN IPsec entre a rede on-premises e a VPC, cada uma com dois túneis criptografados.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/vpn/latest/s2svpn/VPC_VPN.html#concepts'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/vpn/latest/s2svpn/VPC_VPN.html#VPC_VPN',
+        quote: 'Site-to-Site A VPN oferece suporte a conexões VPN de segurança do Protocolo de Internet (IPsec).',
+      },
+    ],
   },
   {
     id: 'd3-032',
@@ -1510,7 +2007,13 @@ export const ptBR: readonly Question[] = [
       'O instance store é armazenamento em blocos temporário no host de uma instância e perde os dados junto com ela.',
       'O EFS é um sistema de arquivos que as instâncias montam por NFS, não um repositório que um aplicativo móvel lê por HTTPS.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/Welcome.html#Welcome'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/Welcome.html#Welcome',
+        quote:
+          'Clientes de todos os tamanhos e setores podem usar o Amazon S3 para armazenar e proteger qualquer volume de dados para uma variedade de casos de uso, como data lakes, sites, aplicações móveis, backup e restauração, arquivamento, aplicações corporativas, dispositivos IoT e análises de big data.',
+      },
+    ],
   },
   {
     id: 'd3-033',
@@ -1525,7 +2028,11 @@ export const ptBR: readonly Question[] = [
       'O Deep Archive é para dados acessados menos de uma vez por ano, com recuperação em horas e taxas de recuperação.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/storage-class-intro.html#sc-dynamic-data-access',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/storage-class-intro.html#sc-dynamic-data-access',
+        quote:
+          'O S3 Intelligent-Tiering é a classe de armazenamento ideal quando você quer otimizar os custos de armazenamento dos dados com padrões de acesso desconhecidos ou variáveis. Não há taxas de recuperação para o S3 Intelligent-Tiering.',
+      },
     ],
   },
   {
@@ -1541,7 +2048,11 @@ export const ptBR: readonly Question[] = [
       'O Object Lock impede que objetos sejam excluídos ou sobrescritos. Ele não faz transições.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/object-lifecycle-mgmt.html#object-lifecycle-mgmt',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/object-lifecycle-mgmt.html#object-lifecycle-mgmt',
+        quote:
+          'O Ciclo de Vida do S3 ajuda você a armazenar objetos de forma econômica durante todo o respectivo ciclo de vida deles ao fazer a transição para classes de armazenamento de menor custo ou excluir objetos expirados em seu nome.',
+      },
     ],
   },
   {
@@ -1564,8 +2075,15 @@ export const ptBR: readonly Question[] = [
       'Objetos acessados por URL descrevem o Amazon S3.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStorage',
-      'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStorage',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStorage',
+        quote:
+          'Um armazenamento de instância fornece armazenamento temporário ao nível do bloco para a instância do EC2.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/InstanceStorage.html#InstanceStorage',
+        quote: 'Esse armazenamento é fornecido por discos que estão anexados fisicamente ao computador host.',
+      },
     ],
   },
   {
@@ -1580,7 +2098,13 @@ export const ptBR: readonly Question[] = [
       'O FSx for Windows File Server usa o protocolo SMB e atende cargas Windows.',
       'O Glacier Flexible Retrieval é uma classe de armazenamento de arquivamento, não um sistema de arquivos montado.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/efs/latest/ug/whatisefs.html#whatisefs'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/efs/latest/ug/whatisefs.html#whatisefs',
+        quote:
+          'O Amazon EFS foi criado para escalar sob demanda para petabytes sem interromper os aplicativos, podendo aumentar ou diminuir à medida que arquivos são adicionados e removidos.',
+      },
+    ],
   },
   {
     id: 'd3-037',
@@ -1594,7 +2118,13 @@ export const ptBR: readonly Question[] = [
       'O FSx for Windows File Server oferece servidores de arquivos Windows totalmente gerenciados, com acesso por SMB e integração com o Microsoft Active Directory.',
       'O Storage Gateway conecta ambientes on-premises ao armazenamento na nuvem. Não é o servidor de arquivos gerenciado na AWS.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/fsx/latest/WindowsGuide/what-is.html#what-is'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/fsx/latest/WindowsGuide/what-is.html#what-is',
+        quote:
+          'O Amazon FSx para Windows File Server fornece servidores de arquivos Microsoft Windows totalmente gerenciados, baseados em um sistema de arquivos Windows totalmente nativo.',
+      },
+    ],
   },
   {
     id: 'd3-038',
@@ -1608,7 +2138,13 @@ export const ptBR: readonly Question[] = [
       'O AWS Backup automatiza políticas de backup. Ele não serve compartilhamentos de arquivos às aplicações.',
       'O Storage Gateway, com um S3 File Gateway, guarda arquivos como objetos no S3 via NFS e SMB e oferece acesso de baixa latência por cache local.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/filegateway/latest/files3/what-is-file-s3.html#what-is-file-s3'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/filegateway/latest/files3/what-is-file-s3.html#what-is-file-s3',
+        quote:
+          'Além disso, oferece acesso de baixa latência aos dados por meio de armazenamento em cache local transparente.',
+      },
+    ],
   },
   {
     id: 'd3-039',
@@ -1622,7 +2158,13 @@ export const ptBR: readonly Question[] = [
       'O Storage Gateway conecta aplicações on-premises ao armazenamento na nuvem. Ele não gerencia planos de backup entre serviços.',
       'O Elastic Disaster Recovery replica servidores para que possam ser recuperados na AWS. Não é um serviço central de políticas de backup.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/aws-backup/latest/devguide/whatisbackup.html#whatisbackup'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/aws-backup/latest/devguide/whatisbackup.html#whatisbackup',
+        quote:
+          'AWS Backup é um serviço totalmente gerenciado que facilita a centralização e a automatização da proteção de dados em todos os AWS serviços, na nuvem e no local. Usando esse serviço, você pode configurar políticas de backup e monitorar a atividade de seus AWS recursos em um só lugar.',
+      },
+    ],
   },
   {
     id: 'd3-040',
@@ -1636,7 +2178,13 @@ export const ptBR: readonly Question[] = [
       'O Transcribe converte fala em texto, mas não conduz uma conversa.',
       'O Comprehend extrai informações, como o sentimento, de textos, mas não cria um chatbot.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/machine-learning.html#amazon-lex'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/machine-learning.html#amazon-lex',
+        quote:
+          'O Amazon Lex é um serviço de inteligência artificial (IA) totalmente gerenciado para projetar, criar, testar e implantar interfaces de conversação em qualquer aplicação usando voz e texto.',
+      },
+    ],
   },
   {
     id: 'd3-041',
@@ -1652,8 +2200,16 @@ export const ptBR: readonly Question[] = [
       'O Rekognition analisa imagens e vídeos, não áudio nem texto.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/machine-learning.html#amazon-transcribe',
-      'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/machine-learning.html#amazon-comprehend',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/machine-learning.html#amazon-transcribe',
+        quote:
+          'O Amazon Transcribe é um serviço de reconhecimento automático de fala (ASR) que facilita para os clientes a conversão automática de fala em texto.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/machine-learning.html#amazon-comprehend',
+        quote:
+          'O serviço identifica o idioma do texto; extrai frases-chave, lugares, pessoas, marcas ou eventos; compreende o quanto o texto é positivo ou negativo; analisa o texto usando tokenização e partes do discurso; além de organizar automaticamente uma coleção de arquivos de texto por tópico.',
+      },
     ],
   },
   {
@@ -1668,7 +2224,13 @@ export const ptBR: readonly Question[] = [
       'O SageMaker AI é um serviço de machine learning totalmente gerenciado para cientistas de dados e desenvolvedores criarem, treinarem e implantarem modelos.',
       'O Amazon Q é um assistente de IA generativa, não uma plataforma para treinar modelos próprios.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/sagemaker/latest/dg/whatis.html#whatis'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/sagemaker/latest/dg/whatis.html#whatis',
+        quote:
+          'O Amazon SageMaker AI é um serviço de aprendizado de máquina (ML) totalmente gerenciado. Com a SageMaker IA, cientistas de dados e desenvolvedores podem criar, treinar e implantar modelos de ML com rapidez e confiança em um ambiente hospedado pronto para produção.',
+      },
+    ],
   },
   {
     id: 'd3-043',
@@ -1682,7 +2244,13 @@ export const ptBR: readonly Question[] = [
       'O Quick Sight cria painéis para usuários de negócio. Não é um mecanismo de consulta para arquivos no S3.',
       'O Athena é um serviço de consultas interativas serverless que analisa dados diretamente no Amazon S3 com SQL padrão, e o cliente paga apenas pelas consultas que roda.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/athena/latest/ug/what-is.html#what-is'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/athena/latest/ug/what-is.html#what-is',
+        quote:
+          'Com algumas ações no Console de gerenciamento da AWS, você pode direcionar o Athena para os dados armazenados no Amazon S3 e começar a usar o SQL padrão para executar consultas ad-hoc e obter resultados em segundos.',
+      },
+    ],
   },
   {
     id: 'd3-044',
@@ -1696,7 +2264,13 @@ export const ptBR: readonly Question[] = [
       'O Glue roda jobs de ETL sobre dados já armazenados, não ingestão em tempo real.',
       'O Quick Sight visualiza dados em painéis. Ele não coleta dados em streaming.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/streams/latest/dev/introduction.html#use-service-for-what'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/streams/latest/dev/introduction.html#use-service-for-what',
+        quote:
+          'É possível usar o Kinesis Data Streams para entrada e agregação de dados de forma rápida e contínua. O tipo de dados usado pode incluir dados de log de infraestrutura de TI, logs de aplicativo, mídias sociais, feeds de dados de mercado e dados de sequência de cliques da web.',
+      },
+    ],
   },
   {
     id: 'd3-045',
@@ -1712,8 +2286,16 @@ export const ptBR: readonly Question[] = [
       'O Athena roda consultas SQL sobre dados no S3, mas não publica painéis para usuários de negócio.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/analytics.html#aws-glue',
-      'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/analytics.html#amazon-quicksight',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/analytics.html#aws-glue',
+        quote:
+          'O AWS Glue é um serviço para extração, transformação e carregamento (ETL) totalmente gerenciado que facilita para os clientes preparar e carregar os dados para analytics.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/analytics.html#amazon-quicksight',
+        quote:
+          'QuickSight permite criar e publicar painéis interativos que podem ser acessados a partir de navegadores ou dispositivos móveis.',
+      },
     ],
   },
   {
@@ -1728,7 +2310,13 @@ export const ptBR: readonly Question[] = [
       'O SES envia e recebe emails. Não é uma fila entre componentes de aplicação.',
       'O EventBridge direciona eventos para destinos, mas não oferece uma fila que os consumidores leiam no próprio ritmo.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html#welcome'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html#welcome',
+        quote:
+          'O Amazon Simple Queue Service (Amazon SQS) oferece uma fila hospedada segura, durável e disponível que permite integrar e desacoplar sistemas de software e componentes distribuídos.',
+      },
+    ],
   },
   {
     id: 'd3-047',
@@ -1742,7 +2330,13 @@ export const ptBR: readonly Question[] = [
       'O SNS envia alertas de aplicações e sistemas a pessoas por SMS e email, por exemplo quando uma métrica do CloudWatch ultrapassa um limite.',
       'O Amazon Connect é um serviço de central de atendimento para conversas com clientes, não um serviço de alertas.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/sns/latest/dg/welcome.html#SNSAlertsScenario'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/sns/latest/dg/welcome.html#SNSAlertsScenario',
+        quote:
+          'Alertas de aplicações e do sistema são notificações que são acionadas por limites predefinidos. O Amazon SNS pode enviar essas notificações para usuários específicos por meio de SMS e e-mail.',
+      },
+    ],
   },
   {
     id: 'd3-048',
@@ -1757,7 +2351,11 @@ export const ptBR: readonly Question[] = [
       'O SNS envia notificações. Ele não conecta clientes a agentes.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/connect/latest/adminguide/what-is-amazon-connect.html#what-is-amazon-connect',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/business-applications.html#amazon-connect',
+        quote:
+          'O Connect Customer é um serviço de contact center em nuvem omnicanal e de autoatendimento que torna mais fácil para qualquer empresa oferecer um melhor atendimento ao cliente a um custo menor.',
+      },
     ],
   },
   {
@@ -1772,7 +2370,13 @@ export const ptBR: readonly Question[] = [
       'O SQS enfileira mensagens entre componentes de aplicação e não envia emails.',
       'O SES é uma plataforma de email para enviar mensagens de marketing e transacionais usando os próprios endereços e domínios.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/ses/latest/dg/Welcome.html#Welcome'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/ses/latest/dg/Welcome.html#Welcome',
+        quote:
+          'Amazon Simple Email Service (SES) é uma plataforma de e-mail que oferece uma forma fácil e econômica para você enviar e receber e-mail usando seus próprios endereços de e-mail e domínios.',
+      },
+    ],
   },
   {
     id: 'd3-050',
@@ -1788,8 +2392,16 @@ export const ptBR: readonly Question[] = [
       'O AWS Config registra e avalia configurações de recursos, não liberações de código.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/codebuild/latest/userguide/welcome.html#welcome',
-      'https://docs.aws.amazon.com/pt_br/codepipeline/latest/userguide/welcome.html#welcome',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/codebuild/latest/userguide/welcome.html#welcome',
+        quote:
+          'AWS CodeBuild é um serviço de compilação totalmente gerenciado na nuvem. CodeBuild compila seu código-fonte, executa testes de unidade e produz artefatos que estão prontos para serem implantados.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/codepipeline/latest/userguide/welcome.html#welcome',
+        quote:
+          'AWS CodePipeline é um serviço de entrega contínua que você pode usar para modelar, visualizar e automatizar as etapas necessárias para lançar seu software.',
+      },
     ],
   },
   {
@@ -1804,7 +2416,13 @@ export const ptBR: readonly Question[] = [
       'O CodeBuild compila e testa o código antes da implantação. Ele não observa a aplicação em execução.',
       'O AWS Config acompanha mudanças de configuração dos recursos, não a latência das requisições.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/xray/latest/devguide/aws-xray.html#aws-xray'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/xray/latest/devguide/aws-xray.html#aws-xray',
+        quote:
+          'O mapa de rastreamento mostra o cliente, o serviço de front-end e os serviços de backend chamados pelo serviço de front-end para processar solicitações e manter dados. Use o mapa de rastreamento para identificar gargalos, picos de latência e outros problemas e melhorar o desempenho das aplicações.',
+      },
+    ],
   },
   {
     id: 'd3-052',
@@ -1819,7 +2437,11 @@ export const ptBR: readonly Question[] = [
       'O Lightsail oferece servidores virtuais. Ele não transmite aplicações aos usuários.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/appstream2/latest/developerguide/what-is-appstream.html#what-is-appstream',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/appstream2/latest/developerguide/what-is-appstream.html#what-is-appstream',
+        quote:
+          'O Amazon WorkSpaces Applications é um serviço de streaming de aplicativos totalmente gerenciado que fornece aos usuários acesso instantâneo aos seus aplicativos de desktop de qualquer lugar.',
+      },
     ],
   },
   {
@@ -1834,7 +2456,13 @@ export const ptBR: readonly Question[] = [
       'O Lightsail oferece servidores virtuais que a própria equipe teria de configurar e atualizar.',
       'O CodeBuild compila e testa o código, mas não hospeda a aplicação.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/amplify/latest/userguide/welcome.html#welcome'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/amplify/latest/userguide/welcome.html#welcome',
+        quote:
+          'O Amplify Hosting fornece um fluxo de trabalho baseado em git para hospedar aplicações full-stack da Web com tecnologia sem servidor com implantação contínua. O Amplify implanta seu aplicativo na rede AWS global de entrega de conteúdo (CDN).',
+      },
+    ],
   },
   {
     id: 'd3-054',
@@ -1848,7 +2476,13 @@ export const ptBR: readonly Question[] = [
       'O AWS IoT Core conecta dispositivos IoT aos serviços da AWS, e seu message broker aceita dispositivos que publicam e assinam via MQTT.',
       'O EventBridge direciona eventos entre aplicações e serviços, não mensagens de dispositivos via MQTT.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/iot/latest/developerguide/what-is-aws-iot.html#what-is-aws-iot'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/iot/latest/developerguide/what-is-aws-iot.html#what-is-aws-iot',
+        quote:
+          'O agente de AWS IoT Core mensagens oferece suporte a dispositivos e clientes que usam os protocolos MQTT e MQTT sobre WSS para publicar e assinar mensagens.',
+      },
+    ],
   },
   {
     id: 'd3-055',
@@ -1862,6 +2496,12 @@ export const ptBR: readonly Question[] = [
       'O Enterprise acrescenta um gerente técnico de conta designado e respostas mais rápidas, a um custo bem maior do que o necessário.',
       'O Unified Operations é o nível mais alto, com engenheiros de gerenciamento de incidentes, e custa mais do que a startup precisa.',
     ],
-    evidence: ['https://aws.amazon.com/premiumsupport/plans/#compare-support-plans'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/pt/premiumsupport/plans/business-plus/',
+        quote:
+          'Conte com solução de problemas instantânea e contextual em todo o seu ambiente da AWS e acesso 24 horas por dia, 7 dias por semana aos especialistas da AWS. Para problemas críticos de produção, os engenheiros de suporte interagem em 30 minutos para acelerar o processo de recuperação.',
+      },
+    ],
   },
 ]

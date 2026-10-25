@@ -148,9 +148,9 @@ export async function start(root: HTMLElement, choice: Choice): Promise<void> {
   const isRight = (q: Question): boolean => same(picksOf(q.id), q.answers)
   const letter = (index: number): string => String.fromCharCode(65 + index)
   const proofOf = (q: Question, position: number): string => {
-    const href = q.evidence[q.answers.indexOf(position)]
-    return href
-      ? `<a class="cert-practice__proof" href="${href}" target="_blank" rel="noopener noreferrer">${labels.proof} ${icon('arrow-right')}</a>`
+    const proof = q.evidence[q.answers.indexOf(position)]
+    return proof
+      ? `<span class="cert-practice__evidence"><q>${proof.quote}</q><a class="cert-practice__proof" href="${proof.href}" target="_blank" rel="noopener noreferrer">${labels.proof} ${icon('arrow-right')}</a></span>`
       : ''
   }
 

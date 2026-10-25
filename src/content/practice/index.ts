@@ -7,8 +7,8 @@
  */
 import type { Locale } from '../../i18n/strings'
 import { Glossary } from '../glossary'
-import { renderInline } from '../inline'
-import type { Question, QuestionFile } from './types'
+import { escapeHtml, renderInline } from '../inline'
+import type { Evidence, Question, QuestionFile } from './types'
 
 const FILES = import.meta.glob<QuestionFile>('./questions/*.ts', { eager: true })
 const files = Object.keys(FILES)
@@ -42,6 +42,21 @@ export function domainOf(question: Question): number {
 }
 
 /**
+ * The address that opens the page on the passage and highlights it, through a text fragment after the
+ * fragment of the section. A long passage is matched by its first and last words, so markup inside it
+ * cannot break the match, and the section stays as the place to land if AWS rewords the passage.
+ */
+export function linkOf(evidence: Evidence): string {
+  const encode = (text: string): string => encodeURIComponent(text).replace(/-/g, '%2D')
+  const words = evidence.quote.trim().split(/\s+/)
+  const text =
+    words.length <= 8
+      ? encode(words.join(' '))
+      : `${encode(words.slice(0, 4).join(' '))},${encode(words.slice(-4).join(' '))}`
+  return `${evidence.url}${evidence.url.includes('#') ? '' : '#'}:~:text=${text}`
+}
+
+/**
  * A question as the practice page reads it, its markup already rendered. Only the reasons explain their
  * acronyms: a meaning beside a response would hand over the answer, which the exam never does.
  */
@@ -52,7 +67,7 @@ export interface RenderedQuestion {
   readonly stem: string
   readonly options: readonly string[]
   readonly reasons: readonly string[]
-  readonly evidence: readonly string[]
+  readonly evidence: readonly { readonly href: string; readonly quote: string }[]
 }
 
 export function renderedQuestionsOf(locale: Locale): RenderedQuestion[] {
@@ -68,7 +83,7 @@ export function renderedQuestionsOf(locale: Locale): RenderedQuestion[] {
       stem: renderInline(question.stem),
       options: question.options.map((option) => renderInline(option)),
       reasons: question.reasons.map((reason) => renderInline(reason, glossary)),
-      evidence: question.evidence,
+      evidence: question.evidence.map((proof) => ({ href: linkOf(proof), quote: escapeHtml(proof.quote) })),
     }
   })
 }
