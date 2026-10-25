@@ -2,8 +2,8 @@
  * The bank of practice questions in each language, and what the practice page receives from it.
  *
  * Both languages are checked against each other when the site is built, as the notes are: the same
- * identifiers in the same order, each with the same task, the same number of responses and the same
- * correct ones.
+ * identifiers in the same order, each with the same task, the same number of responses, the same
+ * correct ones and one proof for each of them.
  */
 import type { Locale } from '../../i18n/strings'
 import { Glossary } from '../glossary'
@@ -21,11 +21,15 @@ const QUESTIONS: Readonly<Record<Locale, readonly Question[]>> = {
 }
 
 function shapeOf(questions: readonly Question[]): string {
-  return questions.map((q) => `${q.id}:${q.task}:${q.options.length}:${q.answers.join(',')}`).join('|')
+  return questions
+    .map((q) => `${q.id}:${q.task}:${q.options.length}:${q.answers.join(',')}:${q.evidence.length}`)
+    .join('|')
 }
 
 if (shapeOf(QUESTIONS['pt-BR']) !== shapeOf(QUESTIONS['en-US'])) {
-  throw new Error('The pt-BR and en-US practice questions must share identifiers, tasks, responses and answers.')
+  throw new Error(
+    'The pt-BR and en-US practice questions must share identifiers, tasks, responses, answers and proofs.',
+  )
 }
 
 export function questionsOf(locale: Locale): readonly Question[] {
@@ -48,7 +52,7 @@ export interface RenderedQuestion {
   readonly stem: string
   readonly options: readonly string[]
   readonly reasons: readonly string[]
-  readonly source: string
+  readonly evidence: readonly string[]
 }
 
 export function renderedQuestionsOf(locale: Locale): RenderedQuestion[] {
@@ -64,7 +68,7 @@ export function renderedQuestionsOf(locale: Locale): RenderedQuestion[] {
       stem: renderInline(question.stem),
       options: question.options.map((option) => renderInline(option)),
       reasons: question.reasons.map((reason) => renderInline(reason, glossary)),
-      source: question.source,
+      evidence: question.evidence,
     }
   })
 }

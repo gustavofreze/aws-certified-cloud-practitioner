@@ -18,7 +18,7 @@ export const enUS: readonly Question[] = [
       'Going global is about deploying in more Regions with a few clicks, not about matching capacity to demand.',
       'This removes the work of racking and powering servers, but the company could still overprovision in the cloud if it kept guessing capacity.',
     ],
-    source: 'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    evidence: ['https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html'],
   },
   {
     id: 'd1-002',
@@ -39,7 +39,10 @@ export const enUS: readonly Question[] = [
       'This is a design principle of the cost optimization pillar.',
       'This is a design principle of the performance efficiency pillar.',
     ],
-    source: 'https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html',
+    evidence: [
+      'https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html',
+      'https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html',
+    ],
   },
   {
     id: 'd1-003',
@@ -58,7 +61,7 @@ export const enUS: readonly Question[] = [
       'This advantage is about paying for consumption instead of investing upfront, not about reaching users in a new geography.',
       'This advantage is about matching capacity to demand, not about deploying close to users in another country.',
     ],
-    source: 'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    evidence: ['https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html'],
   },
   {
     id: 'd1-004',
@@ -77,7 +80,7 @@ export const enUS: readonly Question[] = [
       'New resources are a click away, so the time to make them available drops from weeks to minutes and experimenting costs much less.',
       'Stopping capacity guesses is about sizing for demand. The scenario is about the time and cost of trying new ideas.',
     ],
-    source: 'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    evidence: ['https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html'],
   },
   {
     id: 'd1-005',
@@ -91,7 +94,7 @@ export const enUS: readonly Question[] = [
       'Durability is about not losing stored data, not about adjusting capacity.',
       'Fault tolerance is about continuing to operate when components fail, not about matching capacity to changes in traffic.',
     ],
-    source: 'https://aws.amazon.com/what-is-cloud-computing/',
+    evidence: ['https://aws.amazon.com/what-is-cloud-computing/#benefits-of-cloud-computing'],
   },
   {
     id: 'd1-006',
@@ -110,7 +113,7 @@ export const enUS: readonly Question[] = [
       'Snapshots help restore data after a failure, but the application stops until the company restores it somewhere else.',
       'Availability Zones are isolated and physically separate, with independent power and networking, so spreading instances across them keeps the application available when one fails.',
     ],
-    source: 'https://aws.amazon.com/about-aws/global-infrastructure/regions_az/',
+    evidence: ['https://aws.amazon.com/about-aws/global-infrastructure/regions_az/#aws-infrastructure-offerings'],
   },
   {
     id: 'd1-007',
@@ -131,7 +134,10 @@ export const enUS: readonly Question[] = [
       'All Availability Zones in a Region are interconnected with high-bandwidth, low-latency networking.',
       'Each AWS Region has a minimum of three isolated and physically separate Availability Zones.',
     ],
-    source: 'https://aws.amazon.com/about-aws/global-infrastructure/regions_az/',
+    evidence: [
+      'https://aws.amazon.com/about-aws/global-infrastructure/regions_az/#aws-infrastructure-offerings',
+      'https://aws.amazon.com/about-aws/global-infrastructure/regions_az/#aws-infrastructure-offerings',
+    ],
   },
   {
     id: 'd1-008',
@@ -150,7 +156,7 @@ export const enUS: readonly Question[] = [
       'Economies of scale lower prices through aggregated usage, but they do not describe where the staff spends its time.',
       'With the cloud, the company focuses on its customers instead of the heavy lifting of racking, stacking, and powering servers.',
     ],
-    source: 'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    evidence: ['https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html'],
   },
   {
     id: 'd1-009',
@@ -164,7 +170,7 @@ export const enUS: readonly Question[] = [
       'Outposts runs AWS infrastructure inside the customer data center. It does not bring content close to viewers on other continents.',
       'Auto Scaling adjusts the number of instances in a Region. It does not place content close to viewers worldwide.',
     ],
-    source: 'https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html',
+    evidence: ['https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html'],
   },
   {
     id: 'd1-010',
@@ -185,7 +191,10 @@ export const enUS: readonly Question[] = [
       'In the cloud AWS owns and operates the physical hardware. The advantage is no longer having to run data centers.',
       'New resources are a click away, which reduces the time to make them available from weeks to minutes.',
     ],
-    source: 'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    evidence: [
+      'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+      'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    ],
   },
   {
     id: 'd1-011',
@@ -204,7 +213,7 @@ export const enUS: readonly Question[] = [
       'Cloud computing delivers IT resources on demand with pay-as-you-go pricing, so the startup pays only for the three days and stops paying when it deletes them.',
       'A Dedicated Host is a whole physical server reserved for one customer, which costs more than needed for a short test.',
     ],
-    source: 'https://aws.amazon.com/what-is-cloud-computing/',
+    evidence: ['https://aws.amazon.com/what-is-cloud-computing/#benefits-of-cloud-computing'],
   },
   {
     id: 'd1-012',
@@ -223,8 +232,9 @@ export const enUS: readonly Question[] = [
       'Edge locations cache content, but the application still depends on its origin in a single Region.',
       'Reserved Instances are a billing discount. They do not add any protection against the loss of a Region.',
     ],
-    source:
-      'https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html',
+    evidence: [
+      'https://docs.aws.amazon.com/wellarchitected/latest/framework/rel_fault_isolation_multiaz_region_system.html#implementation-guidance',
+    ],
   },
   {
     id: 'd1-013',
@@ -238,7 +248,7 @@ export const enUS: readonly Question[] = [
       'Operational excellence is about organizing teams, designing, operating at scale, and evolving the workload over time.',
       'Security is about protecting data, systems, and assets.',
     ],
-    source: 'https://docs.aws.amazon.com/wellarchitected/latest/framework/reliability.html',
+    evidence: ['https://docs.aws.amazon.com/wellarchitected/latest/framework/reliability.html'],
   },
   {
     id: 'd1-014',
@@ -252,7 +262,7 @@ export const enUS: readonly Question[] = [
       'The sustainability pillar focuses on environmental impact, especially energy consumption and efficiency, and its principles include establishing goals such as fewer resources per transaction.',
       'Operational excellence is about running and improving the workload, not about its energy use.',
     ],
-    source: 'https://docs.aws.amazon.com/wellarchitected/latest/framework/sus-design-principles.html',
+    evidence: ['https://docs.aws.amazon.com/wellarchitected/latest/framework/sus-design-principles.html'],
   },
   {
     id: 'd1-015',
@@ -271,7 +281,7 @@ export const enUS: readonly Question[] = [
       'This is a design principle of the operational excellence pillar.',
       'Applying defense in depth with controls at every layer, from the network edge to the application code, is a security design principle.',
     ],
-    source: 'https://docs.aws.amazon.com/wellarchitected/latest/framework/sec-design.html',
+    evidence: ['https://docs.aws.amazon.com/wellarchitected/latest/framework/sec-design.html'],
   },
   {
     id: 'd1-016',
@@ -290,7 +300,7 @@ export const enUS: readonly Question[] = [
       'This performance efficiency principle is about consuming complex technologies as services.',
       'This security principle is about monitoring, alerting, and auditing actions and changes.',
     ],
-    source: 'https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-dp.html',
+    evidence: ['https://docs.aws.amazon.com/wellarchitected/latest/framework/cost-dp.html'],
   },
   {
     id: 'd1-017',
@@ -309,7 +319,7 @@ export const enUS: readonly Question[] = [
       'This is a security principle about encryption, tokenization, and access control.',
       'This is a cost optimization principle about comparing business output with its cost.',
     ],
-    source: 'https://docs.aws.amazon.com/wellarchitected/latest/framework/oe-design-principles.html',
+    evidence: ['https://docs.aws.amazon.com/wellarchitected/latest/framework/oe-design-principles.html'],
   },
   {
     id: 'd1-018',
@@ -328,7 +338,7 @@ export const enUS: readonly Question[] = [
       'This principle is about quickly comparing instance types, storage, or configurations.',
       'Consuming a complex technology such as machine learning as a service lets the team focus on the product instead of learning to host it.',
     ],
-    source: 'https://docs.aws.amazon.com/wellarchitected/latest/framework/perf-dp.html',
+    evidence: ['https://docs.aws.amazon.com/wellarchitected/latest/framework/perf-dp.html'],
   },
   {
     id: 'd1-019',
@@ -349,7 +359,10 @@ export const enUS: readonly Question[] = [
       'This is a design principle of the cost optimization pillar.',
       'Driving failure scenarios and testing procedures against them is an operational excellence design principle.',
     ],
-    source: 'https://docs.aws.amazon.com/wellarchitected/latest/framework/oe-design-principles.html',
+    evidence: [
+      'https://docs.aws.amazon.com/wellarchitected/latest/framework/oe-design-principles.html',
+      'https://docs.aws.amazon.com/wellarchitected/latest/framework/oe-design-principles.html',
+    ],
   },
   {
     id: 'd1-020',
@@ -368,7 +381,7 @@ export const enUS: readonly Question[] = [
       'This reliability principle replaces one large resource with multiple small ones so that a single failure does not affect the whole workload.',
       'This security principle is about least privilege and centralized identity management.',
     ],
-    source: 'https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html',
+    evidence: ['https://docs.aws.amazon.com/wellarchitected/latest/framework/rel-dp.html'],
   },
   {
     id: 'd1-021',
@@ -382,7 +395,7 @@ export const enUS: readonly Question[] = [
       'Config records resource configurations and evaluates them against rules, not against the best practices of the framework.',
       'Compute Optimizer recommends rightsizing for resources based on utilization. It does not review a workload against the framework.',
     ],
-    source: 'https://aws.amazon.com/well-architected-tool/',
+    evidence: ['https://docs.aws.amazon.com/wellarchitected/latest/userguide/tool.html'],
   },
   {
     id: 'd1-022',
@@ -403,7 +416,10 @@ export const enUS: readonly Question[] = [
       'Monitoring, alerting, and auditing actions and changes in real time is the security principle to maintain traceability.',
       'This follows the performance efficiency principle to go global in minutes.',
     ],
-    source: 'https://docs.aws.amazon.com/wellarchitected/latest/framework/sec-design.html',
+    evidence: [
+      'https://docs.aws.amazon.com/wellarchitected/latest/framework/sec-design.html',
+      'https://docs.aws.amazon.com/wellarchitected/latest/framework/sec-design.html',
+    ],
   },
   {
     id: 'd1-023',
@@ -417,7 +433,9 @@ export const enUS: readonly Question[] = [
       'Repurchasing replaces the application with a different product, such as a SaaS offering.',
       'Rehosting, also called lift and shift, moves applications to AWS without changes and handles large numbers of servers.',
     ],
-    source: 'https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html',
+    evidence: [
+      'https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html#rehost',
+    ],
   },
   {
     id: 'd1-024',
@@ -431,7 +449,9 @@ export const enUS: readonly Question[] = [
       'Refactoring changes the architecture of the application to use cloud-native features, which the company does not plan to do.',
       'Relocating moves a whole virtualization platform, or resources between VPCs, Regions, or accounts, without changing the platform the workload runs on.',
     ],
-    source: 'https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html',
+    evidence: [
+      'https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html#replatform',
+    ],
   },
   {
     id: 'd1-025',
@@ -445,7 +465,9 @@ export const enUS: readonly Question[] = [
       'Repurchasing, also called drop and shop, replaces the application with a different product, such as moving from a custom or licensed application to SaaS.',
       'Refactoring would redesign the custom application for the cloud, which means the company would keep maintaining it.',
     ],
-    source: 'https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html',
+    evidence: [
+      'https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html#repurchase',
+    ],
   },
   {
     id: 'd1-026',
@@ -459,7 +481,9 @@ export const enUS: readonly Question[] = [
       'Relocating moves the application to AWS unchanged, so the company would keep paying to host it.',
       'Rehosting moves the application to AWS unchanged, so the company would keep paying to host it.',
     ],
-    source: 'https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html',
+    evidence: [
+      'https://docs.aws.amazon.com/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html#retire',
+    ],
   },
   {
     id: 'd1-027',
@@ -478,7 +502,7 @@ export const enUS: readonly Question[] = [
       'AWS Backup centralizes backups of AWS resources. It does not keep a source and a target database in sync.',
       'AWS DMS performs one-time migrations or replicates ongoing changes to keep the source and the target in sync until cutover.',
     ],
-    source: 'https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html',
+    evidence: ['https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html'],
   },
   {
     id: 'd1-028',
@@ -499,7 +523,10 @@ export const enUS: readonly Question[] = [
       'AWS Backup protects data with backups. It does not convert schemas between engines.',
       'Storage Gateway gives on-premises applications access to cloud storage. It does not migrate databases between engines.',
     ],
-    source: 'https://docs.aws.amazon.com/SchemaConversionTool/latest/userguide/CHAP_Welcome.html',
+    evidence: [
+      'https://docs.aws.amazon.com/SchemaConversionTool/latest/userguide/CHAP_Source.Oracle.ToPostgreSQL.html',
+      'https://docs.aws.amazon.com/SchemaConversionTool/latest/userguide/CHAP_Welcome.html#CHAP_Welcome.Overview',
+    ],
   },
   {
     id: 'd1-029',
@@ -513,8 +540,9 @@ export const enUS: readonly Question[] = [
       'The Operations perspective makes sure cloud services are delivered at the level the business needs.',
       'The Platform perspective builds a scalable hybrid cloud platform and modernizes workloads.',
     ],
-    source:
+    evidence: [
       'https://docs.aws.amazon.com/whitepapers/latest/overview-aws-cloud-adoption-framework/people-perspective.html',
+    ],
   },
   {
     id: 'd1-030',
@@ -533,7 +561,7 @@ export const enUS: readonly Question[] = [
       'Growing revenue means creating new products and services, reaching new customers, and entering new market segments.',
       'Increasing operational efficiency is about lower operating costs and higher productivity.',
     ],
-    source: 'https://aws.amazon.com/cloud-adoption-framework/',
+    evidence: ['https://aws.amazon.com/cloud-adoption-framework/#benefits'],
   },
   {
     id: 'd1-031',
@@ -547,7 +575,7 @@ export const enUS: readonly Question[] = [
       'Compute Optimizer recommends rightsizing for resources already running on AWS.',
       'Migration Evaluator builds a data-driven business case, finds overprovisioned on-premises servers, and compares BYOL and License Included costs.',
     ],
-    source: 'https://aws.amazon.com/migration-evaluator/',
+    evidence: ['https://aws.amazon.com/migration-evaluator/#benefits'],
   },
   {
     id: 'd1-032',
@@ -566,7 +594,7 @@ export const enUS: readonly Question[] = [
       'The change goes the other way. Upfront hardware purchases are capital expenses, and paying for consumption is an operating expense.',
       'With pay-as-you-go pricing, the cost follows consumption. Using more costs more and using less costs less.',
     ],
-    source: 'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    evidence: ['https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html'],
   },
   {
     id: 'd1-033',
@@ -587,7 +615,10 @@ export const enUS: readonly Question[] = [
       'On premises the company pays for power, network, and cooling. On Amazon EC2, AWS takes care of them.',
       'On premises the company manages the hardware lifecycle. On Amazon EC2, AWS manages the servers and their replacement.',
     ],
-    source: 'https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html',
+    evidence: [
+      'https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Concepts.comparison',
+      'https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Concepts.comparison',
+    ],
   },
   {
     id: 'd1-034',
@@ -606,7 +637,7 @@ export const enUS: readonly Question[] = [
       'Dedicated Instances run on hardware dedicated to one account but give no visibility of sockets and cores, so they do not fit per-core licenses.',
       'Reserved Instances are a billing discount for a commitment. They do not change the licensing of the instance.',
     ],
-    source: 'https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html',
+    evidence: ['https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html'],
   },
   {
     id: 'd1-035',
@@ -625,7 +656,9 @@ export const enUS: readonly Question[] = [
       'With License Included, AWS holds the Oracle license and the company does not purchase licenses separately. Amazon RDS supports this model for Standard Edition 2.',
       'Dedicated Hosts are an Amazon EC2 option for bringing licenses the company already owns, and it owns none.',
     ],
-    source: 'https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Oracle.Concepts.Licensing.html',
+    evidence: [
+      'https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Oracle.Concepts.Licensing.html#Oracle.Concepts.Licensing.LicenseIncluded',
+    ],
   },
   {
     id: 'd1-036',
@@ -639,7 +672,7 @@ export const enUS: readonly Question[] = [
       'Artifact provides AWS compliance reports and agreements. It does not track software licenses.',
       'License Manager tracks software licenses across accounts and Regions and sets hard or soft limits that stop non-compliant usage before it happens.',
     ],
-    source: 'https://docs.aws.amazon.com/license-manager/latest/userguide/license-manager.html',
+    evidence: ['https://docs.aws.amazon.com/license-manager/latest/userguide/license-manager.html'],
   },
   {
     id: 'd1-037',
@@ -653,7 +686,9 @@ export const enUS: readonly Question[] = [
       'Replatforming is a migration strategy that changes the platform of a workload during the move to the cloud.',
       'Overprovisioning is the problem the company found, paying for capacity that sits idle.',
     ],
-    source: 'https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is-compute-optimizer.html',
+    evidence: [
+      'https://docs.aws.amazon.com/wellarchitected/latest/framework/perf_compute_hardware_configure_and_right_size_compute_resources.html#implementation-guidance',
+    ],
   },
   {
     id: 'd1-038',
@@ -667,7 +702,7 @@ export const enUS: readonly Question[] = [
       'CloudTrail records API activity in the account. It does not recommend resource sizes.',
       'Cost and Usage Reports deliver detailed billing data, but they do not analyze utilization or recommend sizes.',
     ],
-    source: 'https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is-compute-optimizer.html',
+    evidence: ['https://docs.aws.amazon.com/compute-optimizer/latest/ug/what-is-compute-optimizer.html'],
   },
   {
     id: 'd1-039',
@@ -688,7 +723,10 @@ export const enUS: readonly Question[] = [
       'CloudFormation creates what the template describes. Rightsizing recommendations come from services such as AWS Compute Optimizer.',
       'CloudFormation provisions and configures the resources and their dependencies, so the team spends less time managing them and more time on its applications.',
     ],
-    source: 'https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html',
+    evidence: [
+      'https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html#welcome-quickly-replicate-your-infrastructure',
+      'https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html',
+    ],
   },
   {
     id: 'd1-040',
@@ -707,7 +745,7 @@ export const enUS: readonly Question[] = [
       'The aggregated usage gives AWS higher economies of scale, which translate into lower pay-as-you-go prices than a company could achieve on its own.',
       'Outbound data transfer is still charged. Economies of scale lower prices but do not make services free.',
     ],
-    source: 'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    evidence: ['https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html'],
   },
 ]
 
@@ -729,7 +767,9 @@ export const ptBR: readonly Question[] = [
       'Tornar-se global é implantar em mais Regiões com poucos cliques, e não ajustar a capacidade à demanda.',
       'Isso elimina o trabalho de instalar e alimentar servidores, mas a empresa ainda poderia superprovisionar na nuvem se continuasse adivinhando a capacidade.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    ],
   },
   {
     id: 'd1-002',
@@ -750,7 +790,10 @@ export const ptBR: readonly Question[] = [
       'Este é um princípio de design do pilar de otimização de custos.',
       'Este é um princípio de design do pilar de eficiência de desempenho.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/reliability-pillar/design-principles.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/reliability-pillar/design-principles.html',
+      'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/reliability-pillar/design-principles.html',
+    ],
   },
   {
     id: 'd1-003',
@@ -769,7 +812,9 @@ export const ptBR: readonly Question[] = [
       'Essa vantagem trata de pagar pelo consumo em vez de investir antecipadamente, e não de alcançar usuários em outra região do mundo.',
       'Essa vantagem trata de ajustar a capacidade à demanda, e não de implantar perto de usuários em outro país.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    ],
   },
   {
     id: 'd1-004',
@@ -788,7 +833,9 @@ export const ptBR: readonly Question[] = [
       'Novos recursos estão a um clique de distância, então o tempo para disponibilizá-los cai de semanas para minutos e experimentar custa muito menos.',
       'Parar de adivinhar a capacidade trata do dimensionamento para a demanda. O cenário trata do tempo e do custo de testar novas ideias.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    ],
   },
   {
     id: 'd1-005',
@@ -802,7 +849,7 @@ export const ptBR: readonly Question[] = [
       'Durabilidade trata de não perder dados armazenados, e não de ajustar a capacidade.',
       'Tolerância a falhas trata de continuar operando quando componentes falham, e não de acompanhar as variações de tráfego.',
     ],
-    source: 'https://aws.amazon.com/what-is-cloud-computing/',
+    evidence: ['https://aws.amazon.com/what-is-cloud-computing/#benefits-of-cloud-computing'],
   },
   {
     id: 'd1-006',
@@ -821,7 +868,7 @@ export const ptBR: readonly Question[] = [
       'Snapshots ajudam a restaurar dados depois de uma falha, mas a aplicação fica parada até a empresa restaurá-la em outro lugar.',
       'As Zonas de Disponibilidade são isoladas e fisicamente separadas, com energia e rede independentes, então distribuir as instâncias entre elas mantém a aplicação disponível quando uma falha.',
     ],
-    source: 'https://aws.amazon.com/about-aws/global-infrastructure/regions_az/',
+    evidence: ['https://aws.amazon.com/about-aws/global-infrastructure/regions_az/#aws-infrastructure-offerings'],
   },
   {
     id: 'd1-007',
@@ -842,7 +889,10 @@ export const ptBR: readonly Question[] = [
       'Todas as Zonas de Disponibilidade de uma Região são interligadas por rede de alta largura de banda e baixa latência.',
       'Cada Região da AWS tem no mínimo três Zonas de Disponibilidade isoladas e fisicamente separadas.',
     ],
-    source: 'https://aws.amazon.com/about-aws/global-infrastructure/regions_az/',
+    evidence: [
+      'https://aws.amazon.com/about-aws/global-infrastructure/regions_az/#aws-infrastructure-offerings',
+      'https://aws.amazon.com/about-aws/global-infrastructure/regions_az/#aws-infrastructure-offerings',
+    ],
   },
   {
     id: 'd1-008',
@@ -861,7 +911,9 @@ export const ptBR: readonly Question[] = [
       'A economia de escala reduz preços pelo uso agregado, mas não descreve onde a equipe gasta seu tempo.',
       'Com a nuvem, a empresa se concentra nos clientes em vez do trabalho pesado de montar, empilhar e alimentar servidores.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    ],
   },
   {
     id: 'd1-009',
@@ -875,7 +927,7 @@ export const ptBR: readonly Question[] = [
       'O Outposts executa infraestrutura da AWS dentro do data center do cliente. Ele não leva conteúdo para perto de espectadores em outros continentes.',
       'O Auto Scaling ajusta a quantidade de instâncias em uma Região. Ele não coloca conteúdo perto de espectadores no mundo todo.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/AmazonCloudFront/latest/DeveloperGuide/Introduction.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/AmazonCloudFront/latest/DeveloperGuide/Introduction.html'],
   },
   {
     id: 'd1-010',
@@ -896,7 +948,10 @@ export const ptBR: readonly Question[] = [
       'Na nuvem, a AWS é dona do hardware físico e o opera. A vantagem é não precisar mais manter data centers.',
       'Novos recursos estão a um clique de distância, o que reduz o tempo para disponibilizá-los de semanas para minutos.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+      'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    ],
   },
   {
     id: 'd1-011',
@@ -915,7 +970,7 @@ export const ptBR: readonly Question[] = [
       'A computação em nuvem entrega recursos de TI sob demanda com pagamento conforme o uso, então a startup paga só pelos três dias e para de pagar quando exclui os recursos.',
       'Um Dedicated Host é um servidor físico inteiro reservado para um cliente, o que custa mais do que o necessário para um teste curto.',
     ],
-    source: 'https://aws.amazon.com/what-is-cloud-computing/',
+    evidence: ['https://aws.amazon.com/what-is-cloud-computing/#benefits-of-cloud-computing'],
   },
   {
     id: 'd1-012',
@@ -934,8 +989,9 @@ export const ptBR: readonly Question[] = [
       'As edge locations armazenam conteúdo em cache, mas a aplicação continua dependendo da origem em uma única Região.',
       'Reserved Instances são um desconto de faturamento. Elas não protegem contra a perda de uma Região.',
     ],
-    source:
-      'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/reliability-pillar/rel_fault_isolation_multiaz_region_system.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/rel_fault_isolation_multiaz_region_system.html#implementation-guidance',
+    ],
   },
   {
     id: 'd1-013',
@@ -949,7 +1005,7 @@ export const ptBR: readonly Question[] = [
       'Excelência operacional trata de organizar as equipes, projetar, operar em escala e evoluir a carga de trabalho ao longo do tempo.',
       'Segurança trata de proteger dados, sistemas e ativos.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/reliability.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/reliability.html'],
   },
   {
     id: 'd1-014',
@@ -963,7 +1019,7 @@ export const ptBR: readonly Question[] = [
       'O pilar de sustentabilidade foca no impacto ambiental, principalmente no consumo e na eficiência de energia, e seus princípios incluem definir metas como menos recursos por transação.',
       'Excelência operacional trata de operar e melhorar a carga de trabalho, e não do seu consumo de energia.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/sus-design-principles.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/sus-design-principles.html'],
   },
   {
     id: 'd1-015',
@@ -982,7 +1038,7 @@ export const ptBR: readonly Question[] = [
       'Este é um princípio de design do pilar de excelência operacional.',
       'Aplicar defesa em profundidade, com controles em cada camada, da borda da rede ao código da aplicação, é um princípio de design de segurança.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/sec-design.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/sec-design.html'],
   },
   {
     id: 'd1-016',
@@ -1001,7 +1057,7 @@ export const ptBR: readonly Question[] = [
       'Este princípio de eficiência de desempenho trata de consumir tecnologias complexas como serviço.',
       'Este princípio de segurança trata de monitorar, alertar e auditar ações e mudanças.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/cost-dp.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/cost-dp.html'],
   },
   {
     id: 'd1-017',
@@ -1020,7 +1076,7 @@ export const ptBR: readonly Question[] = [
       'Este é um princípio de segurança sobre criptografia, tokenização e controle de acesso.',
       'Este é um princípio de otimização de custos sobre comparar o resultado do negócio com o seu custo.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/oe-design-principles.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/oe-design-principles.html'],
   },
   {
     id: 'd1-018',
@@ -1039,7 +1095,7 @@ export const ptBR: readonly Question[] = [
       'Este princípio trata de comparar rapidamente tipos de instância, armazenamento ou configurações.',
       'Consumir uma tecnologia complexa como machine learning na forma de serviço permite que a equipe foque no produto em vez de aprender a hospedá-la.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/perf-dp.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/perf-dp.html'],
   },
   {
     id: 'd1-019',
@@ -1060,7 +1116,10 @@ export const ptBR: readonly Question[] = [
       'Este é um princípio de design do pilar de otimização de custos.',
       'Provocar cenários de falha e testar os procedimentos contra eles é um princípio de design de excelência operacional.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/oe-design-principles.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/oe-design-principles.html',
+      'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/oe-design-principles.html',
+    ],
   },
   {
     id: 'd1-020',
@@ -1079,7 +1138,7 @@ export const ptBR: readonly Question[] = [
       'Este princípio de confiabilidade troca um recurso grande por vários pequenos, para que uma única falha não afete a carga de trabalho inteira.',
       'Este princípio de segurança trata de menor privilégio e de gerenciamento centralizado de identidades.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/rel-dp.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/rel-dp.html'],
   },
   {
     id: 'd1-021',
@@ -1093,7 +1152,7 @@ export const ptBR: readonly Question[] = [
       'O Config registra as configurações dos recursos e as avalia em relação a regras, e não às melhores práticas do framework.',
       'O Compute Optimizer recomenda rightsizing de recursos com base na utilização. Ele não revisa uma carga de trabalho em relação ao framework.',
     ],
-    source: 'https://aws.amazon.com/well-architected-tool/',
+    evidence: ['https://docs.aws.amazon.com/pt_br/wellarchitected/latest/userguide/tool.html'],
   },
   {
     id: 'd1-022',
@@ -1114,7 +1173,10 @@ export const ptBR: readonly Question[] = [
       'Monitorar, alertar e auditar ações e mudanças em tempo real é o princípio de segurança de manter a rastreabilidade.',
       'Isso segue o princípio de eficiência de desempenho de tornar-se global em minutos.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/sec-design.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/sec-design.html',
+      'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/sec-design.html',
+    ],
   },
   {
     id: 'd1-023',
@@ -1128,8 +1190,9 @@ export const ptBR: readonly Question[] = [
       'O repurchase substitui a aplicação por outro produto, como uma oferta SaaS.',
       'O rehost, também chamado de lift-and-shift, move as aplicações para a AWS sem alterações e atende a grandes quantidades de servidores.',
     ],
-    source:
-      'https://docs.aws.amazon.com/pt_br/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html#rehost',
+    ],
   },
   {
     id: 'd1-024',
@@ -1143,8 +1206,9 @@ export const ptBR: readonly Question[] = [
       'O refactor muda a arquitetura da aplicação para usar recursos nativos da nuvem, o que a empresa não planeja fazer.',
       'O relocate move uma plataforma de virtualização inteira, ou recursos entre VPCs, Regiões ou contas, sem mudar a plataforma em que a carga de trabalho roda.',
     ],
-    source:
-      'https://docs.aws.amazon.com/pt_br/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html#replatform',
+    ],
   },
   {
     id: 'd1-025',
@@ -1158,8 +1222,9 @@ export const ptBR: readonly Question[] = [
       'O repurchase, também chamado de drop and shop, substitui a aplicação por outro produto, como trocar uma aplicação própria ou licenciada por um SaaS.',
       'O refactor redesenharia a aplicação própria para a nuvem, e a empresa continuaria a mantê-la.',
     ],
-    source:
-      'https://docs.aws.amazon.com/pt_br/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html#repurchase',
+    ],
   },
   {
     id: 'd1-026',
@@ -1173,8 +1238,9 @@ export const ptBR: readonly Question[] = [
       'O relocate leva a aplicação para a AWS sem alterações, então a empresa continuaria pagando para hospedá-la.',
       'O rehost leva a aplicação para a AWS sem alterações, então a empresa continuaria pagando para hospedá-la.',
     ],
-    source:
-      'https://docs.aws.amazon.com/pt_br/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/prescriptive-guidance/latest/large-migration-guide/migration-strategies.html#retire',
+    ],
   },
   {
     id: 'd1-027',
@@ -1193,7 +1259,7 @@ export const ptBR: readonly Question[] = [
       'O AWS Backup centraliza os backups dos recursos da AWS. Ele não mantém um banco de origem e um de destino sincronizados.',
       'O AWS DMS faz migrações únicas ou replica as mudanças em andamento para manter origem e destino sincronizados até a virada.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/dms/latest/userguide/Welcome.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/dms/latest/userguide/Welcome.html'],
   },
   {
     id: 'd1-028',
@@ -1214,7 +1280,10 @@ export const ptBR: readonly Question[] = [
       'O AWS Backup protege dados com backups. Ele não converte esquemas entre mecanismos.',
       'O Storage Gateway dá a aplicações on-premises acesso ao armazenamento na nuvem. Ele não migra bancos de dados entre mecanismos.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/SchemaConversionTool/latest/userguide/CHAP_Welcome.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/SchemaConversionTool/latest/userguide/CHAP_Source.Oracle.ToPostgreSQL.html',
+      'https://docs.aws.amazon.com/pt_br/SchemaConversionTool/latest/userguide/CHAP_Welcome.html#CHAP_Welcome.Overview',
+    ],
   },
   {
     id: 'd1-029',
@@ -1228,8 +1297,9 @@ export const ptBR: readonly Question[] = [
       'A perspectiva de Operações garante que os serviços de nuvem sejam entregues no nível de que o negócio precisa.',
       'A perspectiva de Plataforma constrói uma plataforma de nuvem híbrida escalável e moderniza as cargas de trabalho.',
     ],
-    source:
+    evidence: [
       'https://docs.aws.amazon.com/pt_br/whitepapers/latest/overview-aws-cloud-adoption-framework/people-perspective.html',
+    ],
   },
   {
     id: 'd1-030',
@@ -1248,7 +1318,7 @@ export const ptBR: readonly Question[] = [
       'Aumentar a receita significa criar novos produtos e serviços, alcançar novos clientes e entrar em novos segmentos de mercado.',
       'Aumentar a eficiência operacional trata de reduzir custos de operação e aumentar a produtividade.',
     ],
-    source: 'https://aws.amazon.com/cloud-adoption-framework/',
+    evidence: ['https://aws.amazon.com/cloud-adoption-framework/#benefits'],
   },
   {
     id: 'd1-031',
@@ -1262,7 +1332,7 @@ export const ptBR: readonly Question[] = [
       'O Compute Optimizer recomenda rightsizing para recursos que já rodam na AWS.',
       'O Migration Evaluator monta um business case baseado em dados, encontra servidores on-premises superdimensionados e compara os custos de BYOL e License Included.',
     ],
-    source: 'https://aws.amazon.com/migration-evaluator/',
+    evidence: ['https://aws.amazon.com/migration-evaluator/#benefits'],
   },
   {
     id: 'd1-032',
@@ -1281,7 +1351,9 @@ export const ptBR: readonly Question[] = [
       'A mudança é o contrário. A compra antecipada de hardware é despesa de capital, e pagar pelo consumo é despesa operacional.',
       'Com o pagamento conforme o uso, o custo acompanha o consumo. Usar mais custa mais e usar menos custa menos.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    ],
   },
   {
     id: 'd1-033',
@@ -1302,7 +1374,10 @@ export const ptBR: readonly Question[] = [
       'On-premises, a empresa paga energia, rede e refrigeração. No Amazon EC2, a AWS cuida disso.',
       'On-premises, a empresa gerencia o ciclo de vida do hardware. No Amazon EC2, a AWS gerencia os servidores e a substituição deles.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Welcome.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Concepts.comparison',
+      'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Concepts.comparison',
+    ],
   },
   {
     id: 'd1-034',
@@ -1321,7 +1396,7 @@ export const ptBR: readonly Question[] = [
       'Dedicated Instances rodam em hardware dedicado a uma conta, mas não dão visibilidade de sockets e núcleos, então não servem para licenças por núcleo.',
       'Reserved Instances são um desconto de faturamento em troca de compromisso. Elas não mudam o licenciamento da instância.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html'],
   },
   {
     id: 'd1-035',
@@ -1340,7 +1415,9 @@ export const ptBR: readonly Question[] = [
       'No License Included, a AWS detém a licença do Oracle e a empresa não compra licenças separadamente. O Amazon RDS oferece esse modelo para o Standard Edition 2.',
       'Dedicated Hosts são uma opção do Amazon EC2 para trazer licenças que a empresa já possui, e ela não possui nenhuma.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Oracle.Concepts.Licensing.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Oracle.Concepts.Licensing.html#Oracle.Concepts.Licensing.LicenseIncluded',
+    ],
   },
   {
     id: 'd1-036',
@@ -1354,7 +1431,7 @@ export const ptBR: readonly Question[] = [
       'O Artifact fornece relatórios de conformidade e acordos da AWS. Ele não acompanha licenças de software.',
       'O License Manager acompanha licenças de software em várias contas e Regiões e define limites rígidos ou flexíveis que impedem o uso fora de conformidade antes que ele aconteça.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/license-manager/latest/userguide/license-manager.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/license-manager/latest/userguide/license-manager.html'],
   },
   {
     id: 'd1-037',
@@ -1368,7 +1445,9 @@ export const ptBR: readonly Question[] = [
       'Replatform é uma estratégia de migração que muda a plataforma da carga de trabalho durante a ida para a nuvem.',
       'Superprovisionamento é o problema que a empresa encontrou, pagar por capacidade que fica ociosa.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/compute-optimizer/latest/ug/what-is-compute-optimizer.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/wellarchitected/latest/framework/perf_compute_hardware_configure_and_right_size_compute_resources.html#implementation-guidance',
+    ],
   },
   {
     id: 'd1-038',
@@ -1382,7 +1461,7 @@ export const ptBR: readonly Question[] = [
       'O CloudTrail registra a atividade de API da conta. Ele não recomenda tamanhos de recursos.',
       'O Cost and Usage Reports entrega dados detalhados de faturamento, mas não analisa a utilização nem recomenda tamanhos.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/compute-optimizer/latest/ug/what-is-compute-optimizer.html',
+    evidence: ['https://docs.aws.amazon.com/pt_br/compute-optimizer/latest/ug/what-is-compute-optimizer.html'],
   },
   {
     id: 'd1-039',
@@ -1403,7 +1482,10 @@ export const ptBR: readonly Question[] = [
       'O CloudFormation cria o que o template descreve. Recomendações de rightsizing vêm de serviços como o AWS Compute Optimizer.',
       'O CloudFormation provisiona e configura os recursos e suas dependências, então a equipe gasta menos tempo gerenciando-os e mais tempo nas aplicações.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/Welcome.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/Welcome.html#welcome-quickly-replicate-your-infrastructure',
+      'https://docs.aws.amazon.com/pt_br/AWSCloudFormation/latest/UserGuide/Welcome.html',
+    ],
   },
   {
     id: 'd1-040',
@@ -1422,6 +1504,8 @@ export const ptBR: readonly Question[] = [
       'O uso agregado dá à AWS maior economia de escala, o que se traduz em preços menores no pagamento conforme o uso do que uma empresa conseguiria sozinha.',
       'A transferência de dados de saída continua sendo cobrada. A economia de escala reduz preços, mas não torna os serviços gratuitos.',
     ],
-    source: 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    evidence: [
+      'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html',
+    ],
   },
 ]

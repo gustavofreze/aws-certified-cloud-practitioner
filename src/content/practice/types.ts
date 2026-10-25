@@ -8,8 +8,9 @@
  *
  * Each language publishes the same questions under the same identifiers, with the same task, the same
  * number of responses and the same correct ones, so a question read in one language is the same
- * question in the other. Every response carries the reason it is right or wrong, and every question
- * names the AWS page that proves the answer.
+ * question in the other. Every response carries the reason it is right or wrong, and every correct
+ * response links to the section of the AWS documentation that states it, so the answer rests on what
+ * AWS publishes rather than on the word of the notes.
  */
 import type { Inline } from '../types'
 
@@ -24,8 +25,11 @@ export interface Question {
   readonly answers: readonly number[]
   /** Why each response is right or wrong, in the order of `options`. */
   readonly reasons: readonly Inline[]
-  /** The AWS documentation or product page that proves the answer. */
-  readonly source: string
+  /**
+   * The AWS page that proves each correct response, in the order of `answers`, pointing with its
+   * fragment to the section that states it when the page has one.
+   */
+  readonly evidence: readonly string[]
 }
 
 /** One file of questions per domain, each publishing them in both languages. */

@@ -37,7 +37,7 @@ describe('the practice questions', () => {
     expect(silent.map((question) => question.id)).toEqual([])
   })
 
-  it('give a reason for every response and an AWS page as proof', () => {
+  it('give a reason for every response and an AWS page as proof of every correct one', () => {
     // Given every question in both languages
 
     // When the ones missing a reason or a proof are collected
@@ -45,7 +45,8 @@ describe('the practice questions', () => {
       (question) =>
         question.reasons.length !== question.options.length ||
         question.reasons.some((reason) => reason.trim() === '') ||
-        !/^https:\/\/(docs\.aws\.amazon\.com|aws\.amazon\.com)\//.test(question.source),
+        question.evidence.length !== question.answers.length ||
+        question.evidence.some((proof) => !/^https:\/\/(docs\.aws\.amazon\.com|aws\.amazon\.com)\//.test(proof)),
     )
 
     // Then there are none
