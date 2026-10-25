@@ -4,7 +4,8 @@
  * The full exam copies test day. It draws as many questions as the exam has, from each domain in the
  * proportion of its weight, mixes them, and counts down the minutes of the exam. Nothing is scored
  * until the end, and any question can be marked to come back to. Practice draws from one domain or all
- * of them and shows, after each answer, why every response is right or wrong.
+ * of them. In both, a question can be checked to show why every response is right or wrong, which locks
+ * its answer.
  *
  * The session is kept in this browser after every answer, so a reload or a closed tab resumes where it
  * stopped. The questions arrive already rendered by the build, which escapes the notes before applying
@@ -213,11 +214,11 @@ export async function start(root: HTMLElement, choice: Choice): Promise<void> {
   const mapHtml = (): string => {
     const answered = session.ids.filter((id) => picksOf(id).length > 0).length
     return `<details class="cert-practice__panel cert-practice__map" data-map ${root.dataset.mapOpen === 'true' ? 'open' : ''}>
-      <summary><span class="cert-practice__map-title">${icon('chevron')} ${labels.map}</span><span class="cert-practice__legend"><span class="is-answered-key">${labels.answered} <strong data-answered>${answered}</strong></span><span class="is-flagged-key">${labels.flagged} <strong data-flagged>${session.flags.length}</strong></span></span></summary>
+      <summary><span class="cert-practice__map-title">${icon('chevron')} ${labels.map}</span><span class="cert-practice__legend"><span class="is-answered-key">${labels.answered} <strong data-answered>${answered}</strong></span><span class="is-flagged-key">${labels.flagged} <strong data-flagged>${session.flags.length}</strong></span><span class="is-checked-key">${labels.checked} <strong>${session.checked.length}</strong></span></span></summary>
       <ol>${session.ids
         .map(
           (id, index) =>
-            `<li><button type="button" data-go="${index}" class="${index === session.index ? 'is-current' : ''} ${picksOf(id).length ? 'is-answered' : ''} ${session.flags.includes(id) ? 'is-flagged' : ''}" aria-label="${fill(labels.progress, { current: index + 1, total: session.ids.length })}">${index + 1}</button></li>`,
+            `<li><button type="button" data-go="${index}" class="${index === session.index ? 'is-current' : ''} ${picksOf(id).length ? 'is-answered' : ''} ${session.flags.includes(id) ? 'is-flagged' : ''} ${session.checked.includes(id) ? 'is-checked' : ''}" aria-label="${fill(labels.progress, { current: index + 1, total: session.ids.length })}">${index + 1}</button></li>`,
         )
         .join('')}</ol>
     </details>`
@@ -244,12 +245,11 @@ export async function start(root: HTMLElement, choice: Choice): Promise<void> {
       })
       .join('')
     const last = session.index === session.ids.length - 1
+    const check = `<button type="button" class="cert-practice__control" data-check ${checked ? 'disabled' : ''}>${icon('check')} <span>${labels.check}</span></button>`
     const middle =
       session.mode === 'exam'
-        ? `<button type="button" class="cert-practice__control" data-flag aria-pressed="${flagged}">${icon('flag')} ${labels.flag}</button>`
-        : checked
-          ? '<span></span>'
-          : `<button type="button" class="cert-practice__control is-primary" data-check>${labels.check}</button>`
+        ? `<button type="button" class="cert-practice__control" data-flag aria-pressed="${flagged}">${icon('flag')} <span>${labels.flag}</span></button>${check}`
+        : check
     stage.innerHTML = `<div class="cert-practice__head">
         <p class="cert-practice__count" tabindex="-1">${fill(labels.progress, { current: session.index + 1, total: session.ids.length })}</p>
         <div class="cert-practice__head-end">

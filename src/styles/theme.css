@@ -2342,11 +2342,12 @@ code {
 }
 .cert-practice__controls {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
   gap: 0.5rem;
 }
 @media (max-width: 30rem) {
-  .cert-practice__controls [data-move] span {
+  .cert-practice__controls button span {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -2510,6 +2511,9 @@ code {
 .cert-practice__legend .is-flagged-key::before {
   background: var(--color-aws-orange);
 }
+.cert-practice__legend .is-checked-key::before {
+  border: 1px dashed var(--color-ink-muted);
+}
 .cert-practice__map ol {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(2.5rem, 1fr));
@@ -2537,6 +2541,10 @@ code {
 .cert-practice__map .is-flagged {
   border-color: var(--color-aws-orange);
   box-shadow: inset 0 -3px 0 var(--color-aws-orange);
+}
+.cert-practice__map .is-checked {
+  border-style: dashed;
+  border-color: var(--color-ink-muted);
 }
 .cert-practice__map .is-current {
   outline: 2px solid var(--color-ink);
