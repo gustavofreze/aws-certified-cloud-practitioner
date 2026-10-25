@@ -21,8 +21,16 @@ export const enUS: readonly Question[] = [
       'The customer decides who can access its resources and uses IAM to apply the appropriate permissions.',
     ],
     evidence: [
-      'https://aws.amazon.com/compliance/shared-responsibility-model/#content-0',
-      'https://aws.amazon.com/compliance/shared-responsibility-model/#content-0',
+      {
+        url: 'https://aws.amazon.com/compliance/shared-responsibility-model/#content-0',
+        quote:
+          'AWS is responsible for protecting the infrastructure that runs all of the services offered in the AWS Cloud. This infrastructure is composed of the hardware, software, networking, and facilities that run AWS Cloud services.',
+      },
+      {
+        url: 'https://aws.amazon.com/compliance/shared-responsibility-model/#content-0',
+        quote:
+          'AWS is responsible for protecting the infrastructure that runs all of the services offered in the AWS Cloud. This infrastructure is composed of the hardware, software, networking, and facilities that run AWS Cloud services.',
+      },
     ],
   },
   {
@@ -42,7 +50,13 @@ export const enUS: readonly Question[] = [
       'AWS operates the components from the host operating system and the virtualization layer down to the physical security of the facilities.',
       'Physical security of the facilities is an AWS responsibility that the customer inherits.',
     ],
-    evidence: ['https://aws.amazon.com/compliance/shared-responsibility-model/#content-1'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/compliance/shared-responsibility-model/#content-1',
+        quote:
+          'Customers that deploy an Amazon EC2 instance are responsible for management of the guest operating system (including updates and security patches), any application software or utilities installed by the customer on the instances, and the configuration of the AWS-provided firewall (called a security group) on each instance.',
+      },
+    ],
   },
   {
     id: 'd2-003',
@@ -61,7 +75,12 @@ export const enUS: readonly Question[] = [
       'The customer remains responsible for its data and for deciding how sensitive it is.',
       'On EC2 the customer patches the operating system and the database engine. Amazon RDS takes over software patching, backups and high availability.',
     ],
-    evidence: ['https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Concepts.comparison'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Concepts.on-prem',
+        quote: 'Amazon RDS manages backups, software patching, automatic failure detection, and recovery.',
+      },
+    ],
   },
   {
     id: 'd2-004',
@@ -83,8 +102,15 @@ export const enUS: readonly Question[] = [
       'Disposing of hardware in the data centers belongs to the physical infrastructure that AWS alone operates.',
     ],
     evidence: [
-      'https://aws.amazon.com/compliance/shared-responsibility-model/#content-3',
-      'https://aws.amazon.com/compliance/shared-responsibility-model/#content-3',
+      {
+        url: 'https://aws.amazon.com/compliance/shared-responsibility-model/#content-3',
+        quote:
+          'Patch Management – AWS is responsible for patching and fixing flaws within the infrastructure, but customers are responsible for patching their guest OS and applications.',
+      },
+      {
+        url: 'https://aws.amazon.com/compliance/shared-responsibility-model/#content-3',
+        quote: 'Awareness & Training - AWS trains AWS employees, but a customer must train their own employees.',
+      },
     ],
   },
   {
@@ -104,7 +130,13 @@ export const enUS: readonly Question[] = [
       'The customer configures the IAM permissions that the functions use.',
       'The customer is always responsible for its data, whatever service processes it.',
     ],
-    evidence: ['https://docs.aws.amazon.com/lambda/latest/dg/welcome.html#welcome'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/lambda/latest/dg/welcome.html#welcome',
+        quote:
+          'Lambda automatically manages the underlying infrastructure – including server maintenance, capacity provisioning, scaling, and patching – so you can focus on your application logic.',
+      },
+    ],
   },
   {
     id: 'd2-006',
@@ -118,7 +150,13 @@ export const enUS: readonly Question[] = [
       'EC2 is infrastructure as a service. The customer manages the guest operating system, the software it installs and the security groups of each instance.',
       'DynamoDB is an abstracted service. AWS operates the infrastructure and the platform, and the customer manages its data and permissions.',
     ],
-    evidence: ['https://aws.amazon.com/compliance/shared-responsibility-model/#content-1'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/compliance/shared-responsibility-model/#content-1',
+        quote:
+          'For example, a service such as Amazon Elastic Compute Cloud (Amazon EC2) is categorized as Infrastructure as a Service (IaaS) and, as such, requires the customer to perform all of the necessary security configuration and management tasks.',
+      },
+    ],
   },
   {
     id: 'd2-007',
@@ -137,7 +175,13 @@ export const enUS: readonly Question[] = [
       'For abstracted services, customers manage their data, including encryption options and classification, and use IAM to apply the appropriate permissions.',
       'DynamoDB is a managed service, so AWS operates the servers behind the tables.',
     ],
-    evidence: ['https://aws.amazon.com/compliance/shared-responsibility-model/#content-1'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/compliance/shared-responsibility-model/#content-1',
+        quote:
+          'Customers are responsible for managing their data (including encryption options), classifying their assets, and using IAM tools to apply the appropriate permissions.',
+      },
+    ],
   },
   {
     id: 'd2-008',
@@ -156,7 +200,13 @@ export const enUS: readonly Question[] = [
       'The customer still installs and updates the software that runs on its instances.',
       'Backups of an application on EC2 remain with the customer, unlike on a managed service such as Amazon RDS.',
     ],
-    evidence: ['https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Concepts.comparison'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Concepts.comparison',
+        quote:
+          'AWS manages the hardware layers, which eliminates some of the burden of managing an on-premises database server.',
+      },
+    ],
   },
   {
     id: 'd2-009',
@@ -170,7 +220,13 @@ export const enUS: readonly Question[] = [
       'Config records and evaluates the configuration of the resources of the customer, not the controls of AWS.',
       'AWS Artifact provides on demand downloads of AWS security and compliance documents, such as SOC reports and ISO certifications, at no cost.',
     ],
-    evidence: ['https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html#what-is-aws-artifact'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/artifact/latest/ug/what-is-aws-artifact.html#what-is-aws-artifact',
+        quote:
+          'AWS Artifact provides on-demand downloads of AWS security and compliance documents. For example, reports on compliance with International Organization for Standardization (ISO) standards and Payment Card Industry (PCI) Security Standards, and System and Organization Controls (SOC) reports.',
+      },
+    ],
   },
   {
     id: 'd2-010',
@@ -184,7 +240,13 @@ export const enUS: readonly Question[] = [
       'Control Tower sets up a governed multi-account environment. It does not handle agreements with AWS.',
       'Marketplace is a catalog for buying third-party software, not a place to accept agreements with AWS.',
     ],
-    evidence: ['https://docs.aws.amazon.com/artifact/latest/ug/managing-agreements.html#managing-agreements'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/artifact/latest/ug/managing-agreements.html#managing-agreements',
+        quote:
+          'In the AWS Artifact console, you can review and accept such agreements, and you can designate an AWS account that can legally process PHI.',
+      },
+    ],
   },
   {
     id: 'd2-011',
@@ -198,7 +260,13 @@ export const enUS: readonly Question[] = [
       'Config records how resources were configured over time, not the identity and IP address of the caller that changed them.',
       'CloudTrail records API calls with the identity of the caller, the time of the call, the source IP address and the request parameters.',
     ],
-    evidence: ['https://docs.aws.amazon.com/whitepapers/latest/aws-overview/management-governance.html#aws-cloudtrail'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/management-governance.html#aws-cloudtrail',
+        quote:
+          'The recorded information includes the identity of the API caller, the time of the API call, the source IP address of the API caller, the request parameters, and the response elements returned by the AWS service.',
+      },
+    ],
   },
   {
     id: 'd2-012',
@@ -220,8 +288,15 @@ export const enUS: readonly Question[] = [
       'An IPsec VPN encrypts the traffic between the two networks, which protects the data while it moves between them.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/data-protection.html#encryption-transit',
-      'https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html#concepts',
+      {
+        url: 'https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/data-protection.html#encryption-transit',
+        quote:
+          'Elastic Load Balancing simplifies the process of building secure web applications by terminating HTTPS and TLS traffic from clients at the load balancer. The load balancer performs the work of encrypting and decrypting the traffic, instead of requiring each EC2 instance to handle the work for TLS termination.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html#concepts',
+        quote: 'An encrypted link where data can pass from the customer network to or from AWS.',
+      },
     ],
   },
   {
@@ -237,7 +312,11 @@ export const enUS: readonly Question[] = [
       'Trusted Advisor runs best practice checks, but it does not record the past configuration of each resource for audits.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html#scenarios-resource-administration',
+      {
+        url: 'https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html#scenarios-resource-administration',
+        quote:
+          'You can use AWS Config rules to evaluate the configuration settings of your AWS resources. When AWS Config detects that a resource violates the conditions in one of your rules, AWS Config flags the resource as noncompliant and sends a notification.',
+      },
     ],
   },
   {
@@ -253,7 +332,11 @@ export const enUS: readonly Question[] = [
       'Detective helps investigate security findings. It is not a central store for application logs.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html#WhatIsCloudWatchLogs',
+      {
+        url: 'https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html#WhatIsCloudWatchLogs',
+        quote:
+          'CloudWatch Logs enables you to centralize the logs from all of your systems, applications, and AWS services that you use, in a single, highly scalable service. You can then easily view them, search them for specific error codes or patterns, filter them based on specific fields, or archive them securely for future analysis.',
+      },
     ],
   },
   {
@@ -268,7 +351,13 @@ export const enUS: readonly Question[] = [
       'Secrets Manager stores and rotates secrets such as database credentials. For certificates, AWS recommends ACM.',
       'CloudHSM provides dedicated hardware security modules that the customer manages. It does not issue and renew website certificates.',
     ],
-    evidence: ['https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html#acm-overview'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html#acm-overview',
+        quote:
+          'AWS Certificate Manager (ACM) handles the complexity of creating, storing, and renewing public and private SSL/TLS X.509 certificates and keys that protect your AWS websites and applications.',
+      },
+    ],
   },
   {
     id: 'd2-016',
@@ -282,7 +371,13 @@ export const enUS: readonly Question[] = [
       'Macie discovers sensitive data in S3. It does not create or manage encryption keys.',
       'Secrets Manager stores secrets such as passwords. For encryption keys, AWS recommends KMS.',
     ],
-    evidence: ['https://docs.aws.amazon.com/kms/latest/developerguide/overview.html#overview'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/kms/latest/developerguide/overview.html#overview',
+        quote:
+          'AWS Key Management Service (AWS KMS) is an AWS managed service that makes it easy for you to create and control the keys used to encrypt and sign your data.',
+      },
+    ],
   },
   {
     id: 'd2-017',
@@ -301,7 +396,12 @@ export const enUS: readonly Question[] = [
       'This AWS page lists the services in scope of each assurance program, such as PCI, SOC and the HIPAA BAA, because coverage varies from one service to another.',
       'Security Hub can check the resources of the company against the PCI DSS standard, but it does not show which AWS services auditors assessed.',
     ],
-    evidence: ['https://aws.amazon.com/compliance/services-in-scope/'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/compliance/services-in-scope/',
+        quote: 'This webpage provides a list of AWS Services in Scope of AWS assurance programs.',
+      },
+    ],
   },
   {
     id: 'd2-018',
@@ -320,7 +420,12 @@ export const enUS: readonly Question[] = [
       'Shield protects against DDoS attacks. It does not control where data is stored.',
       'Artifact provides compliance reports and agreements. It does not store or move customer data.',
     ],
-    evidence: ['https://aws.amazon.com/compliance/data-privacy-faq/#commitments--1yvnqhg'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/compliance/data-privacy-faq/#commitments--1yvnqhg',
+        quote: 'You choose the AWS Region(s) in which your content is stored.',
+      },
+    ],
   },
   {
     id: 'd2-019',
@@ -342,8 +447,16 @@ export const enUS: readonly Question[] = [
       'AWS compliance reports such as SOC reports are downloaded from AWS Artifact.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html#what-is-securityhub',
-      'https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html#what-is-securityhub',
+      {
+        url: 'https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html#what-is-securityhub',
+        quote:
+          'These include the AWS Foundational Security Best Practices (FSBP) standard developed by AWS, and external compliance frameworks such as the Center for Internet Security (CIS), the Payment Card Industry Data Security Standard (PCI DSS), and the National Institute of Standards and Technology (NIST).',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html#what-is-securityhub',
+        quote:
+          'In addition to generating control findings, Security Hub CSPM also receives findings from other AWS services—such as Amazon GuardDuty, Amazon Inspector, and Amazon Macie— and supported third-party products. This gives you a single pane of glass into a variety of security-related issues.',
+      },
     ],
   },
   {
@@ -364,7 +477,11 @@ export const enUS: readonly Question[] = [
       'The credential report lists all users in the account and the status of their passwords, access keys and MFA devices, and it supports audit and compliance work.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html#id_credentials_getting-report',
+      {
+        url: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html#id_credentials_getting-report',
+        quote:
+          'You can generate and download a credential report that lists all users in your account and the status of their various credentials, including passwords, access keys, and MFA devices.',
+      },
     ],
   },
   {
@@ -379,7 +496,13 @@ export const enUS: readonly Question[] = [
       'Macie discovers sensitive data in Amazon S3. It does not scan instances or images.',
       'Detective helps investigate the root cause of security findings. It does not scan for vulnerabilities.',
     ],
-    evidence: ['https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html#what-is-inspector'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/inspector/latest/user/what-is-inspector.html#what-is-inspector',
+        quote:
+          'Amazon Inspector is a vulnerability management service that automatically discovers workloads and continually scans them for software vulnerabilities and unintended network exposure.',
+      },
+    ],
   },
   {
     id: 'd2-022',
@@ -395,8 +518,16 @@ export const enUS: readonly Question[] = [
       'Config keeps a configuration history, so the company can see the details of a resource at any point in time.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/management-governance.html#aws-cloudtrail',
-      'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/management-governance.html#aws-config',
+      {
+        url: 'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/management-governance.html#aws-cloudtrail',
+        quote:
+          'The recorded information includes the identity of the API caller, the time of the API call, the source IP address of the API caller, the request parameters, and the response elements returned by the AWS service.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/whitepapers/latest/aws-overview/management-governance.html#aws-config',
+        quote:
+          'With AWS Config, you can discover existing and deleted AWS resources, determine your overall compliance against rules, and dive into configuration details of a resource at any point in time.',
+      },
     ],
   },
   {
@@ -416,7 +547,12 @@ export const enUS: readonly Question[] = [
       'This policy also allows writing and deleting in every bucket, far beyond reading one bucket.',
       'This policy grants full access to almost every AWS service, which is the opposite of least privilege.',
     ],
-    evidence: ['https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege',
+        quote: 'When you set permissions with IAM policies, grant only the permissions required to perform a task.',
+      },
+    ],
   },
   {
     id: 'd2-024',
@@ -435,7 +571,13 @@ export const enUS: readonly Question[] = [
       'CloudTrail can be configured by IAM users or roles that have the right permissions.',
       'A standalone account that is not part of AWS Organizations requires root user credentials to be closed.',
     ],
-    evidence: ['https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html#root-user-tasks'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html#root-user-tasks',
+        quote:
+          'Standalone AWS accounts that are not part of AWS Organizations require root credentials to close the account.',
+      },
+    ],
   },
   {
     id: 'd2-025',
@@ -457,8 +599,16 @@ export const enUS: readonly Question[] = [
       'AWS recommends not sharing the root user credentials with anyone except those with a strict business need.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/IAM/latest/UserGuide/root-user-best-practices.html#ru-bp-mfa',
-      'https://docs.aws.amazon.com/IAM/latest/UserGuide/root-user-best-practices.html#ru-bp-access',
+      {
+        url: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/root-user-best-practices.html#ru-bp-mfa',
+        quote:
+          "Because a root user can perform privileged actions, it's crucial to add MFA for the root user as a second authentication factor in addition to the email address and password as sign-in credentials.",
+      },
+      {
+        url: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/root-user-best-practices.html#ru-bp-access',
+        quote:
+          'We strongly recommend that you do not create access keys for your root user because the root user has full access to all AWS services and resources in the account, including billing information.',
+      },
     ],
   },
   {
@@ -478,7 +628,13 @@ export const enUS: readonly Question[] = [
       'MFA requires a response from a device, such as a passkey, a security key or an authenticator app, in addition to the sign-in credentials.',
       'Roles provide temporary permissions. They do not add a second factor to the console sign-in of a user.',
     ],
-    evidence: ['https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html#id_credentials_mfa'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html#id_credentials_mfa',
+        quote:
+          'MFA adds extra security that requires users to provide unique authentication from an AWS supported MFA mechanism in addition to their sign-in credentials when they access AWS websites or services.',
+      },
+    ],
   },
   {
     id: 'd2-027',
@@ -500,8 +656,15 @@ export const enUS: readonly Question[] = [
       'The custom password policy can prevent users from reusing a specified number of previous passwords.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html#password-policy-details',
-      'https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html#password-policy-details',
+      {
+        url: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html#password-policy-details',
+        quote: 'Password minimum length – You can specify a minimum of 6 characters and a maximum of 128 characters.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html#password-policy-details',
+        quote:
+          'Prevent password reuse – You can prevent IAM users from reusing a specified number of previous passwords.',
+      },
     ],
   },
   {
@@ -516,7 +679,13 @@ export const enUS: readonly Question[] = [
       'Secrets Manager stores credentials that the application retrieves at runtime instead of hard coding them, and it can rotate them on an automatic schedule.',
       'Cognito handles sign-up and sign-in for the users of web and mobile apps. It does not store database passwords.',
     ],
-    evidence: ['https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html#intro'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html#intro',
+        quote:
+          'With Secrets Manager, you can configure an automatic rotation schedule for your secrets. This enables you to replace long-term secrets with short-term ones, significantly reducing the risk of compromise.',
+      },
+    ],
   },
   {
     id: 'd2-029',
@@ -531,7 +700,10 @@ export const enUS: readonly Question[] = [
       'Parameter Store securely stores, organizes and retrieves configuration data such as AMI IDs and license keys, encrypts `SecureString` values with KMS, and its standard tier is free.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html#parameter-store-use-cases',
+      {
+        url: 'https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html#parameter-store-use-cases',
+        quote: 'Standard tier free; advanced tier and higher throughput billed',
+      },
     ],
   },
   {
@@ -552,7 +724,11 @@ export const enUS: readonly Question[] = [
       'The root user has full access to the account, and AWS recommends not creating root user access keys at all.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html#id_roles_use_switch-role-ec2',
+      {
+        url: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html#id_roles_use_switch-role-ec2',
+        quote:
+          "Instead, you can and should use an IAM role to manage temporary credentials for applications that run on an Amazon EC2 instance. When you use a role, you don't have to distribute long-term credentials (such as sign-in credentials or access keys) to an Amazon EC2 instance.",
+      },
     ],
   },
   {
@@ -573,7 +749,11 @@ export const enUS: readonly Question[] = [
       'Cognito user pools manage sign-in for the users of web and mobile apps, not workforce access to AWS accounts.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html#tutorial_cross-account-with-roles',
+      {
+        url: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html#tutorial_cross-account-with-roles',
+        quote:
+          "You share resources in one account with users in a different account. By setting up cross-account access in this way, you don't have to create individual IAM users in each account.",
+      },
     ],
   },
   {
@@ -588,7 +768,13 @@ export const enUS: readonly Question[] = [
       'RAM shares resources such as subnets across accounts. It does not authenticate users.',
       'IAM Identity Center connects to an existing identity provider and gives workforce users access to their assigned AWS accounts from one portal.',
     ],
-    evidence: ['https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#what-is'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#what-is',
+        quote:
+          'The AWS access portal is a user-friendly web portal that provides your users with seamless access to all their assigned applications, AWS accounts, or both.',
+      },
+    ],
   },
   {
     id: 'd2-033',
@@ -607,7 +793,13 @@ export const enUS: readonly Question[] = [
       'With federation, an identity provider manages the user identities outside AWS and those identities receive permissions to use AWS resources, so no IAM users are needed.',
       'SCPs set the maximum permissions for accounts in an organization. They do not authenticate users.',
     ],
-    evidence: ['https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html#id_roles_providers'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html#id_roles_providers',
+        quote:
+          'With an identity provider (IdP), you can manage your user identities outside of AWS and give these external user identities permissions to use AWS resources in your account. This is useful if your organization already has its own identity system, such as a corporate user directory.',
+      },
+    ],
   },
   {
     id: 'd2-034',
@@ -626,7 +818,13 @@ export const enUS: readonly Question[] = [
       'Sharing one IAM user removes individual credentials and makes it impossible to tell who did what.',
       'SCPs limit the maximum permissions of accounts in an organization. They do not grant permissions to users.',
     ],
-    evidence: ['https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html#id_groups'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups.html#id_groups',
+        quote:
+          "You can attach an identity-based policy to a user group so that all of the users in the user group receive the policy's permissions.",
+      },
+    ],
   },
   {
     id: 'd2-035',
@@ -648,8 +846,15 @@ export const enUS: readonly Question[] = [
       'AWS managed policies serve every customer, so they might not grant least privilege for a specific use case.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies',
-      'https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies',
+      {
+        url: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies',
+        quote: 'An AWS managed policy is a standalone policy that is created and administered by AWS.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies',
+        quote:
+          'Notice that a single AWS managed policy can be attached to principal entities in different AWS accounts, and to different principal entities in a single AWS account.',
+      },
     ],
   },
   {
@@ -669,7 +874,13 @@ export const enUS: readonly Question[] = [
       'MFA protects console sign-in, but the exposed keys can still sign API requests unless policies require MFA.',
       'CloudTrail helps monitor how the keys are used, but it does not stop anyone from using them.',
     ],
-    evidence: ['https://docs.aws.amazon.com/IAM/latest/UserGuide/securing_access-keys.html#iam-user-access-keys'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/securing_access-keys.html#iam-user-access-keys',
+        quote:
+          'If there is a risk that the access key could be compromised, update the access key and delete the previous access key.',
+      },
+    ],
   },
   {
     id: 'd2-037',
@@ -683,7 +894,13 @@ export const enUS: readonly Question[] = [
       'GuardDuty detects threats by analyzing logs. It does not filter requests to the application.',
       'Inspector scans workloads for software vulnerabilities. It does not block incoming requests.',
     ],
-    evidence: ['https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html#waf-intro'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/waf/#why-aws-waf',
+        quote:
+          'With AWS WAF, you can create security rules that control bot traffic and block common attack patterns such as SQL injection or cross-site scripting (XSS).',
+      },
+    ],
   },
   {
     id: 'd2-038',
@@ -697,7 +914,13 @@ export const enUS: readonly Question[] = [
       'Firewall Manager applies protections across accounts centrally. The response team and the cost protection come from Shield Advanced.',
       'Shield Advanced adds protection against larger attacks, 24/7 access to the Shield Response Team with an eligible support plan, and DDoS cost protection against scaling charges.',
     ],
-    evidence: ['https://aws.amazon.com/shield/features/#aws-shield-advanced--15i3hzr'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/shield/features/#aws-shield-advanced--15i3hzr',
+        quote:
+          'Shield Advanced also gives you 24/7 access to the AWS Shield Response Team (SRT) and protection against DDoS-related spikes in your EC2, ELB, CloudFront, Global Accelerator, and Route 53 charges.',
+      },
+    ],
   },
   {
     id: 'd2-039',
@@ -711,7 +934,13 @@ export const enUS: readonly Question[] = [
       'Security Hub aggregates findings and checks security posture. It does not deploy firewall rules.',
       'Config evaluates resource configurations against rules, but it does not deploy WAF rules to accounts.',
     ],
-    evidence: ['https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html#fms-intro'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html#fms-intro',
+        quote:
+          'With Firewall Manager, you set up your protections just once and the service automatically applies them across your accounts and resources, even as you add new accounts and resources.',
+      },
+    ],
   },
   {
     id: 'd2-040',
@@ -725,7 +954,13 @@ export const enUS: readonly Question[] = [
       'GuardDuty ingests CloudTrail management events, VPC flow logs and DNS logs and uses threat intelligence and machine learning to detect activity such as compromised credentials and cryptomining.',
       'Trusted Advisor checks configurations against best practices. It does not detect active threats in logs.',
     ],
-    evidence: ['https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html#features-of-guardduty'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html#features-of-guardduty',
+        quote:
+          'When you enable GuardDuty in an AWS account, GuardDuty automatically starts ingesting the foundational data sources associated with that account. These data sources include AWS CloudTrail management events, VPC flow logs (from Amazon EC2 instances), and DNS logs.',
+      },
+    ],
   },
   {
     id: 'd2-041',
@@ -740,7 +975,11 @@ export const enUS: readonly Question[] = [
       'Security Hub aggregates security findings, including those from partner products, but it is not a store for buying them.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/marketplace/latest/buyerguide/what-is-marketplace.html#what-is-marketplace',
+      {
+        url: 'https://docs.aws.amazon.com/marketplace/latest/buyerguide/what-is-marketplace.html#what-is-marketplace',
+        quote:
+          'AWS Marketplace is a curated digital catalog that you can use to find, buy, deploy, and manage third-party software, data, and services that you need to build solutions and run your businesses.',
+      },
     ],
   },
   {
@@ -755,7 +994,13 @@ export const enUS: readonly Question[] = [
       'The Health Dashboard shows events that affect AWS services and the resources of the account, not best practice articles.',
       'Trusted Advisor runs checks on the account. It does not publish articles.',
     ],
-    evidence: ['https://aws.amazon.com/blogs/security/'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/blogs/aws/the-new-aws-security-blog/',
+        quote:
+          'The new AWS Security Blog is your one-stop shop for best practices, how-to guides, customer stories, and more.',
+      },
+    ],
   },
   {
     id: 'd2-043',
@@ -769,7 +1014,13 @@ export const enUS: readonly Question[] = [
       'Detective investigates the root cause of security findings. It does not run best practice checks.',
       'Trusted Advisor security checks include Security Groups Specific Ports Unrestricted and MFA on Root Account.',
     ],
-    evidence: ['https://docs.aws.amazon.com/awssupport/latest/user/security-checks.html#security-checks'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/awssupport/latest/user/security-checks.html#security-checks',
+        quote:
+          'Checks the root user credentials of an account and warns if multi-factor authentication (MFA) is not enabled.',
+      },
+    ],
   },
   {
     id: 'd2-044',
@@ -783,7 +1034,13 @@ export const enUS: readonly Question[] = [
       'GuardDuty detects threats and malware, but it does not report which objects contain sensitive data.',
       'Config records bucket configurations, not the data inside the objects.',
     ],
-    evidence: ['https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html#macie-features'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html#macie-features',
+        quote:
+          'To discover sensitive data with Macie, you can use built-in criteria and techniques, such as machine learning and pattern matching, to analyze objects in S3 buckets.',
+      },
+    ],
   },
   {
     id: 'd2-045',
@@ -805,8 +1062,15 @@ export const enUS: readonly Question[] = [
       'Shield Standard defends against the most common, frequently occurring network and transport layer DDoS attacks.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/waf/latest/developerguide/ddos-standard-summary.html#ddos-standard-summary',
-      'https://docs.aws.amazon.com/waf/latest/developerguide/ddos-standard-summary.html#ddos-standard-summary',
+      {
+        url: 'https://docs.aws.amazon.com/waf/latest/developerguide/ddos-standard-summary.html#ddos-standard-summary',
+        quote: 'All AWS customers benefit from the automatic protection of Shield Standard, at no additional charge.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/waf/latest/developerguide/ddos-standard-summary.html#ddos-standard-summary',
+        quote:
+          'Shield Standard defends against the most common, frequently occurring network and transport layer DDoS attacks that target your website or applications.',
+      },
     ],
   },
 ]
@@ -832,8 +1096,16 @@ export const ptBR: readonly Question[] = [
       'O cliente decide quem pode acessar seus recursos e usa o IAM para aplicar as permissões adequadas.',
     ],
     evidence: [
-      'https://aws.amazon.com/pt/compliance/shared-responsibility-model/#content-0',
-      'https://aws.amazon.com/pt/compliance/shared-responsibility-model/#content-0',
+      {
+        url: 'https://aws.amazon.com/pt/compliance/shared-responsibility-model/#content-0',
+        quote:
+          'A AWS é responsável pela proteção da infraestrutura global que executa todos os serviços oferecidos na Nuvem AWS. Essa infraestrutura é composta por hardware, software, redes e instalações que executam os Serviços de Nuvem AWS.',
+      },
+      {
+        url: 'https://aws.amazon.com/pt/compliance/shared-responsibility-model/#content-0',
+        quote:
+          'A AWS é responsável pela proteção da infraestrutura global que executa todos os serviços oferecidos na Nuvem AWS. Essa infraestrutura é composta por hardware, software, redes e instalações que executam os Serviços de Nuvem AWS.',
+      },
     ],
   },
   {
@@ -853,7 +1125,13 @@ export const ptBR: readonly Question[] = [
       'A AWS opera os componentes desde o sistema operacional do host e a camada de virtualização até a segurança física das instalações.',
       'A segurança física das instalações é responsabilidade da AWS, e o cliente a herda.',
     ],
-    evidence: ['https://aws.amazon.com/pt/compliance/shared-responsibility-model/#content-1'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/pt/compliance/shared-responsibility-model/#content-1',
+        quote:
+          'Os clientes que implantam uma instância do Amazon EC2 são responsáveis pelo gerenciamento do sistema operacional convidado (o que inclui atualizações e patches de segurança), por qualquer utilitário ou software de aplicativo instalado pelo cliente nas instâncias, bem como pela configuração do firewall disponibilizado pela AWS (chamado de grupo de segurança) em cada instância.',
+      },
+    ],
   },
   {
     id: 'd2-003',
@@ -872,7 +1150,12 @@ export const ptBR: readonly Question[] = [
       'O cliente continua responsável pelos próprios dados e por decidir quão sensíveis eles são.',
       'No EC2, o cliente aplica os patches no sistema operacional e no mecanismo de banco. O Amazon RDS assume os patches de software, os backups e a alta disponibilidade.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Concepts.comparison'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Concepts.on-prem',
+        quote: 'O Amazon RDS gerencia backups, patches de software, detecção automática de falhas e recuperação.',
+      },
+    ],
   },
   {
     id: 'd2-004',
@@ -894,8 +1177,16 @@ export const ptBR: readonly Question[] = [
       'Descartar o hardware dos data centers faz parte da infraestrutura física que só a AWS opera.',
     ],
     evidence: [
-      'https://aws.amazon.com/pt/compliance/shared-responsibility-model/#content-3',
-      'https://aws.amazon.com/pt/compliance/shared-responsibility-model/#content-3',
+      {
+        url: 'https://aws.amazon.com/pt/compliance/shared-responsibility-model/#content-3',
+        quote:
+          'Gerenciamento de patches: a AWS é responsável pela aplicação de patches e pela correção de falhas na infraestrutura, mas os clientes são responsáveis pela aplicação de patches em seu SO convidado e nos seus aplicativos.',
+      },
+      {
+        url: 'https://aws.amazon.com/pt/compliance/shared-responsibility-model/#content-3',
+        quote:
+          'Conhecimentos e treinamento: a AWS treina funcionários da AWS, mas o cliente deve treinar seus próprios funcionários.',
+      },
     ],
   },
   {
@@ -915,7 +1206,13 @@ export const ptBR: readonly Question[] = [
       'O cliente configura as permissões do IAM que as funções usam.',
       'O cliente é sempre responsável pelos próprios dados, qualquer que seja o serviço que os processa.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html#welcome'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/lambda/latest/dg/welcome.html#welcome',
+        quote:
+          'O Lambda gerencia automaticamente a infraestrutura subjacente, inclusive a manutenção de servidores, o provisionamento de capacidade, a escalabilidade e a aplicação de patches, para que você possa se concentrar na lógica da aplicação.',
+      },
+    ],
   },
   {
     id: 'd2-006',
@@ -929,7 +1226,13 @@ export const ptBR: readonly Question[] = [
       'O EC2 é infraestrutura como serviço. O cliente gerencia o sistema operacional convidado, o software que instala e os security groups de cada instância.',
       'O DynamoDB é um serviço abstraído. A AWS opera a infraestrutura e a plataforma, e o cliente gerencia seus dados e permissões.',
     ],
-    evidence: ['https://aws.amazon.com/pt/compliance/shared-responsibility-model/#content-1'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/pt/compliance/shared-responsibility-model/#content-1',
+        quote:
+          'Por exemplo, um serviço como o Amazon Elastic Compute Cloud (Amazon EC2) é categorizado como Infrastructure as a Service (IaaS – Infraestrutura como serviço) e, dessa forma, exige que o cliente execute todas as tarefas necessárias de configuração e gerenciamento da segurança.',
+      },
+    ],
   },
   {
     id: 'd2-007',
@@ -948,7 +1251,13 @@ export const ptBR: readonly Question[] = [
       'Em serviços abstraídos, o cliente gerencia os próprios dados, incluindo opções de criptografia e classificação, e usa o IAM para aplicar as permissões adequadas.',
       'O DynamoDB é um serviço gerenciado, então a AWS opera os servidores por trás das tabelas.',
     ],
-    evidence: ['https://aws.amazon.com/pt/compliance/shared-responsibility-model/#content-1'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/pt/compliance/shared-responsibility-model/#content-1',
+        quote:
+          'Os clientes são responsáveis por gerenciar os dados deles (o que inclui opções de criptografia), classificando os ativos e usando as ferramentas de IAM para aplicar as permissões apropriadas.',
+      },
+    ],
   },
   {
     id: 'd2-008',
@@ -967,7 +1276,13 @@ export const ptBR: readonly Question[] = [
       'O cliente continua instalando e atualizando o software que roda nas suas instâncias.',
       'Os backups de uma aplicação no EC2 continuam com o cliente, ao contrário de um serviço gerenciado como o Amazon RDS.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Concepts.comparison'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Concepts.comparison',
+        quote:
+          'A AWS gerencia as camadas de hardware, o que elimina parte do trabalho de gerenciar um servidor de banco de dados on-premises.',
+      },
+    ],
   },
   {
     id: 'd2-009',
@@ -981,7 +1296,13 @@ export const ptBR: readonly Question[] = [
       'O Config registra e avalia a configuração dos recursos do cliente, e não os controles da AWS.',
       'O AWS Artifact oferece downloads sob demanda de documentos de segurança e conformidade da AWS, como relatórios SOC e certificações ISO, sem custo.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/artifact/latest/ug/what-is-aws-artifact.html#what-is-aws-artifact'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/artifact/latest/ug/what-is-aws-artifact.html#what-is-aws-artifact',
+        quote:
+          'AWS Artifact fornece downloads sob demanda de documentos de AWS segurança e conformidade. Por exemplo, relatórios sobre conformidade com os padrões da Organização Internacional de Padronização (ISO) e os Padrões de Segurança do Setor de Cartões de Pagamento (PCI) e relatórios de Controles Organizacionais e de Sistemas (SOC).',
+      },
+    ],
   },
   {
     id: 'd2-010',
@@ -995,7 +1316,13 @@ export const ptBR: readonly Question[] = [
       'O Control Tower configura um ambiente multicontas governado. Ele não trata de acordos com a AWS.',
       'O Marketplace é um catálogo para comprar software de terceiros, e não um lugar para aceitar acordos com a AWS.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/artifact/latest/ug/managing-agreements.html#managing-agreements'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/artifact/latest/ug/managing-agreements.html#managing-agreements',
+        quote:
+          'No AWS Artifact console, você pode revisar e aceitar esses contratos e designar um Conta da AWS que possa processar legalmente a PHI.',
+      },
+    ],
   },
   {
     id: 'd2-011',
@@ -1010,7 +1337,11 @@ export const ptBR: readonly Question[] = [
       'O CloudTrail registra as chamadas de API com a identidade de quem chamou, o horário, o endereço IP de origem e os parâmetros da requisição.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/management-governance.html#aws-cloudtrail',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/management-governance.html#aws-cloudtrail',
+        quote:
+          'Entre as informações registradas estão a identidade do chamador da API, a hora da chamada de API, o endereço IP de origem do chamador da API, os parâmetros de solicitação e os elementos de resposta retornados pelo serviço da AWS.',
+      },
     ],
   },
   {
@@ -1033,8 +1364,15 @@ export const ptBR: readonly Question[] = [
       'Uma VPN IPsec criptografa o tráfego entre as duas redes, o que protege os dados enquanto circulam entre elas.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/elasticloadbalancing/latest/userguide/data-protection.html#encryption-transit',
-      'https://docs.aws.amazon.com/pt_br/vpn/latest/s2svpn/VPC_VPN.html#concepts',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/elasticloadbalancing/latest/userguide/data-protection.html#encryption-transit',
+        quote:
+          'O Elastic Load Balancing simplifica o processo de criação de aplicações Web seguras ao encerrar o tráfego HTTPS e TLS dos clientes no balanceador de carga. O load balancer executa o trabalho de criptografar e descriptografar o tráfego, em vez de exigir que cada instância do EC2 lide com o trabalho de encerramento do TLS.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/vpn/latest/s2svpn/VPC_VPN.html#concepts',
+        quote: 'um link criptografado em que os dados podem transmitir da rede do cliente para a AWS ou vice-versa.',
+      },
     ],
   },
   {
@@ -1050,7 +1388,11 @@ export const ptBR: readonly Question[] = [
       'O Trusted Advisor executa verificações de boas práticas, mas não registra a configuração passada de cada recurso para auditorias.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/config/latest/developerguide/WhatIsConfig.html#scenarios-resource-administration',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/config/latest/developerguide/WhatIsConfig.html#scenarios-resource-administration',
+        quote:
+          'Você pode usar as regras do AWS Config para avaliar as definições de configuração de seus recursos da AWS. Quando o AWS Config detecta que um recurso viola as condições de uma de suas regras, o AWS Config sinaliza o recurso como não compatível e envia uma notificação.',
+      },
     ],
   },
   {
@@ -1066,7 +1408,11 @@ export const ptBR: readonly Question[] = [
       'O Detective ajuda a investigar achados de segurança. Ele não é um repositório central de logs de aplicação.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html#WhatIsCloudWatchLogs',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html#WhatIsCloudWatchLogs',
+        quote:
+          'CloudWatch O Logs permite que você centralize os registros de todos os seus sistemas, aplicativos e AWS serviços que você usa, em um único serviço altamente escalável. Em seguida, você pode facilmente visualizá-los, pesquisá-los em busca de códigos de erro ou padrões específicos, filtrá-los com base em campos específicos ou arquivá-los com segurança para futuras análises.',
+      },
     ],
   },
   {
@@ -1081,7 +1427,13 @@ export const ptBR: readonly Question[] = [
       'O Secrets Manager armazena e rotaciona segredos como credenciais de banco. Para certificados, a AWS recomenda o ACM.',
       'O CloudHSM oferece módulos de segurança de hardware dedicados, que o cliente gerencia. Ele não emite nem renova certificados de sites.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/acm/latest/userguide/acm-overview.html#acm-overview'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/acm/latest/userguide/acm-overview.html#acm-overview',
+        quote:
+          'Gerenciador de certificados da AWS (ACM) lida com a complexidade de criar, armazenar e renovar SSL/TLS X.509 certificados e chaves públicos e privados que protegem seus AWS sites e aplicativos.',
+      },
+    ],
   },
   {
     id: 'd2-016',
@@ -1095,7 +1447,13 @@ export const ptBR: readonly Question[] = [
       'O Macie descobre dados sensíveis no S3. Ele não cria nem gerencia chaves de criptografia.',
       'O Secrets Manager guarda segredos como senhas. Para chaves de criptografia, a AWS recomenda o KMS.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/kms/latest/developerguide/overview.html#overview'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/kms/latest/developerguide/overview.html#overview',
+        quote:
+          'AWS Key Management Service (AWS KMS) é um serviço AWS gerenciado que facilita a criação e o controle das chaves usadas para criptografar e assinar seus dados.',
+      },
+    ],
   },
   {
     id: 'd2-017',
@@ -1114,7 +1472,12 @@ export const ptBR: readonly Question[] = [
       'Essa página da AWS lista os serviços no escopo de cada programa de garantia, como PCI, SOC e o BAA da HIPAA, porque a cobertura varia de um serviço para outro.',
       'O Security Hub pode verificar os recursos da empresa em relação ao padrão PCI DSS, mas não mostra quais serviços da AWS os auditores avaliaram.',
     ],
-    evidence: ['https://aws.amazon.com/pt/compliance/services-in-scope/'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/pt/compliance/services-in-scope/',
+        quote: 'Essa página oferece uma lista de serviços da AWS no escopo de programas de garantia da AWS.',
+      },
+    ],
   },
   {
     id: 'd2-018',
@@ -1133,7 +1496,12 @@ export const ptBR: readonly Question[] = [
       'O Shield protege contra ataques DDoS. Ele não controla onde os dados ficam armazenados.',
       'O Artifact fornece relatórios e acordos de conformidade. Ele não armazena nem move dados de clientes.',
     ],
-    evidence: ['https://aws.amazon.com/pt/compliance/data-privacy-faq/#commitments--1yvnqhg'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/pt/compliance/data-privacy-faq/#commitments--1yvnqhg',
+        quote: 'You choose the AWS Region(s) in which your content is stored.',
+      },
+    ],
   },
   {
     id: 'd2-019',
@@ -1155,8 +1523,16 @@ export const ptBR: readonly Question[] = [
       'Relatórios de conformidade da AWS, como os relatórios SOC, são baixados no AWS Artifact.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/securityhub/latest/userguide/what-is-securityhub.html#what-is-securityhub',
-      'https://docs.aws.amazon.com/pt_br/securityhub/latest/userguide/what-is-securityhub.html#what-is-securityhub',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/securityhub/latest/userguide/what-is-securityhub.html#what-is-securityhub',
+        quote:
+          'Isso inclui o padrão AWS Foundational Security Best Practices (FSBP) desenvolvido por e estruturas externas de conformidade AWS, como o Center for Internet Security (CIS), o Payment Card Industry Data Security Standard (PCI DSS) e o National Institute of Standards and Technology (NIST).',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/securityhub/latest/userguide/what-is-securityhub.html#what-is-securityhub',
+        quote:
+          'Além de gerar descobertas de controle, o Security Hub CSPM também recebe descobertas de outros, Serviços da AWS como Amazon, Amazon GuardDuty Inspector e Amazon Macie, e de produtos de terceiros compatíveis. Isso fornece um único painel de controle sobre uma variedade de problemas relacionados à segurança.',
+      },
     ],
   },
   {
@@ -1177,7 +1553,11 @@ export const ptBR: readonly Question[] = [
       'O relatório de credenciais lista todos os usuários da conta e a situação de suas senhas, chaves de acesso e dispositivos MFA, e apoia o trabalho de auditoria e conformidade.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_getting-report.html#id_credentials_getting-report',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_getting-report.html#id_credentials_getting-report',
+        quote:
+          'Você pode gerar e fazer o download de um relatório de credenciais que lista todos os usuários em sua conta e o status de diversas credenciais deles, incluindo senhas, chaves de acesso e dispositivos MFA.',
+      },
     ],
   },
   {
@@ -1192,7 +1572,13 @@ export const ptBR: readonly Question[] = [
       'O Macie descobre dados sensíveis no Amazon S3. Ele não verifica instâncias nem imagens.',
       'O Detective ajuda a investigar a causa raiz de achados de segurança. Ele não procura vulnerabilidades.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/inspector/latest/user/what-is-inspector.html#what-is-inspector'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/inspector/latest/user/what-is-inspector.html#what-is-inspector',
+        quote:
+          'O Amazon Inspector é um serviço de gerenciamento de vulnerabilidades que descobre workloads e as verifica continuamente em busca de vulnerabilidades de software e exposições não intencionais da rede.',
+      },
+    ],
   },
   {
     id: 'd2-022',
@@ -1208,8 +1594,16 @@ export const ptBR: readonly Question[] = [
       'O Config mantém um histórico de configuração, então a empresa consegue ver os detalhes de um recurso em qualquer momento.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/management-governance.html#aws-cloudtrail',
-      'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/management-governance.html#aws-config',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/management-governance.html#aws-cloudtrail',
+        quote:
+          'Entre as informações registradas estão a identidade do chamador da API, a hora da chamada de API, o endereço IP de origem do chamador da API, os parâmetros de solicitação e os elementos de resposta retornados pelo serviço da AWS.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/whitepapers/latest/aws-overview/management-governance.html#aws-config',
+        quote:
+          'Com o AWS Config, você pode descobrir recursos existentes e excluídos da AWS, determinar sua conformidade geral com as regras e examinar detidamente os detalhes da configuração de um recurso a qualquer momento.',
+      },
     ],
   },
   {
@@ -1229,7 +1623,13 @@ export const ptBR: readonly Question[] = [
       'Essa política também permite gravar e apagar em todos os buckets, muito além de ler um bucket.',
       'Essa política dá acesso total a quase todos os serviços da AWS, o oposto do menor privilégio.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/best-practices.html#grant-least-privilege'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/best-practices.html#grant-least-privilege',
+        quote:
+          'Ao definir permissões com as políticas do IAM, conceda apenas as permissões necessárias para executar uma tarefa.',
+      },
+    ],
   },
   {
     id: 'd2-024',
@@ -1248,7 +1648,13 @@ export const ptBR: readonly Question[] = [
       'O CloudTrail pode ser configurado por usuários ou roles do IAM que tenham as permissões certas.',
       'Uma conta independente, fora do AWS Organizations, exige as credenciais do usuário root para ser encerrada.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_root-user.html#root-user-tasks'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_root-user.html#root-user-tasks',
+        quote:
+          'Contas da AWS autônomas que não fazem parte do AWS Organizations requerem credenciais de usuário-raiz para serem fechadas.',
+      },
+    ],
   },
   {
     id: 'd2-025',
@@ -1270,8 +1676,16 @@ export const ptBR: readonly Question[] = [
       'A AWS recomenda não compartilhar as credenciais do usuário root com ninguém, exceto quem tem uma necessidade de negócio estrita.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/root-user-best-practices.html#ru-bp-mfa',
-      'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/root-user-best-practices.html#ru-bp-access',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/root-user-best-practices.html#ru-bp-mfa',
+        quote:
+          'Como um usuário-raiz pode executar ações privilegiadas, é crucial adicionar a MFA (autenticação de múltiplos fatores) para o usuário-raiz como um segundo fator de autenticação, além do endereço de e-mail e senha como credenciais de login.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/root-user-best-practices.html#ru-bp-access',
+        quote:
+          'É altamente recomendável que você não crie pares de chaves de acesso para seu usuário-raiz porque o usuário-raiz tem acesso total a todos os recursos e Serviços da AWS na conta, incluindo informações de faturamento.',
+      },
     ],
   },
   {
@@ -1291,7 +1705,13 @@ export const ptBR: readonly Question[] = [
       'O MFA exige uma resposta de um dispositivo, como uma passkey, uma chave de segurança ou um aplicativo autenticador, além das credenciais de login.',
       'Roles fornecem permissões temporárias. Elas não acrescentam um segundo fator ao login de um usuário no console.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_mfa.html#id_credentials_mfa'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_mfa.html#id_credentials_mfa',
+        quote:
+          'A MFA adiciona segurança extra que exige que os usuários forneçam autenticação exclusiva de um mecanismo de MFA compatível com a AWS, além de credenciais de login, quando acessam sites ou serviços da AWS.',
+      },
+    ],
   },
   {
     id: 'd2-027',
@@ -1313,8 +1733,16 @@ export const ptBR: readonly Question[] = [
       'A política de senha personalizada pode impedir que os usuários reutilizem um número definido de senhas anteriores.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html#password-policy-details',
-      'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html#password-policy-details',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html#password-policy-details',
+        quote:
+          'Password minimum length (Comprimento mínimo da senha): especifique um mínimo de seis caracteres e um máximo de 128 caracteres.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html#password-policy-details',
+        quote:
+          'Prevent password reuse (Impedir a reutilização de senha): você pode impedir que os usuários do IAM reutilizem um número específico de senhas anteriores.',
+      },
     ],
   },
   {
@@ -1329,7 +1757,13 @@ export const ptBR: readonly Question[] = [
       'O Secrets Manager guarda as credenciais, que a aplicação busca em tempo de execução em vez de tê-las no código, e pode rotacioná-las em um agendamento automático.',
       'O Cognito cuida do cadastro e do login dos usuários de aplicações web e móveis. Ele não guarda senhas de banco.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/secretsmanager/latest/userguide/intro.html#intro'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/secretsmanager/latest/userguide/intro.html#intro',
+        quote:
+          'Com o Secrets Manager, é possível configurar uma programação de alternância automática para seus segredos. Isso permite que você substitua os segredos de longo prazo por outros de curto prazo, reduzindo significativamente o risco de comprometimento.',
+      },
+    ],
   },
   {
     id: 'd2-029',
@@ -1344,7 +1778,10 @@ export const ptBR: readonly Question[] = [
       'O Parameter Store armazena, organiza e recupera com segurança dados de configuração como IDs de AMI e chaves de licença, criptografa valores `SecureString` com o KMS e seu nível padrão é gratuito.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/systems-manager/latest/userguide/systems-manager-parameter-store.html#parameter-store-use-cases',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/systems-manager/latest/userguide/systems-manager-parameter-store.html#parameter-store-use-cases',
+        quote: 'O plano padrão é gratuito; o plano avançado e os planos com maior throughput são cobrados',
+      },
     ],
   },
   {
@@ -1365,7 +1802,11 @@ export const ptBR: readonly Question[] = [
       'O usuário root tem acesso total à conta, e a AWS recomenda não criar chaves de acesso para ele.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html#id_roles_use_switch-role-ec2',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html#id_roles_use_switch-role-ec2',
+        quote:
+          'Em vez disso, você pode e deve usar um perfil do IAM para gerenciar credenciais temporárias para aplicações executadas em uma instância do Amazon EC2. Quando você usa um perfil, não é necessário distribuir credenciais de longo prazo (como credenciais de login ou chaves de acesso) para uma instância do Amazon EC2.',
+      },
     ],
   },
   {
@@ -1386,7 +1827,11 @@ export const ptBR: readonly Question[] = [
       'User pools do Cognito gerenciam o login dos usuários de aplicações web e móveis, e não o acesso de funcionários a contas da AWS.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html#tutorial_cross-account-with-roles',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html#tutorial_cross-account-with-roles',
+        quote:
+          'Você compartilha recursos em uma conta com usuários em outra conta. Ao configurar o acesso entre contas dessa forma, você não precisa criar usuários individuais do IAM em cada conta.',
+      },
     ],
   },
   {
@@ -1406,7 +1851,13 @@ export const ptBR: readonly Question[] = [
       'O RAM compartilha recursos como sub-redes entre contas. Ele não autentica usuários.',
       'O IAM Identity Center se conecta a um provedor de identidade existente e dá aos funcionários acesso às contas da AWS atribuídas a eles a partir de um único portal.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/singlesignon/latest/userguide/what-is.html#what-is'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/singlesignon/latest/userguide/what-is.html#what-is',
+        quote:
+          'O portal de AWS acesso é um portal da Web fácil de usar que fornece aos usuários acesso contínuo a todos os aplicativos atribuídos Contas da AWS, ou a ambos.',
+      },
+    ],
   },
   {
     id: 'd2-033',
@@ -1425,7 +1876,13 @@ export const ptBR: readonly Question[] = [
       'Na federação, um provedor de identidade gerencia as identidades dos usuários fora da AWS, e essas identidades recebem permissões para usar recursos da AWS, sem precisar de usuários do IAM.',
       'SCPs definem as permissões máximas das contas de uma organização. Elas não autenticam usuários.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_roles_providers.html#id_roles_providers'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_roles_providers.html#id_roles_providers',
+        quote:
+          'Com um provedor de identidade (IdP), você pode gerenciar suas identidades de usuários fora da AWS e fornecer a esses usuários externos permissões para usar recursos da AWS na sua conta. Isso será útil se a sua organização já tiver seu próprio sistema de identidade, como um diretório de usuários corporativos.',
+      },
+    ],
   },
   {
     id: 'd2-034',
@@ -1444,7 +1901,13 @@ export const ptBR: readonly Question[] = [
       'Compartilhar um usuário do IAM elimina as credenciais individuais e torna impossível saber quem fez o quê.',
       'SCPs limitam as permissões máximas das contas de uma organização. Elas não concedem permissões a usuários.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_groups.html#id_groups'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/id_groups.html#id_groups',
+        quote:
+          'Você pode anexar uma política baseada em identidade a um grupo de usuários para que todos os usuários do grupo de usuários recebem as permissões da política.',
+      },
+    ],
   },
   {
     id: 'd2-035',
@@ -1466,8 +1929,15 @@ export const ptBR: readonly Question[] = [
       'As políticas gerenciadas pela AWS servem a todos os clientes, então podem não conceder o menor privilégio para um caso de uso específico.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies',
-      'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies',
+        quote: 'Uma política gerenciada pela AWS é uma política independente que é criada e administrada pela AWS.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies',
+        quote:
+          'Uma única política gerenciada pela AWS pode ser anexada a entidades principais em diferentes Contas da AWS e a entidades principais diferentes em uma única Conta da AWS.',
+      },
     ],
   },
   {
@@ -1487,7 +1957,13 @@ export const ptBR: readonly Question[] = [
       'O MFA protege o login no console, mas as chaves expostas ainda conseguem assinar requisições de API, a menos que as políticas exijam MFA.',
       'O CloudTrail ajuda a monitorar o uso das chaves, mas não impede ninguém de usá-las.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/securing_access-keys.html#iam-user-access-keys'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/IAM/latest/UserGuide/securing_access-keys.html#iam-user-access-keys',
+        quote:
+          'Se houver risco de comprometimento da chave de acesso, atualize a chave de acesso e exclua a chave de acesso anterior.',
+      },
+    ],
   },
   {
     id: 'd2-037',
@@ -1501,7 +1977,13 @@ export const ptBR: readonly Question[] = [
       'O GuardDuty detecta ameaças analisando logs. Ele não filtra as requisições para a aplicação.',
       'O Inspector procura vulnerabilidades de software nas cargas de trabalho. Ele não bloqueia requisições recebidas.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/waf/latest/developerguide/what-is-aws-waf.html#waf-intro'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/pt/waf/#por-que-usar-o-aws-waf',
+        quote:
+          'Com o AWS WAF, você pode criar regras de segurança que controlam o tráfego de bots e bloqueiam padrões de ataque comuns, como injeção de SQL ou cross-site scripting (XSS).',
+      },
+    ],
   },
   {
     id: 'd2-038',
@@ -1515,7 +1997,13 @@ export const ptBR: readonly Question[] = [
       'O Firewall Manager aplica proteções em várias contas de forma centralizada. A equipe de resposta e a proteção de custos vêm do Shield Advanced.',
       'O Shield Advanced acrescenta proteção contra ataques maiores, acesso 24/7 ao Shield Response Team com um plano de suporte elegível e proteção de custos contra cobranças de escalabilidade causadas por DDoS.',
     ],
-    evidence: ['https://aws.amazon.com/shield/features/#aws-shield-advanced--15i3hzr'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/pt/shield/features/#aws-shield-avancado--15i3hzr',
+        quote:
+          'Além disso, o Shield Avançado disponibiliza acesso contínuo, 24 horas por dia e 7 dias por semana, à AWS Shield Response Team (SRT) e proteção contra aumentos de cobranças relacionados a DDoS em suas cobranças do EC2, do ELB, do CloudFront, do Global Accelerator e do Route 53.',
+      },
+    ],
   },
   {
     id: 'd2-039',
@@ -1529,7 +2017,13 @@ export const ptBR: readonly Question[] = [
       'O Security Hub agrega achados e verifica a postura de segurança. Ele não distribui regras de firewall.',
       'O Config avalia configurações de recursos contra regras, mas não distribui regras do WAF para as contas.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/waf/latest/developerguide/what-is-aws-waf.html#fms-intro'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/waf/latest/developerguide/what-is-aws-waf.html#fms-intro',
+        quote:
+          'Com o Firewall Manager, você configura suas proteções apenas uma vez e o serviço aplica-as automaticamente em todas as contas e recursos, mesmo quando novos recursos e contas forem adicionados.',
+      },
+    ],
   },
   {
     id: 'd2-040',
@@ -1543,7 +2037,13 @@ export const ptBR: readonly Question[] = [
       'O GuardDuty consome eventos de gerenciamento do CloudTrail, VPC flow logs e logs de DNS e usa inteligência de ameaças e machine learning para detectar atividades como credenciais comprometidas e mineração de criptomoedas.',
       'O Trusted Advisor verifica configurações em relação às boas práticas. Ele não detecta ameaças ativas nos logs.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/guardduty/latest/ug/what-is-guardduty.html#features-of-guardduty'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/guardduty/latest/ug/what-is-guardduty.html#features-of-guardduty',
+        quote:
+          'Quando você ativa GuardDuty uma Conta da AWS, começa GuardDuty automaticamente a ingerir as fontes de dados fundamentais associadas a essa conta. Essas fontes de dados incluem eventos AWS CloudTrail de gerenciamento, registros de fluxo da VPC (de instâncias do Amazon EC2) e registros de DNS.',
+      },
+    ],
   },
   {
     id: 'd2-041',
@@ -1558,7 +2058,11 @@ export const ptBR: readonly Question[] = [
       'O Security Hub agrega achados de segurança, inclusive de produtos de parceiros, mas não é uma loja para comprá-los.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/marketplace/latest/buyerguide/what-is-marketplace.html#what-is-marketplace',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/marketplace/latest/buyerguide/what-is-marketplace.html#what-is-marketplace',
+        quote:
+          'AWS Marketplace é um catálogo digital com curadoria que você pode usar para encontrar, comprar, implantar e gerenciar software, dados e serviços de terceiros necessários para criar soluções e administrar seus negócios.',
+      },
     ],
   },
   {
@@ -1573,7 +2077,13 @@ export const ptBR: readonly Question[] = [
       'O Health Dashboard mostra eventos que afetam os serviços da AWS e os recursos da conta, e não artigos de boas práticas.',
       'O Trusted Advisor executa verificações na conta. Ele não publica artigos.',
     ],
-    evidence: ['https://aws.amazon.com/pt/blogs/security/'],
+    evidence: [
+      {
+        url: 'https://aws.amazon.com/pt/blogs/aws/the-new-aws-security-blog/',
+        quote:
+          'The new AWS Security Blog is your one-stop shop for best practices, how-to guides, customer stories, and more.',
+      },
+    ],
   },
   {
     id: 'd2-043',
@@ -1587,7 +2097,13 @@ export const ptBR: readonly Question[] = [
       'O Detective investiga a causa raiz de achados de segurança. Ele não executa verificações de boas práticas.',
       'As verificações de segurança do Trusted Advisor incluem Security Groups Specific Ports Unrestricted e MFA on Root Account.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/awssupport/latest/user/security-checks.html#security-checks'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/awssupport/latest/user/security-checks.html#security-checks',
+        quote:
+          'Verifica as credenciais do usuário raiz de uma conta e avisa se a autenticação multifator (MFA) não estiver habilitada.',
+      },
+    ],
   },
   {
     id: 'd2-044',
@@ -1601,7 +2117,13 @@ export const ptBR: readonly Question[] = [
       'O GuardDuty detecta ameaças e malware, mas não informa quais objetos contêm dados sensíveis.',
       'O Config registra as configurações dos buckets, e não os dados dentro dos objetos.',
     ],
-    evidence: ['https://docs.aws.amazon.com/pt_br/macie/latest/user/what-is-macie.html#macie-features'],
+    evidence: [
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/macie/latest/user/what-is-macie.html#macie-features',
+        quote:
+          'Para descobrir dados confidenciais com o Macie, é possível usar técnicas e critérios incorporados, como machine learning e comparação de padrões, para analisar objetos nos buckets do S3.',
+      },
+    ],
   },
   {
     id: 'd2-045',
@@ -1623,8 +2145,15 @@ export const ptBR: readonly Question[] = [
       'O Shield Standard defende contra os ataques DDoS mais comuns e frequentes nas camadas de rede e de transporte.',
     ],
     evidence: [
-      'https://docs.aws.amazon.com/pt_br/waf/latest/developerguide/ddos-standard-summary.html#ddos-standard-summary',
-      'https://docs.aws.amazon.com/pt_br/waf/latest/developerguide/ddos-standard-summary.html#ddos-standard-summary',
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/waf/latest/developerguide/ddos-standard-summary.html#ddos-standard-summary',
+        quote: 'Todos os AWS clientes se beneficiam da proteção automática do Shield Standard, sem custo adicional.',
+      },
+      {
+        url: 'https://docs.aws.amazon.com/pt_br/waf/latest/developerguide/ddos-standard-summary.html#ddos-standard-summary',
+        quote:
+          'O Shield Standard se defende contra os ataques mais comuns e frequentes da camada DDo S de rede e transporte que têm como alvo seu site ou aplicativos.',
+      },
     ],
   },
 ]
