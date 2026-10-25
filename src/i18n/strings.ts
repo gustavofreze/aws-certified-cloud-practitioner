@@ -93,6 +93,7 @@ export interface SiteCopy {
     readonly map: string
     readonly answered: string
     readonly flagged: string
+    readonly checked: string
     readonly tally: string
     readonly timeLeft: string
     readonly previous: string
@@ -198,6 +199,7 @@ const ptBR: SiteCopy = {
     map: 'Mapa das questões',
     answered: 'Respondidas',
     flagged: 'Marcadas',
+    checked: 'Conferidas',
     tally: '{right} de {total} corretas',
     timeLeft: 'Tempo restante',
     previous: 'Anterior',
@@ -308,6 +310,7 @@ const enUS: SiteCopy = {
     map: 'Question map',
     answered: 'Answered',
     flagged: 'Marked',
+    checked: 'Checked',
     tally: '{right} of {total} correct',
     timeLeft: 'Time left',
     previous: 'Previous',
