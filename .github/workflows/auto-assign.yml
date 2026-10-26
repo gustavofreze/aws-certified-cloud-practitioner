@@ -21,7 +21,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Assign issues and pull requests
-        uses: gustavofreze/auto-assign@3c8ebe3f6f2cc5b92bb8969f13bc5886895f70e3 # 2.1.1
+        uses: gustavofreze/auto-assign@2b04688604e1bc6649d9d75c8273b1699c413853 # 3.0.0
         with:
           # The owner of the repository is assigned when the variable is not set.
           assignees: '${{ vars.ASSIGNEES || github.repository_owner }}'
